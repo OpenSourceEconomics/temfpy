@@ -28,7 +28,7 @@ requirements:
     - seaborn >=0.10.0
 
 about:
-  home: https://github.com/OpenSourceEconomics/testpy
+  home: https://github.com/OpenSourceEconomics/tespy
   license: MIT
   license_family: MIT
   summary: Python package with test functions for various numerical components
