@@ -34,3 +34,4 @@ dependencies:
     - nbsphinx
     - sphinxcontrib-bibtex
     - numpydoc
+

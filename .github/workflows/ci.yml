@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: goanpeca/setup-miniconda@v1.0.2
+      with:
+           activate-environment: temfpy
+           environment-file: environment.yml
+           python-version: 3.7
+           auto-activate-base: false
+    - uses: ammaraskar/sphinx-action@master
+      with:
+        docs-folder: "docs/"
+    - name: check package installation
+      shell: bash -l {0}
+      run: conda install -c opensourceeconomics temfpy
+
