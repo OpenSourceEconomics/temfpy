@@ -7,15 +7,16 @@ import math
 def borehole(x):
     """The Borehole function models water flow through a borehole. Its simplicity and quick evaluation makes it a commonly used function for testing a wide variety of methods in computer experiments.
     """
+    assert len(x) == 8
 
-    r_w = np.random.normal(0.1, 0.0161812)
-    r = np.random.lognormal(7.71, 1.0056)
-    T_u = np.random.uniform(63070, 115600)
-    H_u = np.random.uniform(990, 1110)
-    T_l = np.random.uniform(63.1, 116)
-    H_l = np.random.uniform(700, 820)
-    L = np.random.uniform(1120, 1680)
-    K_w = np.random.uniform(9855, 12045)
+    r_w = x[0]
+    r = x[1]
+    T_u = x[2]
+    H_u = x[3]
+    T_l = x[4]
+    H_l = x[5]
+    L = x[6]
+    K_w = x[7]
 
     a = 2 * math.pi * T_u * (H_u - H_l)
     b = np.log(r / r_w)
@@ -30,6 +31,7 @@ def ishigami(x, a=7, b=0.1):
     """
     The Ishigami function of Ishigami & Homma (1990) is used as an example for uncertainty and sensitivity analysis methods, because it exhibits strong nonlinearity and nonmonotonicity.
     """
+    assert len(x) == 3
 
     rslt = (1 + b * x[2] ** 4) * np.sin(x[0]) + a * np.sin(x[1]) ** 2
     return rslt
