@@ -2,12 +2,12 @@ import numpy as np
 import math
 
 
-"""
-The Borehole function models water flow through a borehole. Its simplicity and quick evaluation makes it a commonly used function for testing a wide variety of methods in computer experiments.
-"""
 
 
 def borehole(x):
+    """The Borehole function models water flow through a borehole. Its simplicity and quick evaluation makes it a commonly used function for testing a wide variety of methods in computer experiments.
+    """
+
     r_w = np.random.normal(0.1, 0.0161812)
     r = np.random.lognormal(7.71, 1.0056)
     T_u = np.random.uniform(63070, 115600)
@@ -26,11 +26,10 @@ def borehole(x):
     return rslt
 
 
-"""
-The Ishigami function of Ishigami & Homma (1990) is used as an example for uncertainty and sensitivity analysis methods, because it exhibits strong nonlinearity and nonmonotonicity.
-"""
+def ishigami(x, a=7, b=0.1):
+    """
+    The Ishigami function of Ishigami & Homma (1990) is used as an example for uncertainty and sensitivity analysis methods, because it exhibits strong nonlinearity and nonmonotonicity.
+    """
 
-
-def ishigami(x, y, z, a=7, b=0.1):
-    rslt = (1 + b * z ** 4) * np.sin(x) + a * np.sin(y) ** 2
+    rslt = (1 + b * x[2] ** 4) * np.sin(x[0]) + a * np.sin(x[1]) ** 2
     return rslt
