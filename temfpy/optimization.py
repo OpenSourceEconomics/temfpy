@@ -4,12 +4,10 @@ import math
 
 def ackley(x, a=20, b=0.2, c=2 * math.pi):
     n = len(x)
-    rslt = (
-        a
-        + math.exp(1)
-        - (a * (math.exp(-b * math.sqrt(1 / n * np.sum(x ** 2)))))
-        - math.exp(1 / n * np.sum(np.cos(c * x)))
-    )
+
+    rslt = a + math.exp(1) - (a * (math.exp(-b * math.sqrt(1 / n * np.sum(x ** 2)))))
+    rslt -= math.exp(1 / n * np.sum(np.cos(c * x)))
+
     return rslt
 
 
