@@ -3,8 +3,11 @@ name: temfpy
 dependencies:
   - python = 3.7
   - numpy
-  - pytest-black
   - flake8
+  - pytest
   - sphinx
   - sphinx_rtd_theme
+  - pip
+  pip:
+      - pytest-black
 
