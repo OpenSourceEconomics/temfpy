@@ -17,9 +17,6 @@ jobs:
            environment-file: environment.yml
            python-version: 3.7
            auto-activate-base: false
-    - uses: ammaraskar/sphinx-action@master
-      with:
-        docs-folder: "docs/"
 
     - name: run tests
       shell: bash -l {0}
