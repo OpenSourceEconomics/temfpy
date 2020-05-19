@@ -22,5 +22,5 @@ jobs:
         docs-folder: "docs/"
     - name: check package installation
       shell: bash -l {0}
-      run: conda install -c opensourceeconomics tespy
+      run: conda install -c opensourceeconomics temfpy
 
