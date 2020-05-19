@@ -2,8 +2,6 @@ import numpy as np
 import math
 
 
-
-
 def borehole(x):
     """The Borehole function models water flow through a borehole. Its simplicity and quick evaluation makes it a commonly used function for testing a wide variety of methods in computer experiments.
     """
