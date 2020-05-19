@@ -2,10 +2,10 @@ import numpy as np
 import math
 
 
-
-
 def borehole(x):
-    """The Borehole function models water flow through a borehole. Its simplicity and quick evaluation makes it a commonly used function for testing a wide variety of methods in computer experiments.
+    """The Borehole function models water flow through a borehole. Its simplicity and quick
+    evaluation makes it a commonly used function for testing a wide variety of methods in
+    computer experiments.
     """
     assert len(x) == 8
 
@@ -29,7 +29,8 @@ def borehole(x):
 
 def ishigami(x, a=7, b=0.1):
     """
-    The Ishigami function of Ishigami & Homma (1990) is used as an example for uncertainty and sensitivity analysis methods, because it exhibits strong nonlinearity and nonmonotonicity.
+    The Ishigami function of Ishigami & Homma (1990) is used as an example for uncertainty and
+    sensitivity analysis methods, because it exhibits strong nonlinearity and nonmonotonicity.
     """
     assert len(x) == 3
 
