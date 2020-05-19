@@ -6,8 +6,8 @@ dependencies:
   - flake8
   - pytest
   - sphinx
-  - sphinx_rtd_theme
   - pip
-  pip:
+  - pip:
       - pytest-black
+      - sphinx_rtd_theme
 
