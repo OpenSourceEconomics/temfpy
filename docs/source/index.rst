@@ -9,6 +9,10 @@ Welcome to temfpy's documentation!
 .. toctree::
    :maxdepth: 2
 
+   installation
+   optimization
+   uncertainty_quantification
+
    how_to/investigate_robustness_starting_values.ipynb
 
 Indices and tables
