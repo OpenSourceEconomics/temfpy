@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to tespy's documentation!
+Welcome to temfpy's documentation!
 =================================
 
 This Python package provides numerous test functions for various numerical components.
