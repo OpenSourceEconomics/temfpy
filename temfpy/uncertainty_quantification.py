@@ -1,3 +1,9 @@
+"""Test capabilities for uncertainty quantification.
+
+This module contains a host of test models and functions often used in the uncertainty
+quantification literate.
+
+"""
 import numpy as np
 import math
 
@@ -36,3 +42,55 @@ def ishigami(x, a=7, b=0.1):
 
     rslt = (1 + b * x[2] ** 4) * np.sin(x[0]) + a * np.sin(x[1]) ** 2
     return rslt
+
+
+def eoq_harris(x, r=10):
+    r"""Economic order quantity model.
+
+    This function computes the optimal economic order quantity (EOQ) based on the model presented in
+    [1]_. The EOQ minimizes the holding costs as wella s ordering costs. The core parameters of
+    the model are the units per months `x[0]`, the unit price of items in stock `x[1]`,
+    and the setup costs of an order `x[2]`. The annual interest rate `r` is treated as an
+    additional parameter.
+
+    Parameters
+    ----------
+    x : array_like
+        Core parameters of the model
+
+    r : float, optional
+        Annual interest rate
+
+    Returns
+    -------
+
+    float
+        Optimal order quantity
+
+    Notes
+    -----
+
+    A historical perspective on the model is provided by [2]_. A brief description with the core
+    equations is available in [3]_.
+
+    References
+    ----------
+
+    .. [1] F. Harris (1993), "How many parts to make at once", Operations Research, 38(6): 947-950.
+
+    .. [2] Erlenkotter (1990), "Ford Whitman Harris and the economic order quantitiy model".
+
+    .. [3] https://en.wikipedia.org/wiki/Economic_order_quantity
+
+    Examples
+    --------
+
+    >>> x = [1, 2, 3]
+    >>> y = eoq_harris(x, r=10)
+    >>> np.testing.assert_almost_equal(y, 12.649110640673518)
+    """
+
+    m, s, c = x
+    y = np.sqrt((24 * r * m * s) / c)
+
+    return y
