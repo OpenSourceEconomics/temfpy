@@ -88,7 +88,8 @@ html_theme = "sphinx_rtd_theme"
 html_static_path = ["_static"]
 
 
-# We want to remove module-wide dosctrings. See https://stackoverflow.com/questions/17927741/exclude-module-docstring-in-autodoc for details.
+# We want to remove module-wide dosctrings. 
+# See https://stackoverflow.com/questions/17927741/exclude-module-docstring-in-autodoc
 def remove_module_docstring(app, what, name, obj, options, lines):
     if what == "module":
         del lines[:]
