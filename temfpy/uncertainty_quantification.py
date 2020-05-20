@@ -94,3 +94,21 @@ def eoq_harris(x, r=10):
     y = np.sqrt((24 * r * m * s) / c)
 
     return y
+
+
+def simple_linear_function(x):
+    """Simple linear function.
+
+    Parameters
+    ----------
+    x : array_like
+        Array of summands
+
+    Examples
+    --------
+
+    >>> x = [1, 2, 3]
+    >>> y = simple_linear_function(x)
+    >>> np.testing.assert_almost_equal(y, 6)
+    """
+    return sum(x)

@@ -1,0 +1,34 @@
+"""Tests for uncertainty quantification module.
+"""
+import numpy as np
+
+from hypothesis.strategies import integers
+from hypothesis.extra.numpy import arrays
+from hypothesis.strategies import floats
+from hypothesis import given
+
+from temfpy.uncertainty_quantification import simple_linear_function
+from temfpy.uncertainty_quantification import eoq_harris
+
+
+def get_strategies(name):
+    if name == "eoq_harris":
+        valid_floats = floats(0.01, 10000, allow_nan=False, allow_infinity=False)
+        x_strategy = arrays(np.float, 3, elements=valid_floats)
+        strategy = (x_strategy, valid_floats)
+    elif name == "simple_linear_function":
+        strategy = arrays(np.float, integers(1, 100))
+    else:
+        raise NotImplementedError
+
+    return strategy
+
+
+@given(*get_strategies("eoq_harris"))
+def test_eoq_harris(x, r):
+    eoq_harris(x, r)
+
+
+@given(get_strategies("simple_linear_function"))
+def test_simple_linear_function(x):
+    simple_linear_function(x)
