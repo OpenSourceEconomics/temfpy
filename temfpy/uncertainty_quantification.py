@@ -86,7 +86,9 @@ def eoq_harris(x, r=10):
 
     .. [3] Economic order quantity. (2020, April 3). In Wikipedia.
         Retrieved from
-        https://tinyurl.com/EOQ-Harris
+        `https://en.wikipedia.org/w/index.php
+        ?title=Economic_order_quantity&oldid=948881557 <https://en.wikipedia.org/w/index.php
+        ?title=Economic_order_quantity&oldid=948881557>`_
 
     Examples
     --------
