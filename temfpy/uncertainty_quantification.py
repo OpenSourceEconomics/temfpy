@@ -76,7 +76,7 @@ def eoq_harris(x, r=10):
     References
     ----------
 
-    .. [1] Harris, F. W. (1990). 
+    .. [1] Harris, F. W. (1990).
         How Many Parts to Make at Once.
         Operations Research, 38(6), 947–950.
 
@@ -84,10 +84,9 @@ def eoq_harris(x, r=10):
         Ford Whitman Harris and the Economic Order Quantity Model.
         Operations Research, 38(6), 937–946.
 
-    .. [3] Economic order quantity.
-        (2020, April 3).
-        In Wikipedia.
-        Retrieved from https://en.wikipedia.org/w/index.php?title=Economic_order_quantity&oldid=948881557
+    .. [3] Economic order quantity. (2020, April 3). In Wikipedia.
+        Retrieved from
+        https://tinyurl.com/EOQ-Harris
 
     Examples
     --------
