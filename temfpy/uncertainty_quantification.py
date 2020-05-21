@@ -48,7 +48,7 @@ def eoq_harris(x, r=10):
     r"""Economic order quantity model.
 
     This function computes the optimal economic order quantity (EOQ) based on the model presented in
-    [1]_. The EOQ minimizes the holding costs as wella s ordering costs. The core parameters of
+    [1]_. The EOQ minimizes the holding costs as well as ordering costs. The core parameters of
     the model are the units per months `x[0]`, the unit price of items in stock `x[1]`,
     and the setup costs of an order `x[2]`. The annual interest rate `r` is treated as an
     additional parameter.
@@ -76,11 +76,18 @@ def eoq_harris(x, r=10):
     References
     ----------
 
-    .. [1] Harris, F. W. (1990). How Many Parts to Make at Once. Operations Research, 38(6), 947–950.
+    .. [1] Harris, F. W. (1990). 
+        How Many Parts to Make at Once.
+        Operations Research, 38(6), 947–950.
 
-    .. [2] Erlenkotter, D. (1990). Ford Whitman Harris and the Economic Order Quantity Model. Operations Research, 38(6), 937–946.
+    .. [2] Erlenkotter, D. (1990).
+        Ford Whitman Harris and the Economic Order Quantity Model.
+        Operations Research, 38(6), 937–946.
 
-    .. [3] Economic order quantity. (2020, April 3). In Wikipedia. Retrieved from https://en.wikipedia.org/w/index.php?title=Economic_order_quantity&oldid=948881557
+    .. [3] Economic order quantity.
+        (2020, April 3).
+        In Wikipedia.
+        Retrieved from https://en.wikipedia.org/w/index.php?title=Economic_order_quantity&oldid=948881557
 
     Examples
     --------
