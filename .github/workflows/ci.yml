@@ -28,6 +28,3 @@ jobs:
         flake8-nb; [ $? -eq 0 ] || exit 1
         black-nb .; [ $? -eq 0 ] || exit 1
 
-    - name: check package installation
-      shell: bash -l {0}
-      run: conda install -c opensourceeconomics temfpy

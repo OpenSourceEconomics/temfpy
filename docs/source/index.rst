@@ -12,6 +12,7 @@ Welcome to temfpy's documentation!
    installation
    optimization
    uncertainty_quantification
+   resources
 
    how_to/investigate_robustness_starting_values.ipynb
 
