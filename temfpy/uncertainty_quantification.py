@@ -84,7 +84,7 @@ def eoq_harris(x, r=10):
         Ford Whitman Harris and the Economic Order Quantity Model.
         Operations Research, 38(6), 937–946.
 
-    .. [3] Economic order quantity. (2020, April 3). In Wikipedia.
+    .. [3] Economic Order Quantity. (2020, April 3). In Wikipedia.
         Retrieved from
         `https://en.wikipedia.org/w/index.php\
         ?title=Economic_order_quantity&oldid=948881557 <https://en.wikipedia.org/w/index.php
