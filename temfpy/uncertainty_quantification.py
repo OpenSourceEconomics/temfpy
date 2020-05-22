@@ -9,7 +9,9 @@ import math
 
 
 def borehole(x):
-    """The Borehole function models water flow through a borehole. Its simplicity and quick
+    r"""Borehole function.
+
+    The Borehole function models water flow through a borehole. Its simplicity and quick
     evaluation makes it a commonly used function for testing a wide variety of methods in
     computer experiments.
     """
@@ -34,7 +36,8 @@ def borehole(x):
 
 
 def ishigami(x, a=7, b=0.1):
-    """
+    r"""Ishigami function.
+
     The Ishigami function of Ishigami & Homma (1990) is used as an example for uncertainty and
     sensitivity analysis methods, because it exhibits strong nonlinearity and nonmonotonicity.
     """
@@ -105,8 +108,9 @@ def eoq_harris(x, r=10):
 
 
 def simple_linear_function(x):
-    """
-    This function computes the sum of all elements of given array.
+    r"""Simple linear function.
+
+    This function computes the sum of all elements of a given array.
 
     Parameters
     ----------
