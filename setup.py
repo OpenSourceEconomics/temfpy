@@ -5,13 +5,13 @@ p = find_packages()
 print(p)
 
 setup(
-    name="tespy",
+    name="temfpy",
     version="0.0",
     description=("Python package with test functions for various numerical components"),
     license="MIT",
-    url="https://github.com/OpenSourceEconomics/tespy",
+    url="https://github.com/OpenSourceEconomics/temfpy",
     author="OpenSourceEconomics",
-    author_email="liudmila.kiseleva.rus@gmail.com",
+    author_email="eisenhauer@policy-lab.org",
     packages=p,
     zip_safe=False,
     package_data={"utilities": []},
