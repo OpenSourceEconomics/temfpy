@@ -47,7 +47,7 @@ def ishigami(x, a=7, b=0.1):
     return rslt
 
 
-def eoq_harris(x, r=10):
+def eoq_harris(x, r=0.1):
     r"""Economic order quantity model.
 
     This function computes the optimal economic order quantity (EOQ) based on the model presented in
@@ -97,12 +97,12 @@ def eoq_harris(x, r=10):
     --------
 
     >>> x = [1, 2, 3]
-    >>> y = eoq_harris(x, r=10)
+    >>> y = eoq_harris(x, r=0.1)
     >>> np.testing.assert_almost_equal(y, 12.649110640673518)
     """
 
     m, s, c = x
-    y = np.sqrt((24 * r * m * s) / c)
+    y = np.sqrt((24 * m * s) / (r * c))
 
     return y
 
