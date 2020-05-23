@@ -5,4 +5,4 @@ You can install the package via
 
 .. code-block:: bash
 
-   $ conda install -c opensourceeconomics tespy
+   $ conda install -c opensourceeconomics temfpy

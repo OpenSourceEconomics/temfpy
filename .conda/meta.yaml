@@ -1,4 +1,4 @@
-{% set name = "tespy" %}
+{% set name = "temfpy" %}
 {% set version = "0.0" %}
 
 package:
@@ -28,7 +28,7 @@ requirements:
     - seaborn >=0.10.0
 
 about:
-  home: https://github.com/OpenSourceEconomics/tespy
+  home: https://github.com/OpenSourceEconomics/temfpy
   license: MIT
   license_family: MIT
   summary: Python package with test functions for various numerical components
