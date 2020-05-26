@@ -98,10 +98,10 @@ def eoq_harris(x, r=0.1):
 
     >>> x = [1, 2, 3]
     >>> y = eoq_harris(x, r=0.1)
-    >>> np.testing.assert_almost_equal(y, 12.649110640673518)
+    >>> np.testing.assert_almost_equal(y, 18.973665961010276)
     """
 
-    m, s, c = x
+    m, c, s = x
     y = np.sqrt((24 * m * s) / (r * c))
 
     return y
