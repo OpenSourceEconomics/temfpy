@@ -15,8 +15,8 @@ Welcome to temfpy's documentation!
 .. image:: https://github.com/OpenSourceEconomics/temfpy/workflows/CI/badge.svg
     :target: https://github.com/OpenSourceEconomics/temfpy/actions?query=branch%3Amaster
 
-.. image:: https://api.codacy.com/project/badge/Grade/a74bf187da834e70ac72f8b3579b30a
-    :target: https://app.codacy.com/gh/OpenSourceEconomics/temfpy?utm_source=github.com&utm_medium=referral&utm_content=OpenSourceEconomics/temfpy&utm_campaign=Badge_Grade_Dashboard
+.. image:: https://app.codacy.com/project/badge/Grade/073560e8402b4201881044d9c2f4a8ea
+    :target: https://www.codacy.com/gh/OpenSourceEconomics/temfpy?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=OpenSourceEconomics/temfpy&amp;utm_campaign=Badge_Grade
 
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
     :target: https://github.com/psf/black
