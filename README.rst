@@ -1,7 +1,7 @@
 temfpy
 ======
 
-``temfpy`` is an open-source package providing test models and functions for standard numerical components in computational economic models. Please visit our `online documentation <https://temfpy.readthedocs.io/en/latest/>`_ for additional information.
+``temfpy`` is an open-source package providing test models and functions for standard numerical components in computational economic models. Please visit our `online documentation <https://temfpy.readthedocs.io/en/latest/>`_ for details.
 
 .. image:: https://readthedocs.org/projects/temfpy/badge/?version=latest
     :target: https://temfpy.readthedocs.io/en/latest
