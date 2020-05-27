@@ -22,11 +22,11 @@ jobs:
       shell: bash -l {0}
       run: |
         export PATH="$PATH:/usr/share/miniconda/bin"
-        pytest
+        pytest --cov=temfpy --cov-report=xml
 
         # We want to make sure proper formatting of the notebooks.
         flake8-nb; [ $? -eq 0 ] || exit 1
-        black-nb .; [ $? -eq 0 ] || exit 1
-        
+        black-nb --check .; [ $? -eq 0 ] || exit 1
+
         # We want to test a simple install.
         conda install -c opensourceeconomics temfpy
