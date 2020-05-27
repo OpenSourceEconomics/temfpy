@@ -8,5 +8,11 @@ dependencies:
   - sphinx
   - jupyter_client
   - numpy
+  - pandas
+  - scipy
+  - seaborn
+  - pytest
+  - numba
+  - chaospy
   - pip:
     - sphinxcontrib-bibtex
