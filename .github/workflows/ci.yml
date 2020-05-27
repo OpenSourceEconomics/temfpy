@@ -30,3 +30,8 @@ jobs:
 
         # We want to test a simple install.
         conda install -c opensourceeconomics temfpy
+
+    - name: upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with:
+        file: coverage.xml
