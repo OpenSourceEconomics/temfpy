@@ -3,6 +3,8 @@ import math
 
 
 def ackley(x, a=20, b=0.2, c=2 * math.pi):
+    r"""Ackley function.
+    """
     n = len(x)
 
     rslt = a + math.exp(1) - (a * (math.exp(-b * math.sqrt(1 / n * np.sum(x ** 2)))))
@@ -12,6 +14,8 @@ def ackley(x, a=20, b=0.2, c=2 * math.pi):
 
 
 def rastrigin(x, a=10):
+    r"""Rastrigin function.
+    """
     n = len(x)
     rslt = a * n
     for y in x:
