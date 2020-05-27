@@ -1,10 +1,7 @@
-.. temfpy documentation master file, created by
-   sphinx-quickstart on Tue May 19 22:17:31 2020.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+temfpy
+======
 
-Welcome to temfpy's documentation!
-==================================
+``temfpy`` is an open-source package providing test models and functions for standard numerical components in computational economic models. Please visit our `online documentation <https://temfpy.readthedocs.io/en/latest/>`_ for additional information.
 
 .. image:: https://readthedocs.org/projects/temfpy/badge/?version=latest
     :target: https://temfpy.readthedocs.io/en/latest
@@ -27,27 +24,9 @@ Welcome to temfpy's documentation!
 .. image:: https://img.shields.io/badge/zulip-join_chat-brightgreen.svg
     :target: https://ose.zulipchat.com
 
-``temfpy`` is an open-source package providing test models and functions for standard numerical components in computational economic models.
-
-With ``conda`` available on your path, installing and testing ``temfpy`` is as simple as typing
-
-.. code-block:: bash
-
-    $ conda install -c opensourceeconomics temfpy
-    $ python -c "import temfpy; temfpy.test()"
-
-
 
 Supported by
 ------------
 
-.. image:: ../_static/images/ose-logo.jpg
-	  :target: https://github.com/OpenSourceEconomics
-
-.. toctree::
-   :hidden:
-   :maxdepth: 2
-
-   optimization
-   uncertainty_quantification
-   tutorials/index.rst
+.. image:: docs/_static/images/ose-logo.jpg
+    :target: https://github.com/OpenSourceEconomics
