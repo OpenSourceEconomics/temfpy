@@ -7,5 +7,6 @@ dependencies:
   - nbsphinx
   - sphinx
   - jupyter_client
+  - numpy
   - pip:
     - sphinxcontrib-bibtex
