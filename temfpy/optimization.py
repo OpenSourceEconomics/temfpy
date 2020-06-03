@@ -1,5 +1,7 @@
 """Test capabilities for optimization.
+
 This module contains a host of models and functions often used for testing optimization algorithms.
+
 """
 import numpy as np
 import math
@@ -12,16 +14,17 @@ def ackley(x, a=20, b=0.2, c=2 * math.pi):
     Originally, it was formulated only for the two-dimensional case;
     it is characterized by an almost flat outer region and a central hole or peak
     where modulations become more and more influential. The function has
-    its global minimum f(x) = 0 at x = (0,...,0).
+    its global minimum :math:`f(x) = 0` at :math:`x = (0, \dots, 0)`.
 
-    Parameters:
+    Parameters
     ----------
-    a = 20, b = 0.2, c = 2π : float
-                              Recommended variable values
 
     x : array_like
         Input domain with dimension d. It is usually evaluated on the hypercube
-        xi ∈ [-32.768, 32.768], for all i = 1, …, d.
+        :math:`x_i\in [-32.768, 32.768]`, for all :math:`i = 1, \dots, d`.
+
+    float a, b, c
+        Recommended variable values are 20, 0.2, 2π, respectively.
 
     Returns
     -------
@@ -69,19 +72,19 @@ def ackley(x, a=20, b=0.2, c=2 * math.pi):
 def rastrigin(x, a=10):
     r"""Rastrigin function.
 
-    The function was first proposed by Rastrigin as a 2-dimensional function in [R1974].
+    The function was first proposed by Rastrigin as a 2-dimensional function in [R1974]_.
     It produces frequent local minima; thus, it is highly multimodal.
     However, the location of the minima are regularly distributed.
-    The function has its global minimum f(x) = 0 at x = (0,...,0).
+    The function has its global minimum :math:`f(x) = 0` at :math:`x = (0, \dots, 0)`.
 
-    Parameters:
+    Parameters
     ----------
-    a = 10 : float
-             Recommended variable value
+    a : float
+        Recommended variable value is 10.
 
     x : array_like
         Input domain with dimension d. It is usually evaluated on the hypercube
-        xi ∈ [-5.12, 5.12], for all i = 1, …, d.
+        :math:`x_i\in [-5.12, 5.12]`, for all :math:`i = 1, \dots, d`.
 
     Returns
     -------
@@ -99,10 +102,6 @@ def rastrigin(x, a=10):
     .. [R1974] Rastrigin, L. A. (1974).
        Systems of extremal control.
        Moscow, Russia: Mir.
-
-    .. [M2005] Molga, M., and Smutnicki, C. (2005).
-       Test functions for optimization needs.
-       Retrieved June 2020, from http://www.zsd.ict.pwr.wroc.pl/files/docs/functions.pdf.
 
     Examples
     --------
