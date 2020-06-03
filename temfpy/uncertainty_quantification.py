@@ -48,6 +48,7 @@ def borehole(x):
     --------
     >>> x = [1, 2, 3, 4, 5, 6, 7, 8]
     >>> y = borehole(x)
+    >>> np.testing.assert_almost_equal(y, -5.928432371372569)
     """
     assert len(x) == 8
 
@@ -116,6 +117,7 @@ def ishigami(x, a=7, b=0.05):
     --------
     >>> x = [1, 2, 3]
     >>> y = ishigami(x)
+    >>> np.testing.assert_almost_equal(y, 10.037181146302519)
     """
     assert len(x) == 3
 
