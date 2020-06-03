@@ -14,18 +14,15 @@ from temfpy.uncertainty_quantification import eoq_model
 
 
 def get_strategies(name):
+    valid_floats = floats(0.01, 10000, allow_nan=False, allow_infinity=False)
     if name == "eoq_model":
-        valid_floats = floats(0.01, 10000, allow_nan=False, allow_infinity=False)
         x_strategy = arrays(np.float, 3, elements=valid_floats)
         strategy = (x_strategy, valid_floats)
     elif name == "ishigami":
-        valid_floats = floats(0.01, 10000, allow_nan=False, allow_infinity=False)
         x_strategy = arrays(np.float, 3, elements=valid_floats)
         strategy = (x_strategy, valid_floats, valid_floats)
     elif name == "borehole":
-        valid_floats = floats(0.01, 10000, allow_nan=False, allow_infinity=False)
-        x_strategy = arrays(np.float, 8, elements=valid_floats)
-        strategy = x_strategy
+        strategy = arrays(np.float, 8, elements=valid_floats)
     elif name == "simple_linear_function":
         strategy = arrays(np.float, integers(1, 100))
     else:
@@ -44,7 +41,7 @@ def test_ishigami(x, a, b):
     ishigami(x, a, b)
 
 
-@given(*get_strategies("borehole"))
+@given(get_strategies("borehole"))
 def test_borehole(x):
     borehole(x)
 
