@@ -32,6 +32,6 @@ def test_ackley(x, a, b, c):
     ackley(x, a, b, c)
 
 
-@given(get_strategies("rastrigin", x)
+@given(*get_strategies("rastrigin", x))
 def test_rastrigin(x, a):
     rastrigin(x, a)
