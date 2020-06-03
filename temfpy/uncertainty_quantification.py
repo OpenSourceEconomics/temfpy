@@ -56,18 +56,25 @@ def eoq_model(x, r=0.1):
     and the setup costs of an order `x[2]`. The annual interest rate `r` is treated as an
     additional parameter.
 
+    .. math::
+        y = \sqrt{\frac{24 x_0 x_2}{r x_1}}
+
+    .. image:: ../../_static/images/ose-logo.jpg
+       :align: center
+       :alt: place holder image
+
     Parameters
     ----------
     x : array_like
         Core parameters of the model
 
     r : float, optional
-        Annual interest rate
+        Annual interest rate (default value is 0.1)
 
     Returns
     -------
 
-    float
+    y : float
         Optimal order quantity
 
     Notes
