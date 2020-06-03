@@ -9,7 +9,8 @@ import numpy as np
 def ackley(x, a=20, b=0.2, c=2 * np.pi):
     r"""Ackley function.
 
-    :math:`f(x) = -a exp(-b \sqrt{\frac{1}{d} \sum_{i=1}^d x_i^2}) - exp(\frac{1}{d} \sum_{i=1}^d cos(c x_i)) + a + exp(1)`
+    :math:`f(x) = -a exp(-b \sqrt{\frac{1}{d} \sum_{i=1}^d x_i^2})
+    - exp(\frac{1}{d} \sum_{i=1}^d cos(c x_i)) + a + exp(1)`
 
     Parameters
     ----------
