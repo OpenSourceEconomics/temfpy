@@ -11,8 +11,9 @@ import math
 def borehole(x):
     r"""Borehole function.
 
-    The Borehole function was developed by Harper and Gupta [H1983]_ to model steady state flow
-    through a hypothetical borehole. It is widely used as a testing function for a variety of methods
+    The Borehole function was developed by Harper and Gupta [H1983]_
+    to model steady state flow through a hypothetical borehole.
+    It is widely used as a testing function for a variety of methods
     due to its simplicity and quick evaluation (e.g. [X2013]_).
 
     Parameters
@@ -31,17 +32,18 @@ def borehole(x):
     -----
 
     Harper and Gupta [H1983]_ used the function originally to compare the results of a sensitivity
-    analysis to the results based on Latin hypercube sampling.   
+    analysis to the results based on Latin hypercube sampling.
 
     References
     ----------
     .. [H1983] Harper, W. V., and Gupta, S. K. (1983)
-	Sensitivity/uncertainty analysis of a borehole scenario comparing Latin hypercube sampling 		and deterministc sensitivity approaches.
-	Office of Nuclear Waste Isolation, Battelle Memorial Institute.
+        Sensitivity/uncertainty analysis of a borehole scenario comparing Latin hypercube sampling
+        and deterministc sensitivity approaches.
+        Office of Nuclear Waste Isolation, Battelle Memorial Institute.
 
     .. [X2013] Xiong, S., and Qian, P. Z., and Wu, C. J. (2013).
-	Sequential design and analysis of high-accuracy and low-accuracy computer codes.
-	Technometrics, 55(1), 37-46.
+        Sequential design and analysis of high-accuracy and low-accuracy computer codes.
+        Technometrics, 55(1), 37-46.
 
 
     Examples
@@ -73,7 +75,9 @@ def borehole(x):
 def ishigami(x, a=7, b=0.05):
     r"""Ishigami function.
 
-    This function was specifically developed by Ishigami and Homma [I1990]_ as a test function used for 	  uncertainty analysis. It is characterized by its strong nonlinearity and nonmonotonicity.
+    This function was specifically developed by Ishigami and Homma [I1990]_
+    as a test function used for uncertainty analysis.
+    It is characterized by its strong nonlinearity and nonmonotonicity.
 
     Parameters
     ----------
@@ -82,8 +86,8 @@ def ishigami(x, a=7, b=0.05):
         Core parameters of the model with dimension 3.
 
     float a, b
-	The default values are 7 and 0.05 respectively, as used by Sobol' and Levitan [S1999]_.
-        
+        The default values are 7 and 0.05 respectively, as used by Sobol' and Levitan [S1999]_.
+
 
     Returns
     -------
@@ -94,20 +98,22 @@ def ishigami(x, a=7, b=0.05):
     Notes
     -----
 
-    Sobol' and Levitan [S1999]_ note that the Ishigami function has a strong dependance
+    Sobol' and Levitan [S1999]_ note that the Ishigami function has a strong dependence
     on :math:`x_3`.
-    
+
 
     References
     ----------
 
     .. [I1990] Ishigami, T., and Homma, T. (1990).
         An importance quantification technique in uncertainty analysis for computer models.
-        In: Uncertainty Modeling and Analysis, 1990. Proceedings., First International Symposium on 		(pp. 398-403).
+        In: Uncertainty Modeling and Analysis, 1990. Proceedings.,
+        First International Symposium on (pp. 398-403).
 
     .. [S1999] Sobol', I. M., and Levitan, Y. L (1999).
-	On the use of variance reducing multipliers in Monte Carlo computations of a global 		sensitivity index.
-	Computer Physics Communications, 117(1), 52-61.
+        On the use of variance reducing multipliers in Monte Carlo computations of a
+        global sensitivity index.
+        Computer Physics Communications, 117(1), 52-61.
 
     Examples
     --------
