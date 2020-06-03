@@ -5,34 +5,32 @@ quantification literate.
 
 """
 import numpy as np
-import math
 
 
 def borehole(x):
     r"""Borehole function.
 
-    The Borehole function was developed by Harper and Gupta [H1983]_
-    to model steady state flow through a hypothetical borehole.
-    It is widely used as a testing function for a variety of methods
-    due to its simplicity and quick evaluation (e.g. [X2013]_).
+    :math:`f(x) = \frac{2 \pi T_u (H_u - H_l)}{\ln{(r/r_w)} \Big(1 +
+    \frac{2 L T_u}{\ln{(r/r_w)}r_w^2 K_w} + \frac{T_u}{T_l}\Big)}`
 
     Parameters
     ----------
-
     x : array_like
         Core parameters of the model with dimension 8.
 
     Returns
     -------
-
     float
         Flow rate in :math:`m^3/yr`.
 
     Notes
     -----
-
-    Harper and Gupta [H1983]_ used the function originally to compare the results of a sensitivity
-    analysis to the results based on Latin hypercube sampling.
+    The Borehole function was developed by Harper and Gupta [H1983]_
+    to model steady state flow through a hypothetical borehole.
+    It is widely used as a testing function for a variety of methods
+    due to its simplicity and quick evaluation (e.g. [X2013]_).
+    Harper and Gupta used the function originally to compare the results of a sensitivity
+    analysis to results based on Latin hypercube sampling.
 
     References
     ----------
@@ -48,7 +46,6 @@ def borehole(x):
 
     Examples
     --------
-
     >>> x = [1, 2, 3, 4, 5, 6, 7, 8]
     >>> y = borehole(x)
     """
@@ -63,7 +60,7 @@ def borehole(x):
     L = x[6]
     K_w = x[7]
 
-    a = 2 * math.pi * T_u * (H_u - H_l)
+    a = 2 * np.pi * T_u * (H_u - H_l)
     b = np.log(r / r_w)
     c = (2 * L * T_u) / (b * r_w ** 2 * K_w)
     d = T_u / T_l
@@ -75,36 +72,36 @@ def borehole(x):
 def ishigami(x, a=7, b=0.05):
     r"""Ishigami function.
 
-    This function was specifically developed by Ishigami and Homma [I1990]_
-    as a test function used for uncertainty analysis.
-    It is characterized by its strong nonlinearity and nonmonotonicity.
+    :math:`f(x) = sin(x_1) + a sin^2(x_2) + b x_3^4 sin(x_1)`
 
     Parameters
     ----------
-
     x : array_like
         Core parameters of the model with dimension 3.
 
-    float a, b
-        The default values are 7 and 0.05 respectively, as used by Sobol' and Levitan [S1999]_.
+    a : float, optional
+        The default value is 7, as used by Sobol' and Levitan in [S1999]_.
+
+    b : float, optional
+        The default value is 0.05, as used by Sobol' and Levitan.
 
 
     Returns
     -------
-
     float
         Output domain
 
     Notes
     -----
-
-    Sobol' and Levitan [S1999]_ note that the Ishigami function has a strong dependence
+    This function was specifically developed by Ishigami and Homma [I1990]_
+    as a test function used for uncertainty analysis.
+    It is characterized by its strong nonlinearity and nonmonotonicity.
+    Sobol' and Levitan note that the Ishigami function has a strong dependence
     on :math:`x_3`.
 
 
     References
     ----------
-
     .. [I1990] Ishigami, T., and Homma, T. (1990).
         An importance quantification technique in uncertainty analysis for computer models.
         In: Uncertainty Modeling and Analysis, 1990. Proceedings.,
@@ -117,7 +114,6 @@ def ishigami(x, a=7, b=0.05):
 
     Examples
     --------
-
     >>> x = [1, 2, 3]
     >>> y = ishigami(x)
     """
@@ -138,7 +134,6 @@ def eoq_model(x, r=0.1):
 
     Parameters
     ----------
-
     x : array_like
         Core parameters of the model
 
@@ -147,19 +142,16 @@ def eoq_model(x, r=0.1):
 
     Returns
     -------
-
     float
         Optimal order quantity
 
     Notes
     -----
-
     A historical perspective on the model is provided by [E1990]_. A brief description with the core
     equations is available in [W2020]_.
 
     References
     ----------
-
     .. [H1990] Harris, F. W. (1990).
         How many parts to make at once.
         Operations Research, 38(6), 947–950.
@@ -176,7 +168,6 @@ def eoq_model(x, r=0.1):
 
     Examples
     --------
-
     >>> x = [1, 2, 3]
     >>> y = eoq_model(x, r=0.1)
     >>> np.testing.assert_almost_equal(y, 18.973665961010276)
