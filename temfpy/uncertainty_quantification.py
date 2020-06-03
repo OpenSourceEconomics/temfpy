@@ -59,9 +59,12 @@ def eoq_model(x, r=0.1):
     .. math::
         y = \sqrt{\frac{24 x_0 x_2}{r x_1}}
 
-    .. image:: ../../_static/images/ose-logo.jpg
+    .. figure:: ../../docs/_static/images/fig-eoq-tradeoff.png
        :align: center
-       :alt: place holder image
+
+       Holding `x[1]` and `x[2]` constant, an increase in `x[0]` results in a decrease in
+       the setup cost per unit,
+       but an increase in capital cost increases as the stock of inventory increase.
 
     Parameters
     ----------
