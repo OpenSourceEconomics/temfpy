@@ -18,7 +18,7 @@ def get_strategies(name):
         valid_floats = floats(0.01, 10000, allow_nan=False, allow_infinity=False)
         x_strategy = arrays(np.float, 3, elements=valid_floats)
         strategy = (x_strategy, valid_floats)
-    elif (name == "borehole"):
+    elif name == "borehole":
         valid_floats = floats(0.01, 10000, allow_nan=False, allow_infinity=False)
         x_strategy = arrays(np.float, 8, elements=valid_floats)
         strategy = (x_strategy, valid_floats)
