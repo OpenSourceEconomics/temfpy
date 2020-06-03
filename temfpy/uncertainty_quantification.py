@@ -17,6 +17,7 @@ def borehole(x):
 
     Parameters
     ----------
+
     x : array_like
         Core parameters of the model with dimension 8.
 
@@ -28,9 +29,9 @@ def borehole(x):
 
     Notes
     -----
+
     Harper and Gupta [H1983]_ used the function originally to compare the results of a sensitivity
-    analysis to the results based on Latin hypercube sampling.
-    
+    analysis to the results based on Latin hypercube sampling.   
 
     References
     ----------
@@ -76,6 +77,7 @@ def ishigami(x, a=7, b=0.05):
 
     Parameters
     ----------
+
     x : array_like
         Core parameters of the model with dimension 3.
 
@@ -94,7 +96,6 @@ def ishigami(x, a=7, b=0.05):
 
     Sobol' and Levitan [S1999]_ note that the Ishigami function has a strong dependance
     on :math:`x_3`.
-
     
 
     References
@@ -131,6 +132,7 @@ def eoq_model(x, r=0.1):
 
     Parameters
     ----------
+
     x : array_like
         Core parameters of the model
 
