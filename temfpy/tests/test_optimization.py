@@ -1,15 +1,13 @@
 """Tests for optimization module.
 """
 import numpy as np
-import math
 
-from hypothesis.strategies import integers
 from hypothesis.extra.numpy import arrays
 from hypothesis.strategies import floats
 from hypothesis import given
 
-from temfpy.uncertainty_quantification import simple_linear_function
-from temfpy.uncertainty_quantification import eoq_model
+from temfpy.optimization import ackley
+from temfpy.optimization import rastrigin
 
 
 def get_strategies(name, x):
