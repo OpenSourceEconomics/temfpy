@@ -10,8 +10,8 @@ import numpy as np
 def borehole(x):
     r"""Borehole function.
 
-    :math:`f(x) = \frac{2 \pi T_u (H_u - H_l)}{\ln{(r/r_w)} \Big(1 +
-    \frac{2 L T_u}{\ln{(r/r_w)}r_w^2 K_w} + \frac{T_u}{T_l}\Big)}`
+    :math:`f(x) = \frac{2 \pi x_1 (x_2 - x_3)}{\ln{(x_4/x_5)} \Big(1 +
+    \frac{2 x_1 x_6}{\ln{(x_4/x_5)}x_5^2 x_7} + \frac{x_1}{x_8}\Big)}`
 
     Parameters
     ----------
@@ -48,25 +48,16 @@ def borehole(x):
     --------
     >>> x = [1, 2, 3, 4, 5, 6, 7, 8]
     >>> y = borehole(x)
-    >>> np.testing.assert_almost_equal(y, -5.928432371372569)
+    >>> np.testing.assert_almost_equal(y, 34.43500403827335)
     """
     assert len(x) == 8
 
-    r_w = x[0]
-    r = x[1]
-    T_u = x[2]
-    H_u = x[3]
-    T_l = x[4]
-    H_l = x[5]
-    L = x[6]
-    K_w = x[7]
-
-    a = 2 * np.pi * T_u * (H_u - H_l)
-    b = np.log(r / r_w)
-    c = (2 * L * T_u) / (b * r_w ** 2 * K_w)
-    d = T_u / T_l
-
-    rslt = a / (b * (1 + c + d))
+    a = 2 * np.pi * x[0] * (x[1] - x[2])
+    b = np.log(x[3] / x[4])
+    c = 2 * x[0] * x[5]
+    d = b * x[4] ** 2 * x[6]
+    e = x[0] / x[7]
+    rslt = a / (b * (1 + c / d + e))
     return rslt
 
 
