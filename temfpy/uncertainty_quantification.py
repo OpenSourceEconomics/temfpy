@@ -57,7 +57,7 @@ def eoq_model(x, r=0.1):
     additional parameter.
 
     .. math::
-        y = \sqrt{\frac{24 x_0 x_2}{r x_1}}
+        y = \sqrt{\frac{24 x[0] x[2]}{r x[1]}}
 
     .. figure:: ../../docs/_static/images/fig-eoq-tradeoff.png
        :align: center
@@ -69,16 +69,16 @@ def eoq_model(x, r=0.1):
     Parameters
     ----------
     x : array_like
-        Core parameters of the model
+        Core parameters of the model.
 
     r : float, optional
-        Annual interest rate (default value is 0.1)
+        Annual interest rate (default value is 0.1).
 
     Returns
     -------
 
     y : float
-        Optimal order quantity
+        Optimal order quantity.
 
     Notes
     -----
