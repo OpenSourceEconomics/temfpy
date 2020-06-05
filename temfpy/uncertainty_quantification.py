@@ -119,12 +119,6 @@ def ishigami(x, a=7, b=0.05):
 def eoq_model(x, r=0.1):
     r"""Economic order quantity model.
 
-    This function computes the optimal economic order quantity (EOQ) based on the model presented in
-    [H1990]_. The EOQ minimizes the holding costs as well as ordering costs. The core parameters of
-    the model are the units per months `x[0]`, the unit price of items in stock `x[1]`,
-    and the setup costs of an order `x[2]`. The annual interest rate `r` is treated as an
-    additional parameter.
-
     .. math::
         y = \sqrt{\frac{24 x[0] x[2]}{r x[1]}}
 
@@ -150,6 +144,11 @@ def eoq_model(x, r=0.1):
 
     Notes
     -----
+    This function computes the optimal economic order quantity (EOQ) based on the model presented in
+    [H1990]_. The EOQ minimizes the holding costs as well as ordering costs. The core parameters of
+    the model are the units per months `x[0]`, the unit price of items in stock `x[1]`,
+    and the setup costs of an order `x[2]`. The annual interest rate `r` is treated as an
+    additional parameter.
     A historical perspective on the model is provided by [E1990]_. A brief description with the core
     equations is available in [W2020]_.
 
