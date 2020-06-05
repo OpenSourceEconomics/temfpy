@@ -125,18 +125,28 @@ def eoq_model(x, r=0.1):
     and the setup costs of an order `x[2]`. The annual interest rate `r` is treated as an
     additional parameter.
 
+    .. math::
+        y = \sqrt{\frac{24 x[0] x[2]}{r x[1]}}
+
+    .. figure:: ../../docs/_static/images/fig-eoq-tradeoff.png
+       :align: center
+
+       Holding `x[1]` and `x[2]` constant, an increase in `x[0]` results in a decrease in
+       the setup cost per unit,
+       but an increase in capital cost increases as the stock of inventory increase.
+
     Parameters
     ----------
     x : array_like
-        Core parameters of the model
+        Core parameters of the model.
 
     r : float, optional
-        Annual interest rate
+        Annual interest rate (default value is 0.1).
 
     Returns
     -------
-    float
-        Optimal order quantity
+    y : float
+        Optimal order quantity.
 
     Notes
     -----
