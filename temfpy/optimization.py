@@ -9,14 +9,14 @@ import numpy as np
 def ackley(x, a=20, b=0.2, c=2 * np.pi):
     r"""Ackley function.
 
-    :math:`f(x) = -a exp(-b \sqrt{\frac{1}{d} \sum_{i=1}^d x_i^2})
-    - exp(\frac{1}{d} \sum_{i=1}^d cos(c x_i)) + a + exp(1)`
+    :math:`f(x) = -a \exp\left(-b \sqrt{\frac{1}{d} \sum_{i=1}^d x_i^2}\right)
+    - \exp\left(\frac{1}{d} \sum_{i=1}^d \cos(c x_i)\right) + a + \exp(1)`
 
     Parameters
     ----------
 
     x : array_like
-        Input domain with dimension d.
+        Input domain with dimension :math:`d`.
         It is usually evaluated on the hypercube
         :math:`x_i\in [-32.768, 32.768]`, for all :math:`i = 1, \dots, d`.
 
@@ -37,8 +37,8 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
 
     Notes
     -----
-    This function was proposed by David Ackley in [A1987]_.
-    It is characterized by an almost flat outer region and a central hole or peak
+    This function was proposed by David Ackley in [A1987]_ and used in [B1996]_
+    and [M2005]_. It is characterized by an almost flat outer region and a central hole or peak
     where modulations become more and more influential. The function has
     its global minimum :math:`f(x) = 0` at :math:`x = (0, \dots, 0)`.
 
@@ -77,13 +77,13 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
 def rastrigin(x, a=10):
     r"""Rastrigin function.
 
-    :math:`f(x) = a d + \sum_{i=1}^d (x_i^2 - 10 cos(2\pi x_i))`
+    :math:`f(x) = a d + \sum_{i=1}^d \left(x_i^2 - 10 \cos(2\pi x_i)\right)`
 
     Parameters
     ----------
 
     x : array_like
-        Input domain with dimension d.
+        Input domain with dimension :math:`d`.
         It is usually evaluated on the hypercube
         :math:`x_i\in [-5.12, 5.12]`, for all :math:`i = 1, \dots, d`.
 
@@ -99,7 +99,7 @@ def rastrigin(x, a=10):
     Notes
     -----
     The function was first proposed by Leonard Rastrigin in [R1974]_.
-    It produces frequent local minima; thus, it is highly multimodal.
+    It produces frequent local minima as it is highly multimodal.
     However, the location of the minima are regularly distributed.
     The function has its global minimum :math:`f(x) = 0` at :math:`x = (0, \dots, 0)`.
 
