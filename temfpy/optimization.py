@@ -21,13 +21,13 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
         :math:`x_i\in [-32.768, 32.768]`, for all :math:`i = 1, \dots, d`.
 
     a : float, optional
-        The default value is 20
+        The default value is 20.
 
     b : float, optional
-        The default value is 0.2
+        The default value is 0.2.
 
     c : float, optional
-        The default value is 2π
+        The default value is 2π.
 
     Returns
     -------
@@ -64,7 +64,6 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
     >>> x = [0, 0]
     >>> y = ackley(x)
     >>> np.testing.assert_almost_equal(y, 0)
-
     """
 
     rslt = (
@@ -78,7 +77,7 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
 def rastrigin(x, a=10):
     r"""Rastrigin function.
 
-    :math:`f(x) = a d + \sum_{i=1}^n (x_i^2 -10cos(2\pi x_i))`
+    :math:`f(x) = a d + \sum_{i=1}^d (x_i^2 - 10 cos(2\pi x_i))`
 
     Parameters
     ----------
