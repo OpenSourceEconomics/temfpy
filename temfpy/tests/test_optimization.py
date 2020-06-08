@@ -14,7 +14,7 @@ def get_strategies(name):
     if (name == "ackley") or (name == "rastrigin"):
         valid_floats = floats(-10000, 10000, allow_nan=False, allow_infinity=False)
         x_strategy = arrays(np.float, shape=integers(1, 10), elements=valid_floats)
-        strategy = x_strategy
+        strategy = (x_strategy, valid_floats)
     else:
         raise NotImplementedError
 
@@ -22,10 +22,10 @@ def get_strategies(name):
 
 
 @given(get_strategies("ackley"))
-def test_ackley(x):
-    ackley(x)
+def test_ackley(x, a, b, c):
+    ackley(x, a, b, c)
 
 
 @given(get_strategies("rastrigin"))
-def test_rastrigin(x):
-    rastrigin(x)
+def test_rastrigin(x, a):
+    rastrigin(x, a)
