@@ -125,8 +125,8 @@ def eoq_model(x, r=0.1):
     .. figure:: ../../docs/_static/images/fig-eoq-tradeoff.png
        :align: center
 
-       Holding :math:`x_1` and :math:`x_2` constant, an increase in :math:`x_0` results in a decrease in
-       the setup cost per unit,
+       Holding :math:`x_1` and :math:`x_2` constant,
+       an increase in :math:`x_0` results in a decrease in the setup cost per unit,
        but an increase in capital cost increases as the stock of inventory increase.
 
     Parameters
