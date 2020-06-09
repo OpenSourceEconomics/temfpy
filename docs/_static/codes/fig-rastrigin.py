@@ -1,4 +1,4 @@
- """Figure of the Rastrigin function in 3D
+"""Figure of the Rastrigin function in 3D
  
 x1 is evaluated on [-5.12, 5.12]
 x2 is evaluated on [-5.12, 5.12]
