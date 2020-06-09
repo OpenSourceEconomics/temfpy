@@ -1,6 +1,14 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from temfpy.optimization import rastrigin
+
+
+def rastrigin(x, a=10):
+    rslt = a * len(x) + np.sum(
+        np.multiply(x, x) - 10 * np.cos(2 * np.multiply(np.pi, x))
+    )
+
+    return rslt
+
 
 x1 = np.linspace(-5.12, 5.12, 100)
 x2 = np.linspace(-5.12, 5.12, 100)

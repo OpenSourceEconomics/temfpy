@@ -1,6 +1,15 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from temfpy.optimization import ackley
+
+
+def ackley(x, a=20, b=0.2, c=2 * np.pi):
+    rslt = (
+        a + np.exp(1) - (a * (np.exp(-b * np.sqrt(1 / len(x) * np.sum(np.square(x))))))
+    )
+    rslt -= np.exp(1 / len(x) * np.sum(np.cos(np.multiply(c, x))))
+
+    return rslt
+
 
 x1 = np.linspace(-32.768, 32.768, 500)
 x2 = np.linspace(-32.768, 32.768, 500)
