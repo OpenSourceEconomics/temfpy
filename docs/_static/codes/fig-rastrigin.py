@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 
 
 def rastrigin(x, a=10):
@@ -29,7 +30,7 @@ xvalues1 = xvalues[:, 0]
 xvalues2 = xvalues[:, 1]
 
 fig = plt.figure()
-ax = plt.axes(projection="3d")
+ax = Axes3D(fig)
 ax.scatter(xvalues1, xvalues2, yvalues, c=yvalues, cmap="viridis", linewidth=0.05)
 ax.set_xlabel("x1")
 ax.set_ylabel("x2")
