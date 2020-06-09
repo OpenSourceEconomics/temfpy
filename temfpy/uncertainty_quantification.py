@@ -10,8 +10,8 @@ import numpy as np
 def borehole(x):
     r"""Borehole function.
 
-    :math:`f(x) = \frac{2 \pi x_1 (x_2 - x_3)}{\ln{(x_4/x_5)} \Big(1 +
-    \frac{2 x_1 x_6}{\ln{(x_4/x_5)}x_5^2 x_7} + \frac{x_1}{x_8}\Big)}`
+    :math:`f(x) = \frac{2 \pi x_1 (x_2 - x_3)}{\ln{\left(x_4/x_5\right)} \left(1 +
+    \frac{2 x_1 x_6}{\ln{(x_4/x_5)}x_5^2 x_7} + \frac{x_1}{x_8}\right)}`
 
     Parameters
     ----------
@@ -64,7 +64,7 @@ def borehole(x):
 def ishigami(x, a=7, b=0.05):
     r"""Ishigami function.
 
-    :math:`f(x) = sin(x_1) + a sin^2(x_2) + b x_3^4 sin(x_1)`
+    :math:`f(x) = \sin(x_1) + a \sin^2(x_2) + b x_3^4 \sin(x_1)`
 
     Parameters
     ----------
@@ -122,13 +122,6 @@ def eoq_model(x, r=0.1):
     .. math::
         y = \sqrt{\frac{24 x[0] x[2]}{r x[1]}}
 
-    .. figure:: ../../docs/_static/images/fig-eoq-tradeoff.png
-       :align: center
-
-       Holding `x[1]` and `x[2]` constant, an increase in `x[0]` results in a decrease in
-       the setup cost per unit,
-       but an increase in capital cost increases as the stock of inventory increase.
-
     Parameters
     ----------
     x : array_like
@@ -150,7 +143,13 @@ def eoq_model(x, r=0.1):
     and the setup costs of an order `x[2]`. The annual interest rate `r` is treated as an
     additional parameter.
     A historical perspective on the model is provided by [E1990]_. A brief description with the core
-    equations is available in [W2020]_.
+    equations is available in [W2020]_. The figure below illustrates the core trade-off in the
+    model. Holding `x[1]` and `x[2]` constant, an increase in `x[0]` results in a decrease in
+    the setup cost per unit, but an increase in capital cost increases as the stock of inventory
+    increase.
+
+    .. figure:: ../../docs/_static/images/fig-eoq-tradeoff.png
+       :align: center
 
     References
     ----------
