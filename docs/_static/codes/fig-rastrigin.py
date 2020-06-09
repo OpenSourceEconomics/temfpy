@@ -11,8 +11,8 @@ def rastrigin(x, a=10):
     return rslt
 
 
-x1 = np.linspace(-5.12, 5.12, 100)
-x2 = np.linspace(-5.12, 5.12, 100)
+x1 = np.linspace(-5.12, 5.12, 500)
+x2 = np.linspace(-5.12, 5.12, 500)
 
 xvalues = []
 array = []
@@ -36,4 +36,4 @@ ax.set_xlabel("x1")
 ax.set_ylabel("x2")
 ax.set_zlabel("f(x1, x2)")
 ax.set_title("Rastrigin function")
-fig.savefig("docs/_static/images/fig-rastrigin-100")
+fig.savefig("fig-rastrigin-500")
