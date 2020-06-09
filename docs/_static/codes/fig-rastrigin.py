@@ -1,3 +1,10 @@
+ """Figure of the Rastrigin function in 3D
+ 
+x1 is evaluated on [-5.12, 5.12]
+x2 is evaluated on [-5.12, 5.12]
+y is the result of applying the Rastrigin function on each combination of x1 and x2
+
+"""
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
