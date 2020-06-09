@@ -51,3 +51,4 @@ Supported by
    optimization
    uncertainty_quantification
    tutorials/index.rst
+   bibliography
