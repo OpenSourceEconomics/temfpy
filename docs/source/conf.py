@@ -113,6 +113,7 @@ def remove_module_docstring(app, what, name, obj, options, lines):
 def setup(app):
     app.connect("autodoc-process-docstring", remove_module_docstring)
 
+
 # -- Options for bibliography style -------------------------------------------------
 
 # We want the top level bibliography to look like in-line bibliography.
@@ -126,11 +127,11 @@ class KeyLabelStyle(AlphaLabelStyle):
 
 
 class CustomStyle(UnsrtStyle):
-    default_sorting_style = 'author_year_title'
+    default_sorting_style = "author_year_title"
 
     def __init__(self, *args, **kwargs):
         super(CustomStyle, self).__init__(*args, **kwargs)
         self.label_style = KeyLabelStyle()
         self.format_labels = self.label_style.format_labels
 
-register_plugin('pybtex.style.formatting', 'custom', CustomStyle)
+register_plugin("pybtex.style.formatting", "custom", CustomStyle)
