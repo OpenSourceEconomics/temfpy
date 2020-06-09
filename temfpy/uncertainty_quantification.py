@@ -10,8 +10,9 @@ import numpy as np
 def borehole(x):
     r"""Borehole function.
 
-    :math:`f(x) = \frac{2 \pi x_1 (x_2 - x_3)}{\ln{\left(x_4/x_5\right)} \left(1 +
-    \frac{2 x_1 x_6}{\ln{(x_4/x_5)}x_5^2 x_7} + \frac{x_1}{x_8}\right)}`
+    .. math::
+        f(x) = \frac{2 \pi x_1 (x_2 - x_3)}{\ln{\left(x_4/x_5\right)} \left(1 +
+        \frac{2 x_1 x_6}{\ln{(x_4/x_5)}x_5^2 x_7} + \frac{x_1}{x_8}\right)}
 
     Parameters
     ----------
@@ -64,7 +65,8 @@ def borehole(x):
 def ishigami(x, a=7, b=0.05):
     r"""Ishigami function.
 
-    :math:`f(x) = \sin(x_1) + a \sin^2(x_2) + b x_3^4 \sin(x_1)`
+    .. math::
+        f(x) = \sin(x_1) + a \sin^2(x_2) + b x_3^4 \sin(x_1)
 
     Parameters
     ----------
@@ -173,7 +175,6 @@ def eoq_model(x, r=0.1):
     >>> y = eoq_model(x, r=0.1)
     >>> np.testing.assert_almost_equal(y, 18.973665961010276)
     """
-
     m, c, s = x
     y = np.sqrt((24 * m * s) / (r * c))
 
