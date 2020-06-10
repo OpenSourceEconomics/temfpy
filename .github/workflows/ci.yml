@@ -22,6 +22,7 @@ jobs:
       shell: bash -l {0}
       run: |
         export PATH="$PATH:/usr/share/miniconda/bin"
+        source .envrc
         pytest --cov=temfpy --cov-report=xml
 
         # We want to make sure proper formatting of the notebooks.
