@@ -1,4 +1,4 @@
-"""Figure of the Ackley function in 3D
+"""Figure of the Ackley function in 3D.
 
 x1 is evaluated on [-32.768, 32.768]
 x2 is evaluated on [-32.768, 32.768]
@@ -8,16 +8,7 @@ y is the result of applying the Ackley function on each combination of x1 and x2
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
-
-
-def ackley(x, a=20, b=0.2, c=2 * np.pi):
-    rslt = (
-        a + np.exp(1) - (a * (np.exp(-b * np.sqrt(1 / len(x) * np.sum(np.square(x))))))
-    )
-    rslt -= np.exp(1 / len(x) * np.sum(np.cos(np.multiply(c, x))))
-
-    return rslt
-
+from temfpy.optimization import ackley
 
 x1 = np.linspace(-32.768, 32.768, 500)
 x2 = np.linspace(-32.768, 32.768, 500)
