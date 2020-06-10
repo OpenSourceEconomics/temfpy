@@ -43,6 +43,9 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
     where modulations become more and more influential. The function has
     its global minimum :math:`f(x) = 0` at :math:`x = (0, \dots, 0)`.
 
+    .. figure:: ../../docs/_static/images/fig-ackley-500.png
+       :align: center
+
     References
     ----------
 
@@ -103,6 +106,9 @@ def rastrigin(x, a=10):
     It produces frequent local minima as it is highly multimodal.
     However, the location of the minima are regularly distributed.
     The function has its global minimum :math:`f(x) = 0` at :math:`x = (0, \dots, 0)`.
+
+    .. figure:: ../../docs/_static/images/fig-rastrigin-500.png
+       :align: center
 
     References
     ----------
