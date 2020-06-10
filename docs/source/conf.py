@@ -134,4 +134,5 @@ class CustomStyle(UnsrtStyle):
         self.label_style = KeyLabelStyle()
         self.format_labels = self.label_style.format_labels
 
+
 register_plugin("pybtex.style.formatting", "custom", CustomStyle)
