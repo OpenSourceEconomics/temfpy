@@ -12,6 +12,9 @@
 #
 import os
 import sys
+from pybtex.style.formatting.unsrt import Style as UnsrtStyle
+from pybtex.style.labels.alpha import LabelStyle as AlphaLabelStyle
+from pybtex.plugin import register_plugin
 
 sys.path.insert(0, os.path.abspath("../.."))
 
@@ -109,3 +112,27 @@ def remove_module_docstring(app, what, name, obj, options, lines):
 
 def setup(app):
     app.connect("autodoc-process-docstring", remove_module_docstring)
+
+
+# -- Options for bibliography style -------------------------------------------------
+
+# We want the top level bibliography to look like in-line bibliography.
+# Source: https://stackoverflow.com/a/56030812/10668706
+
+
+class KeyLabelStyle(AlphaLabelStyle):
+    def format_label(self, entry):
+        label = entry.key
+        return label
+
+
+class CustomStyle(UnsrtStyle):
+    default_sorting_style = "author_year_title"
+
+    def __init__(self, *args, **kwargs):
+        super(CustomStyle, self).__init__(*args, **kwargs)
+        self.label_style = KeyLabelStyle()
+        self.format_labels = self.label_style.format_labels
+
+
+register_plugin("pybtex.style.formatting", "custom", CustomStyle)
