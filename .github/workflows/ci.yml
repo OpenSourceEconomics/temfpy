@@ -28,8 +28,9 @@ jobs:
         flake8-nb; [ $? -eq 0 ] || exit 1
         black-nb --check .; [ $? -eq 0 ] || exit 1
 
-        # We want to test a simple install.
+        # We want to test a simple install and run our tests.
         conda install -c opensourceeconomics temfpy
+        python -c "import temfpy; temfpy.test()"
 
     - name: upload coverage to Codecov
       uses: codecov/codecov-action@v1

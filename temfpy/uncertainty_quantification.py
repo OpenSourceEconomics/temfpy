@@ -10,8 +10,9 @@ import numpy as np
 def borehole(x):
     r"""Borehole function.
 
-    :math:`f(x) = \frac{2 \pi x_0 (x_1 - x_2)}{\ln{(x_3/x_4)} \Big(1 +
-    \frac{2 x_0 x_5}{\ln{(x_3/x_4)}x_4^2 x_6} + \frac{x_0}{x_7}\Big)}`
+    .. math::
+        f(x) = \frac{2 \pi x_1 (x_2 - x_3)}{\ln{\left(x_4/x_5\right)} \left(1 +
+        \frac{2 x_1 x_6}{\ln{(x_4/x_5)}x_5^2 x_7} + \frac{x_1}{x_8}\right)}
 
     Parameters
     ----------
@@ -64,7 +65,8 @@ def borehole(x):
 def ishigami(x, a=7, b=0.05):
     r"""Ishigami function.
 
-    :math:`f(x) = sin(x_0) + a sin^2(x_1) + b x_2^4 sin(x_0)`
+    .. math::
+        f(x) = \sin(x_1) + a \sin^2(x_2) + b x_3^4 \sin(x_1)
 
     Parameters
     ----------
@@ -76,7 +78,6 @@ def ishigami(x, a=7, b=0.05):
 
     b : float, optional
         The default value is 0.05, as used by Sobol' and Levitan.
-
 
     Returns
     -------
@@ -122,13 +123,6 @@ def eoq_model(x, r=0.1):
     .. math::
         y = \sqrt{\frac{24 x_0 x_2}{r x_1}}
 
-    .. figure:: ../../docs/_static/images/fig-eoq-tradeoff.png
-       :align: center
-
-       Holding :math:`x_1` and :math:`x_2` constant,
-       an increase in :math:`x_0` results in a decrease in the setup cost per unit,
-       but an increase in capital cost increases as the stock of inventory increase.
-
     Parameters
     ----------
     x : array_like
@@ -150,7 +144,13 @@ def eoq_model(x, r=0.1):
     and the setup costs of an order :math:`x_2`. The annual interest rate `r` is treated as an
     additional parameter.
     A historical perspective on the model is provided by [E1990]_. A brief description with the core
-    equations is available in [W2020]_.
+    equations is available in [W2020]_. The figure below illustrates the core trade-off in the
+    model. Holding `x[1]` and `x[2]` constant, an increase in `x[0]` results in a decrease in
+    the setup cost per unit, but an increase in capital cost increases as the stock of inventory
+    increase.
+
+    .. figure:: ../../docs/_static/images/fig-eoq-tradeoff.png
+       :align: center
 
     References
     ----------
@@ -174,7 +174,6 @@ def eoq_model(x, r=0.1):
     >>> y = eoq_model(x, r=0.1)
     >>> np.testing.assert_almost_equal(y, 18.973665961010276)
     """
-
     m, c, s = x
     y = np.sqrt((24 * m * s) / (r * c))
 
