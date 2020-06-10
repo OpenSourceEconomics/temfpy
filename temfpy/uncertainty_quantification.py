@@ -79,7 +79,6 @@ def ishigami(x, a=7, b=0.05):
     b : float, optional
         The default value is 0.05, as used by Sobol' and Levitan.
 
-
     Returns
     -------
     float
@@ -91,7 +90,7 @@ def ishigami(x, a=7, b=0.05):
     as a test function used for uncertainty analysis.
     It is characterized by its strong nonlinearity and nonmonotonicity.
     Sobol' and Levitan note that the Ishigami function has a strong dependence
-    on :math:`x_3`.
+    on :math:`x_2`.
 
 
     References
@@ -122,7 +121,7 @@ def eoq_model(x, r=0.1):
     r"""Economic order quantity model.
 
     .. math::
-        y = \sqrt{\frac{24 x[0] x[2]}{r x[1]}}
+        y = \sqrt{\frac{24 x_0 x_2}{r x_1}}
 
     Parameters
     ----------
@@ -141,8 +140,8 @@ def eoq_model(x, r=0.1):
     -----
     This function computes the optimal economic order quantity (EOQ) based on the model presented in
     [H1990]_. The EOQ minimizes the holding costs as well as ordering costs. The core parameters of
-    the model are the units per months `x[0]`, the unit price of items in stock `x[1]`,
-    and the setup costs of an order `x[2]`. The annual interest rate `r` is treated as an
+    the model are the units per months :math:`x_0`, the unit price of items in stock :math:`x_1`,
+    and the setup costs of an order :math:`x_2`. The annual interest rate `r` is treated as an
     additional parameter.
     A historical perspective on the model is provided by [E1990]_. A brief description with the core
     equations is available in [W2020]_. The figure below illustrates the core trade-off in the
