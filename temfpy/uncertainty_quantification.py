@@ -10,8 +10,9 @@ import numpy as np
 def borehole(x):
     r"""Borehole function.
 
-    :math:`f(x) = \frac{2 \pi x_1 (x_2 - x_3)}{\ln{(x_4/x_5)} \Big(1 +
-    \frac{2 x_1 x_6}{\ln{(x_4/x_5)}x_5^2 x_7} + \frac{x_1}{x_8}\Big)}`
+    .. math::
+        f(x) = \frac{2 \pi x_1 (x_2 - x_3)}{\ln{\left(x_4/x_5\right)} \left(1 +
+        \frac{2 x_1 x_6}{\ln{(x_4/x_5)}x_5^2 x_7} + \frac{x_1}{x_8}\right)}
 
     Parameters
     ----------
@@ -64,7 +65,8 @@ def borehole(x):
 def ishigami(x, a=7, b=0.05):
     r"""Ishigami function.
 
-    :math:`f(x) = sin(x_1) + a sin^2(x_2) + b x_3^4 sin(x_1)`
+    .. math::
+        f(x) = \sin(x_1) + a \sin^2(x_2) + b x_3^4 \sin(x_1)
 
     Parameters
     ----------
@@ -77,7 +79,6 @@ def ishigami(x, a=7, b=0.05):
     b : float, optional
         The default value is 0.05, as used by Sobol' and Levitan.
 
-
     Returns
     -------
     float
@@ -89,7 +90,7 @@ def ishigami(x, a=7, b=0.05):
     as a test function used for uncertainty analysis.
     It is characterized by its strong nonlinearity and nonmonotonicity.
     Sobol' and Levitan note that the Ishigami function has a strong dependence
-    on :math:`x_3`.
+    on :math:`x_2`.
 
 
     References
@@ -120,14 +121,7 @@ def eoq_model(x, r=0.1):
     r"""Economic order quantity model.
 
     .. math::
-        y = \sqrt{\frac{24 x[0] x[2]}{r x[1]}}
-
-    .. figure:: ../../docs/_static/images/fig-eoq-tradeoff.png
-       :align: center
-
-       Holding `x[1]` and `x[2]` constant, an increase in `x[0]` results in a decrease in
-       the setup cost per unit,
-       but an increase in capital cost increases as the stock of inventory increase.
+        y = \sqrt{\frac{24 x_0 x_2}{r x_1}}
 
     Parameters
     ----------
@@ -146,11 +140,17 @@ def eoq_model(x, r=0.1):
     -----
     This function computes the optimal economic order quantity (EOQ) based on the model presented in
     [H1990]_. The EOQ minimizes the holding costs as well as ordering costs. The core parameters of
-    the model are the units per months `x[0]`, the unit price of items in stock `x[1]`,
-    and the setup costs of an order `x[2]`. The annual interest rate `r` is treated as an
+    the model are the units per months :math:`x_0`, the unit price of items in stock :math:`x_1`,
+    and the setup costs of an order :math:`x_2`. The annual interest rate `r` is treated as an
     additional parameter.
     A historical perspective on the model is provided by [E1990]_. A brief description with the core
-    equations is available in [W2020]_.
+    equations is available in [W2020]_. The figure below illustrates the core trade-off in the
+    model. Holding `x[1]` and `x[2]` constant, an increase in `x[0]` results in a decrease in
+    the setup cost per unit, but an increase in capital cost increases as the stock of inventory
+    increase.
+
+    .. figure:: ../../docs/_static/images/fig-eoq-tradeoff.png
+       :align: center
 
     References
     ----------
@@ -174,7 +174,6 @@ def eoq_model(x, r=0.1):
     >>> y = eoq_model(x, r=0.1)
     >>> np.testing.assert_almost_equal(y, 18.973665961010276)
     """
-
     m, c, s = x
     y = np.sqrt((24 * m * s) / (r * c))
 

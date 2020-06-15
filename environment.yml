@@ -22,6 +22,7 @@ dependencies:
   - pytest-black
   - pytest-flakes
   - pytest-cov
+  - pytest-sugar
   - jupyterlab
   - nbsphinx
   - hypothesis
@@ -35,4 +36,4 @@ dependencies:
     - nbsphinx
     - sphinxcontrib-bibtex
     - numpydoc
-
+    - pytest-randomly

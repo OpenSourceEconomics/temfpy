@@ -9,8 +9,9 @@ import numpy as np
 def ackley(x, a=20, b=0.2, c=2 * np.pi):
     r"""Ackley function.
 
-    :math:`f(x) = -a \exp\left(-b \sqrt{\frac{1}{d} \sum_{i=1}^d x_i^2}\right)
-    - \exp\left(\frac{1}{d} \sum_{i=1}^d \cos(c x_i)\right) + a + \exp(1)`
+    .. math::
+        f(x) = -a \exp\left(-b \sqrt{\frac{1}{d} \sum_{i=1}^d x_i^2}\right)
+        \exp\left(\frac{1}{d} \sum_{i=1}^d \cos(c x_i)\right) + a + \exp(1)
 
     Parameters
     ----------
@@ -42,6 +43,9 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
     where modulations become more and more influential. The function has
     its global minimum :math:`f(x) = 0` at :math:`x = (0, \dots, 0)`.
 
+    .. figure:: ../../docs/_static/images/fig-ackley.png
+       :align: center
+
     References
     ----------
 
@@ -65,7 +69,6 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
     >>> y = ackley(x)
     >>> np.testing.assert_almost_equal(y, 0)
     """
-
     rslt = (
         a + np.exp(1) - (a * (np.exp(-b * np.sqrt(1 / len(x) * np.sum(np.square(x))))))
     )
@@ -77,7 +80,8 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
 def rastrigin(x, a=10):
     r"""Rastrigin function.
 
-    :math:`f(x) = a d + \sum_{i=1}^d \left(x_i^2 - 10 \cos(2\pi x_i)\right)`
+    .. math::
+        f(x) = a d + \sum_{i=1}^d \left(x_i^2 - 10 \cos(2\pi x_i)\right)
 
     Parameters
     ----------
@@ -102,6 +106,9 @@ def rastrigin(x, a=10):
     It produces frequent local minima as it is highly multimodal.
     However, the location of the minima are regularly distributed.
     The function has its global minimum :math:`f(x) = 0` at :math:`x = (0, \dots, 0)`.
+
+    .. figure:: ../../docs/_static/images/fig-rastrigin.png
+       :align: center
 
     References
     ----------
