@@ -34,5 +34,4 @@ ax.scatter(xvalues1, xvalues2, yvalues, c=yvalues, cmap="viridis", linewidth=0.0
 ax.set_xlabel("$x_1$")
 ax.set_ylabel("$x_2$")
 ax.set_zlabel("$f(x_1, x_2)$")
-ax.set_title("Rastrigin function")
-fig.savefig("fig-rastrigin-500")
+fig.savefig("fig-rastrigin")
