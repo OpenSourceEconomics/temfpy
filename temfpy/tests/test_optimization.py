@@ -25,11 +25,11 @@ def get_strategies(name):
     return strategy
 
 
-@given(get_strategies("ackley"))
+@given(*get_strategies("ackley"))
 def test_ackley(x, a, b, c):
     ackley(x, a, b, c)
 
 
-@given(get_strategies("rastrigin"))
+@given(*get_strategies("rastrigin"))
 def test_rastrigin(x, a):
     rastrigin(x, a)
