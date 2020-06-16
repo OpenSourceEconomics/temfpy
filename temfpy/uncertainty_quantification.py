@@ -151,10 +151,10 @@ def eoq_model(x, r=0.1):
     the model are the units per months :math:`x_0`, the unit price of items in stock :math:`x_1`,
     and the setup costs of an order :math:`x_2`. The annual interest rate `r` is treated as an
     additional parameter. A historical perspective on the model is provided by [E1990]_.
-    A brief description with the core equations is available in [W2020]_. The figure below illustrates the core trade-off in the
-    model. Holding :math:`x_1` and :math:`x_2` constant, an increase in :math:`x_0` results in a decrease in
-    the setup cost per unit, but an increase in capital cost increases as the stock of inventory
-    increase.
+    A brief description with the core equations is available in [W2020]_. The figure below
+    illustrates the core trade-off in the model. Holding :math:`x_1` and :math:`x_2` constant,
+    an increase in :math:`x_0` results in a decrease in the setup cost per unit, but an increase
+    in capital cost increases as the stock of inventory increase.
 
     .. figure:: ../../docs/_static/images/fig-eoq-tradeoff.png
        :align: center
