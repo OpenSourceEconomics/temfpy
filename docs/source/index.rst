@@ -37,9 +37,9 @@ With ``conda`` available on your path, installing and testing ``temfpy`` is as s
     $ python -c "import temfpy; temfpy.test()"
 
 
+|
 
-Supported by
-------------
+**Supported by**
 
 .. image:: ../_static/images/ose-logo.jpg
 	  :target: https://github.com/OpenSourceEconomics

@@ -37,3 +37,4 @@ dependencies:
     - sphinxcontrib-bibtex
     - numpydoc
     - pytest-randomly
+    - pytest-stress

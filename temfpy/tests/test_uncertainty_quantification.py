@@ -7,10 +7,10 @@ from hypothesis.extra.numpy import arrays
 from hypothesis.strategies import floats
 from hypothesis import given
 
-from temfpy.uncertainty_quantification import borehole
-from temfpy.uncertainty_quantification import ishigami
 from temfpy.uncertainty_quantification import simple_linear_function
 from temfpy.uncertainty_quantification import eoq_model
+from temfpy.uncertainty_quantification import borehole
+from temfpy.uncertainty_quantification import ishigami
 
 
 def get_strategies(name):

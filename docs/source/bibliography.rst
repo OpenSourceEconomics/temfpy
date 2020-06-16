@@ -1,6 +1,3 @@
-Bibliography
-============
-
-        .. bibliography:: refs.bib
-                :all:
-                :style: custom
+.. bibliography:: refs.bib
+   :all:
+   :style: custom

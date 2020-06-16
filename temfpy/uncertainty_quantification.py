@@ -47,6 +47,10 @@ def borehole(x):
 
     Examples
     --------
+
+    >>> from temfpy.uncertainty_quantification import borehole
+    >>> import numpy as np
+    >>>
     >>> x = [1, 2, 3, 4, 5, 6, 7, 8]
     >>> y = borehole(x)
     >>> np.testing.assert_almost_equal(y, 34.43500403827335)
@@ -107,6 +111,10 @@ def ishigami(x, a=7, b=0.05):
 
     Examples
     --------
+
+    >>> from temfpy.uncertainty_quantification import ishigami
+    >>> import numpy as np
+    >>>
     >>> x = [1, 2, 3]
     >>> y = ishigami(x)
     >>> np.testing.assert_almost_equal(y, 10.037181146302519)
@@ -142,10 +150,9 @@ def eoq_model(x, r=0.1):
     [H1990]_. The EOQ minimizes the holding costs as well as ordering costs. The core parameters of
     the model are the units per months :math:`x_0`, the unit price of items in stock :math:`x_1`,
     and the setup costs of an order :math:`x_2`. The annual interest rate `r` is treated as an
-    additional parameter.
-    A historical perspective on the model is provided by [E1990]_. A brief description with the core
-    equations is available in [W2020]_. The figure below illustrates the core trade-off in the
-    model. Holding `x[1]` and `x[2]` constant, an increase in `x[0]` results in a decrease in
+    additional parameter. A historical perspective on the model is provided by [E1990]_.
+    A brief description with the core equations is available in [W2020]_. The figure below illustrates the core trade-off in the
+    model. Holding :math:`x_1` and :math:`x_2` constant, an increase in :math:`x_0` results in a decrease in
     the setup cost per unit, but an increase in capital cost increases as the stock of inventory
     increase.
 
@@ -170,6 +177,10 @@ def eoq_model(x, r=0.1):
 
     Examples
     --------
+
+    >>> from temfpy.uncertainty_quantification import eoq_model
+    >>> import numpy as np
+    >>>
     >>> x = [1, 2, 3]
     >>> y = eoq_model(x, r=0.1)
     >>> np.testing.assert_almost_equal(y, 18.973665961010276)
@@ -193,6 +204,9 @@ def simple_linear_function(x):
     Examples
     --------
 
+    >>> from temfpy.uncertainty_quantification import simple_linear_function
+    >>> import numpy as np
+    >>>
     >>> x = [1, 2, 3]
     >>> y = simple_linear_function(x)
     >>> np.testing.assert_almost_equal(y, 6)

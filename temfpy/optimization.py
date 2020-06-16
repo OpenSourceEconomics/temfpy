@@ -65,6 +65,9 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
     Examples
     --------
 
+    >>> from temfpy.optimization import ackley
+    >>> import numpy as np
+    >>>
     >>> x = [0, 0]
     >>> y = ackley(x)
     >>> np.testing.assert_almost_equal(y, 0)
@@ -120,6 +123,9 @@ def rastrigin(x, a=10):
     Examples
     --------
 
+    >>> from temfpy.optimization import rastrigin
+    >>> import numpy as np
+    >>>
     >>> x = [0, 0]
     >>> y = rastrigin(x)
     >>> np.testing.assert_almost_equal(y, 0)
