@@ -9,3 +9,6 @@ python:
 
 conda:
   environment: docs/rtd_environment.yml
+
+formats:
+  - pdf
