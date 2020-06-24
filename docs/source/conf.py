@@ -83,13 +83,16 @@ nbsphinx_execute = "auto"
 
 nbsphinx_prolog = r"""
 {% set docname = 'docs/source/' + env.doc2path(env.docname, base=None) %}
+.. |binder| image:: https://mybinder.org/badge_logo.svg
+     :target: https://mybinder.org/v2/gh/OpenSourceEconomics/temfpy/master?filepath={{ docname|e }}
 
 .. only:: html
 
     .. nbinfo::
-        Download the notebook :download:`here <https://nbviewer.jupyter.org/github/OpenSourceEconomics/temfpy/blob/master/{{ docname }}>`!
-"""
 
+        Download the notebook :download:`here <https://nbviewer.jupyter.org/github/OpenSourceEconomics/temfpy/blob/master/{{ docname }}>`!
+        Interactive online version: |binder|
+"""
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
