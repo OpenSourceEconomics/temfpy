@@ -1,12 +1,12 @@
 #!/usr/bin/env python
-"""Create figures
+"""Create figures.
 
 This script supports our CI setup as it simply runs all files that create figures for our
 documentation.
 """
-import subprocess as sp
 import glob
 import os
+import subprocess as sp
 
 if __name__ == "__main__":
 

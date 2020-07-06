@@ -5,9 +5,10 @@ x2 is evaluated on [-32.768, 32.768]
 y is the result of applying the Ackley function on each combination of x1 and x2
 
 """
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
+
 from temfpy.optimization import ackley
 
 x1 = np.linspace(-32.768, 32.768, 500)

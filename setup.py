@@ -2,7 +2,6 @@ from setuptools import find_packages
 from setuptools import setup
 
 p = find_packages()
-print(p)
 
 setup(
     name="temfpy",

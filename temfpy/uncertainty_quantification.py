@@ -47,7 +47,6 @@ def borehole(x):
 
     Examples
     --------
-
     >>> from temfpy.uncertainty_quantification import borehole
     >>> import numpy as np
     >>>
@@ -111,7 +110,6 @@ def ishigami(x, a=7, b=0.05):
 
     Examples
     --------
-
     >>> from temfpy.uncertainty_quantification import ishigami
     >>> import numpy as np
     >>>
@@ -177,7 +175,6 @@ def eoq_model(x, r=0.1):
 
     Examples
     --------
-
     >>> from temfpy.uncertainty_quantification import eoq_model
     >>> import numpy as np
     >>>
@@ -192,7 +189,7 @@ def eoq_model(x, r=0.1):
 
 
 def simple_linear_function(x):
-    r"""Simple linear function.
+    r"""Uncomplicated linear function.
 
     This function computes the sum of all elements of a given array.
 
@@ -203,7 +200,6 @@ def simple_linear_function(x):
 
     Examples
     --------
-
     >>> from temfpy.uncertainty_quantification import simple_linear_function
     >>> import numpy as np
     >>>

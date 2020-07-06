@@ -3,18 +3,17 @@
 # This file only contains a selection of the most common options. For a full
 # list see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
-
 # -- Path setup --------------------------------------------------------------
-
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 import os
 import sys
+
+from pybtex.plugin import register_plugin
 from pybtex.style.formatting.unsrt import Style as UnsrtStyle
 from pybtex.style.labels.alpha import LabelStyle as AlphaLabelStyle
-from pybtex.plugin import register_plugin
 
 sys.path.insert(0, os.path.abspath("../.."))
 
@@ -133,7 +132,7 @@ class CustomStyle(UnsrtStyle):
     default_sorting_style = "author_year_title"
 
     def __init__(self, *args, **kwargs):
-        super(CustomStyle, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.label_style = KeyLabelStyle()
         self.format_labels = self.label_style.format_labels
 

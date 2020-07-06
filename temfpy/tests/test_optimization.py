@@ -1,10 +1,9 @@
 """Tests for optimization module."""
 import numpy as np
-
+from hypothesis import given
 from hypothesis.extra.numpy import arrays
 from hypothesis.strategies import floats
 from hypothesis.strategies import integers
-from hypothesis import given
 
 from temfpy.optimization import ackley
 from temfpy.optimization import rastrigin

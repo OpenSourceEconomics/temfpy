@@ -1,7 +1,8 @@
 Uncertainty quantification
 ============================
 
-We provide a host of models and functions that are often used for testing and benchmarking exercises in the uncertainty quantification literature.
+We provide a host of models and functions that are often used for testing
+and benchmarking exercises in the uncertainty quantification literature.
 
 |
 
