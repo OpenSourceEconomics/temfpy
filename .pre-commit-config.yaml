@@ -9,6 +9,7 @@ repos:
         exclude: meta.yaml
     -   id: debug-statements
     -   id: end-of-file-fixer
+    -   id: trailing-whitespace
 -   repo: https://github.com/asottile/pyupgrade
     rev: v2.4.3
     hooks:
@@ -48,8 +49,11 @@ repos:
   hooks:
     - id: codespell
       exclude: docs/source
+- repo: https://github.com/asottile/add-trailing-comma
+  rev: v2.0.1
+  hooks:
+    - id: add-trailing-comma
 -   repo: meta
     hooks:
     -   id: check-hooks-apply
     -   id: check-useless-excludes
-    # -   id: identity  # Prints all files passed to pre-commits. Debugging.

@@ -123,7 +123,7 @@ def rastrigin(x, a=10):
     >>> np.testing.assert_almost_equal(y, 0)
     """
     rslt = a * len(x) + np.sum(
-        np.multiply(x, x) - 10 * np.cos(2 * np.multiply(np.pi, x))
+        np.multiply(x, x) - 10 * np.cos(2 * np.multiply(np.pi, x)),
     )
 
     return rslt
