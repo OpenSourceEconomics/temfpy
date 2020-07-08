@@ -27,9 +27,11 @@ Welcome to temfpy's documentation!
 .. image:: https://img.shields.io/badge/zulip-join_chat-brightgreen.svg
     :target: https://ose.zulipchat.com
 
-``temfpy`` is an open-source package providing test models and functions for standard numerical components in computational economic models.
+``temfpy`` is an open-source package providing test models and functions
+for standard numerical components in computational economic models.
 
-With ``conda`` available on your path, installing and testing ``temfpy`` is as simple as typing
+With ``conda`` available on your path, installing and testing
+``temfpy`` is as simple as typing
 
 .. code-block:: bash
 
@@ -42,8 +44,8 @@ With ``conda`` available on your path, installing and testing ``temfpy`` is as s
 **Supported by**
 
 .. image:: ../_static/images/OSE_sb_web.svg
-          :width: 30 %
-	  :target: https://github.com/OpenSourceEconomics
+          :width: 22 %
+          :target: https://github.com/OpenSourceEconomics
 
 .. toctree::
    :hidden:

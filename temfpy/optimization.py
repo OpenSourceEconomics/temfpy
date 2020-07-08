@@ -10,16 +10,15 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
     r"""Ackley function.
 
     .. math::
-        f(x) = -a \exp\left(-b \sqrt{\frac{1}{d} \sum_{i=1}^d x_i^2}\right)
-        \exp\left(\frac{1}{d} \sum_{i=1}^d \cos(c x_i)\right) + a + \exp(1)
+        f(x) = -a \\exp\\left(-b \\sqrt{\frac{1}{d} \\sum_{i=1}^d x_i^2}\right)
+        \\exp\\left(\frac{1}{d} \\sum_{i=1}^d \\cos(c x_i)\right) + a + \\exp(1)
 
     Parameters
     ----------
-
     x : array_like
         Input domain with dimension :math:`d`.
         It is usually evaluated on the hypercube
-        :math:`x_i\in [-32.768, 32.768]`, for all :math:`i = 1, \dots, d`.
+        :math:`x_i\\in [-32.768, 32.768]`, for all :math:`i = 1, \\dots, d`.
 
     a : float, optional
         The default value is 20.
@@ -32,7 +31,6 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
 
     Returns
     -------
-
     float
          Output domain
 
@@ -41,14 +39,13 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
     This function was proposed by David Ackley in [A1987]_ and used in [B1996]_
     and [M2005]_. It is characterized by an almost flat outer region and a central hole or peak
     where modulations become more and more influential. The function has
-    its global minimum :math:`f(x) = 0` at :math:`x = (0, \dots, 0)`.
+    its global minimum :math:`f(x) = 0` at :math:`x = (0, \\dots, 0)`.
 
     .. figure:: ../../docs/_static/images/fig-ackley.png
        :align: center
 
     References
     ----------
-
     .. [A1987] Ackley, D. H. (1987).
        A connectionist machine for genetic hillclimbing.
        Boston, MA: Kluwer Academic Publishers.
@@ -64,7 +61,6 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
 
     Examples
     --------
-
     >>> from temfpy.optimization import ackley
     >>> import numpy as np
     >>>
@@ -88,7 +84,6 @@ def rastrigin(x, a=10):
 
     Parameters
     ----------
-
     x : array_like
         Input domain with dimension :math:`d`.
         It is usually evaluated on the hypercube
@@ -99,7 +94,6 @@ def rastrigin(x, a=10):
 
     Returns
     -------
-
     float
          Output domain
 
@@ -115,14 +109,12 @@ def rastrigin(x, a=10):
 
     References
     ----------
-
     .. [R1974] Rastrigin, L. A. (1974).
        Systems of extremal control.
        Moscow, Russia: Mir.
 
     Examples
     --------
-
     >>> from temfpy.optimization import rastrigin
     >>> import numpy as np
     >>>
@@ -131,7 +123,7 @@ def rastrigin(x, a=10):
     >>> np.testing.assert_almost_equal(y, 0)
     """
     rslt = a * len(x) + np.sum(
-        np.multiply(x, x) - 10 * np.cos(2 * np.multiply(np.pi, x))
+        np.multiply(x, x) - 10 * np.cos(2 * np.multiply(np.pi, x)),
     )
 
     return rslt
