@@ -14,7 +14,7 @@ dependencies:
   - scipy
   - jupyter
   - seaborn
-  - pytest
+  - pytest=5.4.3
   - numba
   - pip=19.3.1
   - pdbpp
