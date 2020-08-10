@@ -28,6 +28,6 @@ temfpy
 Supported by
 ------------
 
-.. image:: docs/_static/images/OSE_sb_web.svg
+.. image:: https://raw.githubusercontent.com/OpenSourceEconomics/ose-corporate-design/master/logos/OSE_logo_RGB.svg
     :width: 22 %
     :target: https://github.com/OpenSourceEconomics
