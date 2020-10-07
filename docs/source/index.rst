@@ -53,6 +53,7 @@ With ``conda`` available on your path, installing and testing
 
    optimization
    uncertainty_quantification
+   econometrics
    tutorials/index
    acknowledgment
    bibliography
