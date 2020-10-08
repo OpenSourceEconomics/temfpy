@@ -127,7 +127,7 @@ def multinomial_probit_loglikeobs(params, y, x, cov_structure, integration_metho
     Returns:
     --------
         loglikeobs : np.array
-                     1d numpy array of shape :math:'(n_obs)' with likelihood contribution per individual.
+                     1d numpy array of shape :math:'(n_obs)' with likelihood contribution.
 
     Notes
     -----
@@ -152,11 +152,11 @@ def multinomial_probit_loglikeobs(params, y, x, cov_structure, integration_metho
         a = 0
         for i in range(n_choices - 1):
             l = i + 1
-            cov[i, : (i + 1)] = covariance[a : (a + l)]
+            cov[i,: (i + 1)] = covariance[a: (a + l)]
             a += l
 
         for i in range(n_choices - 1):
-            cov[i, (i + 1) :] = cov[(i + 1) :, i]
+            cov[i, (i + 1):] = cov[(i + 1):, i]
 
     bethas = np.zeros((n_var, n_choices))
 
@@ -223,9 +223,8 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     r"""Multinomial probit model.
 
     .. math::
-        \begin{align*}
-        u_{ij} = x'_{ij} \beta_j + \varepsilon_{ij}, \forall i = 1, \dots, n_obs \text{ and } \forall j = 1, \dots, J.
-        \end{align*}
+        u_{ij} = x'_{ij} \beta_j + \varepsilon_{ij},..
+
 
     Parameters
     ----------
