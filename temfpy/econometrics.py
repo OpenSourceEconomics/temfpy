@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import patsy
 #import temfpy.integration_methods  
-from estimagic.optimization.optimize import maximize
+#from estimagic.optimization.optimize import maximize
 
 
 def multinomial_processing(formula, data, cov_structure):
