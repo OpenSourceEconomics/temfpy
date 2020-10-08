@@ -94,11 +94,10 @@ def smc_integration(u_prime, cov, y, tau=None, n_draws=None):
     Returns:
     --------
     choice_prob_obs : np.array
-                      1d array of shape :math:'(n_obs)' comprising the choice probabilities for the chosen alternative for each individual.
+                      1d array of shape :math:'(n_obs)' comprising the choice probabilities.
 
     Notes
     -----
-    It should be a positive number. For values close to zero the estimated smooth choice  probabilities lie in a wider interval which becomes symmetrically smaller for larger values of tau.
 
     References
     ----------
