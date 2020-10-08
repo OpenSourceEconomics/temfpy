@@ -231,9 +231,9 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     ----------
     formula : str
               A patsy formula comprising the dependent and the independent variables.
-              
+
     data : pd.DataFrame
-           A pandas data frame with shape 
+           A pandas data frame with shape
 
     cov_structure : str
                     Available options are 'iid' or 'free'.
