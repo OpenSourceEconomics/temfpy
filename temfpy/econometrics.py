@@ -151,9 +151,9 @@ def multinomial_probit_loglikeobs(params, y, x, cov_structure, integration_metho
 
         a = 0
         for i in range(n_choices - 1):
-            l = i + 1
-            cov[i, : (i + 1)] = covariance[a : (a + l)]
-            a += l
+            k = i + 1
+            cov[i, : (i + 1)] = covariance[a : (a + k)]
+            a += k
 
         for i in range(n_choices - 1):
             cov[i, (i + 1) :] = cov[(i + 1) :, i]
