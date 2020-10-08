@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import patsy
-import integration_methods  
+import temfpy.integration_methods  
 from estimagic.optimization.optimize import maximize
 
 
@@ -153,7 +153,7 @@ def multinomial_probit_loglikeobs(params, y, x, cov_structure, integration_metho
         
     u_prime = x.dot(bethas)
         
-    choice_prob_obs = getattr(integration_methods, integration_method)(u_prime, 
+    choice_prob_obs = getattr(temfpy.integration_methods, integration_method)(u_prime, 
                                  cov, y) 
     
     choice_prob_obs[choice_prob_obs<=1e-250] = 1e-250
