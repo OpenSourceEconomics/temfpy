@@ -1,5 +1,5 @@
-"""integration Methods.
-We provide a variety of integration methods used in data science.
+"""Econometric Methods.
+We provide a variety of econometric methods used in data science.
 """
 import numpy as np
 
