@@ -34,7 +34,7 @@ def multinomial_processing(formula, data, cov_structure):
         2d numpy array of shape :math:'(n_obs, n_var)' including the independent variables.
 
     params_df : pd.Series
-                The data are naive starting values for the parameters. The index contains the parameter names.
+                Naive starting values for the parameters.
 
     Notes
     -----
