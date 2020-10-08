@@ -2,7 +2,8 @@
 We provide a variety of integration methods used in data science.
 """
 import numpy as np
-from scipy.stats import norm
+
+# from scipy.stats import norm
 
 
 def mc_integration(u_prime, cov, y, n_draws=None):
@@ -16,7 +17,7 @@ def mc_integration(u_prime, cov, y, n_draws=None):
               2d array of shape  comprising the deterministic part of utilities
 
     cov : np.array
-          2d array of shape 
+          2d array of shape
 
     y : np.array
         1d array of shape with the observed choices.
