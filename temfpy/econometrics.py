@@ -32,7 +32,7 @@ def multinomial_processing(formula, data, cov_structure):
     x : np.array
         2d numpy array of shape :math:'(n_obs, n_var)' including the independent variables.
     params_df : pd.Series
-                The data are naive starting values for the parameters. The index contains the parameter names.
+                The data are naive starting values for the parameters.
 
     Notes
     -----
@@ -121,7 +121,7 @@ def multinomial_probit_loglikeobs(params, y, x, cov_structure, integration_metho
                     Available options are 'iid' or 'free'.
 
     integration_method : str
-                         Available options are 'mc_integration', 'smooth_mc_integration', 'gauss_integration' or 'mprobit_choice_probabilities'.
+                         'mc_integration', 'smooth_mc_integration', ...
 
 
     Returns:
@@ -197,7 +197,7 @@ def multinomial_probit_loglike(params, y, x, cov_structure, integration_method):
                     Available options are 'iid' or 'free'.
 
     integration_method : str
-                         Available options are 'mc_integration', 'smooth_mc_integration', 'gauss_integration' or 'mprobit_choice_probabilities'.
+                         'mc_integration', 'smooth_mc_integration', ...
 
 
     Returns:
@@ -230,19 +230,19 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     Parameters
     ----------
     formula : str
-              A patsy formula comprising the dependent categorial variable (:math:'u') and the independent variables :math:'x_{ij}'.
-
+              A patsy formula comprising the dependent and the independent variables.
+              
     data : pd.DataFrame
-           A pandas data frame with shape :math:`n_obs \times n_var + 1`, whereby :math:'n_var = \text{dim}(x_{ij})'.
+           A pandas data frame with shape 
 
     cov_structure : str
                     Available options are 'iid' or 'free'.
 
     integration_method : str
-                         Available options are 'mc_integration', 'smooth_mc_integration', 'gauss_integration' or 'mprobit_choice_probabilities'.
+                         'mc_integration', 'smooth_mc_integration',...
 
     algorithm : str
-                Available options are 'scipy_L-BFGS-B', 'scipy_SLSQP', 'nlopt_bobyqa' or 'nlopt_newuoa_bound'.
+                Available options are 'scipy_L-BFGS-B',...
 
 
     Returns
