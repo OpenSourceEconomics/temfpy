@@ -1,26 +1,26 @@
 import numpy as np
 import pandas as pd
 import patsy
-#import temfpy.integration_methods  
-#from estimagic.optimization.optimize import maximize
+# import temfpy.integration_methods  
+# from estimagic.optimization.optimize import maximize
 
 
 def multinomial_processing(formula, data, cov_structure):
     r"""Construct the inputs for the multinomial probit function.
-    
+
     .. math::
-    
+
     Parameters
     ----------
     formula : str
               A patsy formula comprising the independent variable and the dependent variables.
-                  
+              
     data : pd.DataFrame 
            A pandas data frame with shape :math:`n_obs \times n_var + 1`.
-               
+           
     cov_structure : str
                     Available options are 'iid' or 'free'.
-        
+    
     Returns:
     --------
     y : np.array
@@ -28,32 +28,32 @@ def multinomial_processing(formula, data, cov_structure):
 
     x : np.array
         2d numpy array of shape :math:'(n_obs, n_var)' including the independent variables.
-        
+    
     params_df : pd.Series 
                 The data are naive starting values for the parameters. The index contains the parameter names.
-    
+
     Notes
     -----
-    
+
     References
     ----------
-    
+
     Examples
     --------    
-    
+
     """
     y, x = patsy.dmatrices(formula, data, return_type='dataframe')
     data = pd.concat([y, x], axis=1).dropna()
     y, x = patsy.dmatrices(formula, data, return_type='dataframe')
-    
+
     n_var = len(x.columns)
     n_choices = len(np.unique(y.to_numpy()))
-    
+
     np.random.seed(1998)
     bethas = np.random.rand(n_var*(n_choices - 1))*0.1
-    
+
     if cov_structure == 'iid':
-    
+
         index_tuples = []
         var_names = list(x.columns) 
         for choice in range(n_choices - 1):
