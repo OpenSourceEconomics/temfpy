@@ -1,3 +1,6 @@
+"""Test capabilities for optimization.
+This module contains a host of models and functions often used for testing optimization algorithms.
+"""
 import numpy as np
 import pandas as pd
 import patsy
