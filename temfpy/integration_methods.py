@@ -13,13 +13,13 @@ def mc_integration(u_prime, cov, y, n_draws=None):
     Parameters
     ----------
     u_prime : np.array
-              2d array of shape :math:'(n_obs, n_choices)' comprising the deterministic part of utilities
+              2d array of shape  comprising the deterministic part of utilities
 
     cov : np.array
-          2d array of shape :math:'(n_choices - 1, n_choices - 1)'
+          2d array of shape 
 
     y : np.array
-        1d array of shape :math:'(n_obs)' with the observed choices.
+        1d array of shape with the observed choices.
 
     n_draws : int
               Number of draws for Monte-Carlo integration.
@@ -27,7 +27,7 @@ def mc_integration(u_prime, cov, y, n_draws=None):
     Returns:
     --------
     choice_prob_obs : np.array
-                      1d array of shape :math:'(n_obs)' comprising the choice probabilities.
+                      1d array of shape  comprising the choice probabilities.
 
     Notes
     -----
