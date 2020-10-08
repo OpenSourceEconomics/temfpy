@@ -12,14 +12,14 @@ def multinomial_processing(formula, data, cov_structure):
     
     Parameters
     ----------
-        formula : str
-                  A patsy formula comprising the independent variable and the dependent variables.
+    formula : str
+              A patsy formula comprising the independent variable and the dependent variables.
                   
     data : pd.DataFrame 
            A pandas data frame with shape :math:`n_obs \times n_var + 1`.
                
-        cov_structure : str
-                        Available options are 'iid' or 'free'.
+    cov_structure : str
+                    Available options are 'iid' or 'free'.
         
     Returns:
     --------
@@ -28,6 +28,7 @@ def multinomial_processing(formula, data, cov_structure):
 
     x : np.array
         2d numpy array of shape :math:'(n_obs, n_var)' including the independent variables.
+        
     params_df : pd.Series 
                 The data are naive starting values for the parameters. The index contains the parameter names.
     
@@ -38,7 +39,8 @@ def multinomial_processing(formula, data, cov_structure):
     ----------
     
     Examples
-    --------      
+    --------    
+    
     """
     y, x = patsy.dmatrices(formula, data, return_type='dataframe')
     data = pd.concat([y, x], axis=1).dropna()
