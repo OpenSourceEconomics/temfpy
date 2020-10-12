@@ -3,8 +3,6 @@ We provide a variety of econometric methods used in data science.
 """
 import numpy as np
 
-# from scipy.stats import norm
-
 
 def mc_integration(u_prime, cov, y, n_draws=None):
     r"""Calculate probit choice probabilities with Monte-Carlo Integration.

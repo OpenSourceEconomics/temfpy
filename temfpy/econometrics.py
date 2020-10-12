@@ -4,8 +4,9 @@ We provide a variety of econometric methods used in data science.
 import numpy as np
 import pandas as pd
 import patsy
-import temfpy.integration_methods
 from estimagic.optimization.optimize import maximize
+
+import temfpy.integration_methods
 
 
 def multinomial_processing(formula, data, cov_structure):
@@ -59,8 +60,7 @@ def multinomial_processing(formula, data, cov_structure):
         var_names = list(x.columns)
         for choice in range(n_choices - 1):
             index_tuples += [
-                ("choice_{}".format(choice), "betha_{}".format(name))
-                for name in var_names
+                (f"choice_{choice}", f"betha_{name}") for name in var_names
             ]
 
         start_params = bethas
@@ -79,8 +79,7 @@ def multinomial_processing(formula, data, cov_structure):
         var_names = list(x.columns)
         for choice in range(n_choices - 1):
             index_tuples += [
-                ("choice_{}".format(choice), "betha_{}".format(name))
-                for name in var_names
+                (f"choice_{choice}", f"betha_{name}") for name in var_names
             ]
 
         j = (n_choices) * (n_choices - 1) / 2
@@ -89,7 +88,7 @@ def multinomial_processing(formula, data, cov_structure):
         start_params = np.concatenate((bethas, cov))
 
     params_sr = pd.Series(
-        data=start_params, index=pd.MultiIndex.from_tuples(index_tuples), name="value"
+        data=start_params, index=pd.MultiIndex.from_tuples(index_tuples), name="value",
     )
 
     y = y - y.min()
@@ -161,12 +160,12 @@ def multinomial_probit_loglikeobs(params, y, x, cov_structure, integration_metho
     bethas = np.zeros((n_var, n_choices))
 
     for i in range(n_choices - 1):
-        bethas[:, i] = params["choice_{}".format(i)].to_numpy()
+        bethas[:, i] = params[f"choice_{i}"].to_numpy()
 
     u_prime = x.dot(bethas)
 
     choice_prob_obs = getattr(temfpy.integration_methods, integration_method)(
-        u_prime, cov, y
+        u_prime, cov, y,
     )
 
     choice_prob_obs[choice_prob_obs <= 1e-250] = 1e-250
@@ -215,7 +214,7 @@ def multinomial_probit_loglike(params, y, x, cov_structure, integration_method):
     --------
     """
     return multinomial_probit_loglikeobs(
-        params, y, x, cov_structure, integration_method
+        params, y, x, cov_structure, integration_method,
     ).sum()
 
 
