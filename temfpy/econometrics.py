@@ -17,7 +17,8 @@ def multinomial_processing(formula, data, cov_structure):
     Parameters
     ----------
         formula : str
-                  A patsy formula comprising the independent variable and the dependent variables.
+                  A patsy formula comprising the independent variable and the
+                  dependent variables.
 
     data : pd.DataFrame
            A pandas data frame with shape :math:`n_obs \times n_var + 1`.
@@ -31,7 +32,8 @@ def multinomial_processing(formula, data, cov_structure):
         1d numpy array of shape n_obs with the observed choices.
 
     x : np.array
-        2d numpy array of shape :math:'(n_obs, n_var)' including the independent variables.
+        2d numpy array of shape :math:'(n_obs, n_var)' including the independent
+        variables.
     params_df : pd.Series
                 The data are naive starting values for the parameters.
 
@@ -88,9 +90,7 @@ def multinomial_processing(formula, data, cov_structure):
         start_params = np.concatenate((bethas, cov))
 
     params_sr = pd.Series(
-        data=start_params,
-        index=pd.MultiIndex.from_tuples(index_tuples),
-        name="value",
+        data=start_params, index=pd.MultiIndex.from_tuples(index_tuples), name="value",
     )
 
     y = y - y.min()
@@ -110,13 +110,15 @@ def multinomial_probit_loglikeobs(params, y, x, cov_structure, integration_metho
     Parameters
     ----------
     formula : str
-              A patsy formula comprising the dependent variable and the independent variables.
+              A patsy formula comprising the dependent variable and the
+              independent variables.
 
     y : np.array
         1d numpy array of shape :math:'n_obs' with the observed choices
 
     x : np.array
-        2d numpy array of shape :math:'(n_obs, n_var)' including the independent variables.
+        2d numpy array of shape :math:'(n_obs, n_var)' including the independent
+        variables.
 
     cov_structure : str
                     Available options are 'iid' or 'free'.
@@ -128,7 +130,8 @@ def multinomial_probit_loglikeobs(params, y, x, cov_structure, integration_metho
     Returns:
     --------
         loglikeobs : np.array
-                     1d numpy array of shape :math:'(n_obs)' with likelihood contribution.
+                     1d numpy array of shape :math:'(n_obs)' with likelihood
+                     contribution.
 
     Notes
     -----
@@ -167,9 +170,7 @@ def multinomial_probit_loglikeobs(params, y, x, cov_structure, integration_metho
     u_prime = x.dot(bethas)
 
     choice_prob_obs = getattr(temfpy.integration_methods, integration_method)(
-        u_prime,
-        cov,
-        y,
+        u_prime, cov, y,
     )
 
     choice_prob_obs[choice_prob_obs <= 1e-250] = 1e-250
@@ -188,13 +189,15 @@ def multinomial_probit_loglike(params, y, x, cov_structure, integration_method):
     Parameters
     ----------
     formula : str
-              A patsy formula comprising the dependent variable and the independent variables.
+              A patsy formula comprising the dependent variable and the
+              independent variables.
 
     y : np.array
         1d numpy array of shape :math:'n_obs' with the observed choices
 
     x : np.array
-        2d numpy array of shape :math:'(n_obs, nvar)' including the independent variables.
+        2d numpy array of shape :math:'(n_obs, nvar)' including the independent
+        variables.
 
     cov_structure : str
                     Available options are 'iid' or 'free'.
@@ -206,7 +209,8 @@ def multinomial_probit_loglike(params, y, x, cov_structure, integration_method):
     Returns:
     --------
         loglike : float
-                  The value of the log-likelihood function evaluated at the given parameters.
+                  The value of the log-likelihood function evaluated at the
+                  given parameters.
 
     Notes
     -----
@@ -218,11 +222,7 @@ def multinomial_probit_loglike(params, y, x, cov_structure, integration_method):
     --------
     """
     return multinomial_probit_loglikeobs(
-        params,
-        y,
-        x,
-        cov_structure,
-        integration_method,
+        params, y, x, cov_structure, integration_method,
     ).sum()
 
 
@@ -236,7 +236,8 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     Parameters
     ----------
     formula : str
-              A patsy formula comprising the dependent and the independent variables.
+              A patsy formula comprising the dependent and the independent
+              variables.
 
     data : pd.DataFrame
            A pandas data frame with shape
@@ -256,7 +257,8 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     result_dict: dic
     Information of the optimization.
 
-    params: Parameters :math:'\beta_j' that minimize the log-likelihood function.
+    params: Parameters :math:'\beta_j' that minimize the log-likelihood
+    function.
 
     Notes
     -----
@@ -264,7 +266,8 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     References
     ----------
     ..[G1994] Geweke, J., Keane, M., and Runkle, D. 1994.
-      Alternative Computational Approaches to Inference in the Multinomial Probit Model.
+      Alternative Computational Approaches to Inference in the Multinomial
+      Probit Model.
       The MIT Press.
 
     Examples
