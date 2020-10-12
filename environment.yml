@@ -19,6 +19,7 @@ dependencies:
   - pip=19.3.1
   - pdbpp
   - chaospy
+  - pre-commit
   - pytest-black
   - pytest-flakes
   - pytest-cov
