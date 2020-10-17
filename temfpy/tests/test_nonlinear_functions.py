@@ -8,8 +8,8 @@ from hypothesis.strategies import integers
 from temfpy.nonlinear_functions import exponential
 from temfpy.nonlinear_functions import trig_exp
 from temfpy.nonlinear_functions import broyden
-from temfpy.unonlinear_functions import rosenbrock_ext
-from temfpy.unonlinear_functions import chandrasekhar
+from temfpy.nonlinear_functions import rosenbrock_ext
+from temfpy.nonlinear_functions import chandrasekhar
 
 
 def get_strategies(name):
