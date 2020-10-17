@@ -864,7 +864,7 @@ def _chandrasekhar_jacobian(x, y, c, a=2):
     --------
     >>> import numpy as np
     >>> import numdifftools as nd
-    >>> from temfpy.nonlinear_equations import chandrasekhar_jacobian
+    >>> from temfpy.nonlinear_equations import _chandrasekhar_jacobian
 
     >>> p = 10
     >>> np.random.seed(123)
