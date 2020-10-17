@@ -871,7 +871,7 @@ def _chandrasekhar_jacobian(x, y, c, a=2):
     >>> x = np.random.uniform(size = p)
     >>> y = np.random.normal(size = p)
     >>> c = 2
-    >>> analytical_jacobian, numerical_jacobian = chandrasekhar_jacobian(x,y, c)
+    >>> analytical_jacobian, numerical_jacobian = _chandrasekhar_jacobian(x,y, c)
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
     True
 
