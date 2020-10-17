@@ -56,17 +56,17 @@ def test_trig_exp(x, a):
     trig_exp(x, a)
 
 
-@given(get_strategies("broyden"))
+@given(*get_strategies("broyden"))
 def test_broyden(x, a):
     broyden(x, a)
 
 
-@given(get_strategies("rosenbrock_ext"))
+@given(*get_strategies("rosenbrock_ext"))
 def test_rosenbrock_ext(x, a):
     rosenbrock_ext(x, a)
 
 
-@given(get_strategies("troesch"))
+@given(*get_strategies("troesch"))
 def test_troesch(x, rho, a):
     troesch(x, rho, a)
 
