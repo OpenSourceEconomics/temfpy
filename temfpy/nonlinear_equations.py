@@ -541,12 +541,12 @@ def _rosenbrock_ext_val(x, a=[10, 1]):
     --------
     >>> import numpy as np
     >>> import numdifftools as nd
-    >>> from temfpy.nonlinear_equations import rosenbrock_ext_val
+    >>> from temfpy.nonlinear_equations import _rosenbrock_ext_val
 
     >>> p = 10
     >>> np.random.seed(123)
     >>> x = - np.random.uniform(size = p)
-    >>> value = rosenbrock_ext_val(x)
+    >>> value = _rosenbrock_ext_val(x)
 
 
     """
@@ -588,12 +588,12 @@ def _rosenbrock_ext_jacobian(x, a=[10, 1]):
     --------
     >>> import numpy as np
     >>> import numdifftools as nd
-    >>> from temfpy.nonlinear_equations import rosenbrock_ext_jacobian
+    >>> from temfpy.nonlinear_equations import _rosenbrock_ext_jacobian
 
     >>> p = 10
     >>> np.random.seed(123)
     >>> x = np.random.uniform(size = p)
-    >>> analytical_jacobian, numerical_jacobian = rosenbrock_ext_jacobian(x)
+    >>> analytical_jacobian, numerical_jacobian = _rosenbrock_ext_jacobian(x)
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
     """
     p = len(x)
