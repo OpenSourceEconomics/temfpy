@@ -9,6 +9,7 @@ from temfpy.nonlinear_functions import exponential
 from temfpy.nonlinear_functions import trig_exp
 from temfpy.nonlinear_functions import broyden
 from temfpy.nonlinear_functions import rosenbrock_ext
+from temfpy.nonlinear_functions import troesch
 from temfpy.nonlinear_functions import chandrasekhar
 
 
@@ -16,16 +17,27 @@ def get_strategies(name):
     valid_floats = floats(0.01, 10000, allow_nan=False, allow_infinity=False)
     valid_floats_exp = floats(-100, 500, allow_nan=False, allow_infinity=False)
     if name == "exponential":
-        strategy = arrays(np.float, 3, elements=valid_floats_exp)
+        x_strategy = arrays(np.float, 3, elements=valid_floats_exp)
+        strategy = (x_strategy, integers(1, 100), integers(1, 100))
     elif name == "trig_exp":
-        strategy = arrays(np.float, 3, elements=valid_floats_exp)
+        x_strategy = arrays(np.float, 3, elements=valid_floats_exp)
+        a_strategy = arrays(np.float, 9, elements=integers(1, 20))
+        strategy = (x_strategy, a_strategy)
     elif name == "broyden":
-        strategy = arrays(np.float, 3, elements=valid_floats)
+        x_strategy = arrays(np.float, 3, elements=valid_floats)
+        a_strategy = arrays(np.float, 4, elements=integers(1, 20))
+        strategy = (x_strategy, integers(1, 100), integers(1, 100))
     elif name == "rosenbrock_ext":
-        strategy = arrays(np.float, 3, elements=valid_floats)
+        x_strategy = arrays(np.float, 3, elements=valid_floats)
+        a_strategy = arrays(np.float, 2, elements=integers(1, 20))
+        strategy = (x_strategy, integers(1, 100), integers(1, 100))
+    elif name == "troesch":
+        x_strategy = arrays(np.float, 3, elements=valid_floats)
+        a_strategy = arrays(np.float, 1, elements=integers(1, 20))
+        strategy = (x_strategy, integers(1, 100), integers(1, 100))
     elif name == "chandrasekhar":
-        x_strategy = arrays(np.float, integers(1, 100))
-        y_strategy = arrays(np.float, integers(1, 100))
+        x_strategy = arrays(np.float, 3, elements=valid_floats)
+        y_strategy = arrays(np.float, 3, elements=valid_floats)
         strategy = (x_strategy, y_strategy, integers(1, 100))
     else:
         raise NotImplementedError
@@ -46,6 +58,11 @@ def test_trig_exp(x):
 @given(get_strategies("broyden"))
 def test_broyden(x):
     broyden(x)
+
+
+@given(get_strategies("troesch"))
+def test_troesch(x):
+    troesch(x)
 
 
 @given(get_strategies("rosenbrock_ext"))
