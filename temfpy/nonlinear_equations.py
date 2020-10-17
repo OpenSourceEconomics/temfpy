@@ -85,6 +85,7 @@ def _exponential_jacobian(x, a=10, b=1):
     >>> x = np.random.normal(size = p)
     >>> analytical_jacobian, numerical_jacobian = _exponential_jacobian(x)
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
+    True
     """
     p = len(x)
     x = np.array(x)
@@ -148,6 +149,7 @@ def exponential(x, a=10, b=1):
     >>> analytical_jacobian = jacobian[0]
     >>> numerical_jacobian = jacobian[1]
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
+    True
     """
 
     return _exponential_val(x, a=a, b=b), _exponential_jacobian(x, a=a, b=b)
@@ -276,6 +278,7 @@ def _trig_exp_jacobian(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
     >>> x = np.random.normal(size = p)
     >>> analytical_jacobian, numerical_jacobian = _trig_exp_jacobian(x)
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
+    True
     """
     p = len(x)
 
@@ -370,6 +373,7 @@ def trig_exp(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
     >>> analytical_jacobian = jacobian[0]
     >>> numerical_jacobian = jacobian[1]
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
+    True
     """
 
     return _trig_exp_val(x, a=a), _trig_exp_jacobian(x, a=a)
@@ -451,6 +455,7 @@ def _broyden_jacobian(x, a=[3, 0.5, 2, 1]):
     >>> x = - np.random.uniform(size = p)
     >>> analytical_jacobian, numerical_jacobian = _broyden_jacobian(x)
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
+    True
     """
     p = len(x)
 
@@ -510,6 +515,7 @@ def broyden(x, a=[3, 0.5, 2, 1]):
     >>> analytical_jacobian = jacobian[0]
     >>> numerical_jacobian = jacobian[1]
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
+    True
     """
 
     return _broyden_val(x=x, a=a), _broyden_jacobian(x=x, a=a)
@@ -595,6 +601,7 @@ def _rosenbrock_ext_jacobian(x, a=[10, 1]):
     >>> x = np.random.uniform(size = p)
     >>> analytical_jacobian, numerical_jacobian = _rosenbrock_ext_jacobian(x)
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
+    True
     """
     p = len(x)
 
@@ -657,6 +664,7 @@ def rosenbrock_ext(x, a=[10, 1]):
     >>> analytical_jacobian = jacobian[0]
     >>> numerical_jacobian = jacobian[1]
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
+    True
     """
 
     return _rosenbrock_ext_val(x=x, a=a), _rosenbrock_ext_jacobian(x=x, a=a)
@@ -750,6 +758,7 @@ def _troesch_jacobian(x, rho=10, a=2):
     >>> x = np.random.uniform(size = p)
     >>> analytical_jacobian, numerical_jacobian = _troesch_jacobian(x)
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
+    True
     """
     p = len(x)
     h = 1 / (p + 1)
@@ -818,6 +827,7 @@ def troesch(x, rho=10, a=2):
     >>> analytical_jacobian = jacobian[0]
     >>> numerical_jacobian = jacobian[1]
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
+    True
     """
 
     return _troesch_val(x=x, rho=rho, a=a), _troesch_jacobian(x=x, rho=rho, a=a)
@@ -863,6 +873,7 @@ def _chandrasekhar_jacobian(x, y, c, a=2):
     >>> c = 2
     >>> analytical_jacobian, numerical_jacobian = chandrasekhar_jacobian(x,y, c)
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
+    True
 
     """
 
@@ -954,6 +965,7 @@ def chandrasekhar(x, y, c, a=2):
     >>> analytical_jacobian = jacobian[0]
     >>> numerical_jacobian = jacobian[1]
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
+    True
     """
     p = len(x)
     x = np.array(x)
