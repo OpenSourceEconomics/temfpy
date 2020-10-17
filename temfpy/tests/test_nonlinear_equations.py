@@ -48,26 +48,28 @@ def get_strategies(name):
 
 @given(*get_strategies("exponential"))
 def test_exponential(x, a, b):
-    exponential(x,a,b)
+    exponential(x, a, b)
 
 
 @given(*get_strategies("trig_exp"))
 def test_trig_exp(x, a):
-    trig_exp(x,a)
+    trig_exp(x, a)
 
 
 @given(get_strategies("broyden"))
-def test_broyden(x,a):
-    broyden(x,a)
+def test_broyden(x, a):
+    broyden(x, a)
+
 
 @given(get_strategies("rosenbrock_ext"))
-def test_rosenbrock_ext(x,a):
-    rosenbrock_ext(x,a)
+def test_rosenbrock_ext(x, a):
+    rosenbrock_ext(x, a)
 
 
 @given(get_strategies("troesch"))
 def test_troesch(x, rho, a):
     troesch(x, rho, a)
+
 
 @given(get_strategies("chandrasekhar"))
 def test_chandrasekhar(x, y, c):
