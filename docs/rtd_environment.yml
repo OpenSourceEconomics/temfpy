@@ -14,5 +14,7 @@ dependencies:
   - pytest
   - numba
   - chaospy
+  - patsy
+  - estimagic
   - pip:
     - sphinxcontrib-bibtex
