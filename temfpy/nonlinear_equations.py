@@ -11,13 +11,13 @@ def _exponential_val(x, a=10, b=1):
     r"""exponential function.
 
     .. math::
-        F_1(x) = e^x_1 - 1
-        F_i(x) = \frac{i}{a} (e^x_i +x_{i-1}) - b, i = 2,3, \dots, p
+        F_1(x) &= e^{x_1} - b \\
+        F_i(x) &= \frac{i}{a} (e^{x_i} +x_{i-1}) - b, i = 2,3, \dots, p
 
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`2`.
+        Input domain with dimension :math:`p`.
     a : float, optional
         The default value is 10.
     b : float, optional
@@ -55,13 +55,13 @@ def _exponential_jacobian(x, a=10, b=1):
     r"""Analytical and numerical jacobian of the exponential function.
 
     .. math::
-        F_1(x) = e^x_1 - 1
-        F_i(x) = \frac{i}{a} (e^x_i +x_{i-1}) - b, i = 2,3, \dots, p
+        F_1(x) &= e^{x_1} - b \\
+        F_i(x) &= \frac{i}{a} (e^{x_i} +x_{i-1}) - b, i = 2,3, \dots, p
 
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`2`.
+        Input domain with dimension :math:`p`.
     a : float, optional
         The default value is 10.
     b : float, optional
@@ -110,13 +110,13 @@ def exponential(x, a=10, b=1):
     r"""exponential function and its analytical and numerical jacobians.
 
     .. math::
-        F_1(x) = e^x_1 - 1
-        F_i(x) = \frac{i}{a} (e^x_i +x_{i-1}) - b, i = 2,3, \dots, p
+        F_1(x) &= e^{x_1} - b \\
+        F_i(x) &= \frac{i}{a} (e^{x_i} +x_{i-1}) - b, i = 2,3, \dots, p
 
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`2`.
+        Input domain with dimension :math:`p`.
     a : float, optional
         The default value is 10.
     b : float, optional
@@ -201,11 +201,11 @@ def _trig_exp_val(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
     r"""trigonometrical exponential function.
 
     .. math::
-        F_1(x) = a_1x_1^3 + a_2x_2 - a_3 + \sin(x_1 - x_2)\sin(x1+x2)
-        F_i(x) = - x_{i-1}e^(x_{i-1} - x_i) + x_i(a_4+a_5x_i^2)
+        F_1(x) &= a_1x_1^3 + a_2x_2 - a_3 + \sin(x_1 - x_2)\sin(x1+x2) \\
+        F_i(x) &= - x_{i-1}e^{x_{i-1} - x_i} + x_i(a_4+a_5x_i^2)
         + a_6x_{i+1} + \sin(x_i - x_{i+1})\sin(x_i + x_{i+1}) - a_7,
-        i = 2,3, \dots, p-1
-        F_p(x) = -x_{p-1}e^{x_{p-1}-x_p} + a_8x_p - a_9
+        i = 2,3, \dots, p-1 \\
+        F_p(x) &= -x_{p-1}e^{x_{p-1}-x_p} + a_8x_p - a_9
     Parameters
     ----------
     x : array_like
@@ -249,11 +249,11 @@ def _trig_exp_jacobian(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
     r"""trigonometrical exponential function.
 
     .. math::
-        F_1(x) = a_1x_1^3 + a_2x_2 - a_3 + \sin(x_1 - x_2)\sin(x1+x2)
-        F_i(x) = - x_{i-1}e^(x_{i-1} - x_i) + x_i(a_4+a_5x_i^2) +
-        a_6x_{i+1} + \sin(x_i - x_{i+1})\sin(x_i + x_{i+1}) - a_7,
-        i = 2,3, \dots, p-1
-        F_p(x) = -x_{p-1}e^{x_{p-1}-x_p} + a_8x_p - a_9
+        F_1(x) &= a_1x_1^3 + a_2x_2 - a_3 + \sin(x_1 - x_2)\sin(x1+x2) \\
+        F_i(x) &= - x_{i-1}e^{x_{i-1} - x_i} + x_i(a_4+a_5x_i^2)
+        + a_6x_{i+1} + \sin(x_i - x_{i+1})\sin(x_i + x_{i+1}) - a_7,
+        i = 2,3, \dots, p-1 \\
+        F_p(x) &= -x_{p-1}e^{x_{p-1}-x_p} + a_8x_p - a_9
     Parameters
     ----------
     x : array_like
@@ -332,11 +332,11 @@ def trig_exp(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
     r"""trigonometrical exponential function.
 
     .. math::
-        F_1(x) = a_1x_1^3 + a_2x_2 - a_3 + \sin(x_1 - x_2)\sin(x1+x2)
-        F_i(x) = - x_{i-1}e^(x_{i-1} - x_i) + x_i(a_4+a_5x_i^2)
+        F_1(x) &= a_1x_1^3 + a_2x_2 - a_3 + \sin(x_1 - x_2)\sin(x1+x2) \\
+        F_i(x) &= - x_{i-1}e^{x_{i-1} - x_i} + x_i(a_4+a_5x_i^2)
         + a_6x_{i+1} + \sin(x_i - x_{i+1})\sin(x_i + x_{i+1}) - a_7,
-        i = 2,3, \dots, p-1
-        F_p(x) = -x_{p-1}e^{x_{p-1}-x_p} + a_8x_p - a_9
+        i = 2,3, \dots, p-1 \\
+        F_p(x) &= -x_{p-1}e^{x_{p-1}-x_p} + a_8x_p - a_9
     Parameters
     ----------
     x : array_like
@@ -383,10 +383,10 @@ def _broyden_val(x, a=[3, 0.5, 2, 1]):
     r"""Broyden tridiagonal function.
 
     .. math::
-        F_1(x) = x_1(a_1 - a_2 x_1) -a_3 x_{2} + a_4
-        F_i(x) = x_i(a_1 - a_2 x_i)-x_{i-1} -a_3 x_{i+1}
-        + a_4, i = 2,3, \dots, p-1
-        F_p(x) = x_p(a_1 - a_2 x_p)-x_{p-1} + a_4
+        F_1(x) &= x_1(a_1 - a_2 x_1) -a_3 x_{2} + a_4 \\
+        F_i(x) &= x_i(a_1 - a_2 x_i)-x_{i-1} -a_3 x_{i+1} 
+        + a_4, i = 2,3, \dots, p-1 \\
+        F_p(x) &= x_p(a_1 - a_2 x_p)-x_{p-1} + a_4
 
     Parameters
     ----------
@@ -425,10 +425,10 @@ def _broyden_jacobian(x, a=[3, 0.5, 2, 1]):
     r"""Broyden tridiagonal function.
 
     .. math::
-        F_1(x) = x_1(a_1 - a_2 x_1) -a_3 x_{2} + a_4
-        F_i(x) = x_i(a_1 - a_2 x_i)-x_{i-1} -a_3 x_{i+1}
-        + a_4, i = 2,3, \dots, p-1
-        F_p(x) = x_p(a_1 - a_2 x_p)-x_{p-1} + a_4
+        F_1(x) &= x_1(a_1 - a_2 x_1) -a_3 x_{2} + a_4 \\
+        F_i(x) &= x_i(a_1 - a_2 x_i)-x_{i-1} -a_3 x_{i+1} 
+        + a_4, i = 2,3, \dots, p-1 \\
+        F_p(x) &= x_p(a_1 - a_2 x_p)-x_{p-1} + a_4
 
     Parameters
     ----------
@@ -475,10 +475,10 @@ def broyden(x, a=[3, 0.5, 2, 1]):
     r"""Broyden tridiagonal function.
 
     .. math::
-        F_1(x) = x_1(a_1 - a_2 x_1) -a_3 x_{2} + a_4
-        F_i(x) = x_i(a_1 - a_2 x_i)-x_{i-1} -a_3 x_{i+1}
-        + a_4, i = 2,3, \dots, p-1
-        F_p(x) = x_p(a_1 - a_2 x_p)-x_{p-1} + a_4
+        F_1(x) &= x_1(a_1 - a_2 x_1) -a_3 x_{2} + a_4 \\
+        F_i(x) &= x_i(a_1 - a_2 x_i)-x_{i-1} -a_3 x_{i+1} 
+        + a_4, i = 2,3, \dots, p-1 \\
+        F_p(x) &= x_p(a_1 - a_2 x_p)-x_{p-1} + a_4
 
     Parameters
     ----------
@@ -525,9 +525,8 @@ def _rosenbrock_ext_val(x, a=[10, 1]):
     r"""Extended-Rosenbrock function.
 
     .. math::
-        i = 1,2,3, \dots, \frac{p}{2}
-        F_{2i-1}(x) = a_1(x_{2i} - x_{2i-1}^2)
-        F_{2i}(x) = a_2 - x_{2i-1}
+        F_{2i-1}(x) &= a_1(x_{2i} - x_{2i-1}^2) \\
+        F_{2i}(x) &= a_2 - x_{2i-1}, i = 1,2,3, \dots, \frac{p}{2}
 
 
     Parameters
@@ -572,9 +571,8 @@ def _rosenbrock_ext_jacobian(x, a=[10, 1]):
     r"""Extended-Rosenbrock function.
 
     .. math::
-        i = 1,2,3, \dots, \frac{p}{2}
-        F_{2i-1}(x) = a_1(x_{2i} - x_{2i-1}^2)
-        F_{2i}(x) = a_2 - x_{2i-1}
+        F_{2i-1}(x) &= a_1(x_{2i} - x_{2i-1}^2) \\
+        F_{2i}(x) &= a_2 - x_{2i-1}, i = 1,2,3, \dots, \frac{p}{2}
 
     Parameters
     ----------
@@ -620,9 +618,8 @@ def rosenbrock_ext(x, a=[10, 1]):
     r"""Extended-Rosenbrock function.
 
     .. math::
-        i = 1,2,3, \dots, \frac{p}{2}
-        F_{2i-1}(x) = a_1(x_{2i} - x_{2i-1}^2)
-        F_{2i}(x) = a_2 - x_{2i-1}
+        F_{2i-1}(x) &= a_1(x_{2i} - x_{2i-1}^2) \\
+        F_{2i}(x) &= a_2 - x_{2i-1}, i = 1,2,3, \dots, \frac{p}{2}
 
 
     Parameters
@@ -674,10 +671,10 @@ def _troesch_val(x, rho=10, a=2):
     r"""Troesch function.
 
     .. math::
-        F_1(x) = a_1x_1 + \rho h^2 \sinh(\rho x_1) - x_{2},
-        F_i(x) = a_1x_i + \rho h^2 \sinh(\rho x_i) - x_{i-1} - x_{i+1},
-        F_i(x) = a_1x_p + \rho h^2 \sinh(\rho x_p) - x_{p-1},
-        i = 2,3, \dots, p-1
+        F_1(x) &= a_1x_1 + \rho h^2 \sinh(\rho x_1) - x_{2}, \\
+        F_i(x) &= a_1x_i + \rho h^2 \sinh(\rho x_i) - x_{i-1} - x_{i+1}, i = 2,3, \dots, p-1\\
+        F_p(x) &= a_1x_p + \rho h^2 \sinh(\rho x_p) - x_{p-1}
+        
 
     Parameters
     ----------
@@ -722,10 +719,9 @@ def _troesch_jacobian(x, rho=10, a=2):
     r"""Troesch function.
 
     .. math::
-        F_1(x) = a_1x_1 + \rho h^2 \sinh(\rho x_1) - x_{2},
-        F_i(x) = a_1x_i + \rho h^2 \sinh(\rho x_i) - x_{i-1} - x_{i+1},
-        F_i(x) = a_1x_p + \rho h^2 \sinh(\rho x_p) - x_{p-1},
-        i = 2,3, \dots, p-1
+        F_1(x) &= a_1x_1 + \rho h^2 \sinh(\rho x_1) - x_{2}, \\
+        F_i(x) &= a_1x_i + \rho h^2 \sinh(\rho x_i) - x_{i-1} - x_{i+1}, i = 2,3, \dots, p-1\\
+        F_p(x) &= a_1x_p + \rho h^2 \sinh(\rho x_p) - x_{p-1}
 
     Parameters
     ----------
@@ -781,10 +777,10 @@ def troesch(x, rho=10, a=2):
     r"""Troesch function.
 
     .. math::
-        F_1(x) = a_1x_1 + \rho h^2 \sinh(\rho x_1) - x_{2},
-        F_i(x) = a_1x_i + \rho h^2 \sinh(\rho x_i) - x_{i-1} - x_{i+1},
-        F_i(x) = a_1x_p + \rho h^2 \sinh(\rho x_p) - x_{p-1},
-        i = 2,3, \dots, p-1
+        F_1(x) &= a_1x_1 + \rho h^2 \sinh(\rho x_1) - x_{2}, \\
+        F_i(x) &= a_1x_i + \rho h^2 \sinh(\rho x_i) - x_{i-1} - x_{i+1}, i = 2,3, \dots, p-1\\
+        F_p(x) &= a_1x_p + \rho h^2 \sinh(\rho x_p) - x_{p-1}
+        
 
     Parameters
     ----------
@@ -806,7 +802,7 @@ def troesch(x, rho=10, a=2):
         Numerically derived Jacobian
     Notes
     -----
-    :math:'h = \frac{1}{p+1}'
+    :math:`h = \frac{1}{p+1}`
 
     References
     ----------
@@ -922,7 +918,7 @@ def chandrasekhar(x, y, c, a=2):
 
     .. math::
         F_i(x) = x_i - \left(1 - \frac{c}{2p} \sum^p_{j=1}
-        \frac{y_i x_j}{y_i + y_j} \right)
+        \frac{y_i x_j}{y_i + y_j} \right),
         i = 1,2, \dots, p
 
     Parameters
