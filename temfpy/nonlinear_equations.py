@@ -11,7 +11,7 @@ def _exponential_val(x, a=10, b=1):
     r"""exponential function.
 
     .. math::
-        F(x) &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
+        x &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
         F_1(x) &= e^{x_1} - b \\
         F_i(x) &= \frac{i}{a} (e^{x_i} +x_{i-1}) - b, i = 2,3, \dots, p
 
@@ -111,7 +111,7 @@ def exponential(x, a=10, b=1):
     r"""exponential function and its analytical and numerical jacobians.
 
     .. math::
-        F(x) &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
+        x &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
         F_1(x) &= e^{x_1} - b \\
         F_i(x) &= \frac{i}{a} (e^{x_i} +x_{i-1}) - b, i = 2,3, \dots, p
 
@@ -251,7 +251,7 @@ def _trig_exp_jacobian(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
     r"""trigonometrical exponential function.
 
     .. math::
-        F(x) &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p \end{pmatrix}^T \\
+        x &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p \end{pmatrix}^T \\
         F_1(x) &= a_1x_1^3 + a_2x_2 - a_3 + \sin(x_1 - x_2)\sin(x1+x2) \\
         F_i(x) &= - x_{i-1}e^{x_{i-1} - x_i} + x_i(a_4+a_5x_i^2)
         + a_6x_{i+1} + \sin(x_i - x_{i+1})\sin(x_i + x_{i+1}) - a_7,
@@ -335,7 +335,7 @@ def trig_exp(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
     r"""trigonometrical exponential function.
 
     .. math::
-        F(x) &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
+        x &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
         F_1(x) &= a_1x_1^3 + a_2x_2 - a_3 + \sin(x_1 - x_2)\sin(x_1+x_2) \\
         F_i(x) &= - x_{i-1}e^{x_{i-1} - x_i} + x_i(a_4+a_5x_i^2)
         + a_6x_{i+1} + \sin(x_i - x_{i+1})\sin(x_i + x_{i+1}) - a_7 \\
@@ -479,7 +479,7 @@ def broyden(x, a=[3, 0.5, 2, 1]):
     r"""Broyden tridiagonal function.
 
     .. math::
-        F(x) &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
+        x &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
         F_1(x) &= x_1(a_1 - a_2 x_1) -a_3 x_{2} + a_4 \\
         F_i(x) &= x_i(a_1 - a_2 x_i)-x_{i-1} -a_3 x_{i+1}
         + a_4, i = 2,3, \dots, p-1 \\
@@ -623,7 +623,7 @@ def rosenbrock_ext(x, a=[10, 1]):
     r"""Extended-Rosenbrock function.
 
     .. math::
-        F(x) &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
+        x &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
         F_{2i-1}(x) &= a_1(x_{2i} - x_{2i-1}^2) \\
         F_{2i}(x) &= a_2 - x_{2i-1}, \\
         i &= 1,2,3, \dots, \frac{p}{2}
@@ -784,7 +784,7 @@ def troesch(x, rho=10, a=2):
     r"""Troesch function.
 
     .. math::
-        F(x) &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
+        x &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
         F_1(x) &= a_1x_1 + \rho h^2 \sinh(\rho x_1) - x_{2}, \\
         F_i(x) &= a_1x_i + \rho h^2 \sinh(\rho x_i) - x_{i-1} - x_{i+1}, i = 2,3, \dots, p-1\\
         F_p(x) &= a_1x_p + \rho h^2 \sinh(\rho x_p) - x_{p-1} \\
@@ -923,7 +923,7 @@ def chandrasekhar(x, y, c, a=2):
     r"""Discretized version of Chandrasekhar’s H-equation:.
 
     .. math::
-        F(x) &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
+        x &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
         F_i(x) &= x_i - \left(1 - \frac{c}{2p} \sum^p_{j=1}
         \frac{y_i x_j}{y_i + y_j} \right)^{-1},
         i = 1,2, \dots, p
