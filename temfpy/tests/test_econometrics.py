@@ -67,9 +67,9 @@ strategy = (n_obs_strategy, n_var_strategy , choices, cov_strategy, integration_
 
 @given(*strategy)
 def test_multinomial_probit(n_obs_strategy, n_var_strategy , choices, cov_structure, integration_method, algorithm): 
-    all_columns = "+".join(df.columns.difference(["Y"]))
+    data = data_generation(n_obs_strategy, n_var_strategy , choices)
+    all_columns = "+".join(data.columns.difference(["Y"]))
     formula = "Y~" + all_columns
-    data = data_generation(n_obs, n_var, choices)
     multinomial_probit(formula, data, cov_structure, integration_method, algorithm)
     
     
