@@ -70,6 +70,6 @@ def test_multinomial_probit(n_obs_strategy, n_var_strategy , choices, cov_struct
     all_columns = "+".join(df.columns.difference(["Y"]))
     formula = "Y~" + all_columns
     data = data_generation(n_obs, n_var, choices)
-    multinomial_probit(formula = formula, data = data, cov_structure, integration_method, algorithm)
+    multinomial_probit(formula, data, cov_structure, integration_method, algorithm)
     
     
