@@ -785,9 +785,9 @@ def troesch(x, rho=10, a=2):
 
     .. math::
         x &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
-        F_1(x) &= a_1x_1 + \rho h^2 \sinh(\rho x_1) - x_{2}, \\
-        F_i(x) &= a_1x_i + \rho h^2 \sinh(\rho x_i) - x_{i-1} - x_{i+1}, i = 2,3, \dots, p-1\\
-        F_p(x) &= a_1x_p + \rho h^2 \sinh(\rho x_p) - x_{p-1} \\
+        F_1(x) &= ax_1 + \rho h^2 \sinh(\rho x_1) - x_{2}, \\
+        F_i(x) &= ax_i + \rho h^2 \sinh(\rho x_i) - x_{i-1} - x_{i+1}, i = 2,3, \dots, p-1\\
+        F_p(x) &= ax_p + \rho h^2 \sinh(\rho x_p) - x_{p-1} \\
         h &= \frac{1}{p+1}
 
     Parameters
