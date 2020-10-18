@@ -842,7 +842,7 @@ def _chandrasekhar_jacobian(x, y, c, a=2):
 
     .. math::
         F_i(x) = x_i - \left(1 - \frac{c}{2p} \sum^p_{j=1}
-        \frac{y_i x_j}{y_i + y_j} \right)
+        \frac{y_i x_j}{y_i + y_j} \right)^{-1}
         i = 1,2, \dots, p
 
     Parameters
@@ -927,7 +927,7 @@ def chandrasekhar(x, y, c, a=2):
     .. math::
         F: \mathbb{R}^p &\to \mathbb{R}^p 
         F_i(x) = x_i - \left(1 - \frac{c}{2p} \sum^p_{j=1}
-        \frac{y_i x_j}{y_i + y_j} \right),
+        \frac{y_i x_j}{y_i + y_j} \right)^{-1},
         i = 1,2, \dots, p
 
     Parameters
