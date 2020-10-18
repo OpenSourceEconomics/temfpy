@@ -257,7 +257,7 @@ def _trig_exp_jacobian(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`p > 1`.
+        Input domain with dimension :math:`p`.
 
     a : array_like, optional
         The default array is [3,2,5,4,3,2,8,4,3].
@@ -334,8 +334,8 @@ def trig_exp(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
     .. math::
         F_1(x) &= a_1x_1^3 + a_2x_2 - a_3 + \sin(x_1 - x_2)\sin(x1+x2) \\
         F_i(x) &= - x_{i-1}e^{x_{i-1} - x_i} + x_i(a_4+a_5x_i^2)
-        + a_6x_{i+1} + \sin(x_i - x_{i+1})\sin(x_i + x_{i+1}) - a_7,
-        i = 2,3, \dots, p-1 \\
+        + a_6x_{i+1} + \sin(x_i - x_{i+1})\sin(x_i + x_{i+1}) - a_7 \\
+        i &= 2,3, \dots, p-1 \\
         F_p(x) &= -x_{p-1}e^{x_{p-1}-x_p} + a_8x_p - a_9
     Parameters
     ----------
@@ -483,7 +483,7 @@ def broyden(x, a=[3, 0.5, 2, 1]):
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`p > 1`.
+        Input domain with dimension :math:`p`.
     a : array_like, optional
         The default array is [3, 0.5, 2, 1]
 
@@ -532,7 +532,7 @@ def _rosenbrock_ext_val(x, a=[10, 1]):
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`2`.
+        Input domain with dimension :math:`p`.
     a : array_like, optional
         The default array is [10,1]
 
@@ -577,7 +577,7 @@ def _rosenbrock_ext_jacobian(x, a=[10, 1]):
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`2`.
+        Input domain with dimension :math:`p`.
     a : array_like, optional
         The default array is [10,1]
 
@@ -619,13 +619,14 @@ def rosenbrock_ext(x, a=[10, 1]):
 
     .. math::
         F_{2i-1}(x) &= a_1(x_{2i} - x_{2i-1}^2) \\
-        F_{2i}(x) &= a_2 - x_{2i-1}, i = 1,2,3, \dots, \frac{p}{2}
+        F_{2i}(x) &= a_2 - x_{2i-1}, \\
+        i &= 1,2,3, \dots, \frac{p}{2}
 
 
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`2`.
+        Input domain with dimension :math:`p`.
     a : array_like, optional
         The default array is [10,1]
 
@@ -785,7 +786,7 @@ def troesch(x, rho=10, a=2):
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`p > 1`.
+        Input domain with dimension :math:`p`.
     rho : float, optional
         The default value is 10
     a : float, optional
