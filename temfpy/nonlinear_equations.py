@@ -384,7 +384,7 @@ def _broyden_val(x, a=[3, 0.5, 2, 1]):
 
     .. math::
         F_1(x) &= x_1(a_1 - a_2 x_1) -a_3 x_{2} + a_4 \\
-        F_i(x) &= x_i(a_1 - a_2 x_i)-x_{i-1} -a_3 x_{i+1} 
+        F_i(x) &= x_i(a_1 - a_2 x_i)-x_{i-1} -a_3 x_{i+1}
         + a_4, i = 2,3, \dots, p-1 \\
         F_p(x) &= x_p(a_1 - a_2 x_p)-x_{p-1} + a_4
 
@@ -426,7 +426,7 @@ def _broyden_jacobian(x, a=[3, 0.5, 2, 1]):
 
     .. math::
         F_1(x) &= x_1(a_1 - a_2 x_1) -a_3 x_{2} + a_4 \\
-        F_i(x) &= x_i(a_1 - a_2 x_i)-x_{i-1} -a_3 x_{i+1} 
+        F_i(x) &= x_i(a_1 - a_2 x_i)-x_{i-1} -a_3 x_{i+1}
         + a_4, i = 2,3, \dots, p-1 \\
         F_p(x) &= x_p(a_1 - a_2 x_p)-x_{p-1} + a_4
 
@@ -476,7 +476,7 @@ def broyden(x, a=[3, 0.5, 2, 1]):
 
     .. math::
         F_1(x) &= x_1(a_1 - a_2 x_1) -a_3 x_{2} + a_4 \\
-        F_i(x) &= x_i(a_1 - a_2 x_i)-x_{i-1} -a_3 x_{i+1} 
+        F_i(x) &= x_i(a_1 - a_2 x_i)-x_{i-1} -a_3 x_{i+1}
         + a_4, i = 2,3, \dots, p-1 \\
         F_p(x) &= x_p(a_1 - a_2 x_p)-x_{p-1} + a_4
 
@@ -674,7 +674,7 @@ def _troesch_val(x, rho=10, a=2):
         F_1(x) &= a_1x_1 + \rho h^2 \sinh(\rho x_1) - x_{2}, \\
         F_i(x) &= a_1x_i + \rho h^2 \sinh(\rho x_i) - x_{i-1} - x_{i+1}, i = 2,3, \dots, p-1\\
         F_p(x) &= a_1x_p + \rho h^2 \sinh(\rho x_p) - x_{p-1}
-        
+
 
     Parameters
     ----------
@@ -780,7 +780,7 @@ def troesch(x, rho=10, a=2):
         F_1(x) &= a_1x_1 + \rho h^2 \sinh(\rho x_1) - x_{2}, \\
         F_i(x) &= a_1x_i + \rho h^2 \sinh(\rho x_i) - x_{i-1} - x_{i+1}, i = 2,3, \dots, p-1\\
         F_p(x) &= a_1x_p + \rho h^2 \sinh(\rho x_p) - x_{p-1}
-        
+
 
     Parameters
     ----------
