@@ -133,7 +133,7 @@ def rosenbrock(x):
     Parameters
     ----------
     x : array_like
-        1-D array of points at which the Rosenbrock function is to be computed.
+        Input domain with dimension :math:`d`.
 
     Returns
     -------
