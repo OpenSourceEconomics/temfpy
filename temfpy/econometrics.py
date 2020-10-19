@@ -218,7 +218,7 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     r"""Multinomial probit model.
 
     .. math::
-    Y_i^1* &= X_i^T \beta_1  + \varepsilon_1 \\ 
+    Y_i^1* &= X_i^T \beta_1 + \varepsilon_1 \\ 
     Y_i^2* &= X_i^T \beta_2 + \varepsilon_2 \\
     \hdots \\
     Y_i^m* &= X_i^T \beta_m + \varepsilon_m \\
@@ -241,7 +241,7 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
                          or 'gauss_integration'
 
     algorithm : str
-                Available options are 'scipy_L-BFGS-B', 'scipy_SLSQP', 
+                Available options are 'scipy_L-BFGS-B', 'scipy_SLSQP',
                 'nlopt_bobyqa' or 'nlopt_newuoa_bound'.
 
 
@@ -254,8 +254,9 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
 
     Notes
     -----
-    The function fits a multinomial probit model to discrete choice data via maximum likelihood estimation.
-    
+    The function fits a multinomial probit model to discrete choice
+    data via maximum likelihood estimation.
+
 
     References
     ----------

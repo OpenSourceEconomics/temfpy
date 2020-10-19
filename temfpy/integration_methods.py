@@ -77,7 +77,8 @@ def smc_integration(u_prime, cov, y, tau=None, n_draws=None):
     Parameters
     ----------
     u_prime : np.array
-              2d array of shape :math:'(n_obs, n_choices)' comprising the deterministic part of utilities
+              2d array of shape :math:'(n_obs, n_choices)' comprising
+              the deterministic part of utilities
 
     cov : np.array
           2d array of shape :math:'(n_choices - 1, n_choices - 1)'.
@@ -86,7 +87,9 @@ def smc_integration(u_prime, cov, y, tau=None, n_draws=None):
         1d array of shape :math:'(n_obs)' with the observed choices.
 
     tau : int
-          corresponds to the smoothing factor. It should be a positive number. For values close to zero the estimated smooth choice  probabilities lie in a wider interval which becomes symmetrically smaller for larger values of tau.
+          corresponds to the smoothing factor. It should be a positive number.
+          For values close to zero the estimated smooth choice  probabilities lie
+          in a wider interval which becomes symmetrically smaller for larger values of tau.
 
     n_draws : int
               Number of draws for smooth Monte-Carlo integration.
@@ -94,7 +97,8 @@ def smc_integration(u_prime, cov, y, tau=None, n_draws=None):
     Returns:
     --------
     choice_prob_obs : np.array
-                      1d array of shape :math:'(n_obs)' comprising the choice probabilities for the chosen alternative for each individual.
+                      1d array of shape :math:'(n_obs)' comprising the choice
+                      probabilities for the chosen alternative for each individual.
 
     Notes
     -----
@@ -143,7 +147,8 @@ def gauss_integration(u_prime, cov, y, degrees=None):
     Parameters
     ----------
     u_prime : np.array
-              2d array of shape :math:'(n_obs, n_choices)' comprising the deterministic part of utilities
+              2d array of shape :math:'(n_obs, n_choices)' comprising
+              the deterministic part of utilities
 
     cov : np.array
           2d array of shape :math:'(n_choices - 1, n_choices - 1)'
@@ -157,7 +162,8 @@ def gauss_integration(u_prime, cov, y, degrees=None):
     Returns:
     --------
     choice_prob_obs : np.array
-                      1d array of shape (n_obs) comprising the choice probabilities for the chosen alternative for each individual.
+                      1d array of shape (n_obs) comprising the choice
+                      probabilities for the chosen alternative for each individual.
 
     Notes
     -----
