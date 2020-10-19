@@ -1,64 +1,52 @@
 """Test capabilities for optimization.
-
 This module contains a host of models and functions often used for testing optimization algorithms.
-
 """
 import numpy as np
+
+from scipy.optimize import rosen
 
 
 def ackley(x, a=20, b=0.2, c=2 * np.pi):
     r"""Ackley function.
-
     .. math::
         f(x) = -a \\exp\\left(-b \\sqrt{\frac{1}{d} \\sum_{i=1}^d x_i^2}\right)
         \\exp\\left(\frac{1}{d} \\sum_{i=1}^d \\cos(c x_i)\right) + a + \\exp(1)
-
     Parameters
     ----------
     x : array_like
         Input domain with dimension :math:`d`.
         It is usually evaluated on the hypercube
         :math:`x_i\\in [-32.768, 32.768]`, for all :math:`i = 1, \\dots, d`.
-
     a : float, optional
         The default value is 20.
-
     b : float, optional
         The default value is 0.2.
-
     c : float, optional
         The default value is 2π.
-
     Returns
     -------
     float
          Output domain
-
     Notes
     -----
     This function was proposed by David Ackley in [A1987]_ and used in [B1996]_
     and [M2005]_. It is characterized by an almost flat outer region and a central hole or peak
     where modulations become more and more influential. The function has
     its global minimum :math:`f(x) = 0` at :math:`x = (0, \\dots, 0)`.
-
     .. figure:: ../../docs/_static/images/fig-ackley.png
        :align: center
-
     References
     ----------
     .. [A1987] Ackley, D. H. (1987).
        A connectionist machine for genetic hillclimbing.
        Boston, MA: Kluwer Academic Publishers.
-
     .. [B1996] Back, T. (1996).
        Evolutionary algorithms in theory and practice:
        Evolution strategies, evolutionary programming, genetic algorithms.
        Oxford, UK: Oxford University Press.
-
     .. [M2005] Molga, M., and Smutnicki, C. (2005).
        Test functions for optimization needs.
        Retrieved June 2020, from http://www.zsd.ict.pwr.wroc.pl/files/docs/functions.pdf.
-
     Examples
     --------
     >>> from temfpy.optimization import ackley
@@ -78,41 +66,33 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
 
 def rastrigin(x, a=10):
     r"""Rastrigin function.
-
     .. math::
         f(x) = a d + \sum_{i=1}^d \left(x_i^2 - 10 \cos(2\pi x_i)\right)
-
     Parameters
     ----------
     x : array_like
         Input domain with dimension :math:`d`.
         It is usually evaluated on the hypercube
         :math:`x_i\in [-5.12, 5.12]`, for all :math:`i = 1, \dots, d`.
-
     a : float, optional
         The default value is 10.
-
     Returns
     -------
     float
          Output domain
-
     Notes
     -----
     The function was first proposed by Leonard Rastrigin in [R1974]_.
     It produces frequent local minima as it is highly multimodal.
     However, the location of the minima are regularly distributed.
     The function has its global minimum :math:`f(x) = 0` at :math:`x = (0, \dots, 0)`.
-
     .. figure:: ../../docs/_static/images/fig-rastrigin.png
        :align: center
-
     References
     ----------
     .. [R1974] Rastrigin, L. A. (1974).
        Systems of extremal control.
        Moscow, Russia: Mir.
-
     Examples
     --------
     >>> from temfpy.optimization import rastrigin
@@ -125,5 +105,46 @@ def rastrigin(x, a=10):
     rslt = a * len(x) + np.sum(
         np.multiply(x, x) - 10 * np.cos(2 * np.multiply(np.pi, x)),
     )
+
+    return rslt
+
+
+def rosenbrock(x):
+    r"""Rosenbrock function.
+    .. math::
+        f(x) = \sum^{n-1}_{i = 1} \left[100(x_{i+1}-x_i**2)**2 + (1-x_i^2) \right]
+    Parameters
+    ----------
+    x : array_like
+        1-D array of points at which the Rosenbrock function is to be computed.
+    Returns
+    -------
+    float
+         Output domain
+    Notes
+    -----
+    The function was first proposed by Howard H. Rosenbrock in [R1960]_ and
+    is often also referred to, due to it's shape, as Rosenbrock's valley or
+    Rosenbrock's Banana function.
+    The function has its global minimum at
+    :math:`x = \begin{pmatrix}1 & 1 & \dots & 1 \end{pmatrix}^T`
+    .. figure:: ../../docs/_static/images/fig-rosenbrock.png
+       :align: center
+    References
+    ----------
+    .. [R1960] Rosenbrock, H. H. (1960).
+       An Automatic Method for Finding the Greatest
+       or Least Value of a Function
+       The Computer Journal, Volume 3, Issue 3, Pages 175-184
+    Examples
+    --------
+    >>> from scipy.optimize import rosen
+    >>> import numpy as np
+    >>>
+    >>> x = [1, 1]
+    >>> y = rosenbrock(x)
+    >>> np.testing.assert_almost_equal(y, 0)
+    """
+    rslt = rosen(x)
 
     return rslt
