@@ -34,7 +34,7 @@ def _exponential_val(x, a=10, b=1):
     >>> import numpy as np
     >>> import numdifftools as nd
     >>> from temfpy.nonlinear_equations import _exponential_val
-
+    >>>
     >>> p = 10
     >>> np.random.seed(123)
     >>> x = np.random.normal(size = p)
@@ -80,7 +80,7 @@ def _exponential_jacobian(x, a=10, b=1):
     >>> import numpy as np
     >>> import numdifftools as nd
     >>> from temfpy.nonlinear_equations import _exponential_jacobian
-
+    >>>
     >>> p = 10
     >>> np.random.seed(123)
     >>> x = np.random.normal(size = p)
@@ -143,7 +143,7 @@ def exponential(x, a=10, b=1):
     >>> import numpy as np
     >>> import numdifftools as nd
     >>> from temfpy.nonlinear_equations import exponential
-
+    >>>
     >>> p = 10
     >>> np.random.seed(123)
     >>> x = np.random.normal(size = p)
@@ -182,7 +182,7 @@ def _trig_exp_i(xi, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
     >>> import numpy as np
     >>> import numdifftools as nd
     >>> from temfpy.nonlinear_equations import _trig_exp_i
-
+    >>>
     >>> p = 3
     >>> np.random.seed(123)
     >>> x = np.random.normal(size = p)
@@ -226,7 +226,7 @@ def _trig_exp_val(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
     >>> import numpy as np
     >>> import numdifftools as nd
     >>> from temfpy.nonlinear_equations import _trig_exp_val
-
+    >>>
     >>> p = 10
     >>> np.random.seed(123)
     >>> x = np.random.normal(size = p)
@@ -275,7 +275,7 @@ def _trig_exp_jacobian(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
     >>> import numpy as np
     >>> import numdifftools as nd
     >>> from temfpy.nonlinear_equations import _trig_exp_jacobian
-
+    >>>
     >>> p = 10
     >>> np.random.seed(123)
     >>> x = np.random.normal(size = p)
@@ -369,7 +369,7 @@ def trig_exp(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
     >>> import numpy as np
     >>> import numdifftools as nd
     >>> from temfpy.nonlinear_equations import trig_exp
-
+    >>>
     >>> p = 10
     >>> np.random.seed(123)
     >>> x = np.random.normal(size = p)
@@ -409,7 +409,7 @@ def _broyden_val(x, a=[3, 0.5, 2, 1]):
     >>> import numpy as np
     >>> import numdifftools as nd
     >>> from temfpy.nonlinear_equations import _broyden_val
-
+    >>>
     >>> p = 10
     >>> np.random.seed(123)
     >>> x = - np.random.uniform(size = p)
@@ -453,7 +453,7 @@ def _broyden_jacobian(x, a=[3, 0.5, 2, 1]):
     >>> import numpy as np
     >>> import numdifftools as nd
     >>> from temfpy.nonlinear_equations import _broyden_jacobian
-
+    >>>
     >>> p = 10
     >>> np.random.seed(123)
     >>> x = - np.random.uniform(size = p)
@@ -512,7 +512,7 @@ def broyden(x, a=[3, 0.5, 2, 1]):
     >>> import numpy as np
     >>> import numdifftools as nd
     >>> from temfpy.nonlinear_equations import broyden
-
+    >>>
     >>> p = 10
     >>> np.random.seed(123)
     >>> x = - np.random.uniform(size = p)
@@ -552,7 +552,7 @@ def _rosenbrock_ext_val(x, a=[10, 1]):
     >>> import numpy as np
     >>> import numdifftools as nd
     >>> from temfpy.nonlinear_equations import _rosenbrock_ext_val
-
+    >>>
     >>> p = 10
     >>> np.random.seed(123)
     >>> x = - np.random.uniform(size = p)
@@ -598,7 +598,7 @@ def _rosenbrock_ext_jacobian(x, a=[10, 1]):
     >>> import numpy as np
     >>> import numdifftools as nd
     >>> from temfpy.nonlinear_equations import _rosenbrock_ext_jacobian
-
+    >>>
     >>> p = 10
     >>> np.random.seed(123)
     >>> x = np.random.uniform(size = p)
@@ -663,6 +663,7 @@ def rosenbrock_ext(x, a=[10, 1]):
 
     >>> p = 10
     >>> np.random.seed(123)
+    >>>
     >>> x = np.random.uniform(size = p)
     >>> value, jacobian = rosenbrock_ext(x)
     >>> analytical_jacobian = jacobian[0]
@@ -706,6 +707,7 @@ def _troesch_val(x, rho=10, a=2):
     >>> import numpy as np
     >>> import numdifftools as nd
     >>> from temfpy.nonlinear_equations import _troesch_val
+    >>>
     >>> p = 10
     >>> np.random.seed(123)
     >>> x = np.random.uniform(size = p)
@@ -755,7 +757,7 @@ def _troesch_jacobian(x, rho=10, a=2):
     >>> import numpy as np
     >>> import numdifftools as nd
     >>> from temfpy.nonlinear_equations import _troesch_jacobian
-
+    >>>
     >>> p = 10
     >>> np.random.seed(123)
     >>> x = np.random.uniform(size = p)
@@ -821,7 +823,7 @@ def troesch(x, rho=10, a=2):
     >>> import numpy as np
     >>> import numdifftools as nd
     >>> from temfpy.nonlinear_equations import troesch
-
+    >>>
     >>> p = 10
     >>> np.random.seed(123)
     >>> x = np.random.uniform(size = p)
@@ -867,7 +869,7 @@ def _chandrasekhar_jacobian(x, y, c, a=2):
     >>> import numpy as np
     >>> import numdifftools as nd
     >>> from temfpy.nonlinear_equations import _chandrasekhar_jacobian
-
+    >>>
     >>> p = 10
     >>> np.random.seed(123)
     >>> x = np.random.uniform(size = p)
@@ -958,7 +960,7 @@ def chandrasekhar(x, y, c, a=2):
     >>> import numpy as np
     >>> import numdifftools as nd
     >>> from temfpy.nonlinear_equations import chandrasekhar
-
+    >>>
     >>> p = 10
     >>> np.random.seed(123)
     >>> x = np.random.uniform(size = p)
