@@ -57,12 +57,19 @@ def data_generation(n_obs, n_var, choices, beta_low=-3, beta_high=3):
     return df
 
 
-cov_strategy = ["iid", "free"][np.random.randint(0,2)]
-integration_strategy = ["mc_integration", "smooth_mc_integration", "gauss_integration"][np.random.randint(0,3)]
-algorithm_strategy = ["scipy_L-BFGS-B", "scipy_SLSQP", "nlopt_bobyqa", "nlopt_newuoa_bound"][np.random.randint(0,4)]
-n_obs_strategy = np.random.randint(50,501)
-n_var_strategy = np.random.randint(2,11)
-choices = np.random.randint(2,7)
+cov_strategy = ["iid", "free"][np.random.randint(0, 2)]
+integration_strategy = ["mc_integration", "smooth_mc_integration", "gauss_integration"][
+    np.random.randint(0, 3)
+]
+algorithm_strategy = [
+    "scipy_L-BFGS-B",
+    "scipy_SLSQP",
+    "nlopt_bobyqa",
+    "nlopt_newuoa_bound",
+][np.random.randint(0, 4)]
+n_obs_strategy = np.random.randint(50, 501)
+n_var_strategy = np.random.randint(2, 11)
+choices = np.random.randint(2, 7)
 
 strategy = (
     n_obs_strategy,
