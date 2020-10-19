@@ -364,7 +364,6 @@ def trig_exp(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
     .. [V2009] Varadhan, R., and Gilbert, P. D. (2009).
     BB: An R Package for Solving a Large System of Nonlinear Equations and for
     Optimizing a High-Dimensional Nonlinear Objective Function.
-    Examples
 
     Examples
     --------
@@ -789,10 +788,10 @@ def troesch(x, rho=10, a=2):
 
     .. math::
         x &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
+        h &= \frac{1}{p+1} \\
         F_1(x) &= ax_1 + \rho h^2 \sinh(\rho x_1) - x_{2}, \\
         F_i(x) &= ax_i + \rho h^2 \sinh(\rho x_i) - x_{i-1} - x_{i+1}, i = 2,3, \dots, p-1\\
-        F_p(x) &= ax_p + \rho h^2 \sinh(\rho x_p) - x_{p-1} \\
-        h &= \frac{1}{p+1}
+        F_p(x) &= ax_p + \rho h^2 \sinh(\rho x_p) - x_{p-1}
 
     Parameters
     ----------
