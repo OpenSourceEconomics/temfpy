@@ -108,6 +108,7 @@ def rastrigin(x, a=10):
 
     return rslt
 
+
 def rosenbrock(x):
     r"""Rosenbrock function.
     .. math::
@@ -137,7 +138,7 @@ def rosenbrock(x):
        The Computer Journal, Volume 3, Issue 3, Pages 175-184
     Examples
     --------
-    >>> from scipy.optimize import rosenbrock
+    >>> from temfpy.optimization import rosenbrock
     >>> import numpy as np
     >>>
     >>> x = [1, 1]
