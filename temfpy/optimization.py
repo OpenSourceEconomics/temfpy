@@ -108,7 +108,6 @@ def rastrigin(x, a=10):
 
     return rslt
 
-
 def rosenbrock(x):
     r"""Rosenbrock function.
     .. math::
@@ -124,7 +123,7 @@ def rosenbrock(x):
     Notes
     -----
     The function was first proposed by Howard H. Rosenbrock in [R1960]_ and
-    is often also referred to, due to it's shape, as Rosenbrock's valley or
+    is often also referred to, due to it's shape, as Rosenbrock's valley or 
     Rosenbrock's Banana function.
     The function has its global minimum at
     :math:`x = \begin{pmatrix}1 & 1 & \dots & 1 \end{pmatrix}^T`
@@ -138,7 +137,7 @@ def rosenbrock(x):
        The Computer Journal, Volume 3, Issue 3, Pages 175-184
     Examples
     --------
-    >>> from scipy.optimize import rosen
+    >>> from scipy.optimize import rosenbrock
     >>> import numpy as np
     >>>
     >>> x = [1, 1]
