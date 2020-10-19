@@ -254,7 +254,8 @@ def _trig_exp_jacobian(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
         x &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p \end{pmatrix}^T \\
         F_1(x) &= a_1x_1^3 + a_2x_2 - a_3 + \sin(x_1 - x_2)\sin(x1+x2) \\
         F_i(x) &= - x_{i-1}e^{x_{i-1} - x_i} + x_i(a_4+a_5x_i^2)
-        + a_6x_{i+1} + \sin(x_i - x_{i+1})\sin(x_i + x_{i+1}) - a_7,
+        + a_6x_{i+1} \\
+        & \quad + \sin(x_i - x_{i+1})\sin(x_i + x_{i+1}) - a_7,
         i = 2,3, \dots, p-1 \\
         F_p(x) &= -x_{p-1}e^{x_{p-1}-x_p} + a_8x_p - a_9
     Parameters
@@ -338,8 +339,9 @@ def trig_exp(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
         x &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
         F_1(x) &= a_1x_1^3 + a_2x_2 - a_3 + \sin(x_1 - x_2)\sin(x_1+x_2) \\
         F_i(x) &= - x_{i-1}e^{x_{i-1} - x_i} + x_i(a_4+a_5x_i^2)
-        + a_6x_{i+1} + \sin(x_i - x_{i+1})\sin(x_i + x_{i+1}) - a_7 \\
-        i &= 2,3, \dots, p-1 \\
+        + a_6x_{i+1} \\
+        & \quad + \sin(x_i - x_{i+1})\sin(x_i + x_{i+1}) - a_7,
+        i = 2,3, \dots, p-1 \\
         F_p(x) &= -x_{p-1}e^{x_{p-1}-x_p} + a_8x_p - a_9
     Parameters
     ----------
