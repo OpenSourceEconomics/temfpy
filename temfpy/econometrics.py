@@ -8,7 +8,7 @@ import temfpy.integration_methods
 from estimagic.optimization.optimize import maximize
 
 
-def multinomial_processing(formula, data, cov_structure):
+def _multinomial_processing(formula, data, cov_structure):
     r"""Construct the inputs for the multinomial probit function.
 
     .. math::
@@ -101,7 +101,7 @@ def multinomial_processing(formula, data, cov_structure):
     )
 
 
-def multinomial_probit_loglikeobs(params, y, x, cov_structure, integration_method):
+def _multinomial_probit_loglikeobs(params, y, x, cov_structure, integration_method):
     r"""Individual log-likelihood of the multinomial probit model.
 
     .. math::
@@ -178,7 +178,7 @@ def multinomial_probit_loglikeobs(params, y, x, cov_structure, integration_metho
     return loglikeobs
 
 
-def multinomial_probit_loglike(params, y, x, cov_structure, integration_method):
+def _multinomial_probit_loglike(params, y, x, cov_structure, integration_method):
     r"""log-likelihood of the multinomial probit model.
 
     Parameters
@@ -209,7 +209,7 @@ def multinomial_probit_loglike(params, y, x, cov_structure, integration_method):
     -----
     Used for the multinomial probit function
     """
-    return multinomial_probit_loglikeobs(
+    return _multinomial_probit_loglikeobs(
         params, y, x, cov_structure, integration_method
     ).sum()
 
@@ -267,7 +267,7 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     --------
     """
 
-    y, x, params = multinomial_processing(formula, data, cov_structure)
+    y, x, params = _multinomial_processing(formula, data, cov_structure)
     params_df = pd.DataFrame(params, columns=["value"])
 
     if cov_structure == "iid":
@@ -280,7 +280,7 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
         ]
 
     result = maximize(
-        multinomial_probit_loglike,
+        _multinomial_probit_loglike,
         params_df,
         algorithm,
         criterion_kwargs={
