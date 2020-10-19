@@ -218,7 +218,7 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     r"""Multinomial probit model.
 
     .. math::
-    Y_i^1* &= X_i^T \beta_1 + \varepsilon_1 \\ 
+    Y_i^1* &= X_i^T \beta_1 + \varepsilon_1 \\
     Y_i^2* &= X_i^T \beta_2 + \varepsilon_2 \\
     \hdots \\
     Y_i^m* &= X_i^T \beta_m + \varepsilon_m \\
