@@ -628,7 +628,7 @@ def rosenbrock_ext(x, a=[10, 1]):
         x &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
         F_{2i-1}(x) &= a_1(x_{2i} - x_{2i-1}^2) \\
         F_{2i}(x) &= a_2 - x_{2i-1}, \\
-        & \quad i &= 1,2,3, \dots, \frac{p}{2}
+        & \quad i = 1,2,3, \dots, \frac{p}{2}
 
 
     Parameters
