@@ -8,11 +8,11 @@ from scipy.optimize import rosen
 
 def ackley(x, a=20, b=0.2, c=2 * np.pi):
     r"""Ackley function.
-    
+
     .. math::
         f(x) = -a \\exp\\left(-b \\sqrt{\frac{1}{d} \\sum_{i=1}^d x_i^2}\right)
         \\exp\\left(\frac{1}{d} \\sum_{i=1}^d \\cos(c x_i)\right) + a + \\exp(1)
-    
+
     Parameters
     ----------
     x : array_like
@@ -25,12 +25,12 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
         The default value is 0.2.
     c : float, optional
         The default value is 2π.
-    
+
     Returns
     -------
     float
          Output domain
-    
+
     Notes
     -----
     This function was proposed by David Ackley in [A1987]_ and used in [B1996]_
@@ -39,7 +39,7 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
     its global minimum :math:`f(x) = 0` at :math:`x = (0, \\dots, 0)`.
     .. figure:: ../../docs/_static/images/fig-ackley.png
        :align: center
-    
+
     References
     ----------
     .. [A1987] Ackley, D. H. (1987).
@@ -52,7 +52,7 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
     .. [M2005] Molga, M., and Smutnicki, C. (2005).
        Test functions for optimization needs.
        Retrieved June 2020, from http://www.zsd.ict.pwr.wroc.pl/files/docs/functions.pdf.
-    
+
     Examples
     --------
     >>> from temfpy.optimization import ackley
@@ -72,10 +72,10 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
 
 def rastrigin(x, a=10):
     r"""Rastrigin function.
-    
+
     .. math::
         f(x) = a d + \sum_{i=1}^d \left(x_i^2 - 10 \cos(2\pi x_i)\right)
-    
+
     Parameters
     ----------
     x : array_like
@@ -84,28 +84,28 @@ def rastrigin(x, a=10):
         :math:`x_i\in [-5.12, 5.12]`, for all :math:`i = 1, \dots, d`.
     a : float, optional
         The default value is 10.
-    
+
     Returns
     -------
     float
          Output domain
-    
+
     Notes
     -----
     The function was first proposed by Leonard Rastrigin in [R1974]_.
     It produces frequent local minima as it is highly multimodal.
     However, the location of the minima are regularly distributed.
     The function has its global minimum :math:`f(x) = 0` at :math:`x = (0, \dots, 0)`.
-    
+
     .. figure:: ../../docs/_static/images/fig-rastrigin.png
        :align: center
-    
+
     References
     ----------
     .. [R1974] Rastrigin, L. A. (1974).
        Systems of extremal control.
        Moscow, Russia: Mir.
-    
+
     Examples
     --------
     >>> from temfpy.optimization import rastrigin
@@ -124,20 +124,20 @@ def rastrigin(x, a=10):
 
 def rosenbrock(x):
     r"""Rosenbrock function.
-    
+
     .. math::
         f(x) = \sum^{d-1}_{i = 1} \left[100(x_{i+1}-x_i**2)**2 + (1-x_i^2) \right]
-    
+
     Parameters
     ----------
     x : array_like
         1-D array of points at which the Rosenbrock function is to be computed.
-    
+
     Returns
     -------
     float
          Output domain
-    
+
     Notes
     -----
     The function was first proposed by Howard H. Rosenbrock in [R1960]_ and
@@ -145,10 +145,10 @@ def rosenbrock(x):
     Rosenbrock's Banana function.
     The function has its global minimum at
     :math:`x = \begin{pmatrix}1 & 1 & \dots & 1 \end{pmatrix}^T`
-    
+
     .. figure:: ../../docs/_static/images/fig-rosenbrock.png
        :align: center
-    
+
     References
     ----------
     .. [R1960] Rosenbrock, H. H. (1960).
