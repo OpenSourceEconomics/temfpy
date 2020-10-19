@@ -22,7 +22,7 @@ def get_strategies(name):
     elif name == "rosenbrock":
         valid_floats = floats(-10000, 10000, allow_nan=False, allow_infinity=False)
         x_strategy = arrays(np.float, shape=integers(2, 10), elements=valid_floats)
-        strategy = (x_strategy)
+        strategy = x_strategy
     else:
         raise NotImplementedError
 
@@ -37,7 +37,7 @@ def test_ackley(x, a, b, c):
 @given(*get_strategies("rastrigin"))
 def test_rastrigin(x, a):
     rastrigin(x, a)
-    
+
 
 @given(get_strategies("rosenbrock"))
 def test_rosenbrock(x):
