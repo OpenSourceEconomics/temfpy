@@ -10,8 +10,8 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
     r"""Ackley function.
 
     .. math::
-        f(x) = -a \\exp\\left(-b \\sqrt{\frac{1}{d} \\sum_{i=1}^d x_i^2}\right)
-        \\exp\\left(\frac{1}{d} \\sum_{i=1}^d \\cos(c x_i)\right) + a + \\exp(1)
+        f(x) = -a \exp{\left(-b \\sqrt{\frac{1}{d} \\sum_{i=1}^d x_i^2}\right)}
+        \exp{\left(\frac{1}{d} \\sum_{i=1}^d \\cos(c x_i)\right)} + a + \exp(1)
 
     Parameters
     ----------
@@ -37,6 +37,7 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
     and [M2005]_. It is characterized by an almost flat outer region and a central hole or peak
     where modulations become more and more influential. The function has
     its global minimum :math:`f(x) = 0` at :math:`x = (0, \\dots, 0)`.
+
     .. figure:: ../../docs/_static/images/fig-ackley.png
        :align: center
 
@@ -126,7 +127,7 @@ def rosenbrock(x):
     r"""Rosenbrock function.
 
     .. math::
-        f(x) = \sum^{d-1}_{i = 1} \left[100(x_{i+1}-x_i**2)**2 + (1-x_i^2) \right]
+        f(x) = \sum^{d-1}_{i = 1} \left[100(x_{i+1}-x_i^2)^2 + (1-x_i^2) \right]
 
     Parameters
     ----------
@@ -141,7 +142,7 @@ def rosenbrock(x):
     Notes
     -----
     The function was first proposed by Howard H. Rosenbrock in [R1960]_ and
-    is often also referred to, due to it's shape, as Rosenbrock's valley or
+    is often also referred to, due to its shape, as Rosenbrock's valley or
     Rosenbrock's Banana function.
     The function has its global minimum at
     :math:`x = \begin{pmatrix}1 & 1 & \dots & 1 \end{pmatrix}^T`
@@ -155,6 +156,7 @@ def rosenbrock(x):
        An Automatic Method for Finding the Greatest
        or Least Value of a Function.
        The Computer Journal, Volume 3, Issue 3, Pages 175-184
+
     Examples
     --------
     >>> from temfpy.optimization import rosenbrock
