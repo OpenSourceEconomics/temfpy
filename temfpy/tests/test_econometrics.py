@@ -4,6 +4,11 @@ import numpy as np
 import pandas as pd
 import patsy
 from estimagic.optimization.optimize import maximize
+from hypothesis import given
+from hypothesis import strategies as st
+from hypothesis.extra.numpy import arrays
+from hypothesis.strategies import floats
+from hypothesis.strategies import integers
 
 import temfpy.integration_methods
 from temfpy.econometrics import multinomial_processing
@@ -57,19 +62,24 @@ def data_generation(n_obs, n_var, choices, beta_low=-3, beta_high=3):
     return df
 
 
-cov_strategy = ["iid", "free"][np.random.randint(0, 2)]
-integration_strategy = ["mc_integration", "smooth_mc_integration", "gauss_integration"][
-    np.random.randint(0, 3)
-]
-algorithm_strategy = [
-    "scipy_L-BFGS-B",
-    "scipy_SLSQP",
-    "nlopt_bobyqa",
-    "nlopt_newuoa_bound",
-][np.random.randint(0, 4)]
-n_obs_strategy = np.random.randint(50, 501)
-n_var_strategy = np.random.randint(2, 11)
-choices = np.random.randint(2, 7)
+cov_strategy = arrays(np.str, 1, elements=st.sampled_from(["iid", "free"]))
+integration_strategy = arrays(
+    np.str,
+    1,
+    elements=st.sampled_from(
+        ["mc_integration", "smooth_mc_integration", "gauss_integration"]
+    ),
+)
+algorithm_strategy = arrays(
+    np.str,
+    1,
+    elements=st.sampled_from(
+        ["scipy_L-BFGS-B", "scipy_SLSQP", "nlopt_bobyqa", "nlopt_newuoa_bound"]
+    ),
+)
+n_obs_strategy = arrays(np.int, 1, elements=integers(50, 500))
+n_var_strategy = arrays(np.int, 1, elements=integers(2, 10))
+choices = arrays(np.int, 1, elements=integers(2, 7))
 
 strategy = (
     n_obs_strategy,
@@ -81,6 +91,7 @@ strategy = (
 )
 
 
+@given(*strategy)
 def test_multinomial_probit(
     n_obs_strategy,
     n_var_strategy,
