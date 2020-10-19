@@ -936,7 +936,7 @@ def chandrasekhar(x, y, c, a=2):
     x : array_like
         Input domain with dimension :math:`p`.
     y : array_like,
-        Array of constants with dimension :math:'p'
+        Array of constants with dimension :math:`p`
     a : float, optional
         The default value is 2
 
