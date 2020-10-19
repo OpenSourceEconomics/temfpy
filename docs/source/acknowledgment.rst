@@ -13,3 +13,4 @@ Acknowledgement
 - Luis Wardenbach (`luward <https://github.com/luward>`_)
 - Mila Kiseleva (`milakis <https://github.com/milakis>`_)
 - Leiqiong Wan (`loikein <https://github.com/loikein>`_)
+- Manuel Huth (`manuhuth <https://github.com/manuhuth>`_)
