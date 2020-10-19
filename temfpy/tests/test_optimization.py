@@ -39,6 +39,6 @@ def test_rastrigin(x, a):
     rastrigin(x, a)
     
 
-@given(*get_strategies("rosenbrock"))
+@given(get_strategies("rosenbrock"))
 def test_rosenbrock(x):
     rosenbrock(x)
