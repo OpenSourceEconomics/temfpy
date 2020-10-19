@@ -218,11 +218,11 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     r"""Multinomial probit model.
 
     .. math::
-    Y_i^1* &= X_i^T \beta_1 + \varepsilon_1 \\
-    Y_i^2* &= X_i^T \beta_2 + \varepsilon_2 \\
+    Y_i^1 &= X_i^T \beta_1 + \varepsilon_1 \\
+    Y_i^2 &= X_i^T \beta_2 + \varepsilon_2 \\
     \hdots \\
-    Y_i^m* &= X_i^T \beta_m + \varepsilon_m \\
-    Y_i &= \max \{Y_i^1*, Y_i^2*, \dots, Y_i^m*\}
+    Y_i^m &= X_i^T \beta_m + \varepsilon_m \\
+    Y_i &= \max \{Y_i^1, Y_i^2, \dots, Y_i^m\}
 
 
     Parameters
@@ -231,7 +231,7 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
               A patsy formula comprising the dependent and the independent variables.
 
     data : pd.DataFrame
-           A pandas data frame with shape :math:`(n_obs, nvar + 1)`
+           A pandas data frame with shape :math:`(n\_obs, n\_var + 1)`
 
     cov_structure : str
                     Available options are 'iid' or 'free'.
