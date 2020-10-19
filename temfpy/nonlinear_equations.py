@@ -108,7 +108,7 @@ def _exponential_jacobian(x, a=10, b=1):
 
 
 def exponential(x, a=10, b=1):
-    r"""exponential function and its analytical and numerical jacobians.
+    r"""Exponential function.
 
     .. math::
         x &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
@@ -248,7 +248,7 @@ def _trig_exp_val(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
 
 
 def _trig_exp_jacobian(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
-    r"""trigonometrical exponential function.
+    r"""Trigonometrical exponential function.
 
     .. math::
         x &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p \end{pmatrix}^T \\
@@ -333,7 +333,7 @@ def _trig_exp_jacobian(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
 
 
 def trig_exp(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
-    r"""trigonometrical exponential function.
+    r"""Trigonometrical exponential function.
 
     .. math::
         x &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
@@ -839,7 +839,7 @@ def troesch(x, rho=10, a=2):
 
 
 def _chandrasekhar_jacobian(x, y, c, a=2):
-    r"""Discretized version of Chandrasekhar’s H-equation:.
+    r"""Discretized version of Chandrasekhar’s H-equation.
 
     .. math::
         F_i(x) = x_i - \left(1 - \frac{c}{2p} \sum^p_{j=1}
