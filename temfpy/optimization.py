@@ -124,7 +124,7 @@ def rosenbrock(x):
     Notes
     -----
     The function was first proposed by Howard H. Rosenbrock in [R1960]_ and
-    is often also referred to, due to it's shape, as Rosenbrock's valley or 
+    is often also referred to, due to it's shape, as Rosenbrock's valley or
     Rosenbrock's Banana function.
     The function has its global minimum at
     :math:`x = \begin{pmatrix}1 & 1 & \dots & 1 \end{pmatrix}^T`
