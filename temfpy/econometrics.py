@@ -222,7 +222,7 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
         Y_i^{*2} &= X_i^T \beta_2 + \varepsilon_2 \\
         \vdots \\
         Y_i^{*m} &= X_i^T \beta_m + \varepsilon_m \\
-        Y_i &= \max \{Y_i^{*1}, Y_i^{*2}, \dots, Y_i^{*m}\}
+        Y_i &= \underset{}{\mathrm{argmin}} \{Y_i^{*j} \mid j = 1, \dots, m \}
 
 
     Parameters
@@ -232,6 +232,7 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
 
     data : pandas.DataFrame
            A pandas data frame with shape :math:`(n\_obs, n\_var + 1)`
+           including the dependent variable and the independent variables.
 
     cov_structure : str
                     Available options are 'iid' or 'free'.
