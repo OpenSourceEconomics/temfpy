@@ -1033,7 +1033,7 @@ def _chandrasekhar_jacobian(x, y, c, a=2):
     _check_if_array(y, "y")
 
     if len(x) != len(y):
-        sys.exit(f"The arrays `x` and `y` must have the same length.")
+        sys.exit("The arrays `x` and `y` must have the same length.")
     x = np.array(x)
     y = np.array(y)
 
@@ -1133,7 +1133,7 @@ def chandrasekhar(x, y, c, a=2):
     _check_if_array(y, "y")
 
     if len(x) != len(y):
-        sys.exit(f"The arrays `x` and `y` must have the same length.")
+        sys.exit("The arrays `x` and `y` must have the same length.")
     x = np.array(x)
     y = np.array(y)
 
