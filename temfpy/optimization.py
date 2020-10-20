@@ -2,7 +2,6 @@
 This module contains a host of models and functions often used for testing optimization algorithms.
 """
 import numpy as np
-
 from scipy.optimize import rosen
 
 

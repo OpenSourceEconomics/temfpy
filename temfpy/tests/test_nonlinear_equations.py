@@ -5,12 +5,12 @@ from hypothesis.extra.numpy import arrays
 from hypothesis.strategies import floats
 from hypothesis.strategies import integers
 
-from temfpy.nonlinear_equations import exponential
-from temfpy.nonlinear_equations import trig_exp
 from temfpy.nonlinear_equations import broyden
-from temfpy.nonlinear_equations import rosenbrock_ext
-from temfpy.nonlinear_equations import troesch
 from temfpy.nonlinear_equations import chandrasekhar
+from temfpy.nonlinear_equations import exponential
+from temfpy.nonlinear_equations import rosenbrock_ext
+from temfpy.nonlinear_equations import trig_exp
+from temfpy.nonlinear_equations import troesch
 
 
 def get_strategies(name):
@@ -33,7 +33,9 @@ def get_strategies(name):
         strategy = (x_strategy, a_strategy)
     elif name == "troesch":
         x_strategy = arrays(
-            np.float, 3, elements=floats(-3, 3, allow_nan=False, allow_infinity=False)
+            np.float,
+            3,
+            elements=floats(-3, 3, allow_nan=False, allow_infinity=False),
         )
         strategy = (x_strategy, integers(1, 100), integers(1, 100))
     elif name == "chandrasekhar":

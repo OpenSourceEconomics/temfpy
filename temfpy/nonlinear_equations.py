@@ -2,11 +2,11 @@
 We provide a variety of non-linear equations used for testing
 numerical optimization algorithms.
 """
-
-import numpy as np
-import numdifftools as nd
-import pandas as pd
 import sys
+
+import numdifftools as nd
+import numpy as np
+import pandas as pd
 
 
 def _check_if_number(a, name):
@@ -17,8 +17,7 @@ def _check_if_number(a, name):
     a : object
         Object for which it should be tested whether it is a number or not.
     name : str
-           String including the name of the object that
-           appears in the error notification.
+        String including the name of the object that appears in the error notification.
 
     Examples
     --------
@@ -35,10 +34,9 @@ def _check_if_number(a, name):
 
 
 def _check_if_array(x, name, length=None, length_type="equal"):
-    r"""Function to check if object `x`
-        is an array and optionally if it has a specified length.
-        Currently considered as arrays are
-        list, numpy.array or pandas.Series typer of objects.
+    r"""Function to check if object `x` is an array and optionally if it has a specified length.
+
+        Currently considered as arrays are list, numpy.array or pandas.Series type of objects.
 
     Parameters
     ----------
@@ -69,17 +67,17 @@ def _check_if_array(x, name, length=None, length_type="equal"):
     """
     if not isinstance(x, (list, pd.core.series.Series, np.ndarray)):
         sys.exit(
-            f"The parameter `{name}` must either be a list, numpy.array or pandas.Series."
+            f"The parameter `{name}` must either be a list, numpy.array or pandas.Series.",
         )
     if length is not None:
-        if (length_type == "equal") & (len(x) != length):
+        if (length_type == "equal") and (len(x) != length):
             sys.exit(f"The array `{name}` must have length {length}.")
-        if (length_type == "grtr_equ") & (len(x) < length):
+        if (length_type == "grtr_equ") and (len(x) < length):
             sys.exit(f"The array `{name}` must have at least length {length}.")
 
 
 def _exponential_val(x, a=10, b=1):
-    r"""exponential function.
+    r"""Exponential function.
 
     .. math::
         x &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
@@ -132,8 +130,8 @@ def _exponential_jacobian(x, a=10, b=1):
     r"""Analytical and numerical jacobian of the exponential function.
 
     .. math::
-        F_1(x) &= e^{x_1} - b \\
-        F_i(x) &= \frac{i}{a} (e^{x_i} +x_{i-1}) - b, i = 2,3, \dots, p
+       F_1(x) &= e^{x_1} - b \\
+       F_i(x) &= \frac{i}{a} (e^{x_i} +x_{i-1}) - b, i = 2,3, \dots, p
 
     Parameters
     ----------
@@ -175,10 +173,11 @@ def _exponential_jacobian(x, a=10, b=1):
     diag_mat = np.diag(
         np.exp(np.array(x))
         * np.array(range(1, p + 1))
-        / np.append([1], np.repeat(a, p - 1))
+        / np.append([1], np.repeat(a, p - 1)),
     )
     off_diag_mat = np.diag(
-        np.array(range(2, p + 1)) / np.array(np.repeat(a, p - 1)), k=-1
+        np.array(range(2, p + 1)) / np.array(np.repeat(a, p - 1)),
+        k=-1,
     )
     jacobian = diag_mat + off_diag_mat
 
@@ -216,9 +215,9 @@ def exponential(x, a=10, b=1):
 
     References
     ----------
-    .. [V2009]_ Varadhan, R., and Gilbert, P. D. (2009).
-    BB: An R Package for Solving a Large System of Nonlinear Equations and for
-    Optimizing a High-Dimensional Nonlinear Objective Function.
+    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R Package for Solving a Large
+               System of Nonlinear Equations and for Optimizing a High-Dimensional Nonlinear
+               Objective Function. *Journal of Statistical Software*, 32(1):1–26, 2009.
 
     Examples
     --------
@@ -336,7 +335,7 @@ def _trig_exp_val(x, a=None):
         a[0] * x[0] ** 3
         + a[1] * x[1]
         - a[2]
-        + np.sin(x[0] - x[1]) * np.sin(x[0] + x[1])
+        + np.sin(x[0] - x[1]) * np.sin(x[0] + x[1]),
     ]
     for i in range(2, p):
         rslt.append(_trig_exp_i(xi=x[(i - 2) : (i + 1)], a=a))
@@ -402,7 +401,7 @@ def _trig_exp_jacobian(x, a=None):
                 np.array(
                     3 * a[0] * x[0] ** 2
                     + np.sin(x[0] - x[1]) * np.cos(x[0] + x[1])
-                    + np.cos(x[0] - x[1]) * np.sin(x[0] + x[1])
+                    + np.cos(x[0] - x[1]) * np.sin(x[0] + x[1]),
                 ),
                 (
                     x_im1 * np.exp(x_im1 - x_i)
@@ -414,7 +413,7 @@ def _trig_exp_jacobian(x, a=None):
                 np.array(x[p - 2] * np.exp(x[p - 2] - x[p - 1]) + a[7]),
             ),
             axis=None,
-        )
+        ),
     )
     off_diag_p1_mat = np.diag(
         (
@@ -462,16 +461,14 @@ def trig_exp(x, a=None):
     -------
     array_like
         Output domain
-
     array_like
-        Tuple containing the analytically derived Jacobian and the
-        numerically derived Jacobian
+        Tuple containing the analytically derived Jacobian and the numerically derived Jacobian.
 
     References
     ----------
-    .. [V2009]_ Varadhan, R., and Gilbert, P. D. (2009).
-    BB: An R Package for Solving a Large System of Nonlinear Equations and for
-    Optimizing a High-Dimensional Nonlinear Objective Function.
+    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R Package for Solving a Large
+               System of Nonlinear Equations and for Optimizing a High-Dimensional Nonlinear
+               Objective Function. *Journal of Statistical Software*, 32(1):1–26, 2009.
 
     Examples
     --------
@@ -606,32 +603,31 @@ def broyden(x, a=None):
     r"""Broyden tridiagonal function.
 
     .. math::
-        x &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
-        F_1(x) &= x_1(a_1 - a_2 x_1) -a_3 x_{2} + a_4 \\
-        F_i(x) &= x_i(a_1 - a_2 x_i)-x_{i-1} -a_3 x_{i+1} + a_4 \\
-        & \quad i = 2,3, \dots, p-1 \\
-        F_p(x) &= x_p(a_1 - a_2 x_p)-x_{p-1} + a_4
+       x &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
+       F_1(x) &= x_1(a_1 - a_2 x_1) -a_3 x_{2} + a_4 \\
+       F_i(x) &= x_i(a_1 - a_2 x_i)-x_{i-1} -a_3 x_{i+1} + a_4 \\
+       & \quad i = 2,3, \dots, p-1 \\
+       F_p(x) &= x_p(a_1 - a_2 x_p)-x_{p-1} + a_4
 
     Parameters
     ----------
     x : array_like
         Input domain with dimension :math:`p`.
     a : array_like, optional
-        The default array is [3, 0.5, 2, 1]
+        The default array is [3, 0.5, 2, 1].
 
     Returns
     -------
     array_like
-        Output domain
+        Output domain.
     array_like
-        Tuple containing the analytically derived Jacobian and the
-        numerically derived Jacobian
+        Tuple containing the analytically derived Jacobian and the numerically derived Jacobian.
 
     References
     ----------
-    .. [V2009]_ Varadhan, R., and Gilbert, P. D. (2009).
-    BB: An R Package for Solving a Large System of Nonlinear Equations and for
-    Optimizing a High-Dimensional Nonlinear Objective Function.
+    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R Package for Solving a Large
+               System of Nonlinear Equations and for Optimizing a High-Dimensional Nonlinear
+               Objective Function. *Journal of Statistical Software*, 32(1):1–26, 2009.
 
     Examples
     --------
@@ -700,10 +696,10 @@ def _rosenbrock_ext_val(x, a=None):
 
     xl = np.concatenate((np.delete(x, 0), 0), axis=None)
     xh = np.concatenate((np.delete(x, p - 1), 0), axis=None)
-    F_odd = a[0] * (xl - xh ** 2) * np.resize((1, 0), p)
-    F_even = np.delete(1 - np.concatenate((0, x), axis=None), p) * np.resize((0, 1), p)
+    f_odd = a[0] * (xl - xh ** 2) * np.resize((1, 0), p)
+    f_even = np.delete(1 - np.concatenate((0, x), axis=None), p) * np.resize((0, 1), p)
 
-    rslt = F_odd + F_even
+    rslt = f_odd + f_even
 
     return np.array(rslt)
 
@@ -790,7 +786,7 @@ def rosenbrock_ext(x, a=None):
 
     References
     ----------
-    .. [V2009]_ Varadhan, R., and Gilbert, P. D. (2009).
+    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009).
     BB: An R Package for Solving a Large System of Nonlinear Equations and for
     Optimizing a High-Dimensional Nonlinear Objective Function.
 
@@ -918,7 +914,9 @@ def _troesch_jacobian(x, rho=10, a=2):
 
     diag_mat = np.diag(
         np.repeat(a, p)
-        + np.repeat(rho ** 2, p) * np.repeat(h ** 2, p) * np.cosh(np.repeat(rho, p) * x)
+        + np.repeat(rho ** 2, p)
+        * np.repeat(h ** 2, p)
+        * np.cosh(np.repeat(rho, p) * x),
     )
     off_diag_p1_mat = np.diag(np.repeat(-1, p - 1), k=1)
     off_diag_m1_mat = np.diag(np.repeat(-1, p - 1), k=-1)
@@ -960,9 +958,9 @@ def troesch(x, rho=10, a=2):
 
     References
     ----------
-    .. [V2009]_ Varadhan, R., and Gilbert, P. D. (2009).
-    BB: An R Package for Solving a Large System of Nonlinear Equations and for
-    Optimizing a High-Dimensional Nonlinear Objective Function.
+    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R Package for Solving a Large
+               System of Nonlinear Equations and for Optimizing a High-Dimensional Nonlinear
+               Objective Function. *Journal of Statistical Software*, 32(1):1–26, 2009.
 
     Examples
     --------
@@ -1078,7 +1076,7 @@ def _chandrasekhar_jacobian(x, y, c, a=2):
 
 
 def chandrasekhar(x, y, c, a=2):
-    r"""Discretized version of Chandrasekhar’s H-equation:.
+    r"""Discretized version of Chandrasekhar’s H-equation.
 
     .. math::
         x &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
@@ -1105,9 +1103,9 @@ def chandrasekhar(x, y, c, a=2):
 
     References
     ----------
-    .. [V2009]_ Varadhan, R., and Gilbert, P. D. (2009).
-    BB: An R Package for Solving a Large System of Nonlinear Equations and for
-    Optimizing a High-Dimensional Nonlinear Objective Function.
+    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R Package for Solving a Large
+               System of Nonlinear Equations and for Optimizing a High-Dimensional Nonlinear
+               Objective Function. *Journal of Statistical Software*, 32(1):1–26, 2009.
 
     Examples
     --------
