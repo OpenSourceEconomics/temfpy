@@ -218,7 +218,7 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     r"""Multinomial probit model.
 
     .. math::
-        \text{for } i = 1, \dots, n, j = 1, \dots, m \text{ and }
+        i = 1, \dots, n, j = 1, \dots, m \\
         \beta_j, X_i \in \mathbb{R}^{k} \\
         Y_i^{*j} &= X_i^T \beta_j + \varepsilon_j \\
         Y_i &= \underset{}{\mathrm{argmax}} \{Y_i^{*j} \mid j = 1, \dots, m \}
