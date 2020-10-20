@@ -28,7 +28,7 @@ dependencies:
   - nbsphinx
   - hypothesis
   - numdifftools
-  - sys
+
   - pip:
     - salib==1.3.8
     - isort
