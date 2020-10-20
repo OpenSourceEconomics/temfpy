@@ -25,6 +25,8 @@ def _check_if_number(a, name):
     >>> import numpy as np
     >>> import pandas as pd
     >>> import sys
+    >>>
+    >>> from temfpy.nonlinear_equations import _check_if_number
     >>> a = 10
     >>> _check_if_number(a, 'a')
     """
@@ -60,6 +62,7 @@ def _check_if_array(x, name, length=None, length_type="equal"):
     >>> import numpy as np
     >>> import pandas as pd
     >>> import sys
+    >>> from temfpy.nonlinear_equations import _check_if_array
     >>>
     >>> x = [10, 1, 4, 6]
     >>> _check_if_array(x, 'x')
@@ -1027,7 +1030,7 @@ def _chandrasekhar_jacobian(x, y, c, a=2):
     _check_if_number(a, "a")
 
     _check_if_array(x, "x", length=1, length_type="grtr_equ")
-    _check_if_array(y)
+    _check_if_array(y, "y")
 
     if len(x) != len(y):
         sys.exit(f"The arrays `x` and `y` must have the same length.")
@@ -1127,7 +1130,7 @@ def chandrasekhar(x, y, c, a=2):
     _check_if_number(a, "a")
 
     _check_if_array(x, "x", length=1, length_type="grtr_equ")
-    _check_if_array(y, "x")
+    _check_if_array(y, "y")
 
     if len(x) != len(y):
         sys.exit(f"The arrays `x` and `y` must have the same length.")
