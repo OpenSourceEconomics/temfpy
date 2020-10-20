@@ -218,11 +218,10 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     r"""Multinomial probit model.
 
     .. math::
-        Y_i^{*1} &= X_i^T \beta_1 + \varepsilon_1 \\
-        Y_i^{*2} &= X_i^T \beta_2 + \varepsilon_2 \\
-        \vdots \\
-        Y_i^{*m} &= X_i^T \beta_m + \varepsilon_m \\
-        Y_i &= \underset{}{\mathrm{argmin}} \{Y_i^{*j} \mid j = 1, \dots, m \}
+        \text{for} i = 1, \dots, n, j = 1, \dots, m \text{ and }
+        \beta_j, X_i \in \mathbb{R}^{k}
+        Y_i^{*j} &= X_i^T \beta_j + \varepsilon_j \\
+        Y_i &= \underset{}{\mathrm{argmax}} \{Y_i^{*j} \mid j = 1, \dots, m \}
 
 
     Parameters
@@ -231,7 +230,7 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
               A patsy formula comprising the dependent and the independent variables.
 
     data : pandas.DataFrame
-           A pandas data frame with shape :math:`(n\_obs, n\_var + 1)`
+           A pandas data frame with shape :math:`(n, k+1)`
            including the dependent variable and the independent variables.
 
     cov_structure : str
@@ -252,12 +251,13 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
                  Information of the optimization.
 
     params: Parameters
-            :math:'\beta_j' that minimize the value of the log-likelihood function.
+            :math:`\beta_j` for :math:`j = 1, \dots, m` that
+            maximize the value of the log-likelihood function.
 
     Notes
     -----
-    The function fits a multinomial probit model to discrete choice
-    data via maximum likelihood estimation.
+        The function fits a multinomial probit model to discrete choice
+        data via maximum likelihood estimation.
 
 
     References
