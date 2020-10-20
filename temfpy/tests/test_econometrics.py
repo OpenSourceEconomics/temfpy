@@ -72,7 +72,7 @@ def test_multinomial_probit():
     "nlopt_bobyqa",
     "nlopt_newuoa_bound",
     ][np.random.randint(0, 4)]
-    data = data_generation(n_obs_strategy, n_var_strategy, choices)
+    data = data_generation(n_obs_strategy, n_var_strategy, choices, seed=10)
     all_columns = "+".join(data.columns.difference(["Y"]))
     formula = "Y~" + all_columns
     multinomial_probit(formula, data, cov_strategy, integration_strategy, algorithm_strategy)
