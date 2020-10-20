@@ -290,7 +290,6 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
             "integration_method": integration_method,
         },
         constraints=constraints,
-        dashboard=True,
     )
 
     return result
