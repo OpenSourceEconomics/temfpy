@@ -5,6 +5,74 @@ numerical optimization algorithms.
 
 import numpy as np
 import numdifftools as nd
+import pandas as pd
+import sys
+
+
+def _check_if_number(a, name):
+    r"""Function to check if object `a` is a number.
+
+    Parameters
+    ----------
+    a : object
+        Object for which it should be tested whether it is a number or not.
+    name : str
+           String including the name of the object that
+           appears in the error notification.
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> import pandas as pd
+    >>> import sys
+    >>> a = 10
+    >>> _check_if_number(a, 'a')
+    """
+    if not (isinstance(a, (int, float)) and not isinstance(a, bool)):
+        sys.exit(f"The parameter `{name}` must either be of type int or float.")
+
+
+def _check_if_array(x, name, length=None, length_type="equal"):
+    r"""Function to check if object `x`
+        is an array and optionally if it has a specified length.
+        Currently considered as arrays are
+        list, numpy.array or pandas.Series typer of objects.
+
+    Parameters
+    ----------
+    x : object
+        Object for which it should be tested whether it is an array or not.
+    name : str
+           String including the name of the object that
+           appears in the error notification.
+    length : int
+             Desired length of array `x` for which the function
+             does not yield an error notification.
+    length_type : str
+                  Indicates how the array length should be evaluated.
+                  'equal' yields an error if the length of `x`
+                  is not equal to the integer specified for `length`
+                  and 'grtr_equ' yields an error if the length of `x`
+                  is smaller.
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> import pandas as pd
+    >>> import sys
+    >>>
+    >>> x = [10, 1, 4, 6]
+    >>> _check_if_array(x, 'x')
+    """
+    if not isinstance(x, (list, pd.core.series.Series, np.ndarray)):
+        sys.exit(
+            f"The parameter `{name}` must either be a list, numpy.array or pandas.Series."
+        )
+    if length is not None:
+        if (length_type == "equal") & (len(x) != length):
+            sys.exit(f"The array `{name}` must have length {length}.")
+        if (length_type == "grtr_equ") & (len(x) < length):
+            sys.exit(f"The array `{name}` must have at least length {length}.")
 
 
 def _exponential_val(x, a=10, b=1):
@@ -40,6 +108,11 @@ def _exponential_val(x, a=10, b=1):
     >>> x = np.random.normal(size = p)
     >>> value = _exponential_val(x)
     """
+    _check_if_number(a, "a")
+    _check_if_number(b, "b")
+    _check_if_array(x, "x", length=1, length_type="grtr_equ")
+    x = np.array(x)
+
     p = len(x)
 
     x_im1 = np.concatenate((0, np.delete(x, p - 1)), axis=None)
@@ -88,6 +161,11 @@ def _exponential_jacobian(x, a=10, b=1):
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
     True
     """
+    _check_if_number(a, "a")
+    _check_if_number(b, "b")
+    _check_if_array(x, "x", length=1, length_type="grtr_equ")
+    x = np.array(x)
+
     p = len(x)
     x = np.array(x)
 
@@ -129,16 +207,16 @@ def exponential(x, a=10, b=1):
     -------
     array_like
         Output domain
-    numpy.array
-        Analytically derived Jacobian
-    numpy.array
-        Numerically derived Jacobian
+    array_like
+        Tuple containing the analytically derived Jacobian and the
+        numerically derived Jacobian
 
     References
     ----------
-    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009).
+    .. [V2009]_ Varadhan, R., and Gilbert, P. D. (2009).
     BB: An R Package for Solving a Large System of Nonlinear Equations and for
     Optimizing a High-Dimensional Nonlinear Objective Function.
+
     Examples
     --------
     >>> import numpy as np
@@ -158,14 +236,15 @@ def exponential(x, a=10, b=1):
     return _exponential_val(x, a=a, b=b), _exponential_jacobian(x, a=a, b=b)
 
 
-def _trig_exp_i(xi, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
-    r"""trigonometrical exponential function. Used to build
+def _trig_exp_i(xi, a=None):
+    r"""Trigonometrical exponential function. Used to build
     the function trig_exp_val.
 
     .. math::
         F_i(x) = - x_{i-1}e^(x_{i-1} - x_i) + x_i(a_4+a_5x_i^2)
         + a_6x_{i+1} + \sin(x_i - x_{i+1})\sin(x_i + x_{i+1}) - a_7,
         i = 2,3, \dots, p-1
+
     Parameters
     ----------
     x_i : array_like
@@ -189,6 +268,14 @@ def _trig_exp_i(xi, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
     >>> x = np.random.normal(size = p)
     >>> F_i = _trig_exp_i(x)
     """
+    if a is None:
+        a = [3, 2, 5, 4, 3, 2, 8, 4, 3]
+
+    _check_if_array(a, "a", length=9)
+    _check_if_array(xi, "xi", length=3)
+    xi = np.array(xi)
+    a = np.array(a)
+
     rslt = (
         -xi[0] * np.exp(xi[0] - xi[1])
         + xi[1] * (a[3] + a[4] * xi[1] ** 2)
@@ -200,8 +287,8 @@ def _trig_exp_i(xi, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
     return rslt
 
 
-def _trig_exp_val(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
-    r"""trigonometrical exponential function.
+def _trig_exp_val(x, a=None):
+    r"""Trigonometrical exponential function.
 
     .. math::
         F_1(x) &= a_1x_1^3 + a_2x_2 - a_3 + \sin(x_1 - x_2)\sin(x1+x2) \\
@@ -209,11 +296,11 @@ def _trig_exp_val(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
         + a_6x_{i+1} + \sin(x_i - x_{i+1})\sin(x_i + x_{i+1}) - a_7,
         i = 2,3, \dots, p-1 \\
         F_p(x) &= -x_{p-1}e^{x_{p-1}-x_p} + a_8x_p - a_9
+
     Parameters
     ----------
     x : array_like
         Input domain with dimension :math:`p > 1`.
-
     a : array_like, optional
         The default array is [3,2,5,4,3,2,8,4,3].
 
@@ -233,6 +320,14 @@ def _trig_exp_val(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
     >>> x = np.random.normal(size = p)
     >>> value = _trig_exp_val(x)
     """
+    if a is None:
+        a = [3, 2, 5, 4, 3, 2, 8, 4, 3]
+
+    _check_if_array(a, "a", length=9)
+    _check_if_array(x, "x", length=1, length_type="grtr_equ")
+    x = np.array(x)
+    a = np.array(a)
+
     p = len(x)
     rslt = [
         a[0] * x[0] ** 3
@@ -248,7 +343,7 @@ def _trig_exp_val(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
     return np.array(rslt)
 
 
-def _trig_exp_jacobian(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
+def _trig_exp_jacobian(x, a=None):
     r"""Trigonometrical exponential function.
 
     .. math::
@@ -259,11 +354,11 @@ def _trig_exp_jacobian(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
         & \quad + \sin(x_i - x_{i+1})\sin(x_i + x_{i+1}) - a_7,
         i = 2,3, \dots, p-1 \\
         F_p(x) &= -x_{p-1}e^{x_{p-1}-x_p} + a_8x_p - a_9
+
     Parameters
     ----------
     x : array_like
         Input domain with dimension :math:`p`.
-
     a : array_like, optional
         The default array is [3,2,5,4,3,2,8,4,3].
 
@@ -285,6 +380,14 @@ def _trig_exp_jacobian(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
     True
     """
+    if a is None:
+        a = [3, 2, 5, 4, 3, 2, 8, 4, 3]
+
+    _check_if_array(a, "a", length=9)
+    _check_if_array(x, "x", length=1, length_type="grtr_equ")
+    x = np.array(x)
+    a = np.array(a)
+
     p = len(x)
 
     x_im1 = np.delete(x, [p - 1, p - 2])
@@ -333,7 +436,7 @@ def _trig_exp_jacobian(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
     return jacobian, jacobian_numdiff
 
 
-def trig_exp(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
+def trig_exp(x, a=None):
     r"""Trigonometrical exponential function.
 
     .. math::
@@ -344,11 +447,11 @@ def trig_exp(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
         & \quad + \sin(x_i - x_{i+1})\sin(x_i + x_{i+1}) - a_7 \\
         & \quad i = 2,3, \dots, p-1 \\
         F_p(x) &= -x_{p-1}e^{x_{p-1}-x_p} + a_8x_p - a_9
+
     Parameters
     ----------
     x : array_like
         Input domain with dimension :math:`p > 1`.
-
     a : array_like, optional
         The default array is [3,2,5,4,3,2,8,4,3].
 
@@ -356,13 +459,14 @@ def trig_exp(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
     -------
     array_like
         Output domain
-    numpy.array
-        Analytically derived Jacobian
-    numpy.array
-        Numerically derived Jacobian
+
+    array_like
+        Tuple containing the analytically derived Jacobian and the
+        numerically derived Jacobian
+
     References
     ----------
-    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009).
+    .. [V2009]_ Varadhan, R., and Gilbert, P. D. (2009).
     BB: An R Package for Solving a Large System of Nonlinear Equations and for
     Optimizing a High-Dimensional Nonlinear Objective Function.
 
@@ -381,11 +485,13 @@ def trig_exp(x, a=[3, 2, 5, 4, 3, 2, 8, 4, 3]):
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
     True
     """
+    if a is None:
+        a = [3, 2, 5, 4, 3, 2, 8, 4, 3]
 
     return _trig_exp_val(x, a=a), _trig_exp_jacobian(x, a=a)
 
 
-def _broyden_val(x, a=[3, 0.5, 2, 1]):
+def _broyden_val(x, a=None):
     r"""Broyden tridiagonal function.
 
     .. math::
@@ -417,6 +523,14 @@ def _broyden_val(x, a=[3, 0.5, 2, 1]):
     >>> x = - np.random.uniform(size = p)
     >>> value = _broyden_val(x)
     """
+    if a is None:
+        a = [3, 0.5, 2, 1]
+
+    _check_if_array(a, "a", length=4)
+    _check_if_array(x, "x", length=1, length_type="grtr_equ")
+    x = np.array(x)
+    a = np.array(a)
+
     p = len(x)
 
     x_ip1 = np.concatenate((np.delete(x, 0), 0), axis=None)
@@ -427,7 +541,7 @@ def _broyden_val(x, a=[3, 0.5, 2, 1]):
     return np.array(rslt)
 
 
-def _broyden_jacobian(x, a=[3, 0.5, 2, 1]):
+def _broyden_jacobian(x, a=None):
     r"""Broyden tridiagonal function.
 
     .. math::
@@ -463,6 +577,14 @@ def _broyden_jacobian(x, a=[3, 0.5, 2, 1]):
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
     True
     """
+    if a is None:
+        a = [3, 0.5, 2, 1]
+
+    _check_if_array(a, "a", length=4)
+    _check_if_array(x, "x", length=1, length_type="grtr_equ")
+    x = np.array(x)
+    a = np.array(a)
+
     p = len(x)
 
     jacobian = (
@@ -477,7 +599,7 @@ def _broyden_jacobian(x, a=[3, 0.5, 2, 1]):
     return jacobian, jacobian_numdiff
 
 
-def broyden(x, a=[3, 0.5, 2, 1]):
+def broyden(x, a=None):
     r"""Broyden tridiagonal function.
 
     .. math::
@@ -498,14 +620,13 @@ def broyden(x, a=[3, 0.5, 2, 1]):
     -------
     array_like
         Output domain
-    numpy.array
-        Analytically derived Jacobian
-    numpy.array
-        Numerically derived Jacobian
+    array_like
+        Tuple containing the analytically derived Jacobian and the
+        numerically derived Jacobian
 
     References
     ----------
-    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009).
+    .. [V2009]_ Varadhan, R., and Gilbert, P. D. (2009).
     BB: An R Package for Solving a Large System of Nonlinear Equations and for
     Optimizing a High-Dimensional Nonlinear Objective Function.
 
@@ -524,11 +645,13 @@ def broyden(x, a=[3, 0.5, 2, 1]):
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
     True
     """
+    if a is None:
+        a = [3, 0.5, 2, 1]
 
     return _broyden_val(x=x, a=a), _broyden_jacobian(x=x, a=a)
 
 
-def _rosenbrock_ext_val(x, a=[10, 1]):
+def _rosenbrock_ext_val(x, a=None):
     r"""Extended-Rosenbrock function.
 
     .. math::
@@ -562,6 +685,14 @@ def _rosenbrock_ext_val(x, a=[10, 1]):
 
 
     """
+    if a is None:
+        a = [10, 1]
+
+    _check_if_array(a, "a", length=2)
+    _check_if_array(x, "x", length=1, length_type="grtr_equ")
+    x = np.array(x)
+    a = np.array(a)
+
     p = len(x)
 
     xl = np.concatenate((np.delete(x, 0), 0), axis=None)
@@ -574,7 +705,7 @@ def _rosenbrock_ext_val(x, a=[10, 1]):
     return np.array(rslt)
 
 
-def _rosenbrock_ext_jacobian(x, a=[10, 1]):
+def _rosenbrock_ext_jacobian(x, a=None):
     r"""Extended-Rosenbrock function.
 
     .. math::
@@ -595,6 +726,7 @@ def _rosenbrock_ext_jacobian(x, a=[10, 1]):
         Analytically derived Jacobian
     numpy.array
         Numerically derived Jacobian
+
     Examples
     --------
     >>> import numpy as np
@@ -608,6 +740,14 @@ def _rosenbrock_ext_jacobian(x, a=[10, 1]):
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
     True
     """
+    if a is None:
+        a = [10, 1]
+
+    _check_if_array(a, "a", length=2)
+    _check_if_array(x, "x", length=1, length_type="grtr_equ")
+    x = np.array(x)
+    a = np.array(a)
+
     p = len(x)
 
     diag_mat = np.diag(np.repeat(-2, p) * np.repeat(a[0], p) * x * np.resize([1, 0], p))
@@ -621,7 +761,7 @@ def _rosenbrock_ext_jacobian(x, a=[10, 1]):
     return jacobian, jacobian_numdiff
 
 
-def rosenbrock_ext(x, a=[10, 1]):
+def rosenbrock_ext(x, a=None):
     r"""Extended-Rosenbrock function.
 
     .. math::
@@ -630,7 +770,6 @@ def rosenbrock_ext(x, a=[10, 1]):
         F_{2i}(x) &= a_2 - x_{2i-1}, \\
         & \quad i = 1,2,3, \dots, \frac{p}{2}
 
-
     Parameters
     ----------
     x : array_like
@@ -638,24 +777,19 @@ def rosenbrock_ext(x, a=[10, 1]):
     a : array_like, optional
         The default array is [10,1]
 
-
     Returns
     -------
     array_like
         Output domain
-    numpy.array
-        Analytically derived Jacobian
-    numpy.array
-        Numerically derived Jacobian
-    Notes
-    -----
+    array_like
+        Tuple containing the analytically derived Jacobian and the
+        numerically derived Jacobian
 
     References
     ----------
-    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009).
+    .. [V2009]_ Varadhan, R., and Gilbert, P. D. (2009).
     BB: An R Package for Solving a Large System of Nonlinear Equations and for
     Optimizing a High-Dimensional Nonlinear Objective Function.
-
 
     Examples
     --------
@@ -673,6 +807,8 @@ def rosenbrock_ext(x, a=[10, 1]):
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
     True
     """
+    if a is None:
+        a = [10, 1]
 
     return _rosenbrock_ext_val(x=x, a=a), _rosenbrock_ext_jacobian(x=x, a=a)
 
@@ -685,7 +821,6 @@ def _troesch_val(x, rho=10, a=2):
         F_i(x) &= a_1x_i + \rho h^2 \sinh(\rho x_i) - x_{i-1} - x_{i+1}, i = 2,3, \dots, p-1\\
         F_p(x) &= a_1x_p + \rho h^2 \sinh(\rho x_p) - x_{p-1}
 
-
     Parameters
     ----------
     x : array_like
@@ -694,7 +829,6 @@ def _troesch_val(x, rho=10, a=2):
         The default value is 10
     a : float, optional
         The default value is 2
-
 
     Returns
     -------
@@ -715,6 +849,11 @@ def _troesch_val(x, rho=10, a=2):
     >>> x = np.random.uniform(size = p)
     >>> val = _troesch_val(x)
     """
+    _check_if_number(rho, "rho")
+    _check_if_number(a, "a")
+    _check_if_array(x, "x", length=1, length_type="grtr_equ")
+    x = np.array(x)
+
     p = len(x)
     h = 1 / (p + 1)
 
@@ -730,9 +869,12 @@ def _troesch_jacobian(x, rho=10, a=2):
     r"""Troesch function.
 
     .. math::
-        F_1(x) &= a_1x_1 + \rho h^2 \sinh(\rho x_1) - x_{2}, \\
-        F_i(x) &= a_1x_i + \rho h^2 \sinh(\rho x_i) - x_{i-1} - x_{i+1}, i = 2,3, \dots, p-1\\
-        F_p(x) &= a_1x_p + \rho h^2 \sinh(\rho x_p) - x_{p-1}
+        x &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
+        h &= \frac{1}{p+1} \\
+        F_1(x) &= ax_1 + \rho h^2 \sinh(\rho x_1) - x_{2}, \\
+        F_i(x) &= ax_i + \rho h^2 \sinh(\rho x_i) - x_{i-1} - x_{i+1} \\
+        & \quad i = 2,3, \dots, p-1 \\
+        F_p(x) &= ax_p + \rho h^2 \sinh(\rho x_p) - x_{p-1
 
     Parameters
     ----------
@@ -743,16 +885,12 @@ def _troesch_jacobian(x, rho=10, a=2):
     a : float, optional
         The default value is 2
 
-
     Returns
     -------
     numpy.array
         Analytically derived Jacobian
     numpy.array
         Numerically derived Jacobian
-    Notes
-    -----
-    :math:'h = \frac{1}{p+1}'
 
     Examples
     --------
@@ -767,6 +905,11 @@ def _troesch_jacobian(x, rho=10, a=2):
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
     True
     """
+    _check_if_number(rho, "rho")
+    _check_if_number(a, "a")
+    _check_if_array(x, "x", length=1, length_type="grtr_equ")
+    x = np.array(x)
+
     p = len(x)
     h = 1 / (p + 1)
 
@@ -804,20 +947,17 @@ def troesch(x, rho=10, a=2):
     a : float, optional
         The default value is 2
 
-
     Returns
     -------
     array_like
         Output domain
-    numpy.array
-        Analytically derived Jacobian
-    numpy.array
-        Numerically derived Jacobian
-
+    array_like
+        Tuple containing the analytically derived Jacobian and the
+        numerically derived Jacobian
 
     References
     ----------
-    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009).
+    .. [V2009]_ Varadhan, R., and Gilbert, P. D. (2009).
     BB: An R Package for Solving a Large System of Nonlinear Equations and for
     Optimizing a High-Dimensional Nonlinear Objective Function.
 
@@ -859,7 +999,6 @@ def _chandrasekhar_jacobian(x, y, c, a=2):
     a : float, optional
         The default value is 2
 
-
     Returns
     -------
     numpy.array
@@ -883,6 +1022,17 @@ def _chandrasekhar_jacobian(x, y, c, a=2):
     True
 
     """
+
+    _check_if_number(c, "c")
+    _check_if_number(a, "a")
+
+    _check_if_array(x, "x", length=1, length_type="grtr_equ")
+    _check_if_array(y)
+
+    if len(x) != len(y):
+        sys.exit(f"The arrays `x` and `y` must have the same length.")
+    x = np.array(x)
+    y = np.array(y)
 
     def _chandrasekhar_help_num(x, y=y, c=c, a=2):
         r"""Discretized version of Chandrasekhar’s H-equation:.
@@ -942,19 +1092,17 @@ def chandrasekhar(x, y, c, a=2):
     a : float, optional
         The default value is 2
 
-
     Returns
     -------
     array_like
         Output domain
-    numpy.array
-        Analytically derived Jacobian
-    numpy.array
-        Numerically derived Jacobian
+    array_like
+        Tuple containing the analytically derived Jacobian and the
+        numerically derived Jacobian
 
     References
     ----------
-    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009).
+    .. [V2009]_ Varadhan, R., and Gilbert, P. D. (2009).
     BB: An R Package for Solving a Large System of Nonlinear Equations and for
     Optimizing a High-Dimensional Nonlinear Objective Function.
 
@@ -975,9 +1123,18 @@ def chandrasekhar(x, y, c, a=2):
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
     True
     """
-    p = len(x)
+    _check_if_number(c, "c")
+    _check_if_number(a, "a")
+
+    _check_if_array(x, "x", length=1, length_type="grtr_equ")
+    _check_if_array(y, "x")
+
+    if len(x) != len(y):
+        sys.exit(f"The arrays `x` and `y` must have the same length.")
     x = np.array(x)
     y = np.array(y)
+
+    p = len(x)
 
     term_sum = []
     for i in range(0, p):
