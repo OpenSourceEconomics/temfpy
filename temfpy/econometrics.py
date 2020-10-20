@@ -248,9 +248,10 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     Returns
     -------
     result_dict: dic
-    Information of the optimization.
+                 Information of the optimization.
 
-    params: Parameters :math:'\beta_j' that minimize the value of the log-likelihood function.
+    params: Parameters 
+            :math:'\beta_j' that minimize the value of the log-likelihood function.
 
     Notes
     -----
