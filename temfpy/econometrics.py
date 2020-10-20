@@ -218,11 +218,11 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     r"""Multinomial probit model.
 
     .. math::
-    Y_i^1 &= X_i^T \beta_1 + \varepsilon_1 \\
-    Y_i^2 &= X_i^T \beta_2 + \varepsilon_2 \\
-    \hdots \\
-    Y_i^m &= X_i^T \beta_m + \varepsilon_m \\
-    Y_i &= \max \{Y_i^1, Y_i^2, \dots, Y_i^m\}
+        Y_i^1* &= X_i^T \beta_1 + \varepsilon_1 \\
+        Y_i^2* &= X_i^T \beta_2 + \varepsilon_2 \\
+        \hdots \\
+        Y_i^m* &= X_i^T \beta_m + \varepsilon_m \\
+        Y_i &= \max \{Y_i^1*, Y_i^2*, \dots, Y_i^m*\}
 
 
     Parameters
@@ -260,9 +260,6 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
 
     References
     ----------
-    ..[G1994] Geweke, J., Keane, M., and Runkle, D. 1994.
-      Alternative Computational Approaches to Inference in the Multinomial Probit Model.
-      The MIT Press.
 
     Examples
     --------
