@@ -2,14 +2,7 @@
 
 import numpy as np
 import pandas as pd
-import patsy
-import pytest
-from estimagic.optimization.optimize import maximize
 
-import temfpy.integration_methods
-from temfpy.econometrics import _multinomial_processing
-from temfpy.econometrics import _multinomial_probit_loglikeobs
-from temfpy.econometrics import _multinomial_probit_loglike
 from temfpy.econometrics import multinomial_probit
 
 
@@ -58,21 +51,26 @@ def data_generation(n_obs, n_var, choices, seed, beta_low=-3, beta_high=3):
 
     return df
 
+
 def test_multinomial_probit():
     n_obs_strategy = np.random.randint(50, 501)
     n_var_strategy = np.random.randint(2, 11)
     choices = np.random.randint(2, 7)
     cov_strategy = ["iid", "free"][np.random.randint(0, 2)]
-    integration_strategy = ["mc_integration", "smooth_mc_integration", "gauss_integration"][
-        np.random.randint(0, 3)
-    ]
+    integration_strategy = [
+        "mc_integration",
+        "smooth_mc_integration",
+        "gauss_integration",
+    ][np.random.randint(0, 3)]
     algorithm_strategy = [
-    "scipy_L-BFGS-B",
-    "scipy_SLSQP",
-    "nlopt_bobyqa",
-    "nlopt_newuoa_bound",
+        "scipy_L-BFGS-B",
+        "scipy_SLSQP",
+        "nlopt_bobyqa",
+        "nlopt_newuoa_bound",
     ][np.random.randint(0, 4)]
     data = data_generation(n_obs_strategy, n_var_strategy, choices, seed=10)
     all_columns = "+".join(data.columns.difference(["Y"]))
     formula = "Y~" + all_columns
-    multinomial_probit(formula, data, cov_strategy, integration_strategy, algorithm_strategy)
+    multinomial_probit(
+        formula, data, cov_strategy, integration_strategy, algorithm_strategy
+    )
