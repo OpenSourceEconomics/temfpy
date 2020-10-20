@@ -199,7 +199,6 @@ def _multinomial_probit_loglike(params, y, x, cov_structure, integration_method)
                          Either 'mc_integration', 'smooth_mc_integration'
                          or 'gauss_integration'
 
-
     Returns:
     --------
         loglike : float
@@ -218,8 +217,9 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     r"""Multinomial probit model.
 
     .. math::
-        i = 1, \dots, n, j = 1, \dots, m \\
-        \beta_j, X_i \in \mathbb{R}^{k} \\
+        i &= 1, \dots, n \\
+        j &= 1, \dots, m \\
+        \beta_j, X_i &\in \mathbb{R}^{k} \\
         Y_i^{*j} &= X_i^T \beta_j + \varepsilon_j \\
         Y_i &= \underset{}{\mathrm{argmax}} \{Y_i^{*j} \mid j = 1, \dots, m \}
 
