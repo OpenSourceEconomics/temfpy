@@ -126,7 +126,7 @@ def _exponential_val(x, a=10, b=1):
     return np.array(rslt)
 
 
-def _exponential_jacobian(x, a=10, b=1):
+def _exponential_jacobian(x, a=10):
     r"""Analytical and numerical jacobian of the exponential function.
 
     .. math::
@@ -139,8 +139,6 @@ def _exponential_jacobian(x, a=10, b=1):
         Input domain with dimension :math:`p`.
     a : float, optional
         The default value is 10.
-    b : float, optional
-        The default value is 1.
 
     Returns
     -------
@@ -163,7 +161,6 @@ def _exponential_jacobian(x, a=10, b=1):
     True
     """
     _check_if_number(a, "a")
-    _check_if_number(b, "b")
     _check_if_array(x, "x", length=1, length_type="grtr_equ")
     x = np.array(x)
 
@@ -234,7 +231,7 @@ def exponential(x, a=10, b=1):
     True
     """
 
-    return _exponential_val(x, a=a, b=b), _exponential_jacobian(x, a=a, b=b)
+    return _exponential_val(x, a=a, b=b), _exponential_jacobian(x, a=a)
 
 
 def _trig_exp_i(xi, a=None):
@@ -980,7 +977,7 @@ def troesch(x, rho=10, a=2):
     return _troesch_val(x=x, rho=rho, a=a), _troesch_jacobian(x=x, rho=rho, a=a)
 
 
-def _chandrasekhar_jacobian(x, y, c, a=2):
+def _chandrasekhar_jacobian(x, y, c):
     r"""Discretized version of Chandrasekhar’s H-equation.
 
     .. math::
@@ -996,8 +993,6 @@ def _chandrasekhar_jacobian(x, y, c, a=2):
         Array of constants with dimension :math:'p'
     c : float
         Constant parameter
-    a : float, optional
-        The default value is 2
 
     Returns
     -------
@@ -1024,7 +1019,6 @@ def _chandrasekhar_jacobian(x, y, c, a=2):
     """
 
     _check_if_number(c, "c")
-    _check_if_number(a, "a")
 
     _check_if_array(x, "x", length=1, length_type="grtr_equ")
     _check_if_array(y, "y")
@@ -1141,4 +1135,4 @@ def chandrasekhar(x, y, c, a=2):
         term_sum.append(np.sum(x / (y[i] + y)))
 
     rslt = x - 1 / (1 - c * y / (2 * p) * term_sum)
-    return np.array(rslt), _chandrasekhar_jacobian(x=x, y=y, c=c, a=2)
+    return np.array(rslt), _chandrasekhar_jacobian(x=x, y=y, c=c)
