@@ -61,13 +61,13 @@ def test_multinomial_probit():
         "mc_integration",
         "smooth_mc_integration",
         "gauss_integration",
-    ][np.random.randint(0, 3)]
+    ][np.random.randint(2, 3)]
     algorithm_strategy = [
         "scipy_L-BFGS-B",
         "scipy_SLSQP",
         "nlopt_bobyqa",
         "nlopt_newuoa_bound",
-    ][np.random.randint(0, 4)]
+    ][np.random.randint(0, 1)]
     data = data_generation(n_obs_strategy, n_var_strategy, choices, seed=10)
     all_columns = "+".join(data.columns.difference(["Y"]))
     formula = "Y~" + all_columns
