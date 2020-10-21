@@ -174,7 +174,8 @@ def _exponential_jacobian(x, a=10):
         / np.append([1], np.repeat(a, p - 1)),
     )
     off_diag_mat = np.diag(
-        np.array(range(2, p + 1)) / np.array(np.repeat(a, p - 1)), k=-1,
+        np.array(range(2, p + 1)) / np.array(np.repeat(a, p - 1)),
+        k=-1,
     )
     jacobian = diag_mat + off_diag_mat
 
@@ -1105,9 +1106,9 @@ def _chandrasekhar_jacobian(x, y, c):
 
         jacobian[:, k] = column_k
     jacobian = jacobian + np.identity(p)
-    
-    _chandrasekhar_help_num_ft = ft.partial(_chandrasekhar_val, y = y, c=c)
-    
+
+    _chandrasekhar_help_num_ft = ft.partial(_chandrasekhar_val, y=y, c=c)
+
     j_numdiff = nd.Jacobian(_chandrasekhar_help_num_ft)
     jacobian_numdiff = j_numdiff(np.array(x))
 
@@ -1170,5 +1171,5 @@ def chandrasekhar(x, y, c):
 
     if len(x) != len(y):
         sys.exit("The arrays `x` and `y` must have the same length.")
-    
-    return _chandrasekhar_val(x=x,y=y,c=c), _chandrasekhar_jacobian(x=x, y=y, c=c)
+
+    return _chandrasekhar_val(x=x, y=y, c=c), _chandrasekhar_jacobian(x=x, y=y, c=c)
