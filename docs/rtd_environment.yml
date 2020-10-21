@@ -14,5 +14,7 @@ dependencies:
   - pytest
   - numba
   - chaospy
+  - numdifftools
+
   - pip:
     - sphinxcontrib-bibtex
