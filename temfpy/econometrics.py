@@ -252,7 +252,7 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     result_dict: dic
                  Information of the optimization.
 
-    params: Parameters
+    params: array_like
             :math:`\beta_j` for :math:`j = 1, \dots, m` that
             maximize the value of the log-likelihood function.
 
