@@ -4,7 +4,7 @@ We provide a variety of econometric methods used in data science.
 import numpy as np
 import pandas as pd
 import patsy
-#import temfpy.integration_methods
+import temfpy.integration_methods
 from estimagic.optimization.optimize import maximize
 
 
@@ -167,12 +167,10 @@ def _multinomial_probit_loglikeobs(params, y, x, cov_structure, integration_meth
 
     u_prime = x.dot(bethas)
 
-    #choice_prob_obs = getattr(temfpy.integration_methods, integration_method)(
-    #    u_prime, cov, y
-    #)
-    
-    choice_prob_obs = gauss_integration(u_prime, cov,y)
-    
+    choice_prob_obs = getattr(temfpy.integration_methods, integration_method)(
+        u_prime, cov, y
+    )
+
     choice_prob_obs[choice_prob_obs <= 1e-250] = 1e-250
 
     loglikeobs = np.log(choice_prob_obs)
@@ -180,7 +178,9 @@ def _multinomial_probit_loglikeobs(params, y, x, cov_structure, integration_meth
     return loglikeobs
 
 
-def _multinomial_probit_loglike(params, y, x, cov_structure, integration_method='gauss_integration'):
+def _multinomial_probit_loglike(
+    params, y, x, cov_structure, integration_method="gauss_integration"
+):
     r"""log-likelihood of the multinomial probit model.
 
     Parameters
