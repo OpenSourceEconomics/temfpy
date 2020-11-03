@@ -17,6 +17,6 @@ dependencies:
   - chaospy
   - patsy
   - estimagic
-  - temfpy
+
   - pip:
     - sphinxcontrib-bibtex
