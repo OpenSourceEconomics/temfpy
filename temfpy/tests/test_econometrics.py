@@ -8,7 +8,7 @@ def data_generation(n_obs, n_var, choices, seed, beta_low=-3, beta_high=3):
     r"""Multinomial probit model. Simple Random DGP.
 
     .. math::
-    Y_i^1* &= X_i^T \beta_1  + \varepsilon_1 \\ 
+    Y_i^1* &= X_i^T \beta_1  + \varepsilon_1 \\
     Y_i^2* &= X_i^T \beta_2 + \varepsilon_2 \\
     \hdots \\
     Y_i^m* &= X_i^T \beta_m + \varepsilon_m \\
@@ -22,9 +22,9 @@ def data_generation(n_obs, n_var, choices, seed, beta_low=-3, beta_high=3):
             number of observations
     n_var : int
             number of exogenous variables
-    choices : int 
-              number of possible discrete outcomes 
-    beta_low : float, optional 
+    choices : int
+              number of possible discrete outcomes
+    beta_low : float, optional
                The default is -3
     beta_high : float, optional
                 The default is 3
