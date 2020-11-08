@@ -55,16 +55,14 @@ def test_multinomial_probit():
     n_var_strategy = np.random.randint(2, 6)
     choices = np.random.randint(2, 6)
     cov_strategy = ["iid", "free"][np.random.randint(0, 2)]
-    integration_strategy = [
-        "mc_integration",
-        "smc_integration",
-        "gauss_integration",
-    ][np.random.randint(0, 3)]
+    integration_strategy = ["mc_integration", "smc_integration", "gauss_integration"][
+        np.random.randint(0, 3)
+    ]
     algorithm_strategy = [
         "scipy_lbfgsb",
         "scipy_slsqp",
     ][np.random.randint(0, 2)]
-    data, betas = data_generation(n_obs_strategy, n_var_strategy, choices, seed=10)
+    data = data_generation(n_obs_strategy, n_var_strategy, choices, seed=10)
     all_columns = "+".join(data.columns.difference(["Y"]))
     formula = "Y~" + all_columns
     tpe.multinomial_probit(
