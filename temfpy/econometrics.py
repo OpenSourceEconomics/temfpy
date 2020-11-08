@@ -167,7 +167,9 @@ def _multinomial_probit_loglikeobs(params, y, x, cov_structure, integration_meth
 
     u_prime = x.dot(bethas)
 
-    choice_prob_obs = getattr(temfpy.integration_methods, integration_method)(u_prime, cov, y)
+    choice_prob_obs = getattr(temfpy.integration_methods, integration_method)(
+        u_prime, cov, y
+    )
 
     choice_prob_obs[choice_prob_obs <= 1e-250] = 1e-250
 
@@ -266,7 +268,7 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
 
     Examples
     --------
-    
+
     """
 
     y, x, params = _multinomial_processing(formula, data, cov_structure)
