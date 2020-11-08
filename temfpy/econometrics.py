@@ -4,7 +4,7 @@ We provide a variety of econometric methods used in data science.
 import numpy as np
 import pandas as pd
 import patsy
-import temfpy.integration_methods
+import integration_methods
 from estimagic.optimization.optimize import maximize
 
 
@@ -163,13 +163,11 @@ def _multinomial_probit_loglikeobs(params, y, x, cov_structure, integration_meth
     bethas = np.zeros((n_var, n_choices))
 
     for i in range(n_choices - 1):
-        bethas[:, i] = params["choice_{}".format(i)].to_numpy()
+        bethas[:, i] = params["value"]["choice_{}".format(i)].to_numpy()
 
     u_prime = x.dot(bethas)
 
-    choice_prob_obs = getattr(temfpy.integration_methods, integration_method)(
-        u_prime, cov, y
-    )
+    choice_prob_obs = getattr(integration_methods, integration_method)(u_prime, cov, y)
 
     choice_prob_obs[choice_prob_obs <= 1e-250] = 1e-250
 
@@ -210,6 +208,7 @@ def _multinomial_probit_loglike(
     -----
     Used for the multinomial probit function
     """
+
     return _multinomial_probit_loglikeobs(
         params, y, x, cov_structure, integration_method
     ).sum()
@@ -223,7 +222,7 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
         j &= 1, \dots, m \\
         \beta_j, X_i &\in \mathbb{R}^{k} \\
         Y_i^{*j} &= X_i^T \beta_j + \varepsilon_j \\
-        Y_i &= \underset{}{\mathrm{argmax}} \{Y_i^{*j} \mid j = 1, \dots, m \}
+        Y_i &= \underset{j}{\mathrm{argmax}} \{Y_i^{*j} \mid j = 1, \dots, m \}
 
 
     Parameters
@@ -270,6 +269,7 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     """
 
     y, x, params = _multinomial_processing(formula, data, cov_structure)
+
     params_df = pd.DataFrame(params, columns=["value"])
 
     if cov_structure == "iid":
@@ -280,7 +280,7 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
             {"loc": "covariance", "type": "covariance"},
             {"loc": ("covariance", 0), "type": "fixed", "value": 1.0},
         ]
-    print(params_df)
+
     result = maximize(
         _multinomial_probit_loglike,
         params_df,
