@@ -4,6 +4,7 @@ We provide a variety of econometric methods used in data science.
 import numpy as np
 import pandas as pd
 import patsy
+import temfpy.integration_methods
 from estimagic.optimization.optimize import maximize
 
 
@@ -31,7 +32,7 @@ def _multinomial_processing(formula, data, cov_structure):
     x : np.array
         2d numpy array of shape :math:'(n_obs, n_var)' including the independent variables.
     params_df : pd.Series
-                Naive starting values for the parameters.
+                Random starting values for the parameters.
 
     Notes
     -----
@@ -166,7 +167,7 @@ def _multinomial_probit_loglikeobs(params, y, x, cov_structure, integration_meth
 
     u_prime = x.dot(bethas)
 
-    choice_prob_obs = getattr(integration_methods, integration_method)(u_prime, cov, y)
+    choice_prob_obs = getattr(temfpy.integration_methods, integration_method)(u_prime, cov, y)
 
     choice_prob_obs[choice_prob_obs <= 1e-250] = 1e-250
 
@@ -271,7 +272,7 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     y, x, params = _multinomial_processing(formula, data, cov_structure)
 
     params_df = pd.DataFrame(params, columns=["value"])
-    
+
     if cov_structure == "iid":
         constraints = []
 
