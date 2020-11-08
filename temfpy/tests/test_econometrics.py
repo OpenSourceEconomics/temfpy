@@ -58,10 +58,7 @@ def test_multinomial_probit():
     integration_strategy = ["mc_integration", "smc_integration", "gauss_integration"][
         np.random.randint(0, 3)
     ]
-    algorithm_strategy = [
-        "scipy_lbfgsb",
-        "scipy_slsqp",
-    ][np.random.randint(0, 2)]
+    algorithm_strategy = ["scipy_lbfgsb", "scipy_slsqp"][np.random.randint(0, 2)]
     data = data_generation(n_obs_strategy, n_var_strategy, choices, seed=10)
     all_columns = "+".join(data.columns.difference(["Y"]))
     formula = "Y~" + all_columns
