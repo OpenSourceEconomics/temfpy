@@ -1,11 +1,9 @@
 """Tests for econometrics module."""
-import pytest
 import numpy as np
 import pandas as pd
 import temfpy.econometrics as tpe
 
 
-@pytest.fixture
 def data_generation(n_obs, n_var, choices, seed, beta_low=-3, beta_high=3):
     r"""Multinomial probit model. Simple Random DGP.
 
