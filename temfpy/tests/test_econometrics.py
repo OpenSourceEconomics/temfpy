@@ -1,18 +1,12 @@
 """Tests for econometrics module."""
-
+import pytest
 import numpy as np
 import pandas as pd
 import temfpy.econometrics as tpe
-from hypothesis import given
-from hypothesis import strategies as st
-from hypothesis.extra.numpy import arrays
-from hypothesis.strategies import integers
 
 
-
-
-
-def data_generation(n_obs, n_var, choices, beta_low=-3, beta_high=3):
+@pytest.fixture
+def data_generation(n_obs, n_var, choices, seed, beta_low=-3, beta_high=3):
     r"""Multinomial probit model. Simple Random DGP.
 
     .. math::
@@ -20,7 +14,7 @@ def data_generation(n_obs, n_var, choices, beta_low=-3, beta_high=3):
     Y_i^2* &= X_i^T \beta_2 + \varepsilon_2 \\
     \hdots \\
     Y_i^m* &= X_i^T \beta_m + \varepsilon_m \\
-    Y_i &= \max \{Y_i^1*, Y_i^2*, \dots, Y_i^m*\}
+    Y_i &= \max \{Y_i^1*, Y_i^2*, \dots, Y_i^m*\} \\
     \beta_j \sim unif(0,1) \\
     X_i \sim \mathcal{N}(\bmp 0, \bmp I_{n\_var})
 
@@ -42,6 +36,7 @@ def data_generation(n_obs, n_var, choices, beta_low=-3, beta_high=3):
     df: pandas.DataFrame
     Data frame containing the endogenous variable Y and the exogenous variables.
     """
+    np.random.seed(seed)
     X = np.random.normal(size=n_obs * n_var).reshape((n_obs, n_var))
     betas = np.random.uniform(
         low=beta_low, high=beta_high, size=choices * n_var
@@ -57,45 +52,23 @@ def data_generation(n_obs, n_var, choices, beta_low=-3, beta_high=3):
     return df
 
 
-cov_strategy = arrays(np.str, 1, elements=st.sampled_from(["iid", "free"]))
-integration_strategy = arrays(
-    np.str,
-    1,
-    elements=st.sampled_from(
-        ["mc_integration", "smooth_mc_integration", "gauss_integration"]
-    ),
-)
-algorithm_strategy = arrays(
-    np.str,
-    1,
-    elements=st.sampled_from(
-        ["lbfgsb", "scipy_SLSQP", "nlopt_bobyqa", "nlopt_newuoa_bound"]
-    ),
-)
-n_obs_strategy = np.random.randint(50,500)
-n_var_strategy = np.random.randint(2,10)
-choices = arrays(np.int, 1, elements=integers(2, 7))
-
-strategy = (
-    n_obs_strategy,
-    n_var_strategy,
-    choices,
-    cov_strategy,
-    integration_strategy,
-    algorithm_strategy,
-)
-
-
-@given(*strategy)
-def test_multinomial_probit(
-    n_obs_strategy,
-    n_var_strategy,
-    choices,
-    cov_structure,
-    integration_method,
-    algorithm,
-):
-    data = data_generation(n_obs_strategy, n_var_strategy, choices)
+def test_multinomial_probit():
+    n_obs_strategy = np.random.randint(50, 501)
+    n_var_strategy = np.random.randint(2, 6)
+    choices = np.random.randint(2, 6)
+    cov_strategy = ["iid", "free"][np.random.randint(0, 2)]
+    integration_strategy = [
+        "mc_integration",
+        "smc_integration",
+        "gauss_integration",
+    ][np.random.randint(0, 3)]
+    algorithm_strategy = [
+        "scipy_lbfgsb",
+        "scipy_slsqp",
+    ][np.random.randint(0, 2)]
+    data, betas = data_generation(n_obs_strategy, n_var_strategy, choices, seed=10)
     all_columns = "+".join(data.columns.difference(["Y"]))
     formula = "Y~" + all_columns
-    tpe.multinomial_probit(formula, data, cov_structure, integration_method, algorithm)
+    tpe.multinomial_probit(
+        formula, data, cov_strategy, integration_strategy, algorithm_strategy
+    )
