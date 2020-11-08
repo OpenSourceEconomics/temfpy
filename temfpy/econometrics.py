@@ -147,7 +147,7 @@ def _multinomial_probit_loglikeobs(params, y, x, cov_structure, integration_meth
         cov = np.eye(n_choices - 1) + np.ones((n_choices - 1, n_choices - 1))
 
     else:
-        covariance = params["covariance"].to_numpy()
+        covariance = params["value"]["covariance"].to_numpy()
 
         cov = np.zeros((n_choices - 1, n_choices - 1))
 
@@ -240,22 +240,18 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
                     Available options are 'iid' or 'free'.
 
     integration_method : str
-                         Either 'mc_integration', 'smooth_mc_integration'
+                         Either 'mc_integration', 'smc_integration'
                          or 'gauss_integration'
 
     algorithm : str
-                Available options are 'scipy_L-BFGS-B', 'scipy_SLSQP',
-                'nlopt_bobyqa' or 'nlopt_newuoa_bound'.
+                Available options are 'scipy_lbfgsb' or 'scipy_slsqp'
 
 
     Returns
     -------
-    result_dict: dic
+    result: dic
                  Information of the optimization.
 
-    params: array_like
-            :math:`\beta_j` for :math:`j = 1, \dots, m` that
-            maximize the value of the log-likelihood function.
 
     Notes
     -----
@@ -287,7 +283,7 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     y, x, params = _multinomial_processing(formula, data, cov_structure)
 
     params_df = pd.DataFrame(params, columns=["value"])
-
+    print(params)
     if cov_structure == "iid":
         constraints = []
 
