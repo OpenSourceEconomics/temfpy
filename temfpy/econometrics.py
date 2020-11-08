@@ -280,7 +280,7 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     >>> cov = 'iid'
     >>> integr = 'gauss_integration'
     >>> algo = 'scipy_lbfgsb'
-    >>> tpe.multinomial_probit(f, data, cov, integr , algo)
+    >>> solution = tpe.multinomial_probit(f, data, cov, integr , algo)
 
     """
 
