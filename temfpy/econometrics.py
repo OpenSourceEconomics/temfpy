@@ -282,7 +282,7 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     y, x, params = _multinomial_processing(formula, data, cov_structure)
 
     params_df = pd.DataFrame(params, columns=["value"])
-    print(params)
+
     if cov_structure == "iid":
         constraints = []
 
