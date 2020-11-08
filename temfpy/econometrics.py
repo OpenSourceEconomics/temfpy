@@ -33,15 +33,6 @@ def _multinomial_processing(formula, data, cov_structure):
         2d numpy array of shape :math:'(n_obs, n_var)' including the independent variables.
     params_df : pd.Series
                 Random starting values for the parameters.
-
-    Notes
-    -----
-
-    References
-    ----------
-
-    Examples
-    --------
     """
     y, x = patsy.dmatrices(formula, data, return_type="dataframe")
     data = pd.concat([y, x], axis=1).dropna()
@@ -130,15 +121,6 @@ def _multinomial_probit_loglikeobs(params, y, x, cov_structure, integration_meth
         loglikeobs : np.array
                      1d numpy array of shape :math:'(n_obs)' with
                      the respective likelihood contribution.
-
-    Notes
-    -----
-
-    References
-    ----------
-
-    Examples
-    --------
     """
     n_var = np.shape(x)[1]
     n_choices = len(np.unique(y))
@@ -205,10 +187,6 @@ def _multinomial_probit_loglike(
     --------
         loglike : float
                   The value of the log-likelihood function evaluated at the given parameters.
-
-    Notes
-    -----
-    Used for the multinomial probit function
     """
 
     return _multinomial_probit_loglikeobs(
