@@ -268,6 +268,17 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
 
     Examples
     --------
+    >>> import pandas as pd
+    >>> import numpy as np
+    >>> import statsmodels.api as sm
+    >>> import temfpy.econometrics as tpe
+    >>>
+    >>> data = sm.datasets.spector.load_pandas().data
+    >>> formula = 'GRADE ~ GPA + TUCE + PSI'
+    >>> data['GRADE'] = np.random.randint(4, size=(32,))
+    >>> cov_structure = 'iid'
+    >>> solution = tpe.econometrics.multinomial_probit(formula, data, cov_structure,
+    >>>            integration_method='gauss_integration', algorithm='scipy_lbfgsb')
 
     """
 
