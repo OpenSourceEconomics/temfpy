@@ -277,8 +277,7 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     >>> formula = 'GRADE ~ GPA + TUCE + PSI'
     >>> data['GRADE'] = np.random.randint(4, size=(32,))
     >>> cov_structure = 'iid'
-    >>> solution = tpe.econometrics.multinomial_probit(formula, data, cov_structure,
-    >>>            integration_method='gauss_integration', algorithm='scipy_lbfgsb')
+    >>> solution = tpe.econometrics.multinomial_probit(formula, data, cov_structure, integration_method='gauss_integration', algorithm='scipy_lbfgsb')
 
     """
 
