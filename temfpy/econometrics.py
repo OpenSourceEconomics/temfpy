@@ -279,7 +279,7 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     >>> data['GRADE'] = np.random.randint(4, size=(32,))
     >>> cov_structure = 'iid'
     >>> solution = tpe.multinomial_probit(formula, data, cov_structure,
-                                          integration_method='gauss_integration', algorithm='scipy_lbfgsb')
+    >>>                                   integration_method='gauss_integration', algorithm='scipy_lbfgsb')
 
     """
 
