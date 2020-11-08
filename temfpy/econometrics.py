@@ -4,7 +4,6 @@ We provide a variety of econometric methods used in data science.
 import numpy as np
 import pandas as pd
 import patsy
-import temfpy.integration_methods
 from estimagic.optimization.optimize import maximize
 
 
@@ -272,7 +271,7 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     y, x, params = _multinomial_processing(formula, data, cov_structure)
 
     params_df = pd.DataFrame(params, columns=["value"])
-
+    
     if cov_structure == "iid":
         constraints = []
 
