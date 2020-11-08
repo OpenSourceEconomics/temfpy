@@ -2,14 +2,10 @@
 
 import numpy as np
 import pandas as pd
-import patsy
-#import temfpy.econometrics as tpe
-import econometrics
-from estimagic.optimization.optimize import maximize
+import temfpy.econometrics as tpe
 from hypothesis import given
 from hypothesis import strategies as st
 from hypothesis.extra.numpy import arrays
-from hypothesis.strategies import floats
 from hypothesis.strategies import integers
 
 
@@ -102,5 +98,4 @@ def test_multinomial_probit(
     data = data_generation(n_obs_strategy, n_var_strategy, choices)
     all_columns = "+".join(data.columns.difference(["Y"]))
     formula = "Y~" + all_columns
-    #tpe.multinomial_probit(formula, data, cov_structure, integration_method, algorithm)
-    econometrics.multinomial_probit(formula, data, cov_structure, integration_method, algorithm)
+    tpe.multinomial_probit(formula, data, cov_structure, integration_method, algorithm)
