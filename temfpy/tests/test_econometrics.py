@@ -50,18 +50,56 @@ def data_generation(n_obs, n_var, choices, seed, beta_low=-3, beta_high=3):
     return df
 
 
-def test_multinomial_probit():
+def fixed_tests(cov_strategy=None, integration_strategy=None, algorithm_strategy=None):
+
     n_obs_strategy = np.random.randint(50, 501)
     n_var_strategy = np.random.randint(2, 6)
     choices = np.random.randint(2, 6)
-    cov_strategy = ["iid", "free"][np.random.randint(0, 2)]
-    integration_strategy = ["mc_integration", "smc_integration", "gauss_integration"][
-        np.random.randint(0, 3)
-    ]
-    algorithm_strategy = ["scipy_lbfgsb", "scipy_slsqp"][np.random.randint(0, 2)]
+
+    if cov_strategy is None:
+        cov_strategy = ["iid", "free"][np.random.randint(0, 2)]
+
+    if integration_strategy is None:
+        integration_strategy = [
+            "mc_integration",
+            "smc_integration",
+            "gauss_integration",
+        ][np.random.randint(0, 3)]
+
+    if algorithm_strategy is None:
+        algorithm_strategy = ["scipy_lbfgsb", "scipy_slsqp"][np.random.randint(0, 2)]
+
     data = data_generation(n_obs_strategy, n_var_strategy, choices, seed=10)
     all_columns = "+".join(data.columns.difference(["Y"]))
     formula = "Y~" + all_columns
     tpe.multinomial_probit(
         formula, data, cov_strategy, integration_strategy, algorithm_strategy
     )
+
+
+def test_multinomial_probit_mc_integration():
+    fixed_tests(integration_strategy="mc_integration")
+
+
+def test_multinomial_probit_smc_integration():
+    fixed_tests(integration_strategy="smc_integration")
+
+
+def test_multinomial_probit_gauss_integration():
+    fixed_tests(integration_strategy="gauss_integration")
+
+
+def test_multinomial_probit_cov_iid():
+    fixed_tests(cov_strategy="iid")
+
+
+def test_multinomial_probit_cov_free():
+    fixed_tests(cov_strategy="free")
+
+
+def test_multinomial_probit_algo_lbfgsb():
+    fixed_tests(algorithm_strategy="lbfgsb")
+
+
+def test_multinomial_probit_algo_slsqp():
+    fixed_tests(algorithm_strategy="slsqp")
