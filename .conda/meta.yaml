@@ -1,9 +1,8 @@
-{% set name = "temfpy" %}
-{% set version = "1.0" %}
+{% set data = load_setup_py_data() %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: temfpy
+  version: {{ data.get('version') }}
 
 source:
   path: ../
