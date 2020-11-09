@@ -98,8 +98,8 @@ def test_multinomial_probit_cov_free():
 
 
 def test_multinomial_probit_algo_lbfgsb():
-    fixed_tests(algorithm_strategy="lbfgsb")
+    fixed_tests(algorithm_strategy="scipy_lbfgsb")
 
 
 def test_multinomial_probit_algo_slsqp():
-    fixed_tests(algorithm_strategy="slsqp")
+    fixed_tests(algorithm_strategy="scipy_slsqp")
