@@ -8,8 +8,6 @@ from scipy.stats import norm
 def mc_integration(u_prime, cov, y, n_draws=None):
     r"""Calculate probit choice probabilities with Monte-Carlo Integration.
 
-    .. math::
-
     Parameters
     ----------
     u_prime : np.array
@@ -28,16 +26,6 @@ def mc_integration(u_prime, cov, y, n_draws=None):
     --------
     choice_prob_obs : np.array
                       1d array of shape  comprising the choice probabilities.
-
-    Notes
-    -----
-
-    References
-    ----------
-
-    Examples
-    --------
-
     """
     n_obs = np.shape(u_prime)[0]
     n_choices = np.shape(u_prime)[1]
@@ -72,8 +60,6 @@ def mc_integration(u_prime, cov, y, n_draws=None):
 def smc_integration(u_prime, cov, y, tau=None, n_draws=None):
     r"""Calculate probit choice probabilities with smooth Monte-Carlo Integration.
 
-    .. math::
-
     Parameters
     ----------
     u_prime : np.array
@@ -99,15 +85,6 @@ def smc_integration(u_prime, cov, y, tau=None, n_draws=None):
     choice_prob_obs : np.array
                       1d array of shape :math:'(n_obs)' comprising the choice
                       probabilities for the chosen alternative for each individual.
-
-    Notes
-    -----
-
-    References
-    ----------
-
-    Examples
-    --------
     """
     n_obs = np.shape(u_prime)[0]
     n_choices = np.shape(u_prime)[1]
@@ -142,8 +119,6 @@ def smc_integration(u_prime, cov, y, tau=None, n_draws=None):
 def gauss_integration(u_prime, cov, y, degrees=None):
     r"""Calculate probit choice probabilities with Gauss-Laguerre Integration.
 
-    .. math::
-
     Parameters
     ----------
     u_prime : np.array
@@ -164,15 +139,6 @@ def gauss_integration(u_prime, cov, y, degrees=None):
     choice_prob_obs : np.array
                       1d array of shape (n_obs) comprising the choice
                       probabilities for the chosen alternative for each individual.
-
-    Notes
-    -----
-
-    References
-    ----------
-
-    Examples
-    --------
     """
     n_obs = np.shape(u_prime)[0]
     n_choices = np.shape(u_prime)[1]
