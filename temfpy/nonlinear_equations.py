@@ -161,7 +161,7 @@ def _exponential_jacobian(x, a=10):
     numpy.array
         Analytically derived Jacobian
     numpy.array
-        Numerically derived Jacobian. 
+        Numerically derived Jacobian.
         Only if dimension :math:`p > 1`.
 
     Examples
@@ -478,7 +478,7 @@ def trig_exp(x, a=(3, 2, 5, 4, 3, 2, 8, 4, 3), jac=False):
     array_like
         Output domain
     array_like
-        Only if :math:`jac = True`.    
+        Only if :math:`jac = True`.
         Tuple containing the analytically derived Jacobian
         and the numerically derived Jacobian.
 
@@ -638,7 +638,7 @@ def broyden(x, a=(3, 0.5, 2, 1), jac=False):
     array_like
         Only if :math:`jac = True`.
         Tuple containing the analytically derived Jacobian
-        and the numerically derived Jacobian. 
+        and the numerically derived Jacobian.
 
 
     References
