@@ -33,16 +33,21 @@ def _check_if_number(a, name):
     if not (isinstance(a, (int, float)) and not isinstance(a, bool)):
         sys.exit(f"The parameter `{name}` must either be of type int or float.")
 
+    return True
 
-def _check_if_array(x, name, length=None, length_type="equal"):
-    r"""Function to check if object `x` is an array and optionally if it has a specified length.
 
-        Currently considered as arrays are list, numpy.array or pandas.Series type of objects.
+def _check_if_val_x(x, name, length=None, length_type="equal"):
+    r"""Function to check if object `x` is an array, integer or float
+        and optionally if it has a specified length.
+
+        Currently considered as arrays are tuples, list, numpy.array
+        or pandas.Series type of objects.
 
     Parameters
     ----------
     x : object
-        Object for which it should be tested whether it is an array or not.
+        Object for which it should be tested whether it is an array,
+        integer or float.
     name : str
            String including the name of the object that
            appears in the error notification.
@@ -61,20 +66,25 @@ def _check_if_array(x, name, length=None, length_type="equal"):
     >>> import numpy as np
     >>> import pandas as pd
     >>> import sys
-    >>> from temfpy.nonlinear_equations import _check_if_array
+    >>> from temfpy.nonlinear_equations import _check_if_val_x
     >>>
     >>> x = [10, 1, 4, 6]
-    >>> _check_if_array(x, 'x')
+    >>> _check_if_val_x(x, 'x')
     """
-    if not isinstance(x, (list, pd.core.series.Series, np.ndarray)):
+    if not isinstance(x, (int, float, list, tuple, pd.core.series.Series, np.ndarray)):
         sys.exit(
-            f"The parameter `{name}` must either be a list, numpy.array or pandas.Series.",
+            (
+                f"The parameter `{name}` must either be an integer, float, "
+                f"list, numpy.array or pandas.Series."
+            )
         )
-    if length is not None:
-        if (length_type == "equal") and (len(x) != length):
-            sys.exit(f"The array `{name}` must have length {length}.")
-        if (length_type == "grtr_equ") and (len(x) < length):
-            sys.exit(f"The array `{name}` must have at least length {length}.")
+
+    if not (isinstance(x, (int, float)) and not isinstance(x, bool)):
+        if length is not None:
+            if (length_type == "equal") and (len(x) != length):
+                sys.exit(f"The array `{name}` must have length {length}.")
+            if (length_type == "grtr_equ") and (len(x) < length):
+                sys.exit(f"The array `{name}` must have at least length {length}.")
 
 
 def _exponential_val(x, a=10, b=1):
@@ -110,12 +120,17 @@ def _exponential_val(x, a=10, b=1):
     >>> x = np.random.normal(size = p)
     >>> value = _exponential_val(x)
     """
+
     _check_if_number(a, "a")
     _check_if_number(b, "b")
-    _check_if_array(x, "x", length=1, length_type="grtr_equ")
-    x = np.array(x)
+    _check_if_val_x(x, "x", length=1, length_type="grtr_equ")
 
-    p = len(x)
+    if isinstance(x, (int, float)):
+        p = 1
+    else:
+        p = len(x)
+
+    x = np.array(x)
 
     x_im1 = np.concatenate((0, np.delete(x, p - 1)), axis=None)
     rslt = (
@@ -146,7 +161,8 @@ def _exponential_jacobian(x, a=10):
     numpy.array
         Analytically derived Jacobian
     numpy.array
-        Numerically derived Jacobian
+        Numerically derived Jacobian. 
+        Only if dimension :math:`p > 1`.
 
     Examples
     --------
@@ -161,11 +177,15 @@ def _exponential_jacobian(x, a=10):
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
     True
     """
-    _check_if_number(a, "a")
-    _check_if_array(x, "x", length=1, length_type="grtr_equ")
-    x = np.array(x)
 
-    p = len(x)
+    _check_if_number(a, "a")
+    _check_if_val_x(x, "x", length=1, length_type="grtr_equ")
+
+    if isinstance(x, (int, float)):
+        p = 1
+    else:
+        p = len(x)
+
     x = np.array(x)
 
     diag_mat = np.diag(
@@ -174,7 +194,8 @@ def _exponential_jacobian(x, a=10):
         / np.append([1], np.repeat(a, p - 1)),
     )
     off_diag_mat = np.diag(
-        np.array(range(2, p + 1)) / np.array(np.repeat(a, p - 1)), k=-1,
+        np.array(range(2, p + 1)) / np.array(np.repeat(a, p - 1)),
+        k=-1,
     )
     jacobian = diag_mat + off_diag_mat
 
@@ -184,7 +205,7 @@ def _exponential_jacobian(x, a=10):
     return jacobian, jacobian_numdiff
 
 
-def exponential(x, a=10, b=1):
+def exponential(x, a=10, b=1, jac=False):
     r"""Exponential function.
 
     .. math::
@@ -207,8 +228,9 @@ def exponential(x, a=10, b=1):
     array_like
         Output domain
     array_like
+        Only if :math:`jac = True`.
         Tuple containing the analytically derived Jacobian and the
-        numerically derived Jacobian
+        numerically derived Jacobian.
 
     References
     ----------
@@ -232,10 +254,13 @@ def exponential(x, a=10, b=1):
     True
     """
 
-    return _exponential_val(x, a=a, b=b), _exponential_jacobian(x, a=a)
+    if jac is False:
+        return _exponential_val(x, a=a, b=b)
+    if jac is True:
+        return _exponential_val(x, a=a, b=b), _exponential_jacobian(x, a=a)
 
 
-def _trig_exp_i(xi, a=None):
+def _trig_exp_i(xi, a=(3, 2, 5, 4, 3, 2, 8, 4, 3)):
     r"""Trigonometrical exponential function. Used to build
     the function :func:`trig_exp_val`.
 
@@ -249,7 +274,7 @@ def _trig_exp_i(xi, a=None):
     x_i : array_like
         Input domain with dimension :math:`3`.
     a : array_like, optional
-        The default array is [3,2,5,4,3,2,8,4,3].
+        The default array is (3,2,5,4,3,2,8,4,3).
 
     Returns
     -------
@@ -267,11 +292,9 @@ def _trig_exp_i(xi, a=None):
     >>> x = np.random.normal(size = p)
     >>> F_i = _trig_exp_i(x)
     """
-    if a is None:
-        a = [3, 2, 5, 4, 3, 2, 8, 4, 3]
 
-    _check_if_array(a, "a", length=9)
-    _check_if_array(xi, "xi", length=3)
+    _check_if_val_x(a, "a", length=9)
+    _check_if_val_x(xi, "xi", length=3)
     xi = np.array(xi)
     a = np.array(a)
 
@@ -286,7 +309,7 @@ def _trig_exp_i(xi, a=None):
     return rslt
 
 
-def _trig_exp_val(x, a=None):
+def _trig_exp_val(x, a=(3, 2, 5, 4, 3, 2, 8, 4, 3)):
     r"""Trigonometrical exponential function.
 
     .. math::
@@ -319,11 +342,9 @@ def _trig_exp_val(x, a=None):
     >>> x = np.random.normal(size = p)
     >>> value = _trig_exp_val(x)
     """
-    if a is None:
-        a = [3, 2, 5, 4, 3, 2, 8, 4, 3]
 
-    _check_if_array(a, "a", length=9)
-    _check_if_array(x, "x", length=1, length_type="grtr_equ")
+    _check_if_val_x(a, "a", length=9)
+    _check_if_val_x(x, "x", length=1, length_type="grtr_equ")
     x = np.array(x)
     a = np.array(a)
 
@@ -342,7 +363,7 @@ def _trig_exp_val(x, a=None):
     return np.array(rslt)
 
 
-def _trig_exp_jacobian(x, a=None):
+def _trig_exp_jacobian(x, a=(3, 2, 5, 4, 3, 2, 8, 4, 3)):
     r"""Trigonometrical exponential function.
 
     .. math::
@@ -359,7 +380,7 @@ def _trig_exp_jacobian(x, a=None):
     x : array_like
         Input domain with dimension :math:`p`.
     a : array_like, optional
-        The default array is [3,2,5,4,3,2,8,4,3].
+        The default array is (3,2,5,4,3,2,8,4,3).
 
     Returns
     -------
@@ -379,11 +400,9 @@ def _trig_exp_jacobian(x, a=None):
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
     True
     """
-    if a is None:
-        a = [3, 2, 5, 4, 3, 2, 8, 4, 3]
 
-    _check_if_array(a, "a", length=9)
-    _check_if_array(x, "x", length=1, length_type="grtr_equ")
+    _check_if_val_x(a, "a", length=9)
+    _check_if_val_x(x, "x", length=1, length_type="grtr_equ")
     x = np.array(x)
     a = np.array(a)
 
@@ -435,7 +454,7 @@ def _trig_exp_jacobian(x, a=None):
     return jacobian, jacobian_numdiff
 
 
-def trig_exp(x, a=None):
+def trig_exp(x, a=(3, 2, 5, 4, 3, 2, 8, 4, 3), jac=False):
     r"""Trigonometrical exponential function.
 
     .. math::
@@ -452,14 +471,16 @@ def trig_exp(x, a=None):
     x : array_like
         Input domain with dimension :math:`p > 1`.
     a : array_like, optional
-        The default array is [3,2,5,4,3,2,8,4,3].
+        The default array is (3,2,5,4,3,2,8,4,3).
 
     Returns
     -------
     array_like
         Output domain
     array_like
-        Tuple containing the analytically derived Jacobian and the numerically derived Jacobian.
+        Only if :math:`jac = True`.    
+        Tuple containing the analytically derived Jacobian
+        and the numerically derived Jacobian.
 
     References
     ----------
@@ -482,13 +503,14 @@ def trig_exp(x, a=None):
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
     True
     """
-    if a is None:
-        a = [3, 2, 5, 4, 3, 2, 8, 4, 3]
 
-    return _trig_exp_val(x, a=a), _trig_exp_jacobian(x, a=a)
+    if jac is False:
+        return _trig_exp_val(x, a=a)
+    else:
+        return _trig_exp_val(x, a=a), _trig_exp_jacobian(x, a=a)
 
 
-def _broyden_val(x, a=None):
+def _broyden_val(x, a=(3, 0.5, 2, 1)):
     r"""Broyden tridiagonal function.
 
     .. math::
@@ -502,7 +524,7 @@ def _broyden_val(x, a=None):
     x : array_like
         Input domain with dimension :math:`p > 1`.
     a : array_like, optional
-        The default array is [3, 0.5, 2, 1]
+        The default array is (3, 0.5, 2, 1)
 
     Returns
     -------
@@ -520,11 +542,9 @@ def _broyden_val(x, a=None):
     >>> x = - np.random.uniform(size = p)
     >>> value = _broyden_val(x)
     """
-    if a is None:
-        a = [3, 0.5, 2, 1]
 
-    _check_if_array(a, "a", length=4)
-    _check_if_array(x, "x", length=1, length_type="grtr_equ")
+    _check_if_val_x(a, "a", length=4)
+    _check_if_val_x(x, "x", length=1, length_type="grtr_equ")
     x = np.array(x)
     a = np.array(a)
 
@@ -538,7 +558,7 @@ def _broyden_val(x, a=None):
     return np.array(rslt)
 
 
-def _broyden_jacobian(x, a=None):
+def _broyden_jacobian(x, a=(3, 0.5, 2, 1)):
     r"""Broyden tridiagonal function.
 
     .. math::
@@ -552,7 +572,7 @@ def _broyden_jacobian(x, a=None):
     x : array_like
         Input domain with dimension :math:`p > 1`.
     a : array_like, optional
-        The default array is [3, 0.5, 2, 1]
+        The default array is (3, 0.5, 2, 1)
 
     Returns
     -------
@@ -574,11 +594,9 @@ def _broyden_jacobian(x, a=None):
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
     True
     """
-    if a is None:
-        a = [3, 0.5, 2, 1]
 
-    _check_if_array(a, "a", length=4)
-    _check_if_array(x, "x", length=1, length_type="grtr_equ")
+    _check_if_val_x(a, "a", length=4)
+    _check_if_val_x(x, "x", length=1, length_type="grtr_equ")
     x = np.array(x)
     a = np.array(a)
 
@@ -596,7 +614,7 @@ def _broyden_jacobian(x, a=None):
     return jacobian, jacobian_numdiff
 
 
-def broyden(x, a=None):
+def broyden(x, a=(3, 0.5, 2, 1), jac=False):
     r"""Broyden tridiagonal function.
 
     .. math::
@@ -609,16 +627,19 @@ def broyden(x, a=None):
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`p`.
+        Input domain with dimension :math:`p > 1`.
     a : array_like, optional
-        The default array is [3, 0.5, 2, 1].
+        The default array is (3, 0.5, 2, 1).
 
     Returns
     -------
     array_like
         Output domain.
     array_like
-        Tuple containing the analytically derived Jacobian and the numerically derived Jacobian.
+        Only if :math:`jac = True`.
+        Tuple containing the analytically derived Jacobian
+        and the numerically derived Jacobian. 
+
 
     References
     ----------
@@ -641,13 +662,14 @@ def broyden(x, a=None):
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
     True
     """
-    if a is None:
-        a = [3, 0.5, 2, 1]
 
-    return _broyden_val(x=x, a=a), _broyden_jacobian(x=x, a=a)
+    if jac is False:
+        return _broyden_val(x=x, a=a)
+    else:
+        return _broyden_val(x=x, a=a), _broyden_jacobian(x=x, a=a)
 
 
-def _rosenbrock_ext_val(x, a=None):
+def _rosenbrock_ext_val(x, a=(10, 1)):
     r"""Extended-Rosenbrock function.
 
     .. math::
@@ -658,9 +680,9 @@ def _rosenbrock_ext_val(x, a=None):
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`p`.
+        Input domain with dimension :math:`p > 1`.
     a : array_like, optional
-        The default array is [10,1]
+        The default array is (10,1)
 
 
     Returns
@@ -681,11 +703,9 @@ def _rosenbrock_ext_val(x, a=None):
 
 
     """
-    if a is None:
-        a = [10, 1]
 
-    _check_if_array(a, "a", length=2)
-    _check_if_array(x, "x", length=1, length_type="grtr_equ")
+    _check_if_val_x(a, "a", length=2)
+    _check_if_val_x(x, "x", length=1, length_type="grtr_equ")
     x = np.array(x)
     a = np.array(a)
 
@@ -701,7 +721,7 @@ def _rosenbrock_ext_val(x, a=None):
     return np.array(rslt)
 
 
-def _rosenbrock_ext_jacobian(x, a=None):
+def _rosenbrock_ext_jacobian(x, a=(10, 1)):
     r"""Extended-Rosenbrock function.
 
     .. math::
@@ -711,9 +731,9 @@ def _rosenbrock_ext_jacobian(x, a=None):
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`p`.
+        Input domain with dimension :math:`p > 1`.
     a : array_like, optional
-        The default array is [10,1]
+        The default array is (10,1)
 
 
     Returns
@@ -736,11 +756,9 @@ def _rosenbrock_ext_jacobian(x, a=None):
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
     True
     """
-    if a is None:
-        a = [10, 1]
 
-    _check_if_array(a, "a", length=2)
-    _check_if_array(x, "x", length=1, length_type="grtr_equ")
+    _check_if_val_x(a, "a", length=2)
+    _check_if_val_x(x, "x", length=1, length_type="grtr_equ")
     x = np.array(x)
     a = np.array(a)
 
@@ -757,7 +775,7 @@ def _rosenbrock_ext_jacobian(x, a=None):
     return jacobian, jacobian_numdiff
 
 
-def rosenbrock_ext(x, a=None):
+def rosenbrock_ext(x, a=(10, 1), jac=False):
     r"""Extended-Rosenbrock function.
 
     .. math::
@@ -769,17 +787,18 @@ def rosenbrock_ext(x, a=None):
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`p`.
+        Input domain with dimension :math:`p > 1`.
     a : array_like, optional
-        The default array is [10,1]
+        The default array is (10,1)
 
     Returns
     -------
     array_like
         Output domain
     array_like
+        Only if :math:`jac = True`.
         Tuple containing the analytically derived Jacobian and the
-        numerically derived Jacobian
+        numerically derived Jacobian.
 
     References
     ----------
@@ -803,10 +822,11 @@ def rosenbrock_ext(x, a=None):
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
     True
     """
-    if a is None:
-        a = [10, 1]
 
-    return _rosenbrock_ext_val(x=x, a=a), _rosenbrock_ext_jacobian(x=x, a=a)
+    if jac is False:
+        return _rosenbrock_ext_val(x=x, a=a)
+    else:
+        return _rosenbrock_ext_val(x=x, a=a), _rosenbrock_ext_jacobian(x=x, a=a)
 
 
 def _troesch_val(x, rho=10, a=2):
@@ -847,7 +867,7 @@ def _troesch_val(x, rho=10, a=2):
     """
     _check_if_number(rho, "rho")
     _check_if_number(a, "a")
-    _check_if_array(x, "x", length=1, length_type="grtr_equ")
+    _check_if_val_x(x, "x", length=1, length_type="grtr_equ")
     x = np.array(x)
 
     p = len(x)
@@ -903,7 +923,7 @@ def _troesch_jacobian(x, rho=10, a=2):
     """
     _check_if_number(rho, "rho")
     _check_if_number(a, "a")
-    _check_if_array(x, "x", length=1, length_type="grtr_equ")
+    _check_if_val_x(x, "x", length=1, length_type="grtr_equ")
     x = np.array(x)
 
     p = len(x)
@@ -925,7 +945,7 @@ def _troesch_jacobian(x, rho=10, a=2):
     return jacobian, jacobian_numdiff
 
 
-def troesch(x, rho=10, a=2):
+def troesch(x, rho=10, a=2, jac=False):
     r"""Troesch function.
 
     .. math::
@@ -939,7 +959,7 @@ def troesch(x, rho=10, a=2):
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`p`.
+        Input domain with dimension :math:`p > 1`.
     rho : float, optional
         The default value is 10
     a : float, optional
@@ -950,8 +970,9 @@ def troesch(x, rho=10, a=2):
     array_like
         Output domain
     array_like
+        Only if :math:`jac = True`.
         Tuple containing the analytically derived Jacobian and the
-        numerically derived Jacobian
+        numerically derived Jacobian.
 
     References
     ----------
@@ -975,7 +996,10 @@ def troesch(x, rho=10, a=2):
     True
     """
 
-    return _troesch_val(x=x, rho=rho, a=a), _troesch_jacobian(x=x, rho=rho, a=a)
+    if jac is False:
+        return _troesch_val(x=x, rho=rho, a=a)
+    else:
+        return _troesch_val(x=x, rho=rho, a=a), _troesch_jacobian(x=x, rho=rho, a=a)
 
 
 def _chandrasekhar_val(x, y, c):
@@ -1027,13 +1051,25 @@ def _chandrasekhar_val(x, y, c):
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
     True
     """
-    p = len(x)
-    x = np.array(x)
-    y = np.array(y)
+    _check_if_number(c, "c")
 
-    term_sum = []
-    for i in range(0, p):
-        term_sum.append(np.sum(x / (y[i] + y)))
+    _check_if_val_x(x, "x", length=1, length_type="grtr_equ")
+    _check_if_val_x(y, "y")
+
+    if isinstance(x, (int, float)) and isinstance(x, (int, float)):
+        p = 1
+        term_sum = x / (2 * y)
+    else:
+        p = len(x)
+        if len(x) != len(y):
+            sys.exit("The arrays `x` and `y` must have the same length.")
+
+        x = np.array(x)
+        y = np.array(y)
+
+        term_sum = []
+        for i in range(0, p):
+            term_sum.append(np.sum(x / (y[i] + y)))
 
     rslt = x - 1 / (1 - c * y / (2 * p) * term_sum)
 
@@ -1062,7 +1098,8 @@ def _chandrasekhar_jacobian(x, y, c):
     numpy.array
         Analytically derived Jacobian
     numpy.array
-        Numerically derived Jacobian
+        Numerically derived Jacobian.
+        Only if dimension :math:`p > 1`.
 
     Examples
     --------
@@ -1083,38 +1120,50 @@ def _chandrasekhar_jacobian(x, y, c):
 
     _check_if_number(c, "c")
 
-    _check_if_array(x, "x", length=1, length_type="grtr_equ")
-    _check_if_array(y, "y")
+    _check_if_val_x(x, "x", length=1, length_type="grtr_equ")
+    _check_if_val_x(y, "y")
 
-    if len(x) != len(y):
-        sys.exit("The arrays `x` and `y` must have the same length.")
-
-    p = len(x)
-    x = np.array(x)
-    y = np.array(y)
-
-    jacobian = np.zeros((p, p))
-    for k in range(0, p):
-        term_sum = []
-        for i in range(0, p):
-            term_sum.append(np.sum(x / (y[i] + y)))
-
-        column_k = (
-            -1 / (1 - c * y / (2 * p) * term_sum) ** 2 * (c * y / (2 * p) / (y + y[k]))
+    if _check_if_number(x, "x") and _check_if_number(y, "y"):
+        p = 1
+        jacobian = (
+            -1 / (1 - c * y / (2 * p) * x / (2 * y)) ** 2 * (c * y / (2 * p) / (2 * y))
         )
+    else:
+        p = len(x)
+        if len(x) != len(y):
+            sys.exit("The arrays `x` and `y` must have the same length.")
 
-        jacobian[:, k] = column_k
-    jacobian = jacobian + np.identity(p)
+        x = np.array(x)
+        y = np.array(y)
 
-    _chandrasekhar_help_num_ft = ft.partial(_chandrasekhar_val, y=y, c=c)
+        jacobian = np.zeros((p, p))
+        for k in range(0, p):
+            term_sum = []
+            for i in range(0, p):
+                term_sum.append(np.sum(x / (y[i] + y)))
 
-    j_numdiff = nd.Jacobian(_chandrasekhar_help_num_ft)
-    jacobian_numdiff = j_numdiff(np.array(x))
+            column_k = (
+                -1
+                / (1 - c * y / (2 * p) * term_sum) ** 2
+                * (c * y / (2 * p) / (y + y[k]))
+            )
 
-    return jacobian, jacobian_numdiff
+            jacobian[:, k] = column_k
+            jacobian = jacobian + np.identity(p)
+
+            _chandrasekhar_help_num_ft = ft.partial(_chandrasekhar_val, y=y, c=c)
+
+            j_numdiff = nd.Jacobian(_chandrasekhar_help_num_ft)
+            jacobian_numdiff = j_numdiff(x)
+
+            # return more dimensional cas
+            return jacobian, jacobian_numdiff
+
+    # return one dimensional case
+    return jacobian
 
 
-def chandrasekhar(x, y, c):
+def chandrasekhar(x, y, c, jac=False):
     r"""Discretized version of Chandrasekhar’s H-equation.
 
     .. math::
@@ -1137,8 +1186,10 @@ def chandrasekhar(x, y, c):
     array_like
         Output domain
     array_like
+        Only if :math:`jac = True`.
         Tuple containing the analytically derived Jacobian and the
-        numerically derived Jacobian
+        numerically derived Jacobian.
+        Numerically derived Jacobian only if dimension :math:`p > 1`.
 
     References
     ----------
@@ -1163,12 +1214,8 @@ def chandrasekhar(x, y, c):
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
     True
     """
-    _check_if_number(c, "c")
 
-    _check_if_array(x, "x", length=1, length_type="grtr_equ")
-    _check_if_array(y, "y")
-
-    if len(x) != len(y):
-        sys.exit("The arrays `x` and `y` must have the same length.")
-
-    return _chandrasekhar_val(x=x, y=y, c=c), _chandrasekhar_jacobian(x=x, y=y, c=c)
+    if jac is False:
+        return _chandrasekhar_val(x=x, y=y, c=c)
+    else:
+        return _chandrasekhar_val(x=x, y=y, c=c), _chandrasekhar_jacobian(x=x, y=y, c=c)
