@@ -1180,7 +1180,7 @@ def chandrasekhar(x, y, c, jac=False):
     >>> from temfpy.nonlinear_equations import chandrasekhar
     >>>
     >>> np.random.seed(123)
-    >>> p = np.random.randint(1,20) 
+    >>> p = np.random.randint(1,20)
     >>> x = np.repeat(2,p)
     >>> y = np.repeat(1,p)
     >>> c = 1
