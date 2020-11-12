@@ -28,7 +28,7 @@ def get_strategies(name):
         a_strategy = arrays(np.float, 4, elements=integers(1, 20))
         strategy = (x_strategy, a_strategy)
     elif name == "rosenbrock_ext":
-        x_strategy = arrays(np.float, 3, elements=valid_floats)
+        x_strategy = arrays(np.float, 4, elements=valid_floats)
         a_strategy = arrays(np.float, 2, elements=integers(1, 20))
         strategy = (x_strategy, a_strategy)
     elif name == "troesch":
