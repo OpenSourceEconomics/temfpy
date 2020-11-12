@@ -1022,11 +1022,11 @@ def _chandrasekhar_val(x, y, c):
     >>> from temfpy.nonlinear_equations import _chandrasekhar_val
     >>>
     >>> np.random.seed(123)
-    >>> p = np.random.randint(1,20) 
+    >>> p = np.random.randint(1,20)
     >>> x = np.repeat(2,p)
     >>> y = np.repeat(1,p)
     >>> c = 1
-    >>> np.allclose(chandrasekhar_val(x,y,c), np.zeros(p))
+    >>> np.allclose(_chandrasekhar_val(x,y,c), np.zeros(p))
     """
     _check_if_number(c, "c")
 
