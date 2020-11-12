@@ -487,7 +487,7 @@ def trig_exp(x, a=(3, 2, 5, 4, 3, 2, 8, 4, 3), jac=False):
     Examples
     --------
     >>> import numpy as np
-    >>> from temfpy.nonlinear_equations import exponential
+    >>> from temfpy.nonlinear_equations import trig_exp
     >>>
     >>> np.random.seed(123)
     >>> p = np.random.randint(3,20)
@@ -646,7 +646,7 @@ def broyden(x, a=(3, 0.5, 2, 1), jac=False):
     >>> from temfpy.nonlinear_equations import broyden
     >>>
     >>> np.random.seed(123)
-    >>> p = np.random.randint(3,20) 
+    >>> p = np.random.randint(3,20)
     >>> x = np.zeros(p)
     >>> np.allclose(broyden(x), np.repeat(1,p))
     True
@@ -971,7 +971,7 @@ def troesch(x, rho=10, a=2, jac=False):
     >>> from temfpy.nonlinear_equations import troesch
     >>>
     >>> np.random.seed(123)
-    >>> p = np.random.randint(1,20) 
+    >>> p = np.random.randint(1,20)
     >>> x = np.zeros(p)
     >>> np.allclose(troesch(x), np.zeros(p))
     True
@@ -1130,15 +1130,15 @@ def _chandrasekhar_jacobian(x, y, c):
             )
 
             jacobian[:, k] = column_k
-            jacobian = jacobian + np.identity(p)
+        jacobian = jacobian + np.identity(p)
 
-            _chandrasekhar_help_num_ft = ft.partial(_chandrasekhar_val, y=y, c=c)
+        _chandrasekhar_help_num_ft = ft.partial(_chandrasekhar_val, y=y, c=c)
 
-            j_numdiff = nd.Jacobian(_chandrasekhar_help_num_ft)
-            jacobian_numdiff = j_numdiff(x)
+        j_numdiff = nd.Jacobian(_chandrasekhar_help_num_ft)
+        jacobian_numdiff = j_numdiff(x)
 
-            # return more dimensional cas
-            return jacobian, jacobian_numdiff
+        # return more dimensional cas
+        return jacobian, jacobian_numdiff
 
     # return one dimensional case
     return jacobian
