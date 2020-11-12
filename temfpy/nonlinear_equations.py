@@ -241,16 +241,12 @@ def exponential(x, a=10, b=1, jac=False):
     Examples
     --------
     >>> import numpy as np
-    >>> import numdifftools as nd
     >>> from temfpy.nonlinear_equations import exponential
     >>>
-    >>> p = 10
     >>> np.random.seed(123)
-    >>> x = np.random.normal(size = p)
-    >>> value, jacobian = exponential(x)
-    >>> analytical_jacobian = jacobian[0]
-    >>> numerical_jacobian = jacobian[1]
-    >>> np.allclose(analytical_jacobian, numerical_jacobian)
+    >>> p = np.random.randint(1,20) 
+    >>> x = np.zeros(p)
+    >>> np.allclose(exponential(x), np.zeros(p))
     True
     """
 
@@ -491,16 +487,13 @@ def trig_exp(x, a=(3, 2, 5, 4, 3, 2, 8, 4, 3), jac=False):
     Examples
     --------
     >>> import numpy as np
-    >>> import numdifftools as nd
-    >>> from temfpy.nonlinear_equations import trig_exp
+    >>> from temfpy.nonlinear_equations import exponential
     >>>
-    >>> p = 10
     >>> np.random.seed(123)
-    >>> x = np.random.normal(size = p)
-    >>> value, jacobian = trig_exp(x)
-    >>> analytical_jacobian = jacobian[0]
-    >>> numerical_jacobian = jacobian[1]
-    >>> np.allclose(analytical_jacobian, numerical_jacobian)
+    >>> p = np.random.randint(3,20) 
+    >>> x = np.zeros(p)
+    >>> compare = np.insert(np.array([-5,-3]), 1, np.repeat(-8, p-2))
+    >>> np.allclose(trig_exp(x), compare)
     True
     """
 
@@ -650,16 +643,12 @@ def broyden(x, a=(3, 0.5, 2, 1), jac=False):
     Examples
     --------
     >>> import numpy as np
-    >>> import numdifftools as nd
     >>> from temfpy.nonlinear_equations import broyden
     >>>
-    >>> p = 10
     >>> np.random.seed(123)
-    >>> x = - np.random.uniform(size = p)
-    >>> value, jacobian = broyden(x)
-    >>> analytical_jacobian = jacobian[0]
-    >>> numerical_jacobian = jacobian[1]
-    >>> np.allclose(analytical_jacobian, numerical_jacobian)
+    >>> p = np.random.randint(3,20) 
+    >>> x = np.zeros(p)
+    >>> np.allclose(broyden(x), np.repeat(1,p))
     True
     """
 
@@ -809,17 +798,13 @@ def rosenbrock_ext(x, a=(10, 1), jac=False):
     Examples
     --------
     >>> import numpy as np
-    >>> import numdifftools as nd
     >>> from temfpy.nonlinear_equations import rosenbrock_ext
-
-    >>> p = 10
-    >>> np.random.seed(123)
     >>>
-    >>> x = np.random.uniform(size = p)
-    >>> value, jacobian = rosenbrock_ext(x)
-    >>> analytical_jacobian = jacobian[0]
-    >>> numerical_jacobian = jacobian[1]
-    >>> np.allclose(analytical_jacobian, numerical_jacobian)
+    >>> np.random.seed(123)
+    >>> p = 2*np.random.randint(1,20) 
+    >>> x = np.zeros(p)
+    >>> compare = np.resize([0,1], p)
+    >>> np.allclose(rosenbrock_ext(x), compare)
     True
     """
 
@@ -873,7 +858,7 @@ def _troesch_val(x, rho=10, a=2):
     p = len(x)
     h = 1 / (p + 1)
 
-    x_ip1 = np.concatenate((np.delete(x, 0), 1), axis=None)
+    x_ip1 = np.concatenate((np.delete(x, 0), 0), axis=None)
     x_im1 = np.concatenate((0, np.delete(x, p - 1)), axis=None)
 
     rslt = a * x + rho * h ** 2 * np.sinh(rho * x) - x_ip1 - x_im1
@@ -983,16 +968,12 @@ def troesch(x, rho=10, a=2, jac=False):
     Examples
     --------
     >>> import numpy as np
-    >>> import numdifftools as nd
     >>> from temfpy.nonlinear_equations import troesch
     >>>
-    >>> p = 10
     >>> np.random.seed(123)
-    >>> x = np.random.uniform(size = p)
-    >>> value, jacobian = troesch(x)
-    >>> analytical_jacobian = jacobian[0]
-    >>> numerical_jacobian = jacobian[1]
-    >>> np.allclose(analytical_jacobian, numerical_jacobian)
+    >>> p = np.random.randint(1,20) 
+    >>> x = np.zeros(p)
+    >>> np.allclose(troesch(x), np.zeros(p))
     True
     """
 
@@ -1200,18 +1181,14 @@ def chandrasekhar(x, y, c, jac=False):
     Examples
     --------
     >>> import numpy as np
-    >>> import numdifftools as nd
     >>> from temfpy.nonlinear_equations import chandrasekhar
     >>>
-    >>> p = 10
     >>> np.random.seed(123)
-    >>> x = np.random.uniform(size = p)
-    >>> y = np.random.normal(size = p)
-    >>> c = 2
-    >>> value, jacobian = chandrasekhar(x,y, c)
-    >>> analytical_jacobian = jacobian[0]
-    >>> numerical_jacobian = jacobian[1]
-    >>> np.allclose(analytical_jacobian, numerical_jacobian)
+    >>> p = np.random.randint(1,20) 
+    >>> x = np.repeat(2,p)
+    >>> y = np.repeat(1,p)
+    >>> c = 1
+    >>> np.allclose(chandrasekhar(x,y,c), np.zeros(p))
     True
     """
 
