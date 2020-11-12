@@ -16,10 +16,10 @@ requirements:
     - python
     - setuptools
   host:
-    - python >=3.6,<3.8
+    - python
 
   run:
-    - python >=3.6,<3.8
+    - python
     - numpy >=1.16
     - pandas >=1
     - scipy
