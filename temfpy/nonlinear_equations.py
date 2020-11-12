@@ -29,6 +29,7 @@ def _check_if_number(a, name):
     >>> from temfpy.nonlinear_equations import _check_if_number
     >>> a = 10
     >>> _check_if_number(a, 'a')
+    >>> True
     """
     if not (isinstance(a, (int, float)) and not isinstance(a, bool)):
         sys.exit(f"The parameter `{name}` must either be of type int or float.")
@@ -194,8 +195,7 @@ def _exponential_jacobian(x, a=10):
         / np.append([1], np.repeat(a, p - 1)),
     )
     off_diag_mat = np.diag(
-        np.array(range(2, p + 1)) / np.array(np.repeat(a, p - 1)),
-        k=-1,
+        np.array(range(2, p + 1)) / np.array(np.repeat(a, p - 1)), k=-1,
     )
     jacobian = diag_mat + off_diag_mat
 
@@ -244,7 +244,7 @@ def exponential(x, a=10, b=1, jac=False):
     >>> from temfpy.nonlinear_equations import exponential
     >>>
     >>> np.random.seed(123)
-    >>> p = np.random.randint(1,20) 
+    >>> p = np.random.randint(1,20)
     >>> x = np.zeros(p)
     >>> np.allclose(exponential(x), np.zeros(p))
     True
@@ -490,7 +490,7 @@ def trig_exp(x, a=(3, 2, 5, 4, 3, 2, 8, 4, 3), jac=False):
     >>> from temfpy.nonlinear_equations import exponential
     >>>
     >>> np.random.seed(123)
-    >>> p = np.random.randint(3,20) 
+    >>> p = np.random.randint(3,20)
     >>> x = np.zeros(p)
     >>> compare = np.insert(np.array([-5,-3]), 1, np.repeat(-8, p-2))
     >>> np.allclose(trig_exp(x), compare)
@@ -801,7 +801,7 @@ def rosenbrock_ext(x, a=(10, 1), jac=False):
     >>> from temfpy.nonlinear_equations import rosenbrock_ext
     >>>
     >>> np.random.seed(123)
-    >>> p = 2*np.random.randint(1,20) 
+    >>> p = 2*np.random.randint(1,20)
     >>> x = np.zeros(p)
     >>> compare = np.resize([0,1], p)
     >>> np.allclose(rosenbrock_ext(x), compare)
@@ -1019,14 +1019,14 @@ def _chandrasekhar_val(x, y, c):
     --------
     >>> import numpy as np
     >>> import numdifftools as nd
-    >>> from temfpy.nonlinear_equations import chandrasekhar
+    >>> from temfpy.nonlinear_equations import _chandrasekhar_jacobian
     >>>
     >>> p = 10
     >>> np.random.seed(123)
     >>> x = np.random.uniform(size = p)
     >>> y = np.random.normal(size = p)
     >>> c = 2
-    >>> value, jacobian = chandrasekhar(x,y, c)
+    >>> value, jacobian = _chandrasekhar_jacobian(x,y,c)
     >>> analytical_jacobian = jacobian[0]
     >>> numerical_jacobian = jacobian[1]
     >>> np.allclose(analytical_jacobian, numerical_jacobian)
@@ -1037,7 +1037,7 @@ def _chandrasekhar_val(x, y, c):
     _check_if_val_x(x, "x", length=1, length_type="grtr_equ")
     _check_if_val_x(y, "y")
 
-    if isinstance(x, (int, float)) and isinstance(x, (int, float)):
+    if isinstance(x, (int, float)) and isinstance(y, (int, float)):
         p = 1
         term_sum = x / (2 * y)
     else:
@@ -1104,7 +1104,7 @@ def _chandrasekhar_jacobian(x, y, c):
     _check_if_val_x(x, "x", length=1, length_type="grtr_equ")
     _check_if_val_x(y, "y")
 
-    if _check_if_number(x, "x") and _check_if_number(y, "y"):
+    if isinstance(x, (int, float)) and isinstance(y, (int, float)):
         p = 1
         jacobian = (
             -1 / (1 - c * y / (2 * p) * x / (2 * y)) ** 2 * (c * y / (2 * p) / (2 * y))
