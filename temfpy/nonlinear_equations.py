@@ -701,7 +701,7 @@ def _rosenbrock_ext_val(x, a=(10, 1)):
     p = len(x)
 
     if p % 2 != 0:
-        sys.exit(f"x must consist of an even number of parameters.")
+        sys.exit("x must consist of an even number of parameters.")
 
     xl = np.concatenate((np.delete(x, 0), 0), axis=None)
     xh = np.concatenate((np.delete(x, p - 1), 0), axis=None)
@@ -757,7 +757,7 @@ def _rosenbrock_ext_jacobian(x, a=(10, 1)):
     p = len(x)
 
     if p % 2 != 0:
-        sys.exit(f"x must consist of an even number of parameters.")
+        sys.exit("x must consist of an even number of parameters.")
 
     diag_mat = np.diag(np.repeat(-2, p) * np.repeat(a[0], p) * x * np.resize([1, 0], p))
     off_diag_p1_mat = np.diag(np.resize([a[0], 0], p - 1), k=1)
