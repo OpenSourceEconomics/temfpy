@@ -29,7 +29,7 @@ def _check_if_number(a, name):
     >>> from temfpy.nonlinear_equations import _check_if_number
     >>> a = 10
     >>> _check_if_number(a, 'a')
-    >>> True
+    True
     """
     if not (isinstance(a, (int, float)) and not isinstance(a, bool)):
         sys.exit(f"The parameter `{name}` must either be of type int or float.")
@@ -1019,18 +1019,14 @@ def _chandrasekhar_val(x, y, c):
     --------
     >>> import numpy as np
     >>> import numdifftools as nd
-    >>> from temfpy.nonlinear_equations import _chandrasekhar_jacobian
+    >>> from temfpy.nonlinear_equations import _chandrasekhar_val
     >>>
-    >>> p = 10
     >>> np.random.seed(123)
-    >>> x = np.random.uniform(size = p)
-    >>> y = np.random.normal(size = p)
-    >>> c = 2
-    >>> value, jacobian = _chandrasekhar_jacobian(x,y,c)
-    >>> analytical_jacobian = jacobian[0]
-    >>> numerical_jacobian = jacobian[1]
-    >>> np.allclose(analytical_jacobian, numerical_jacobian)
-    True
+    >>> p = np.random.randint(1,20) 
+    >>> x = np.repeat(2,p)
+    >>> y = np.repeat(1,p)
+    >>> c = 1
+    >>> np.allclose(chandrasekhar_val(x,y,c), np.zeros(p))
     """
     _check_if_number(c, "c")
 
