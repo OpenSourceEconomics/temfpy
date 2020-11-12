@@ -669,7 +669,7 @@ def _rosenbrock_ext_val(x, a=(10, 1)):
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`p > 1`.
+        Input domain with even dimension :math:`p > 1`.
     a : array_like, optional
         The default array is (10,1)
 
@@ -700,6 +700,9 @@ def _rosenbrock_ext_val(x, a=(10, 1)):
 
     p = len(x)
 
+    if p % 2 != 0:
+        sys.exit(f"x must consist of an even number of parameters.")
+
     xl = np.concatenate((np.delete(x, 0), 0), axis=None)
     xh = np.concatenate((np.delete(x, p - 1), 0), axis=None)
     f_odd = a[0] * (xl - xh ** 2) * np.resize((1, 0), p)
@@ -720,7 +723,7 @@ def _rosenbrock_ext_jacobian(x, a=(10, 1)):
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`p > 1`.
+        Input domain with even dimension :math:`p > 1`.
     a : array_like, optional
         The default array is (10,1)
 
@@ -753,6 +756,9 @@ def _rosenbrock_ext_jacobian(x, a=(10, 1)):
 
     p = len(x)
 
+    if p % 2 != 0:
+        sys.exit(f"x must consist of an even number of parameters.")
+
     diag_mat = np.diag(np.repeat(-2, p) * np.repeat(a[0], p) * x * np.resize([1, 0], p))
     off_diag_p1_mat = np.diag(np.resize([a[0], 0], p - 1), k=1)
     off_diag_m1_mat = np.diag(np.resize([-1, 0], p - 1), k=-1)
@@ -776,7 +782,7 @@ def rosenbrock_ext(x, a=(10, 1), jac=False):
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`p > 1`.
+        Input domain with even dimension :math:`p > 1`.
     a : array_like, optional
         The default array is (10,1)
 
@@ -1027,6 +1033,7 @@ def _chandrasekhar_val(x, y, c):
     >>> y = np.repeat(1,p)
     >>> c = 1
     >>> np.allclose(_chandrasekhar_val(x,y,c), np.zeros(p))
+    True
     """
     _check_if_number(c, "c")
 
