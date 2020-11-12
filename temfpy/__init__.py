@@ -4,7 +4,7 @@ Temfpy package.
 temfpy is an open-source package providing test models and functions
 for standard numerical components in computational economic models
 """
-__version__ = "1.1.1"
+__version__ = "1.1.2"
 
 import pytest
 
