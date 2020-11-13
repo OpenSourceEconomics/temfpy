@@ -222,6 +222,10 @@ def exponential(x, a=10, b=1, jac=False):
         The default value is 10.
     b : float, optional
         The default value is 1.
+    jac : bool
+          If True, an additional array containing the numerically
+          and the analytically derived jacobian are returned.
+          The default is False.
 
     Returns
     -------
@@ -468,6 +472,10 @@ def trig_exp(x, a=(3, 2, 5, 4, 3, 2, 8, 4, 3), jac=False):
         Input domain with dimension :math:`p > 1`.
     a : array_like, optional
         The default array is (3,2,5,4,3,2,8,4,3).
+    jac : bool
+          If True, an additional array containing the numerically
+          and the analytically derived jacobian are returned.
+          The default is False.
 
     Returns
     -------
@@ -623,6 +631,10 @@ def broyden(x, a=(3, 0.5, 2, 1), jac=False):
         Input domain with dimension :math:`p > 1`.
     a : array_like, optional
         The default array is (3, 0.5, 2, 1).
+    jac : bool
+          If True, an additional array containing the numerically
+          and the analytically derived jacobian are returned.
+          The default is False.
 
     Returns
     -------
@@ -785,6 +797,10 @@ def rosenbrock_ext(x, a=(10, 1), jac=False):
         Input domain with even dimension :math:`p > 1`.
     a : array_like, optional
         The default array is (10,1)
+    jac : bool
+          If True, an additional array containing the numerically
+          and the analytically derived jacobian are returned.
+          The default is False.
 
     Returns
     -------
@@ -955,6 +971,10 @@ def troesch(x, rho=10, a=2, jac=False):
         The default value is 10
     a : float, optional
         The default value is 2
+    jac : bool
+          If True, an additional array containing the numerically
+          and the analytically derived jacobian are returned.
+          The default is False.
 
     Returns
     -------
@@ -1164,6 +1184,10 @@ def chandrasekhar(x, y, c, jac=False):
         Array of constants with dimension :math:`p`
     c : float
         Constant parameter
+    jac : bool
+          If True, an additional array containing the numerically
+          and the analytically derived jacobian are returned.
+          The default is False.
 
     Returns
     -------

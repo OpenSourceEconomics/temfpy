@@ -173,9 +173,9 @@ def rosenbrock(x):
     if not isinstance(x, (list, tuple, pd.core.series.Series, np.ndarray)):
         sys.exit("The parameter x must be an array like object.")
     else:
-        if (len(x) < 2):
+        if len(x) < 2:
             sys.exit("The input array x must be at least of length 2.")
-  
+
     rslt = rosen(x)
 
     return rslt
