@@ -20,7 +20,9 @@ def mc_integration(u_prime, cov, y, n_draws=None):
         1d array of shape with the observed choices.
 
     n_draws : int
-              Number of draws for Monte-Carlo integration.
+              Number of draws for Monte-Carlo integration. If :math:`None`
+              is specified the value is set to the product of the number
+              of choices and 2000.
 
     Returns:
     --------
@@ -33,7 +35,6 @@ def mc_integration(u_prime, cov, y, n_draws=None):
     if n_draws is None:
         n_draws = n_choices * 2000
 
-    np.random.seed(1995)
     base_error = np.random.normal(size=(n_obs * n_draws, (n_choices - 1)))
     chol = np.linalg.cholesky(cov)
     errors = chol.dot(base_error.T)
@@ -57,7 +58,7 @@ def mc_integration(u_prime, cov, y, n_draws=None):
     return choice_prob_obs
 
 
-def smc_integration(u_prime, cov, y, tau=None, n_draws=None):
+def smc_integration(u_prime, cov, y, tau=1, n_draws=None, max_bound=1e250):
     r"""Calculate probit choice probabilities with smooth Monte-Carlo Integration.
 
     Parameters
@@ -76,9 +77,15 @@ def smc_integration(u_prime, cov, y, tau=None, n_draws=None):
           corresponds to the smoothing factor. It should be a positive number.
           For values close to zero the estimated smooth choice  probabilities lie
           in a wider interval which becomes symmetrically smaller for larger values of tau.
+          The default is 1.
 
     n_draws : int
               Number of draws for smooth Monte-Carlo integration.
+    
+    max_bound : float
+                Positive number indicating the maximum number that is allowed
+                during the computation of the choice probabilities. 
+                The default is :math:`1e250`.
 
     Returns:
     --------
@@ -88,15 +95,10 @@ def smc_integration(u_prime, cov, y, tau=None, n_draws=None):
     """
     n_obs = np.shape(u_prime)[0]
     n_choices = np.shape(u_prime)[1]
-    huge = 1e250
 
     if n_draws is None:
         n_draws = n_choices * 2000
 
-    if tau is None:
-        tau = 1
-
-    np.random.seed(1965)
     base_error = np.random.normal(size=(n_obs * n_draws, (n_choices - 1)))
     chol = np.linalg.cholesky(cov)
     errors = chol.dot(base_error.T)
@@ -107,7 +109,7 @@ def smc_integration(u_prime, cov, y, tau=None, n_draws=None):
     u = u_prime.reshape(n_obs, 1, n_choices) + errors
 
     u_max = np.max(u, axis=2)
-    val_exp = np.clip(np.exp((u - u_max.reshape(n_obs, n_draws, 1)) / tau), 0, huge)
+    val_exp = np.clip(np.exp((u - u_max.reshape(n_obs, n_draws, 1)) / tau), 0, max_bound)
     smooth_dummy = val_exp / val_exp.sum(axis=2).reshape(n_obs, n_draws, 1)
     choice_probs = np.average(smooth_dummy, axis=1)
 
@@ -116,7 +118,7 @@ def smc_integration(u_prime, cov, y, tau=None, n_draws=None):
     return choice_prob_obs
 
 
-def gauss_integration(u_prime, cov, y, degrees=None):
+def gauss_integration(u_prime, y, degrees=25):
     r"""Calculate probit choice probabilities with Gauss-Laguerre Integration.
 
     Parameters
@@ -143,8 +145,6 @@ def gauss_integration(u_prime, cov, y, degrees=None):
     n_obs = np.shape(u_prime)[0]
     n_choices = np.shape(u_prime)[1]
 
-    if degrees is None:
-        degrees = 25
     x_k, w_k = np.polynomial.laguerre.laggauss(degrees)
     fraction = np.divide(w_k, np.sqrt(x_k))
     sqrt_x_k = np.sqrt(2 * x_k)

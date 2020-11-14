@@ -1,6 +1,8 @@
 """Econometric Methods.
 We provide a variety of econometric methods used in data science.
 """
+import sys
+
 import numpy as np
 import pandas as pd
 import patsy
@@ -11,18 +13,16 @@ from estimagic.optimization.optimize import maximize
 def _multinomial_processing(formula, data, cov_structure):
     r"""Construct the inputs for the multinomial probit function.
 
-    .. math::
-
     Parameters
     ----------
-        formula : str
-                  A patsy formula comprising the independent variable and the dependent variables.
+    formula : str
+              A patsy formula comprising the independent variable and the dependent variables.
 
     data : pd.DataFrame
            A pandas data frame with shape :math:`n_obs \times n_var + 1`.
 
-        cov_structure : str
-                        Available options are 'iid' or 'free'.
+    cov_structure : str
+                    Available options are 'iid' or 'free'.
 
     Returns:
     --------
@@ -31,9 +31,14 @@ def _multinomial_processing(formula, data, cov_structure):
 
     x : np.array
         2d numpy array of shape :math:'(n_obs, n_var)' including the independent variables.
+
     params_df : pd.Series
                 Random starting values for the parameters.
     """
+
+    if ((cov_structure != "iid") and (cov_structure != "free")):
+        sys.exit("cov_structure must either be iid or free")
+
     y, x = patsy.dmatrices(formula, data, return_type="dataframe")
     data = pd.concat([y, x], axis=1).dropna()
     y, x = patsy.dmatrices(formula, data, return_type="dataframe")
@@ -41,7 +46,6 @@ def _multinomial_processing(formula, data, cov_structure):
     n_var = len(x.columns)
     n_choices = len(np.unique(y.to_numpy()))
 
-    np.random.seed(1998)
     bethas = np.random.rand(n_var * (n_choices - 1)) * 0.1
 
     if cov_structure == "iid":
@@ -122,6 +126,10 @@ def _multinomial_probit_loglikeobs(params, y, x, cov_structure, integration_meth
                      1d numpy array of shape :math:'(n_obs)' with
                      the respective likelihood contribution.
     """
+
+    if ((cov_structure != "iid") and (cov_structure != "free")):
+        sys.exit("cov_structure must either be iid or free")
+
     n_var = np.shape(x)[1]
     n_choices = len(np.unique(y))
 
@@ -148,12 +156,15 @@ def _multinomial_probit_loglikeobs(params, y, x, cov_structure, integration_meth
         bethas[:, i] = params["value"]["choice_{}".format(i)].to_numpy()
 
     u_prime = x.dot(bethas)
+    
+    if cov_structure == "gauss_integration":
+        choice_prob_obs = temfpy.integration_methods.gauss_integration(u_prime, y)
+    else:
+        choice_prob_obs = getattr(temfpy.integration_methods, integration_method)(
+            u_prime, cov, y
+            )
 
-    choice_prob_obs = getattr(temfpy.integration_methods, integration_method)(
-        u_prime, cov, y
-    )
-
-    choice_prob_obs[choice_prob_obs <= 1e-250] = 1e-250
+    choice_prob_obs.clip(lower=1e-250)
 
     loglikeobs = np.log(choice_prob_obs)
 
@@ -239,6 +250,8 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
 
     References
     ----------
+    Train, Kenneth E. Discrete choice methods with simulation.
+    Cambridge university press, 2009.
 
     Examples
     --------
@@ -256,7 +269,10 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     >>> algo = 'scipy_lbfgsb'
     >>> solution = tpe.multinomial_probit(f, data, cov, integr , algo)
     """
-
+    
+    if ((cov_structure != "iid") and (cov_structure != "free")):
+        sys.exit("cov_structure must either be iid or free")
+    
     y, x, params = _multinomial_processing(formula, data, cov_structure)
 
     params_df = pd.DataFrame(params, columns=["value"])
