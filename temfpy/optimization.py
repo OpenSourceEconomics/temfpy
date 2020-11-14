@@ -1,6 +1,9 @@
 """Test capabilities for optimization.
 This module contains a host of models and functions often used for testing optimization algorithms.
 """
+import sys
+
+import pandas as pd
 import numpy as np
 from scipy.optimize import rosen
 
@@ -132,7 +135,7 @@ def rosenbrock(x):
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`d`.
+        Input domain with dimension :math:`d > 1`.
 
     Returns
     -------
@@ -166,6 +169,13 @@ def rosenbrock(x):
     >>> y = rosenbrock(x)
     >>> np.testing.assert_almost_equal(y, 0)
     """
+
+    if not isinstance(x, (list, tuple, pd.core.series.Series, np.ndarray)):
+        sys.exit("The parameter x must be an array like object.")
+    else:
+        if len(x) < 2:
+            sys.exit("The input array x must be at least of length 2.")
+
     rslt = rosen(x)
 
     return rslt

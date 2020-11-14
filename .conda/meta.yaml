@@ -25,6 +25,7 @@ requirements:
     - scipy
     - bokeh >=2.0
     - seaborn >=0.10.0
+    - numdifftools
 
 about:
   home: https://github.com/OpenSourceEconomics/temfpy

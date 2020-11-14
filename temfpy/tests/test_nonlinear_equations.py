@@ -28,12 +28,12 @@ def get_strategies(name):
         a_strategy = arrays(np.float, 4, elements=integers(1, 20))
         strategy = (x_strategy, a_strategy)
     elif name == "rosenbrock_ext":
-        x_strategy = arrays(np.float, 3, elements=valid_floats)
+        x_strategy = arrays(np.float, 4, elements=valid_floats)
         a_strategy = arrays(np.float, 2, elements=integers(1, 20))
         strategy = (x_strategy, a_strategy)
     elif name == "troesch":
         x_strategy = arrays(
-            np.float, 3, elements=floats(-3, 3, allow_nan=False, allow_infinity=False),
+            np.float, 3, elements=floats(-1, 1, allow_nan=False, allow_infinity=False),
         )
         strategy = (x_strategy, integers(1, 100), integers(1, 100))
     elif name == "chandrasekhar":
@@ -48,29 +48,29 @@ def get_strategies(name):
 
 @given(*get_strategies("exponential"))
 def test_exponential(x, a, b):
-    exponential(x, a, b)
+    exponential(x, a, b, jac=True)
 
 
 @given(*get_strategies("trig_exp"))
 def test_trig_exp(x, a):
-    trig_exp(x, a)
+    trig_exp(x, a, jac=True)
 
 
 @given(*get_strategies("broyden"))
 def test_broyden(x, a):
-    broyden(x, a)
+    broyden(x, a, jac=True)
 
 
 @given(*get_strategies("rosenbrock_ext"))
 def test_rosenbrock_ext(x, a):
-    rosenbrock_ext(x, a)
+    rosenbrock_ext(x, a, jac=True)
 
 
 @given(*get_strategies("troesch"))
 def test_troesch(x, rho, a):
-    troesch(x, rho, a)
+    troesch(x, rho, a, jac=True)
 
 
 @given(*get_strategies("chandrasekhar"))
 def test_chandrasekhar(x, y, c):
-    chandrasekhar(x, y, c)
+    chandrasekhar(x, y, c, jac=True)
