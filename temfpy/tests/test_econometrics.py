@@ -69,10 +69,8 @@ def fixed_tests(cov_strategy=None, integration_strategy=None, algorithm_strategy
 
     if integration_strategy is None:
         integration_strategy = np.random.choice([
-            "mc_integration",
-            "smc_integration",
-            "gauss_integration"
-        ])
+            "mc_integration", "smc_integration", "gauss_integration"]
+        )
 
     if algorithm_strategy is None:
         algorithm_strategy = np.random.choice(["scipy_lbfgsb", "scipy_slsqp"])
