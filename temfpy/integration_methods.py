@@ -147,7 +147,7 @@ def gauss_integration(u_prime, y, degrees=25):
     n_obs = np.shape(u_prime)[0]
     n_choices = np.shape(u_prime)[1]
 
-    x_k, w_k = np.polynomial.laguerre.laggauss(degrees)
+    x_k, w_k = np.polynomial.laguerre.laggauss(int(degrees))
     fraction = np.divide(w_k, np.sqrt(x_k))
     sqrt_x_k = np.sqrt(2 * x_k)
 
