@@ -36,7 +36,7 @@ def _multinomial_processing(formula, data, cov_structure):
                 Random starting values for the parameters.
     """
 
-    if ((cov_structure != "iid") and (cov_structure != "free")):
+    if (cov_structure != "iid") and (cov_structure != "free"):
         sys.exit("cov_structure must either be iid or free")
 
     y, x = patsy.dmatrices(formula, data, return_type="dataframe")
@@ -127,7 +127,7 @@ def _multinomial_probit_loglikeobs(params, y, x, cov_structure, integration_meth
                      the respective likelihood contribution.
     """
 
-    if ((cov_structure != "iid") and (cov_structure != "free")):
+    if (cov_structure != "iid") and (cov_structure != "free"):
         sys.exit("cov_structure must either be iid or free")
 
     n_var = np.shape(x)[1]
@@ -156,15 +156,15 @@ def _multinomial_probit_loglikeobs(params, y, x, cov_structure, integration_meth
         bethas[:, i] = params["value"]["choice_{}".format(i)].to_numpy()
 
     u_prime = x.dot(bethas)
-    
+
     if cov_structure == "gauss_integration":
         choice_prob_obs = temfpy.integration_methods.gauss_integration(u_prime, y)
     else:
         choice_prob_obs = getattr(temfpy.integration_methods, integration_method)(
             u_prime, cov, y
-            )
+        )
 
-    choice_prob_obs.clip(lower=1e-250)
+    choice_prob_obs.clip(min=1e-250)
 
     loglikeobs = np.log(choice_prob_obs)
 
@@ -269,10 +269,10 @@ def multinomial_probit(formula, data, cov_structure, integration_method, algorit
     >>> algo = 'scipy_lbfgsb'
     >>> solution = tpe.multinomial_probit(f, data, cov, integr , algo)
     """
-    
-    if ((cov_structure != "iid") and (cov_structure != "free")):
+
+    if (cov_structure != "iid") and (cov_structure != "free"):
         sys.exit("cov_structure must either be iid or free")
-    
+
     y, x, params = _multinomial_processing(formula, data, cov_structure)
 
     params_df = pd.DataFrame(params, columns=["value"])

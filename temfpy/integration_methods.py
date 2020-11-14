@@ -81,10 +81,10 @@ def smc_integration(u_prime, cov, y, tau=1, n_draws=None, max_bound=1e250):
 
     n_draws : int
               Number of draws for smooth Monte-Carlo integration.
-    
+
     max_bound : float
                 Positive number indicating the maximum number that is allowed
-                during the computation of the choice probabilities. 
+                during the computation of the choice probabilities.
                 The default is :math:`1e250`.
 
     Returns:
@@ -109,7 +109,9 @@ def smc_integration(u_prime, cov, y, tau=1, n_draws=None, max_bound=1e250):
     u = u_prime.reshape(n_obs, 1, n_choices) + errors
 
     u_max = np.max(u, axis=2)
-    val_exp = np.clip(np.exp((u - u_max.reshape(n_obs, n_draws, 1)) / tau), 0, max_bound)
+    val_exp = np.clip(
+        np.exp((u - u_max.reshape(n_obs, n_draws, 1)) / tau), 0, max_bound
+    )
     smooth_dummy = val_exp / val_exp.sum(axis=2).reshape(n_obs, n_draws, 1)
     choice_probs = np.average(smooth_dummy, axis=1)
 
