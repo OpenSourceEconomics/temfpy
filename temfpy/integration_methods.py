@@ -120,7 +120,7 @@ def smc_integration(u_prime, cov, y, tau=1, n_draws=None, max_bound=1e250):
     return choice_prob_obs
 
 
-def gauss_integration(u_prime, y, degrees=25):
+def gauss_integration(u_prime, cov, y, degrees=25):
     r"""Calculate probit choice probabilities with Gauss-Laguerre Integration.
 
     Parameters

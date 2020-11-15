@@ -158,7 +158,7 @@ def _multinomial_probit_loglikeobs(params, y, x, cov_structure, integration_meth
     u_prime = x.dot(bethas)
 
     if cov_structure == "gauss_integration":
-        choice_prob_obs = temfpy.integration_methods.gauss_integration(u_prime, y)
+        choice_prob_obs = temfpy.integration_methods.gauss_integration(u_prime, cov, y)
     else:
         choice_prob_obs = getattr(temfpy.integration_methods, integration_method)(
             u_prime, cov, y
