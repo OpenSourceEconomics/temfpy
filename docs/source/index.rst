@@ -54,6 +54,5 @@ With ``conda`` available on your path, installing and testing
    nonlinear_equations
    optimization
    uncertainty_quantification
-   tutorials/index
    acknowledgment
    bibliography
