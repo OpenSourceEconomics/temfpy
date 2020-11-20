@@ -195,8 +195,8 @@ def carlberg(x, a, b):
     a : array_like
         Input vector with dimension :math:`d`.
     b : integer
-        Must either be 1 or 0. If 1 noise is added.
-        For more information see :math:`Notes`.
+        Must either be 1 or 0. If 1, noise is added.
+        For more information see Notes.
 
     Returns
     -------
@@ -206,7 +206,7 @@ def carlberg(x, a, b):
     Notes
     -----
     The function consists of a spherical term
-    :math:` \frac{1}{2}\sum_{i=1}^n a_i (x_i - 1)^2` and a noise term
+    :math:`\frac{1}{2} \sum_{i=1}^n a_i(x_i - 1)^2` and a noise term
     :math:`b \left[n - \sum_{i=1}^n \cos(2 \pi(x_i-1)) \right]`.
     Adding noise by setting :math:`b = 1` creates many local minima
     and maxima and thus makes it more difficult for numerical
