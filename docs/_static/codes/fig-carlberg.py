@@ -11,6 +11,7 @@ from mpl_toolkits.mplot3d import Axes3D
 
 from temfpy.optimization import carlberg
 
+
 def plot_carlberg(x1, x2, a, b, save_name):
     r"""plot the carlberg function.
 
@@ -58,9 +59,10 @@ def plot_carlberg(x1, x2, a, b, save_name):
     ax.set_zlabel("$f(x_1, x_2)$")
     fig.savefig(save_name)
 
+
 x1 = np.linspace(-2, 5, 500)
 x2 = np.linspace(-2, 5, 500)
-a = (1,1)
+a = (1, 1)
 
 plot_carlberg(x1=x1, x2=x2, a=a, b=0, save_name="fig-carlberg_no_noise")
 plot_carlberg(x1=x1, x2=x2, a=a, b=1, save_name="fig-carlberg_noise")
