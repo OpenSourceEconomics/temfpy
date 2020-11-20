@@ -237,7 +237,7 @@ def carlberg(x, a, b):
     >>> np.testing.assert_almost_equal(y, 0)
     """
 
-    if ((b != 1) and (b != 0)):
+    if (b != 1) and (b != 0):
         sys.exit("Input parameter b must either be 0 or 1.")
 
     x, a = np.atleast_1d(x), np.atleast_1d(a)
