@@ -179,3 +179,74 @@ def rosenbrock(x):
     rslt = rosen(x)
 
     return rslt
+
+
+def carlberg(x, a, b):
+    r"""Carlberg function.
+
+    .. math::
+        f(x) = \frac{1}{2}\sum_{i=1}^n a_i (x_i - 1)^2 + b \left[n -
+        \sum_{i=1}^n \cos(2 \pi(x_i-1)) \right]
+
+    Parameters
+    ----------
+    x : array_like
+        Input vector with dimension :math:`d`.
+    a : array_like
+        Input vector with dimension :math:`d`.
+    b : integer
+        Must either be 1 or 0. If 1 noise is added.
+        For more information see :math:`Notes`.
+
+    Returns
+    -------
+    float
+         Output domain
+
+    Notes
+    -----
+    The function consists of a spherical term
+    :math:` \frac{1}{2}\sum_{i=1}^n a_i (x_i - 1)^2` and a noise term
+    :math:`b \left[n - \sum_{i=1}^n \cos(2 \pi(x_i-1)) \right]`.
+    Adding noise by setting :math:`b = 1` creates many local minima
+    and maxima and thus makes it more difficult for numerical
+    optimizers to find the global minimum at
+    :math:`x = \begin{pmatrix}1 & \dots & 1 \end{pmatrix}^T`.
+
+    .. figure:: ../../docs/_static/images/fig-carlberg_noise.png
+       :align: center
+    .. figure:: ../../docs/_static/images/fig-carlberg_no_noise.png
+       :align: center
+
+    References
+    ----------
+    .. [R1960] Rosenbrock, H. H. (1960).
+       An Automatic Method for Finding the Greatest
+       or Least Value of a Function.
+       The Computer Journal, Volume 3, Issue 3, Pages 175-184
+
+    Examples
+    --------
+    >>> from temfpy.optimization import carlberg
+    >>> import numpy as np
+    >>>
+    >>> x = [1, 1]
+    >>> a = [1, 1]
+    >>> b = 1
+    >>> y = carlberg(x,a,b)
+    >>> np.testing.assert_almost_equal(y, 0)
+    """
+
+    if ((b != 1) and (b != 0)):
+        sys.exit("Input parameter b must either be 0 or 1.")
+        
+    x, a = np.atleast_1d(x), np.atleast_1d(a)
+    
+    dimension = len(x)
+
+    fval = 0
+    fval += 0.5 * np.sum(a * (x - np.ones(dimension)) ** 2)
+    fval += b * dimension
+    fval -= b * np.sum(np.cos(2 * np.pi * (x - np.ones(dimension))))
+
+    return fval
