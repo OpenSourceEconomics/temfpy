@@ -194,8 +194,8 @@ def carlberg(x, a, b):
         Input vector with dimension :math:`d`.
     a : array_like
         Input vector with dimension :math:`d`.
-    b : integer
-        Must either be 1 or 0. If 1, noise is added.
+    b : float
+        Must not be smaller than zero.
         For more information see Notes.
 
     Returns
@@ -205,12 +205,16 @@ def carlberg(x, a, b):
 
     Notes
     -----
-    The function consists of a spherical term
-    :math:`\frac{1}{2} \sum_{i=1}^n a_i(x_i - 1)^2` and a noise term
-    :math:`b \left[n - \sum_{i=1}^n \cos(2 \pi(x_i-1)) \right]`.
-    Adding noise by setting :math:`b = 1` creates many local minima
-    and maxima and thus makes it more difficult for numerical
-    optimizers to find the global minimum at
+    If the values in :math:`a` are widely distributed the function is
+    said to be ill-conditioned and it is hard to minimize in some
+    directions for Hessian free numerical methods.
+    If :math:`b=0` (see second graph below) the function is
+    convex, smooth and has its minimum at
+    :math:`x = \begin{pmatrix}1 & \dots & 1 \end{pmatrix}^T`. For
+    :math:`b>0` the function is no longer convex and has many local
+    minima (see first graph below), making it hard for
+    local optimization methods to find the global minimum,
+    which is still at
     :math:`x = \begin{pmatrix}1 & \dots & 1 \end{pmatrix}^T`.
 
     .. figure:: ../../docs/_static/images/fig-carlberg_noise.png
@@ -220,10 +224,9 @@ def carlberg(x, a, b):
 
     References
     ----------
-    .. [R1960] Rosenbrock, H. H. (1960).
-       An Automatic Method for Finding the Greatest
-       or Least Value of a Function.
-       The Computer Journal, Volume 3, Issue 3, Pages 175-184
+    .. [C2019] Carlberg, K. (2019).
+       Optimization in Python.
+       Fundamentals of Data Science Summer Workshops, Stanford.
 
     Examples
     --------
@@ -237,8 +240,8 @@ def carlberg(x, a, b):
     >>> np.testing.assert_almost_equal(y, 0)
     """
 
-    if (b != 1) and (b != 0):
-        sys.exit("Input parameter b must either be 0 or 1.")
+    if b < 0:
+        sys.exit("Input parameter b must not be smaller than zero.")
 
     x, a = np.atleast_1d(x), np.atleast_1d(a)
 
