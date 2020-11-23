@@ -1,7 +1,7 @@
-"""Figure of the Ackley function in 3D.
-x1 is evaluated on [-32.768, 32.768]
-x2 is evaluated on [-32.768, 32.768]
-y is the result of applying the Ackley function on each combination of x1 and x2
+"""Figure of the Rosenbrock function in 3D.
+x1 is evaluated on [-3, 3]
+x2 is evaluated on [-3, 3]
+y is the result of applying the Rosenbrock function on each combination of x1 and x2
 """
 import matplotlib.pyplot as plt
 import numpy as np

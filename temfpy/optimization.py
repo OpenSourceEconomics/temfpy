@@ -179,3 +179,77 @@ def rosenbrock(x):
     rslt = rosen(x)
 
     return rslt
+
+
+def carlberg(x, a, b):
+    r"""Carlberg function.
+
+    .. math::
+        f(x) = \frac{1}{2}\sum_{i=1}^n a_i (x_i - 1)^2 + b \left[n -
+        \sum_{i=1}^n \cos(2 \pi(x_i-1)) \right]
+
+    Parameters
+    ----------
+    x : array_like
+        Input vector with dimension :math:`d`.
+    a : array_like
+        Input vector with dimension :math:`d`.
+    b : float
+        Must not be smaller than zero.
+        For more information see Notes.
+
+    Returns
+    -------
+    float
+         Output domain
+
+    Notes
+    -----
+    If the values in :math:`a` are widely distributed the function is
+    said to be ill-conditioned and it is hard to minimize in some
+    directions for Hessian free numerical methods.
+    If :math:`b=0` (see second graph below) the function is
+    convex, smooth and has its minimum at
+    :math:`x = \begin{pmatrix}1 & \dots & 1 \end{pmatrix}^T`. For
+    :math:`b>0` the function is no longer convex and has many local
+    minima (see first graph below), making it hard for
+    local optimization methods to find the global minimum,
+    which is still at
+    :math:`x = \begin{pmatrix}1 & \dots & 1 \end{pmatrix}^T`.
+
+    .. figure:: ../../docs/_static/images/fig-carlberg_noise.png
+       :align: center
+    .. figure:: ../../docs/_static/images/fig-carlberg_no_noise.png
+       :align: center
+
+    References
+    ----------
+    .. [C2019] Carlberg, K. (2019).
+       Optimization in Python.
+       Fundamentals of Data Science Summer Workshops, Stanford.
+
+    Examples
+    --------
+    >>> from temfpy.optimization import carlberg
+    >>> import numpy as np
+    >>>
+    >>> x = [1, 1]
+    >>> a = [1, 1]
+    >>> b = 1
+    >>> y = carlberg(x,a,b)
+    >>> np.testing.assert_almost_equal(y, 0)
+    """
+
+    if b < 0:
+        sys.exit("Input parameter b must not be smaller than zero.")
+
+    x, a = np.atleast_1d(x), np.atleast_1d(a)
+
+    dimension = len(x)
+
+    fval = 0
+    fval += 0.5 * np.sum(a * (x - np.ones(dimension)) ** 2)
+    fval += b * dimension
+    fval -= b * np.sum(np.cos(2 * np.pi * (x - np.ones(dimension))))
+
+    return fval
