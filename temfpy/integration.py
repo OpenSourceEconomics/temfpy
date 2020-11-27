@@ -153,7 +153,7 @@ def discontinuous(x, u, a):
     r"""Discontinuous Integrand Family.
 
     .. math::
-        \[f(x) = \begin{cases} 
+        \[f(x) = \begin{cases}
                  0, & x_1 > u_1 or x_2 > u_2 \\
                  \exp{\left(\sum_{i=1}^d a_i x_i \right)}, & otherwise
                  \end{cases} \]
