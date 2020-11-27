@@ -133,7 +133,7 @@ def corner_peak(x, a):
     Examples
     --------
     >>> import numpy as np
-    >>> from temfpy.integration import continuous
+    >>> from temfpy.integration import corner_peak
     >>>
     >>> d = np.random.randint(1,20)
     >>> x = np.repeat(0,d)
@@ -196,7 +196,7 @@ def discontinuous(x, u, a):
     Examples
     --------
     >>> import numpy as np
-    >>> from temfpy.integration import continuous
+    >>> from temfpy.integration import discontinuous
     >>>
     >>> d = np.random.randint(1,20)
     >>> x = np.repeat(0,d)
@@ -264,7 +264,7 @@ def gaussian_peak(x, u, a):
     Examples
     --------
     >>> import numpy as np
-    >>> from temfpy.integration import continuous
+    >>> from temfpy.integration import gaussian_peak
     >>>
     >>> d = np.random.randint(1,20)
     >>> x = np.repeat(0.5,d)
@@ -319,7 +319,7 @@ def oscillatory(x, a, b):
     Examples
     --------
     >>> import numpy as np
-    >>> from temfpy.integration import continuous
+    >>> from temfpy.integration import oscillatory
     >>>
     >>> d = np.random.randint(1,20)
     >>> x = np.repeat(np.pi/4,d)
@@ -376,7 +376,7 @@ def product(x, u, a):
     Examples
     --------
     >>> import numpy as np
-    >>> from temfpy.integration import continuous
+    >>> from temfpy.integration import product
     >>>
     >>> d = np.random.randint(1,20)
     >>> x = np.repeat(0.5,d)
