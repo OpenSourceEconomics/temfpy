@@ -382,7 +382,7 @@ def product(x, u, a):
     >>> x = np.repeat(0.5,d)
     >>> u = x
     >>> a = np.repeat(1,d)
-    >>> np.allclose(gaussian_peak(x,u,a), 1)
+    >>> np.allclose(product(x,u,a), 1)
     True
     """
     x = np.array(x)
