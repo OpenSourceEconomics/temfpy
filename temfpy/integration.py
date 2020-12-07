@@ -155,10 +155,10 @@ def discontinuous(x, u, a):
     r"""Discontinuous Integrand Family.
 
     .. math::
-        \[f(x) = \begin{cases}
-                 0, & x_1 > u_1 or x_2 > u_2 \\
-                 \exp{\left(\sum_{i=1}^d a_i x_i \right)}, & otherwise
-                 \end{cases} \]
+          f(x) = \begin{cases}
+                 0, & x_1 > u_1 \text{ or } x_2 > u_2 \\
+                 \exp{\left(\sum_{i=1}^d a_i x_i \right)}, & \text{otherwise}
+                 \end{cases} 
 
     Parameters
     ----------
@@ -226,7 +226,7 @@ def discontinuous(x, u, a):
 
 
 def gaussian_peak(x, u, a):
-    r"""Continuous Integrand Family.
+    r"""Gaussian peak Integrand Family.
 
     .. math::
         f(x)=\exp{\left(-\sum_{i=1}^d a_i^2 (x_i -u_i)^2 \right)}
