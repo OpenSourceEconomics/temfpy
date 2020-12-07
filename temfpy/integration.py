@@ -158,7 +158,7 @@ def discontinuous(x, u, a):
           f(x) = \begin{cases}
                  0, & x_1 > u_1 \text{ or } x_2 > u_2 \\
                  \exp{\left(\sum_{i=1}^d a_i x_i \right)}, & \text{otherwise}
-                 \end{cases} 
+                 \end{cases}
 
     Parameters
     ----------
