@@ -24,7 +24,7 @@ for i in range(0, len(x1)):
 
 yvalues = np.linspace(0, 0, len(xvalues))
 for i, j in zip(xvalues, range(0, len(xvalues))):
-    yvalues[j] = oscillatory(i, [5,5], 0.5)
+    yvalues[j] = oscillatory(i, [5, 5], 0.5)
 
 xvalues = np.array(xvalues)
 xvalues1 = xvalues[:, 0]
