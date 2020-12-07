@@ -24,7 +24,7 @@ for i in range(0, len(x1)):
 
 yvalues = np.linspace(0, 0, len(xvalues))
 for i, j in zip(xvalues, range(0, len(xvalues))):
-    yvalues[j] = continuous(i, [0.5,0.5] [1,1])
+    yvalues[j] = continuous(i, [0.5,0.5], [1,1])
 
 xvalues = np.array(xvalues)
 xvalues1 = xvalues[:, 0]
