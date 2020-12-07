@@ -205,7 +205,7 @@ def discontinuous(x, u, a):
     >>> np.allclose(discontinuous(x,u,a), 1)
     True
     """
-    x = np.array(x)
+    x = np.atleast_1d(x)
     u = np.array(u)
     a = np.array(a)
     _vector_interval(x, 0, 1)
