@@ -18,7 +18,7 @@ def get_strategies(name):
     in_strategy = arrays(np.float, 3, elements=valid_floats)
     if name == "continuous":
         strategy = (in_strategy, in_strategy, in_strategy)
-    elif name == "corner-peak":
+    elif name == "corner_peak":
         strategy = (in_strategy, in_strategy)
     elif name == "gaussian_peak":
         strategy = (in_strategy, in_strategy, in_strategy)
