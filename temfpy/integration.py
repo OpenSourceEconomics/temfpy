@@ -66,6 +66,11 @@ def continuous(x, u, a):
     in the location vector :math:`a` result in a sharp peak and a more
     difficult integration.
 
+
+    .. figure:: ../../docs/_static/images/fig-continuous_integrand.png
+       :align: center
+
+
     References
     ----------
     .. [G1984] Genz, A. (1984). Testing multidimensional integration routines.
@@ -122,6 +127,11 @@ def corner_peak(x, a):
     in one corner of the integration region. Large values
     in the location vector :math:`a` result in a more sharp peak and a more
     difficult integration.
+
+
+    .. figure:: ../../docs/_static/images/fig-corner_peak.png
+       :align: center
+
 
     References
     ----------
@@ -185,6 +195,11 @@ def discontinuous(x, u, a):
     in :math:`u`. Large values
     in the location vector :math:`a` result in a sharp peak and a more
     difficult integration.
+
+
+    .. figure:: ../../docs/_static/images/fig-discontinuous_integrand.png
+       :align: center
+
 
     References
     ----------
@@ -254,6 +269,11 @@ def gaussian_peak(x, u, a):
     in the location vector :math:`a` result in a sharp peak and a more
     difficult integration.
 
+
+    .. figure:: ../../docs/_static/images/fig-gaussian_peak.png
+       :align: center
+
+
     References
     ----------
     .. [G1984] Genz, A. (1984). Testing multidimensional integration routines.
@@ -296,6 +316,8 @@ def oscillatory(x, a, b):
         Input domain with dimension :math:`d` and :math:`x \in [0,1]^d`.
     a : array_like
         Weight vector with dimension :math:`d`.
+    b : int
+        Scale value that increases influences the location of the oscillatory.
 
     Returns
     -------
@@ -308,6 +330,11 @@ def oscillatory(x, a, b):
     integrated analytically quickly with high precision.Large values
     in the location vector :math:`a` result in a higher frequency of
     oscillations and a more difficult integration.
+
+
+    .. figure:: ../../docs/_static/images/fig-oscillatory_integrand.png
+       :align: center
+
 
     References
     ----------
@@ -365,6 +392,11 @@ def product(x, u, a):
     in the centre of the integration region. Large values
     in the location vector :math:`a` result in a larger peak and a more
     difficult integration.
+
+
+    .. figure:: ../../docs/_static/images/fig-product_integrand.png
+       :align: center
+
 
     References
     ----------
