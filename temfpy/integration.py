@@ -211,8 +211,8 @@ def discontinuous(x, u, a):
     _vector_interval(x, 0, 1)
 
     if len(x) > 1:
-        x_if = [x[0], x[1]]
-        u_if = [u[0], u[1]]
+        x_if = np.array([x[0], x[1]])
+        u_if = np.array([u[0], u[1]])
     else:
         x_if = x
         u_if = u
