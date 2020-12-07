@@ -45,7 +45,7 @@ def test_corner_peak(x, a):
     corner_peak(x, a)
 
 
-@given(*get_strategies("discontiuous"))
+@given(*get_strategies("discontinuous"))
 def test_discontinuous(x, u, a):
     discontinuous(x, u, a)
 
