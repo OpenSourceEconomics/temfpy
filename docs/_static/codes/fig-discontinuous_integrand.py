@@ -1,4 +1,4 @@
-"""Figure of the Discontinous Integrand function in 3D.
+"""Figure of the Discontinuous Integrand function in 3D.
 
 x1 is evaluated on [0, 1]
 x2 is evaluated on [0, 1]
