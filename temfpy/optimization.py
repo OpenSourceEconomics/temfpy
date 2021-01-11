@@ -3,8 +3,8 @@ This module contains a host of models and functions often used for testing optim
 """
 import sys
 
-import pandas as pd
 import numpy as np
+import pandas as pd
 from scipy.optimize import rosen
 
 

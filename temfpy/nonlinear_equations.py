@@ -2,12 +2,12 @@
 We provide a variety of non-linear equations used for testing
 numerical optimization algorithms.
 """
+import functools as ft
 import sys
 
 import numdifftools as nd
 import numpy as np
 import pandas as pd
-import functools as ft
 
 
 def _check_if_number(a, name):
@@ -74,10 +74,8 @@ def _check_if_val_x(x, name, length=None, length_type="equal"):
     """
     if not isinstance(x, (int, float, list, tuple, pd.core.series.Series, np.ndarray)):
         sys.exit(
-            (
-                f"The parameter `{name}` must either be an integer, float, "
-                f"list, numpy.array or pandas.Series."
-            )
+            f"The parameter `{name}` must either be an integer, float, "
+            f"list, numpy.array or pandas.Series.",
         )
 
     if not (isinstance(x, (int, float)) and not isinstance(x, bool)):
@@ -195,7 +193,8 @@ def _exponential_jacobian(x, a=10):
         / np.append([1], np.repeat(a, p - 1)),
     )
     off_diag_mat = np.diag(
-        np.array(range(2, p + 1)) / np.array(np.repeat(a, p - 1)), k=-1,
+        np.array(range(2, p + 1)) / np.array(np.repeat(a, p - 1)),
+        k=-1,
     )
     jacobian = diag_mat + off_diag_mat
 
