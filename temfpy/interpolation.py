@@ -6,7 +6,7 @@ import numpy as np
 
 
 def runge(x):
-    r"""Ackley function.
+    r"""Runge function.
     .. math::
         f(x) = \frac{1}{1 + 25x^2}
     Parameters
