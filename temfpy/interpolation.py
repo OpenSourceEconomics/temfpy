@@ -51,4 +51,3 @@ def runge(x):
         rslt = float(rslt)
 
     return rslt
-

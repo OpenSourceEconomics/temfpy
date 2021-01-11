@@ -5,9 +5,9 @@ y is the result of applying the Runge function on each element in x
 
 """
 import matplotlib.pyplot as plt
-
 import numpy as np
 from numpy.polynomial import Polynomial as P
+
 from temfpy.interpolation import runge
 
 
@@ -35,4 +35,3 @@ ax.set_title("Runge Function and Polynomial Approximations over Uniform Grid")
 ax.legend()
 
 fig.savefig("fig-runge")
-
