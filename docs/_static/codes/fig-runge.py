@@ -5,15 +5,15 @@ y is the result of applying the Runge function on each element in x
 
 """
 import matplotlib.pyplot as plt
-import numpy as np
-from numpy.polynomial import Polynomial as P
 
+import numpy as np
+from numpy.polynomial import Polynomial as Poly
 from temfpy.interpolation import runge
 
 
 def get_interpolator_runge_baseline(func, degree):
     xnodes = np.linspace(-1, 1, degree)
-    poly = P.fit(xnodes, func(xnodes), degree)
+    poly = Poly.fit(xnodes, func(xnodes), degree)
     return poly
 
 
@@ -35,3 +35,4 @@ ax.set_title("Runge Function and Polynomial Approximations over Uniform Grid")
 ax.legend()
 
 fig.savefig("fig-runge")
+
