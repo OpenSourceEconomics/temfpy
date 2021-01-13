@@ -1,8 +1,8 @@
-"""Figure of the XXXXX function with noise in 3D.
+"""Figure of the carlberg function with noise in 3D.
 
 x1 is evaluated on [-2, 5]
 x2 is evaluated on [-2, 5]
-y is the result of applying the XXXXX function on each combination of x1 and x2
+y is the result of applying the carlberg function on each combination of x1 and x2
 
 """
 import matplotlib.pyplot as plt
