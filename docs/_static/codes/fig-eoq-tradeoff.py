@@ -1,11 +1,11 @@
 """Plot trade-off in Harris EOQ model.
 
-We create replicate the figure 1 in [H1990]_ that shows the trade-off in Harris EOQ model,
-where an increase in the size of order results in a decrease in set-up costs, but an increase in
-interest & depreciation cost.
+We create replicate the figure 1 in [H1990]_ that shows the trade-off in Harris EOQ
+model, where an increase in the size of order results in a decrease in set-up costs, but
+an increase in interest & depreciation cost.
 
-.. [H1990] Harris, F. W. (1990). How Many Parts to Make at Once. Operations Research, 38(6),
-947–950.
+.. [H1990] Harris, F. W. (1990). How Many Parts to Make at Once. Operations
+Research, 38(6), 947–950.
 """
 import matplotlib.pyplot as plt
 import numpy as np
@@ -14,11 +14,11 @@ import numpy as np
 def eoq_model_total_cost(x, y, r=10):
     r"""Economic order quantity model.
 
-    This function computes the total costs of economic order quantity model, based on the model
-    presented in [H1990]_
+    This function computes the total costs of economic order quantity model, based on
+    the model presented in [H1990]_
 
-    For plotting convenience, the total cost here excludes the last :math:`c`, since it is
-    assumed to be constant, as in Harris (1990).
+    For plotting convenience, the total cost here excludes the last :math:`c`, since
+    it is assumed to be constant, as in Harris (1990).
 
     Parameters
     ----------
@@ -40,8 +40,8 @@ def eoq_model_total_cost(x, y, r=10):
 
     References
     ----------
-    .. [H1990] Harris, F. W. (1990). How Many Parts to Make at Once. Operations Research, 38(6),
-    947–950.
+    .. [H1990] Harris, F. W. (1990). How Many Parts to Make at Once. Operations
+    Research, 38(6), 947–950.
     """
     m, s, c = x
 

@@ -32,7 +32,8 @@ def _vector_interval(x, lower, upper):
 
     if boolean:
         sys.exit(
-            f"Any component of the input vector {x} must be between {lower} and {upper}",
+            f"Any component of the input vector {x} must be between {lower} and"
+            " {upper}",
         )
 
 
