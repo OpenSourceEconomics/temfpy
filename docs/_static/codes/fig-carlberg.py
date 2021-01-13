@@ -68,18 +68,8 @@ x2 = np.linspace(-2, 5, 500)
 a = (1, 1)
 
 plot_carlberg(
-    x1=x1,
-    x2=x2,
-    a=a,
-    b=0,
-    title="Without Noise",
-    save_name="fig-carlberg_no_noise",
+    x1=x1, x2=x2, a=a, b=0, title="Without Noise", save_name="fig-carlberg_no_noise",
 )
 plot_carlberg(
-    x1=x1,
-    x2=x2,
-    a=a,
-    b=1,
-    title="Noise Included",
-    save_name="fig-carlberg_noise",
+    x1=x1, x2=x2, a=a, b=1, title="Noise Included", save_name="fig-carlberg_noise",
 )
