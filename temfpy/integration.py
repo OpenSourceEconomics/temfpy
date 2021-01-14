@@ -350,7 +350,7 @@ def oscillatory(x, a, b):
     >>>
     >>> p = np.random.randint(1,20)
     >>> x = np.repeat(np.pi/4,p)
-    >>> a = np.repeat(-6/d,p)
+    >>> a = np.repeat(-6/p,p)
     >>> b = 1
     >>> np.allclose(oscillatory(x,a,b), 0)
     True
