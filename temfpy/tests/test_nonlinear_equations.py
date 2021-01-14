@@ -1,10 +1,8 @@
 """Tests for nonlinear equations module."""
-import numpy as np
-import pytest
-
 import unittest
 
 import numpy as np
+import pytest
 from hypothesis import given
 from hypothesis.extra.numpy import arrays
 from hypothesis.strategies import floats
@@ -81,11 +79,8 @@ def test_chandrasekhar(x, y, c):
     chandrasekhar(x, y, c, jac=True)
 
 
-def test_exponential_exit_zero_a():  
+def test_exponential_exit_zero_a():
     with pytest.raises(SystemExit) as pytest_wrapped_e:
-        exponential([3,2,3,4], a=0, b=1, jac=False)
+        exponential([3, 2, 3, 4], a=0, b=1, jac=False)
     assert pytest_wrapped_e.type == SystemExit
     assert pytest_wrapped_e.value.code == 42
-    
-
-
