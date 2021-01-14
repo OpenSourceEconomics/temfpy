@@ -1,6 +1,7 @@
 """Tests for nonlinear equations module."""
-import numpy as np
 import unittest
+
+import numpy as np
 from hypothesis import given
 from hypothesis.extra.numpy import arrays
 from hypothesis.strategies import floats
@@ -76,11 +77,11 @@ def test_troesch(x, rho, a):
 def test_chandrasekhar(x, y, c):
     chandrasekhar(x, y, c, jac=True)
 
+
 class TestExitCases(unittest.TestCase):
-    
-    def test_exponential_exit_zero_a(self):  
+    def test_exponential_exit_zero_a(self):
         with self.assertRaises(SystemExit):
-            exponential([3,2,3,4], a=0, b=1, jac=False)
-    
-    #def test_chandrasekhar_exit_zero_sum(): 
-        #chandrasekhar([3,2,3,4], [1,2,2,-1], 2, jac=False)
+            exponential([3, 2, 3, 4], a=0, b=1, jac=False)
+
+    # def test_chandrasekhar_exit_zero_sum():
+    # chandrasekhar([3,2,3,4], [1,2,2,-1], 2, jac=False)
