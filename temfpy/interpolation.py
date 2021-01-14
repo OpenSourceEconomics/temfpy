@@ -3,6 +3,7 @@ This module contains a host of models and functions often used for testing
  interpolation algorithms.
 """
 import sys
+
 import numpy as np
 
 
@@ -54,7 +55,7 @@ def runge(x):
     x = np.atleast_1d(x)
 
     if (x < -1).any() or (x > 1).any():
-       sys.exit(f"The parameters in `{x}` must be between -1 and 1.")
+        sys.exit(f"The parameters in `{x}` must be between -1 and 1.")
 
     rslt = 1 / (1 + 25 * x ** 2)
 
