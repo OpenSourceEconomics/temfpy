@@ -4,6 +4,7 @@ This module contains a host of test models and functions often used in the uncer
 quantification literate.
 
 """
+import sys
 import numpy as np
 
 
@@ -54,7 +55,15 @@ def borehole(x):
     >>> y = borehole(x)
     >>> np.testing.assert_almost_equal(y, 34.43500403827335)
     """
+    
+    x = np.atleast_1d(x)
     assert len(x) == 8
+    
+    if (x[3]/x[4] <= 0):
+        sys.exit("x4 divided by x5 must be greater than 0.")
+
+    if (x[4] == 0 or x[6] == 0 or x[7] == 0):
+        sys.exit("x5, x7 and x8 must be different from 0.")
 
     a = 2 * np.pi * x[0] * (x[1] - x[2])
     b = np.log(x[3] / x[4])
@@ -118,6 +127,7 @@ def ishigami(x, a=7, b=0.05):
     >>> y = ishigami(x)
     >>> np.testing.assert_almost_equal(y, 10.037181146302519)
     """
+    x = np.atleast_1d(x)
     assert len(x) == 3
 
     rslt = (1 + b * x[2] ** 4) * np.sin(x[0]) + a * np.sin(x[1]) ** 2
@@ -185,6 +195,16 @@ def eoq_model(x, r=0.1):
     >>> y = eoq_model(x, r=0.1)
     >>> np.testing.assert_almost_equal(y, 18.973665961010276)
     """
+    
+    x = np.atleast_1d(x)
+    assert len(x) == 3
+    
+    if (x.any() < 0 or x[1] <= 0):
+        sys.exit("m and s must be greater or equal to zero and c must be greater than 0.")
+
+    if (r <= 0):
+        sys.exit("r must be greater than 0.")
+    
     m, c, s = x
     y = np.sqrt((24 * m * s) / (r * c))
 
@@ -193,13 +213,25 @@ def eoq_model(x, r=0.1):
 
 def simple_linear_function(x):
     r"""Uncomplicated linear function.
+    
+    .. math::
+        y = \sum_{i = 1}^p x_i
 
-    This function computes the sum of all elements of a given array.
 
     Parameters
     ----------
     x : array_like
         Array of summands
+
+    Returns
+    -------
+    y : float
+        Sum of all array elements.
+
+    Notes
+    -----
+    This function computes the sum of all elements of a given :math:`p`-
+    dimensional array.
 
     Examples
     --------
