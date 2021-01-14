@@ -1228,9 +1228,9 @@ def chandrasekhar(x, y, c, jac=False):
     """
     x = np.atleast_1d(x)
     p = len(x)
-    x = np.matrix(x).T
+    x_check_zero = np.matrix(x).T
 
-    x_matrix = x @ np.matrix(np.repeat(1, p))
+    x_matrix = x_check_zero @ np.matrix(np.repeat(1, p))
 
     matrix_shouldnt_have_zeros = x_matrix + x_matrix.T
     if 0 in matrix_shouldnt_have_zeros:
