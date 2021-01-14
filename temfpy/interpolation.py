@@ -29,6 +29,7 @@ def runge(x):
     with grid points :math:`x_i = \frac{2i}{n}-1`, results in an interpolation
     function that oscilliates close to the interval boundaries :math:`-1` and
     :math:`1`.
+
     .. figure:: ../../docs/_static/images/fig-runge.png
        :align: center
 
