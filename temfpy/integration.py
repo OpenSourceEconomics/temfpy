@@ -41,16 +41,16 @@ def continuous(x, u, a):
     r"""Continuous Integrand Family.
 
     .. math::
-        f(x)=\exp{\left(-\sum_{i=1}^d a_i \mid x_i -u_i \mid \right)}
+        f(x)=\exp{\left(-\sum_{i=1}^p a_i \mid x_i -u_i \mid \right)}
 
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`d` and :math:`x \in [0,1]^d`.
+        Input domain with dimension :math:`p` and :math:`x \in [0,1]^p`.
     u : array_like
-        Location vector with dimension :math:`d` and :math:`u \in [0,1]^d`.
+        Location vector with dimension :math:`p` and :math:`u \in [0,1]^p`.
     a : array_like
-        Weight vector with dimension :math:`d`.
+        Weight vector with dimension :math:`p`.
 
     Returns
     -------
@@ -83,10 +83,10 @@ def continuous(x, u, a):
     >>> import numpy as np
     >>> from temfpy.integration import continuous
     >>>
-    >>> d = np.random.randint(1,20)
-    >>> x = np.repeat(0.5,d)
+    >>> p = np.random.randint(1,20)
+    >>> x = np.repeat(0.5,p)
     >>> u = x
-    >>> a = np.repeat(5,d)
+    >>> a = np.repeat(5,p)
     >>> np.allclose(continuous(x,u,a), 1)
     True
     """
@@ -105,14 +105,14 @@ def corner_peak(x, a):
     r"""Corner Peak Integrand Family.
 
     .. math::
-        f(x)=\left(1 + \sum_{i=1}^d a_i x_i \right)^{d+1}
+        f(x)=\left(1 + \sum_{i=1}^p a_i x_i \right)^{p+1}
 
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`d` and :math:`x \in [0,1]^d`.
+        Input domain with dimension :math:`p` and :math:`x \in [0,1]^p`.
     a : array_like
-        Weight vector with dimension :math:`d`.
+        Weight vector with dimension :math:`p`.
 
     Returns
     -------
@@ -145,9 +145,9 @@ def corner_peak(x, a):
     >>> import numpy as np
     >>> from temfpy.integration import corner_peak
     >>>
-    >>> d = np.random.randint(1,20)
-    >>> x = np.repeat(0,d)
-    >>> a = np.repeat(5,d)
+    >>> p = np.random.randint(1,20)
+    >>> x = np.repeat(0,p)
+    >>> a = np.repeat(5,p)
     >>> np.allclose(corner_peak(x,a), 1)
     True
     """
@@ -167,19 +167,19 @@ def discontinuous(x, u, a):
     .. math::
           f(x) = \begin{cases}
                  0, & x_1 > u_1 \text{ or } x_2 > u_2 \\
-                 \exp{\left(\sum_{i=1}^d a_i x_i \right)}, & \text{otherwise}
+                 \exp{\left(\sum_{i=1}^p a_i x_i \right)}, & \text{otherwise}
                  \end{cases}
 
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`d` and :math:`x \in [0,1]^d`.
+        Input domain with dimension :math:`p` and :math:`x \in [0,1]^p`.
     u : array_like
-        Location vector with dimension :math:`1`, if :math:`d = 1` and
-        dimension :math:`2`, if :math:`d > 1` that determines in which
+        Location vector with dimension :math:`1`, if :math:`p = 1` and
+        dimension :math:`2`, if :math:`p > 1` that determines in which
         area the function is equal to zero.
     a : array_like
-        Weight vector with dimension :math:`d`.
+        Weight vector with dimension :math:`p`.
 
     Returns
     -------
@@ -213,10 +213,10 @@ def discontinuous(x, u, a):
     >>> import numpy as np
     >>> from temfpy.integration import discontinuous
     >>>
-    >>> d = np.random.randint(1,20)
-    >>> x = np.repeat(0,d)
+    >>> p = np.random.randint(1,20)
+    >>> x = np.repeat(0,p)
     >>> u = [0.5,0.5]
-    >>> a = np.repeat(5,d)
+    >>> a = np.repeat(5,p)
     >>> np.allclose(discontinuous(x,u,a), 1)
     True
     """
@@ -244,16 +244,16 @@ def gaussian_peak(x, u, a):
     r"""Gaussian peak Integrand Family.
 
     .. math::
-        f(x)=\exp{\left(-\sum_{i=1}^d a_i^2 (x_i -u_i)^2 \right)}
+        f(x)=\exp{\left(-\sum_{i=1}^p a_i^2 (x_i -u_i)^2 \right)}
 
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`d` and :math:`x \in [0,1]^d`.
+        Input domain with dimension :math:`p` and :math:`x \in [0,1]^p`.
     u : array_like
-        Location vector with dimension :math:`d` and :math:`u \in [0,1]^d`.
+        Location vector with dimension :math:`p` and :math:`u \in [0,1]^p`.
     a : array_like
-        Weight vector with dimension :math:`d`.
+        Weight vector with dimension :math:`p`.
 
     Returns
     -------
@@ -286,10 +286,10 @@ def gaussian_peak(x, u, a):
     >>> import numpy as np
     >>> from temfpy.integration import gaussian_peak
     >>>
-    >>> d = np.random.randint(1,20)
-    >>> x = np.repeat(0.5,d)
+    >>> p = np.random.randint(1,20)
+    >>> x = np.repeat(0.5,p)
     >>> u = x
-    >>> a = np.repeat(5,d)
+    >>> a = np.repeat(5,p)
     >>> np.allclose(gaussian_peak(x,u,a), 1)
     True
     """
@@ -308,14 +308,14 @@ def oscillatory(x, a, b):
     r"""Oscillatory Integrand Family.
 
     .. math::
-        f(x)= \cos\left(2 \pi b + \sum_{i=1}^d a_i x_i \right)
+        f(x)= \cos\left(2 \pi b + \sum_{i=1}^p a_i x_i \right)
 
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`d` and :math:`x \in [0,1]^d`.
+        Input domain with dimension :math:`p` and :math:`x \in [0,1]^p`.
     a : array_like
-        Weight vector with dimension :math:`d`.
+        Weight vector with dimension :math:`p`.
     b : int
         Scale value that increases influences the location of the oscillatory.
 
@@ -348,9 +348,9 @@ def oscillatory(x, a, b):
     >>> import numpy as np
     >>> from temfpy.integration import oscillatory
     >>>
-    >>> d = np.random.randint(1,20)
-    >>> x = np.repeat(np.pi/4,d)
-    >>> a = np.repeat(-6/d,d)
+    >>> p = np.random.randint(1,20)
+    >>> x = np.repeat(np.pi/4,p)
+    >>> a = np.repeat(-6/d,p)
     >>> b = 1
     >>> np.allclose(oscillatory(x,a,b), 0)
     True
@@ -368,16 +368,16 @@ def product(x, u, a):
     r"""Product Peak Integrand Family.
 
     .. math::
-        f(x)=\prod \frac{1}{\sum_{i=1}^d a_i^{-2} (x_i -u_i)^2}
+        f(x)=\prod \frac{1}{\sum_{i=1}^p a_i^{-2} (x_i -u_i)^2}
 
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`d` and :math:`x \in [0,1]^d`.
+        Input domain with dimension :math:`p` and :math:`x \in [0,1]^p`.
     u : array_like
-        Location vector with dimension :math:`d` and :math:`u \in [0,1]^d`.
+        Location vector with dimension :math:`p` and :math:`u \in [0,1]^p`.
     a : array_like
-        Weight vector with dimension :math:`d`.
+        Weight vector with dimension :math:`p`.
 
     Returns
     -------
@@ -410,10 +410,10 @@ def product(x, u, a):
     >>> import numpy as np
     >>> from temfpy.integration import product
     >>>
-    >>> d = np.random.randint(1,20)
-    >>> x = np.repeat(0.5,d)
+    >>> p = np.random.randint(1,20)
+    >>> x = np.repeat(0.5,p)
     >>> u = x
-    >>> a = np.repeat(1,d)
+    >>> a = np.repeat(1,p)
     >>> np.allclose(product(x,u,a), 1)
     True
     """
