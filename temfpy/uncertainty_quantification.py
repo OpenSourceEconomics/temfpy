@@ -30,14 +30,14 @@ def borehole(x):
     to model steady state flow through a hypothetical borehole.
     It is widely used as a testing function for a variety of methods
     due to its simplicity and quick evaluation (e.g. [X2013]_).
-    Harper and Gupta used the function originally to compare the results of a sensitivity
-    analysis to results based on Latin hypercube sampling.
+    Harper and Gupta used the function originally to compare the results of a
+    sensitivity analysis to results based on Latin hypercube sampling.
 
     References
     ----------
     .. [H1983] Harper, W. V., and Gupta, S. K. (1983)
-        Sensitivity/uncertainty analysis of a borehole scenario comparing Latin hypercube sampling
-        and deterministc sensitivity approaches.
+        Sensitivity/uncertainty analysis of a borehole scenario comparing Latin
+        hypercube sampling and deterministc sensitivity approaches.
         Office of Nuclear Waste Isolation, Battelle Memorial Institute.
 
     .. [X2013] Xiong, S., and Qian, P. Z., and Wu, C. J. (2013).
@@ -99,7 +99,8 @@ def ishigami(x, a=7, b=0.05):
     References
     ----------
     .. [I1990] Ishigami, T., and Homma, T. (1990).
-        An importance quantification technique in uncertainty analysis for computer models.
+        An importance quantification technique in uncertainty analysis for computer
+        models.
         In: Uncertainty Modeling and Analysis, 1990. Proceedings.,
         First International Symposium on (pp. 398-403).
 
@@ -144,15 +145,16 @@ def eoq_model(x, r=0.1):
 
     Notes
     -----
-    This function computes the optimal economic order quantity (EOQ) based on the model presented in
-    [H1990]_. The EOQ minimizes the holding costs as well as ordering costs. The core parameters of
-    the model are the units per months :math:`x_0`, the unit price of items in stock :math:`x_1`,
-    and the setup costs of an order :math:`x_2`. The annual interest rate `r` is treated as an
-    additional parameter. A historical perspective on the model is provided by [E1990]_.
-    A brief description with the core equations is available in [W2020]_. The figure below
-    illustrates the core trade-off in the model. Holding :math:`x_1` and :math:`x_2` constant,
-    an increase in :math:`x_0` results in a decrease in the setup cost per unit, but an increase
-    in capital cost increases as the stock of inventory increase.
+    This function computes the optimal economic order quantity (EOQ) based on the model
+    presented in [H1990]_. The EOQ minimizes the holding costs as well as ordering
+    costs. The core parameters of the model are the units per months :math:`x_0`, the
+    unit price of items in stock :math:`x_1`, and the setup costs of an order
+    :math:`x_2`. The annual interest rate `r` is treated as an additional parameter. A
+    historical perspective on the model is provided by [E1990]_. A brief description
+    with the core equations is available in [W2020]_. The figure below illustrates the
+    core trade-off in the model. Holding :math:`x_1` and :math:`x_2` constant, an
+    increase in :math:`x_0` results in a decrease in the setup cost per unit, but an
+    increase in capital cost increases as the stock of inventory increase.
 
     .. figure:: ../../docs/_static/images/fig-eoq-tradeoff.png
        :align: center
@@ -170,7 +172,8 @@ def eoq_model(x, r=0.1):
     .. [W2020] Economic order quantity. (2020, April 3). In Wikipedia.
         Retrieved from
         `https://en.wikipedia.org/w/index.php\
-        ?title=Economic_order_quantity&oldid=948881557 <https://en.wikipedia.org/w/index.php
+        ?title=Economic_order_quantity&oldid=948881557 <
+        https://en.wikipedia.org/w/index.php
         ?title=Economic_order_quantity&oldid=948881557>`_
 
     Examples

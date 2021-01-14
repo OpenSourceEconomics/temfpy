@@ -52,6 +52,7 @@ With ``conda`` available on your path, installing and testing
    :maxdepth: 2
 
    integration
+   interpolation
    nonlinear_equations
    optimization
    uncertainty_quantification

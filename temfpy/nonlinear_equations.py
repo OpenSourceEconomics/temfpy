@@ -2,12 +2,12 @@
 We provide a variety of non-linear equations used for testing
 numerical optimization algorithms.
 """
+import functools as ft
 import sys
 
 import numdifftools as nd
 import numpy as np
 import pandas as pd
-import functools as ft
 
 
 def _check_if_number(a, name):
@@ -74,10 +74,8 @@ def _check_if_val_x(x, name, length=None, length_type="equal"):
     """
     if not isinstance(x, (int, float, list, tuple, pd.core.series.Series, np.ndarray)):
         sys.exit(
-            (
-                f"The parameter `{name}` must either be an integer, float, "
-                f"list, numpy.array or pandas.Series."
-            )
+            f"The parameter `{name}` must either be an integer, float, "
+            f"list, numpy.array or pandas.Series.",
         )
 
     if not (isinstance(x, (int, float)) and not isinstance(x, bool)):
@@ -168,7 +166,7 @@ def _exponential_jacobian(x, a=10):
     Examples
     --------
     >>> import numpy as np
-    >>> import numdifftools as nd
+    >>> import numdifftools as nd #noqa
     >>> from temfpy.nonlinear_equations import _exponential_jacobian
     >>>
     >>> p = 10
@@ -238,9 +236,10 @@ def exponential(x, a=10, b=1, jac=False):
 
     References
     ----------
-    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R Package for Solving a Large
-               System of Nonlinear Equations and for Optimizing a High-Dimensional Nonlinear
-               Objective Function. *Journal of Statistical Software*, 32(1):1–26, 2009.
+    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R Package for Solving a
+               Large System of Nonlinear Equations and for Optimizing a High-Dimensional
+               Nonlinear Objective Function. *Journal of Statistical Software*,
+               32(1):1–26, 2009.
 
     Examples
     --------
@@ -488,9 +487,10 @@ def trig_exp(x, a=(3, 2, 5, 4, 3, 2, 8, 4, 3), jac=False):
 
     References
     ----------
-    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R Package for Solving a Large
-               System of Nonlinear Equations and for Optimizing a High-Dimensional Nonlinear
-               Objective Function. *Journal of Statistical Software*, 32(1):1–26, 2009.
+    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R Package for Solving a
+               Large System of Nonlinear Equations and for Optimizing a High-Dimensional
+               Nonlinear Objective Function. *Journal of Statistical Software*,
+               32(1):1–26, 2009.
 
     Examples
     --------
@@ -648,9 +648,10 @@ def broyden(x, a=(3, 0.5, 2, 1), jac=False):
 
     References
     ----------
-    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R Package for Solving a Large
-               System of Nonlinear Equations and for Optimizing a High-Dimensional Nonlinear
-               Objective Function. *Journal of Statistical Software*, 32(1):1–26, 2009.
+    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R Package for Solving a
+               Large System of Nonlinear Equations and for Optimizing a High-Dimensional
+               Nonlinear Objective Function. *Journal of Statistical Software*,
+               32(1):1–26, 2009.
 
     Examples
     --------
@@ -841,7 +842,8 @@ def _troesch_val(x, rho=10, a=2):
 
     .. math::
         F_1(x) &= a_1x_1 + \rho h^2 \sinh(\rho x_1) - x_{2}, \\
-        F_i(x) &= a_1x_i + \rho h^2 \sinh(\rho x_i) - x_{i-1} - x_{i+1}, i = 2,3, \dots, p-1\\
+        F_i(x) &= a_1x_i + \rho h^2 \sinh(\rho x_i) - x_{i-1} - x_{i+1}, i = 2,3,
+        \dots, p-1\\
         F_p(x) &= a_1x_p + \rho h^2 \sinh(\rho x_p) - x_{p-1}
 
     Parameters
@@ -987,9 +989,10 @@ def troesch(x, rho=10, a=2, jac=False):
 
     References
     ----------
-    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R Package for Solving a Large
-               System of Nonlinear Equations and for Optimizing a High-Dimensional Nonlinear
-               Objective Function. *Journal of Statistical Software*, 32(1):1–26, 2009.
+    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R Package for Solving a
+               Large System of Nonlinear Equations and for Optimizing a High-Dimensional
+               Nonlinear Objective Function. *Journal of Statistical Software*,
+               32(1):1–26, 2009.
 
     Examples
     --------
@@ -1037,9 +1040,10 @@ def _chandrasekhar_val(x, y, c):
 
     References
     ----------
-    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R Package for Solving a Large
-               System of Nonlinear Equations and for Optimizing a High-Dimensional Nonlinear
-               Objective Function. *Journal of Statistical Software*, 32(1):1–26, 2009.
+    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R Package for Solving a
+               Large System of Nonlinear Equations and for Optimizing a High-Dimensional
+               Nonlinear Objective Function. *Journal of Statistical Software*,
+               32(1):1–26, 2009.
 
     Examples
     --------
@@ -1201,9 +1205,10 @@ def chandrasekhar(x, y, c, jac=False):
 
     References
     ----------
-    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R Package for Solving a Large
-               System of Nonlinear Equations and for Optimizing a High-Dimensional Nonlinear
-               Objective Function. *Journal of Statistical Software*, 32(1):1–26, 2009.
+    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R Package for Solving a
+               Large System of Nonlinear Equations and for Optimizing a High-Dimensional
+               Nonlinear Objective Function. *Journal of Statistical Software*,
+               32(1):1–26, 2009.
 
     Examples
     --------

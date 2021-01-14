@@ -2,7 +2,6 @@
 We provide a variety of non-linear equations used for testing
 numerical integration algorithms.
 """
-
 import sys
 
 import numpy as np
@@ -33,7 +32,8 @@ def _vector_interval(x, lower, upper):
 
     if boolean:
         sys.exit(
-            f"Any component of the input vector {x} must be between {lower} and {upper}"
+            f"Any component of the input vector {x} must be between {lower} and"
+            " {upper}",
         )
 
 

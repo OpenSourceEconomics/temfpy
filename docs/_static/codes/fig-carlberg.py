@@ -1,8 +1,8 @@
-"""Figure of the XXXXX function with noise in 3D.
+"""Figure of the carlberg function with noise in 3D.
 
 x1 is evaluated on [-2, 5]
 x2 is evaluated on [-2, 5]
-y is the result of applying the XXXXX function on each combination of x1 and x2
+y is the result of applying the carlberg function on each combination of x1 and x2
 
 """
 import matplotlib.pyplot as plt
@@ -68,8 +68,8 @@ x2 = np.linspace(-2, 5, 500)
 a = (1, 1)
 
 plot_carlberg(
-    x1=x1, x2=x2, a=a, b=0, title="Without Noise", save_name="fig-carlberg_no_noise"
+    x1=x1, x2=x2, a=a, b=0, title="Without Noise", save_name="fig-carlberg_no_noise",
 )
 plot_carlberg(
-    x1=x1, x2=x2, a=a, b=1, title="Noise Included", save_name="fig-carlberg_noise"
+    x1=x1, x2=x2, a=a, b=1, title="Noise Included", save_name="fig-carlberg_noise",
 )

@@ -1,10 +1,11 @@
 """Test capabilities for optimization.
-This module contains a host of models and functions often used for testing optimization algorithms.
+This module contains a host of models and functions often used for testing optimization
+algorithms.
 """
 import sys
 
-import pandas as pd
 import numpy as np
+import pandas as pd
 from scipy.optimize import rosen
 
 
@@ -36,9 +37,10 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
     Notes
     -----
     This function was proposed by David Ackley in [A1987]_ and used in [B1996]_
-    and [M2005]_. It is characterized by an almost flat outer region and a central hole or peak
-    where modulations become more and more influential. The function has
-    its global minimum :math:`f(x) = 0` at :math:`x = \begin{pmatrix}0 & \dots & 0 \end{pmatrix}^T`.
+    and [M2005]_. It is characterized by an almost flat outer region and a central hole
+    or peak where modulations become more and more influential. The function has
+    its global minimum :math:`f(x) = 0` at :math:`x = \begin{pmatrix}0 & \dots & 0
+    \end{pmatrix}^T`.
 
     .. figure:: ../../docs/_static/images/fig-ackley.png
        :align: center
@@ -54,7 +56,8 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
        Oxford, UK: Oxford University Press.
     .. [M2005] Molga, M., and Smutnicki, C. (2005).
        Test functions for optimization needs.
-       Retrieved June 2020, from http://www.zsd.ict.pwr.wroc.pl/files/docs/functions.pdf.
+       Retrieved June 2020, from
+       http://www.zsd.ict.pwr.wroc.pl/files/docs/functions.pdf.
 
     Examples
     --------

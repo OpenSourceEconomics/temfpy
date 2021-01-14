@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 """Create figures.
 
-This script supports our CI setup as it simply runs all files that create figures for our
-documentation.
+This script supports our CI setup as it simply runs all files that create figures for
+our documentation.
 """
 import glob
 import os
