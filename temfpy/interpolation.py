@@ -7,8 +7,10 @@ import numpy as np
 
 def runge(x):
     r"""Runge function.
+
     .. math::
         f(x) = \frac{1}{1 + 25x^2}
+
     Parameters
     ----------
     x : float
@@ -19,6 +21,7 @@ def runge(x):
     -------
     float
          Output domain
+
     Notes
     -----
     Runge found that interpolating this function with a Polynomial
@@ -28,12 +31,14 @@ def runge(x):
     :math:`1`.
     .. figure:: ../../docs/_static/images/fig-runge.png
        :align: center
+
     References
     ----------
     .. [R1901] Runge, K (1901).
        Über empirische Funktionen und die Interpolation
        zwischen äquidistanten Ordinaten.
        Zeitschrift für Mathematik und Physik.
+
     Examples
     --------
     >>> from temfpy.interpolation import runge
