@@ -252,8 +252,8 @@ def exponential(x, a=10, b=1, jac=False):
     >>> np.allclose(exponential(x), np.zeros(p))
     True
     """
-    
-    if (a == 0):
+
+    if a == 0:
         sys.exit("a must be different from 0.")
 
     if jac is False:
@@ -1235,7 +1235,6 @@ def chandrasekhar(x, y, c, jac=False):
     matrix_shouldnt_have_zeros = x_matrix + x_matrix.T
     if 0 in matrix_shouldnt_have_zeros:
         sys.exit("Every sum of two numbers from y must be different from 0.")
-        
 
     if jac is False:
         return _chandrasekhar_val(x=x, y=y, c=c)
