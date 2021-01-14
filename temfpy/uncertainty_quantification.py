@@ -200,7 +200,7 @@ def eoq_model(x, r=0.1):
     x = np.atleast_1d(x)
     assert len(x) == 3
 
-    if x.any() < 0 or x[1] <= 0:
+    if (x < 0).any() or x[1] <= 0:
         sys.exit(
             "m and s must be greater or equal to zero and c must be greater than 0.",
         )
