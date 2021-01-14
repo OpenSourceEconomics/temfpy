@@ -60,11 +60,11 @@ def borehole(x):
     x = np.atleast_1d(x)
     assert len(x) == 8
 
-    if x[3] / x[4] <= 0:
-        sys.exit("x4 divided by x5 must be greater than 0.")
-
     if x[4] == 0 or x[6] == 0 or x[7] == 0:
         sys.exit("x5, x7 and x8 must be different from 0.")
+
+    if x[3] / x[4] <= 0:
+        sys.exit("x4 divided by x5 must be greater than 0.")
 
     a = 2 * np.pi * x[0] * (x[1] - x[2])
     b = np.log(x[3] / x[4])
