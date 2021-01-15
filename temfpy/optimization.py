@@ -13,15 +13,15 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
     r"""Ackley function.
 
     .. math::
-        f(x) = -a \exp{\left(-b \sqrt{\frac{1}{d} \sum_{i=1}^d x_i^2}\right)}
-        \exp{\left(\frac{1}{d} \sum_{i=1}^d \cos(c x_i)\right)} + a + \exp(1)
+        f(x) = -a \exp{\left(-b \sqrt{\frac{1}{p} \sum_{i=1}^p x_i^2}\right)}
+        \exp{\left(\frac{1}{p} \sum_{i=1}^p \cos(c x_i)\right)} + a + \exp(1)
 
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`d`.
+        Input domain with dimension :math:`p`.
         It is usually evaluated on the hypercube
-        :math:`x_i \in [-32.768, 32.768]`, for all :math:`i = 1, \dots, d`.
+        :math:`x_i \in [-32.768, 32.768]`, for all :math:`i = 1, \dots, p`.
     a : float, optional
         The default value is 20.
     b : float, optional
@@ -80,14 +80,14 @@ def rastrigin(x, a=10):
     r"""Rastrigin function.
 
     .. math::
-        f(x) = a d + \sum_{i=1}^d \left(x_i^2 - 10 \cos(2\pi x_i)\right)
+        f(x) = a p + \sum_{i=1}^p \left(x_i^2 - 10 \cos(2\pi x_i)\right)
 
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`d`.
+        Input domain with dimension :math:`p`.
         It is usually evaluated on the hypercube
-        :math:`x_i\in [-5.12, 5.12]`, for all :math:`i = 1, \dots, d`.
+        :math:`x_i\in [-5.12, 5.12]`, for all :math:`i = 1, \dots, p`.
     a : float, optional
         The default value is 10.
 
@@ -133,12 +133,12 @@ def rosenbrock(x):
     r"""Rosenbrock function.
 
     .. math::
-        f(x) = \sum^{d-1}_{i = 1} \left[100(x_{i+1}-x_i^2)^2 + (1-x_i^2) \right]
+        f(x) = \sum^{p-1}_{i = 1} \left[100(x_{i+1}-x_i^2)^2 + (1-x_i^2) \right]
 
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`d > 1`.
+        Input domain with dimension :math:`p > 1`.
 
     Returns
     -------
@@ -188,15 +188,15 @@ def carlberg(x, a, b):
     r"""Carlberg function.
 
     .. math::
-        f(x) = \frac{1}{2}\sum_{i=1}^n a_i (x_i - 1)^2 + b \left[n -
-        \sum_{i=1}^n \cos(2 \pi(x_i-1)) \right]
+        f(x) = \frac{1}{2}\sum_{i=1}^p a_i (x_i - 1)^2 + b \left[p -
+        \sum_{i=1}^p \cos(2 \pi(x_i-1)) \right]
 
     Parameters
     ----------
     x : array_like
-        Input vector with dimension :math:`d`.
+        Input vector with dimension :math:`p`.
     a : array_like
-        Input vector with dimension :math:`d`.
+        Input vector with dimension :math:`p`.
     b : float
         Must not be smaller than zero.
         For more information see Notes.
