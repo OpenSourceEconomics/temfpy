@@ -5,7 +5,6 @@ quantification literate.
 
 """
 import sys
-
 import numpy as np
 
 
@@ -56,7 +55,6 @@ def borehole(x):
     >>> y = borehole(x)
     >>> np.testing.assert_almost_equal(y, 34.43500403827335)
     """
-
     x = np.atleast_1d(x)
     assert len(x) == 8
 
@@ -174,11 +172,11 @@ def eoq_model(x, r=0.1):
     ----------
     .. [H1990] Harris, F. W. (1990).
         How many parts to make at once.
-        Operations Research, 38(6), 947–950.
+        Operations Research, 38(6), 947-950.
 
     .. [E1990] Erlenkotter, D. (1990).
         Ford Whitman Harris and the economic order quantity model.
-        Operations Research, 38(6), 937–946.
+        Operations Research, 38(6), 937-946.
 
     .. [W2020] Economic order quantity. (2020, April 3). In Wikipedia.
         Retrieved from
@@ -196,11 +194,11 @@ def eoq_model(x, r=0.1):
     >>> y = eoq_model(x, r=0.1)
     >>> np.testing.assert_almost_equal(y, 18.973665961010276)
     """
-
     x = np.atleast_1d(x)
     assert len(x) == 3
+    m, c, s = x
 
-    if (x < 0).any() or x[1] <= 0:
+    if np.any(m < 0) or np.any(s < 0) or np.any(c <= 0):
         sys.exit(
             "m and s must be greater or equal to zero and c must be greater than 0.",
         )
@@ -208,7 +206,6 @@ def eoq_model(x, r=0.1):
     if r <= 0:
         sys.exit("r must be greater than 0.")
 
-    m, c, s = x
     y = np.sqrt((24 * m * s) / (r * c))
 
     return y
