@@ -8,15 +8,20 @@ channels:
 dependencies:
 
   - python>=3.7
+  - pip>=19.3.1
   - sphinx>=1.4
+  - sphinx_rtd_theme
+  - nbsphinx
+  - numpydoc
+  - sphinxcontrib-bibtex>=2.0.0
   - pandas>=0.25
   - numpy>=1.16
   - scipy
   - jupyter
   - seaborn
   - pytest>=5.4.3
+  - black==19.10b0
   - numba
-  - pip>=19.3.1
   - pdbpp
   - pre-commit
   - pytest-black
@@ -24,19 +29,13 @@ dependencies:
   - pytest-cov
   - pytest-sugar
   - jupyterlab
-  - nbsphinx
   - hypothesis
   - numdifftools
 
   - pip:
     - isort
-    - black==19.10b0
     - black-nb
     - flake8-nb
-    - sphinx_rtd_theme
-    - nbsphinx
-    - sphinxcontrib-bibtex
-    - numpydoc
     - pytest-randomly
     - pytest-stress
     - cairosvg
