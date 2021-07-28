@@ -6,7 +6,6 @@ channels:
   - opensourceeconomics
 
 dependencies:
-
   - python>=3.7
   - pip>=19.3.1
   - sphinx>=1.4
@@ -20,7 +19,7 @@ dependencies:
   - jupyter
   - seaborn
   - pytest>=5.4.3
-  - black==19.10b0
+  - black>=19.10b0
   - numba
   - pdbpp
   - pre-commit
