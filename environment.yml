@@ -19,7 +19,7 @@ dependencies:
   - jupyter
   - seaborn
   - pytest>=5.4.3
-  - black>=19.10b0
+  - black>=21.0
   - numba
   - pdbpp
   - pre-commit
