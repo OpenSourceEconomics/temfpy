@@ -34,7 +34,9 @@ def get_strategies(name):
         strategy = (x_strategy, a_strategy)
     elif name == "troesch":
         x_strategy = arrays(
-            np.float, 3, elements=floats(-1, 1, allow_nan=False, allow_infinity=False),
+            np.float,
+            3,
+            elements=floats(-1, 1, allow_nan=False, allow_infinity=False),
         )
         strategy = (x_strategy, integers(1, 100), integers(1, 100))
     elif name == "chandrasekhar":

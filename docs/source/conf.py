@@ -138,3 +138,6 @@ class CustomStyle(UnsrtStyle):
 
 
 register_plugin("pybtex.style.formatting", "custom", CustomStyle)
+
+# Set bib file for sphinxcontrib-bibtex
+bibtex_bibfiles = ["ref.bib"]

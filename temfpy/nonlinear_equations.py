@@ -193,7 +193,8 @@ def _exponential_jacobian(x, a=10):
         / np.append([1], np.repeat(a, p - 1)),
     )
     off_diag_mat = np.diag(
-        np.array(range(2, p + 1)) / np.array(np.repeat(a, p - 1)), k=-1,
+        np.array(range(2, p + 1)) / np.array(np.repeat(a, p - 1)),
+        k=-1,
     )
     jacobian = diag_mat + off_diag_mat
 
