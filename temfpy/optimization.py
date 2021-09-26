@@ -48,12 +48,11 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
     References
     ----------
     .. [A1987] Ackley, D. H. (1987).
-       A connectionist machine for genetic hillclimbing.
-       Boston, MA: Kluwer Academic Publishers.
+       A connectionist machine for genetic hillclimbing. Kluwer Academic Publishers.
     .. [B1996] Back, T. (1996).
        Evolutionary algorithms in theory and practice:
        Evolution strategies, evolutionary programming, genetic algorithms.
-       Oxford, UK: Oxford University Press.
+       Oxford University Press.
     .. [M2005] Molga, M., and Smutnicki, C. (2005).
        Test functions for optimization needs.
        Retrieved June 2020, from
@@ -111,7 +110,7 @@ def rastrigin(x, a=10):
     ----------
     .. [R1974] Rastrigin, L. A. (1974).
        Systems of extremal control.
-       Moscow, Russia: Mir.
+       Moscow, Russia.
 
     Examples
     --------
@@ -161,7 +160,7 @@ def rosenbrock(x):
     .. [R1960] Rosenbrock, H. H. (1960).
        An automatic method for finding the greatest
        or least value of a function.
-       The Computer Journal, Volume 3, Issue 3, Pages 175-184.
+       The Computer Journal, 3(3): 175-184.
 
     Examples
     --------
