@@ -27,7 +27,7 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
     b : float, optional
         The default value is 0.2.
     c : float, optional
-        The default value is 2π.
+        The default value is :math:`2\pi`.
 
     Returns
     -------
