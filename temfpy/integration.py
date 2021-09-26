@@ -74,8 +74,8 @@ def continuous(x, u, a):
     References
     ----------
     .. [G1984] Genz, A. (1984). Testing multidimensional integration routines.
-       In Proc. of international conference on tools, methods and languages
-       for scientific and engineering computation. Elsevier North-Holland, 81-94.
+       In *Proc. of international conference on tools, methods and languages
+       for scientific and engineering computation* (pp. 81-94). Elsevier North-Holland.
 
     Examples
     --------
@@ -135,8 +135,8 @@ def corner_peak(x, a):
     References
     ----------
     .. [G1984] Genz, A. (1984). Testing multidimensional integration routines.
-       In Proc. of international conference on tools, methods and languages
-       for scientific and engineering computation. Elsevier North-Holland, 81-94.
+       In *Proc. of international conference on tools, methods and languages
+       for scientific and engineering computation* (pp. 81-94). Elsevier North-Holland.
 
     Examples
     --------
@@ -202,8 +202,8 @@ def discontinuous(x, u, a):
     References
     ----------
     .. [G1984] Genz, A. (1984). Testing multidimensional integration routines.
-       In Proc. of international conference on tools, methods and languages
-       for scientific and engineering computation. Elsevier North-Holland, 81-94.
+       In *Proc. of international conference on tools, methods and languages
+       for scientific and engineering computation* (pp. 81-94). Elsevier North-Holland.
 
     Examples
     --------
@@ -274,8 +274,8 @@ def gaussian_peak(x, u, a):
     References
     ----------
     .. [G1984] Genz, A. (1984). Testing multidimensional integration routines.
-       In Proc. of international conference on tools, methods and languages
-       for scientific and engineering computation. Elsevier North-Holland, 81-94.
+       In *Proc. of international conference on tools, methods and languages
+       for scientific and engineering computation* (pp. 81-94). Elsevier North-Holland.
 
     Examples
     --------
@@ -335,9 +335,8 @@ def oscillatory(x, a, b):
     References
     ----------
     .. [G1984] Genz, A. (1984). Testing multidimensional integration routines.
-       In Proc. of international conference on tools, methods and languages
-       for scientific and engineering computation. Elsevier North-Holland, 81-94.
-
+       In *Proc. of international conference on tools, methods and languages
+       for scientific and engineering computation* (pp. 81-94). Elsevier North-Holland.
 
     Examples
     --------
@@ -397,9 +396,8 @@ def product(x, u, a):
     References
     ----------
     .. [G1984] Genz, A. (1984). Testing multidimensional integration routines.
-       In Proc. of international conference on tools, methods and languages
-       for scientific and engineering computation. Elsevier North-Holland, 81-94.
-
+       In *Proc. of international conference on tools, methods and languages
+       for scientific and engineering computation* (pp. 81-94). Elsevier North-Holland.
 
     Examples
     --------
