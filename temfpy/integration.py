@@ -74,7 +74,7 @@ def continuous(x, u, a):
     References
     ----------
     .. [G1984] Genz, A. (1984). Testing multidimensional integration routines.
-       In Proc. of international conference on tools, methods, and languages
+       In Proc. of international conference on tools, methods and languages
        for scientific and engineering computation (pp. 81-94). Elsevier
        North-Holland.
 
@@ -136,7 +136,7 @@ def corner_peak(x, a):
     References
     ----------
     .. [G1984] Genz, A. (1984). Testing multidimensional integration routines.
-       In Proc. of international conference on tools, methods, and languages
+       In Proc. of international conference on tools, methods and languages
        for scientific and engineering computation (pp. 81-94). Elsevier
        North-Holland.
 
@@ -204,7 +204,7 @@ def discontinuous(x, u, a):
     References
     ----------
     .. [G1984] Genz, A. (1984). Testing multidimensional integration routines.
-       In Proc. of international conference on tools, methods, and languages
+       In Proc. of international conference on tools, methods and languages
        for scientific and engineering computation (pp. 81-94). Elsevier
        North-Holland.
 
@@ -277,7 +277,7 @@ def gaussian_peak(x, u, a):
     References
     ----------
     .. [G1984] Genz, A. (1984). Testing multidimensional integration routines.
-       In Proc. of international conference on tools, methods, and languages
+       In Proc. of international conference on tools, methods and languages
        for scientific and engineering computation (pp. 81-94). Elsevier
        North-Holland.
 
@@ -339,7 +339,7 @@ def oscillatory(x, a, b):
     References
     ----------
     .. [G1984] Genz, A. (1984). Testing multidimensional integration routines.
-       In Proc. of international conference on tools, methods, and languages
+       In Proc. of international conference on tools, methods and languages
        for scientific and engineering computation (pp. 81-94). Elsevier
        North-Holland.
 
@@ -401,7 +401,7 @@ def product(x, u, a):
     References
     ----------
     .. [G1984] Genz, A. (1984). Testing multidimensional integration routines.
-       In Proc. of international conference on tools, methods, and languages
+       In Proc. of international conference on tools, methods and languages
        for scientific and engineering computation (pp. 81-94). Elsevier
        North-Holland.
 
