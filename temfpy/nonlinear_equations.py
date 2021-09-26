@@ -240,7 +240,7 @@ def exponential(x, a=10, b=1, jac=False):
     .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R package for solving a
                large system of nonlinear equations and for optimizing a high-dimensional
                nonlinear objective function. *Journal of Statistical Software*,
-               32(1): 1–26, 2009.
+               32(1): 1–26.
 
     Examples
     --------
@@ -494,7 +494,7 @@ def trig_exp(x, a=(3, 2, 5, 4, 3, 2, 8, 4, 3), jac=False):
     .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R package for solving a
                large system of nonlinear equations and for optimizing a high-dimensional
                nonlinear objective function. *Journal of Statistical Software*,
-               32(1): 1–26, 2009.
+               32(1): 1–26.
 
     Examples
     --------
@@ -654,7 +654,7 @@ def broyden(x, a=(3, 0.5, 2, 1), jac=False):
     .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R package for solving a
                large system of nonlinear equations and for optimizing a high-dimensional
                nonlinear objective function. *Journal of Statistical Software*,
-               32(1): 1–26, 2009.
+               32(1): 1–26.
 
     Examples
     --------
@@ -820,7 +820,7 @@ def rosenbrock_ext(x, a=(10, 1), jac=False):
     .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R package for solving a
                large system of nonlinear equations and for optimizing a high-dimensional
                nonlinear objective function. *Journal of Statistical Software*,
-               32(1): 1–26, 2009.
+               32(1): 1–26.
 
     Examples
     --------
@@ -996,7 +996,7 @@ def troesch(x, rho=10, a=2, jac=False):
     .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R package for solving a
                large system of nonlinear equations and for optimizing a high-dimensional
                nonlinear objective function. *Journal of Statistical Software*,
-               32(1): 1–26, 2009.
+               32(1): 1–26.
 
     Examples
     --------
@@ -1047,7 +1047,7 @@ def _chandrasekhar_val(x, y, c):
     .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R package for solving a
                large system of nonlinear equations and for optimizing a high-dimensional
                nonlinear objective function. *Journal of Statistical Software*,
-               32(1): 1–26, 2009.
+               32(1): 1–26.
 
     Examples
     --------
@@ -1212,7 +1212,7 @@ def chandrasekhar(x, y, c, jac=False):
     .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R package for solving a
                large system of nonlinear equations and for optimizing a high-dimensional
                nonlinear objective function. *Journal of Statistical Software*,
-               32(1): 1–26, 2009.
+               32(1): 1–26.
 
     Examples
     --------
