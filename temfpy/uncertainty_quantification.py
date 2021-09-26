@@ -181,7 +181,7 @@ def eoq_model(x, r=0.1):
 
     .. [W2020] *Economic order quantity*. (2020, April 3). In Wikipedia.
         Retrieved from
-        https://en.wikipedia.org/w/index.php\?title=Economic_order_quantity&oldid=948881557.
+        https://en.wikipedia.org/w/index.php?title=Economic_order_quantity&oldid=948881557.
 
     Examples
     --------
