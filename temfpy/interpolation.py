@@ -1,5 +1,5 @@
 """Test capabilities for interpolation.
-This module contains a host of models and functions often used for testing
+This module contains a **host of models** and functions often used for testing
  interpolation algorithms.
 """
 import sys
@@ -16,7 +16,7 @@ def runge(x):
     Parameters
     ----------
     x : float
-        Input number. It is usually evaluated on the interval
+        Input number, which is usually evaluated on the interval
         :math:`x_i \in [-1, 1]`.
 
     Returns
@@ -28,7 +28,7 @@ def runge(x):
     -----
     Runge found that interpolating this function with a Polynomial
     :math:`p_n(x)` of degree :math:`n` on an equidistant grid
-    with grid points :math:`x_i = \frac{2i}{n}-1`, results in an interpolation
+    with grid points :math:`x_i = \frac{2i}{n}-1` results in an interpolation
     function that oscilliates close to the interval boundaries :math:`-1` and
     :math:`1`.
 
