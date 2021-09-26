@@ -40,7 +40,7 @@ def runge(x):
     .. [R1901] Runge, C. (1901).
        Über empirische Funktionen und die Interpolation
        zwischen äquidistanten Ordinaten.
-       Zeitschrift für Mathematik und Physik, 46: 224-243.
+       *Zeitschrift für Mathematik und Physik*, 46: 224-243.
 
     Examples
     --------

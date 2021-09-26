@@ -37,14 +37,14 @@ def borehole(x):
 
     References
     ----------
-    .. [H1983] Harper, W. V., and Gupta, S. K. (1983)
-        Sensitivity/uncertainty analysis of a borehole scenario comparing Latin
-        hypercube sampling and deterministc sensitivity approaches.
+    .. [H1983] Harper, W. V., and Gupta, S. K. (1983).
+        *Sensitivity/uncertainty analysis of a borehole scenario comparing Latin
+        hypercube sampling and deterministc sensitivity approaches*.
         Office of Nuclear Waste Isolation, Battelle Memorial Institute.
 
-    .. [X2013] Xiong, S., and Qian, P. Z., and Wu, C. J. (2013).
+    .. [X2013] Xiong, S., Qian, P. Z., and Wu, C. J. (2013).
         Sequential design and analysis of high-accuracy and low-accuracy computer codes.
-        Technometrics, 55(1): 37-46.
+        *Technometrics*, 55(1): 37-46.
 
 
     Examples
@@ -110,13 +110,13 @@ def ishigami(x, a=7, b=0.05):
     .. [I1990] Ishigami, T., and Homma, T. (1990).
         An importance quantification technique in uncertainty analysis for computer
         models.
-        In: Uncertainty Modeling and Analysis, 1990. Proceedings.,
-        First International Symposium on Uncertainty Modeling and Analysis, 398-403.
+        In *Uncertainty Modeling and Analysis*. Proceedings.,
+        First International Symposium on Uncertainty Modeling and Analysis (pp. 398-403).
 
     .. [S1999] Sobol', I. M., and Levitan, Y. L. (1999).
         On the use of variance reducing multipliers in Monte Carlo computations of a
         global sensitivity index.
-        Computer Physics Communications, 117(1): 52-61.
+        *Computer Physics Communications*, 117(1): 52-61.
 
     Examples
     --------
@@ -173,13 +173,13 @@ def eoq_model(x, r=0.1):
     ----------
     .. [H1990] Harris, F. W. (1990).
         How many parts to make at once.
-        Operations Research, 38(6): 947-950.
+        *Operations Research*, 38(6): 947-950.
 
     .. [E1990] Erlenkotter, D. (1990).
         Ford Whitman Harris and the economic order quantity model.
-        Operations Research, 38(6): 937-946.
+        *Operations Research*, 38(6): 937-946.
 
-    .. [W2020] Economic order quantity. (2020, April 3). In Wikipedia.
+    .. [W2020] *Economic order quantity*. (2020, April 3). In Wikipedia.
         Retrieved from
         https://en.wikipedia.org/w/index.php\?title=Economic_order_quantity&oldid=948881557.
 
