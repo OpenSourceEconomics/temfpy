@@ -317,7 +317,7 @@ def oscillatory(x, a, b):
     a : array_like
         Weight vector with dimension :math:`p`.
     b : int
-        Scale value that increases influences the location of the oscillatory.
+        Scale value that influences the location of the oscillatory.
 
     Returns
     -------
@@ -327,7 +327,7 @@ def oscillatory(x, a, b):
     Notes
     -----
     This function was proposed by Alan Genz in [G1984]_. It can be
-    integrated analytically quickly with high precision.Large values
+    integrated analytically quickly with high precision. Large values
     in the location vector :math:`a` result in a higher frequency of
     oscillations and a more difficult integration.
 
