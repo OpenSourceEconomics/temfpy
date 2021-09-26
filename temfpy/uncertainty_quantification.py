@@ -111,7 +111,7 @@ def ishigami(x, a=7, b=0.05):
         An importance quantification technique in uncertainty analysis for computer
         models.
         In: Uncertainty Modeling and Analysis, 1990. Proceedings.,
-        First International Symposium on (pp. 398-403).
+        First International Symposium on Uncertainty Modeling and Analysis, 398-403.
 
     .. [S1999] Sobol', I. M., and Levitan, Y. L (1999).
         On the use of variance reducing multipliers in Monte Carlo computations of a
@@ -156,15 +156,15 @@ def eoq_model(x, r=0.1):
     Notes
     -----
     This function computes the optimal economic order quantity (EOQ) based on the model
-    presented in [H1990]_. The EOQ minimizes the holding costs as well as ordering
-    costs. The core parameters of the model are the units per months :math:`x_0`, the
+    presented in [H1990]_. The EOQ minimizes holding as well as ordering
+    costs. The core parameters of the model are the units per month :math:`x_0`, the
     unit price of items in stock :math:`x_1`, and the setup costs of an order
     :math:`x_2`. The annual interest rate `r` is treated as an additional parameter. A
     historical perspective on the model is provided by [E1990]_. A brief description
     with the core equations is available in [W2020]_. The figure below illustrates the
     core trade-off in the model. Holding :math:`x_1` and :math:`x_2` constant, an
     increase in :math:`x_0` results in a decrease in the setup cost per unit, but an
-    increase in capital cost increases as the stock of inventory increase.
+    increase in capital cost increases as the stock of inventory.
 
     .. figure:: ../../docs/_static/images/fig-eoq-tradeoff.png
        :align: center
@@ -181,10 +181,8 @@ def eoq_model(x, r=0.1):
 
     .. [W2020] Economic order quantity. (2020, April 3). In Wikipedia.
         Retrieved from
-        `https://en.wikipedia.org/w/index.php\
-        ?title=Economic_order_quantity&oldid=948881557 <
-        https://en.wikipedia.org/w/index.php
-        ?title=Economic_order_quantity&oldid=948881557>`_
+        https://en.wikipedia.org/w/index.php\
+        ?title=Economic_order_quantity&oldid=948881557.
 
     Examples
     --------
@@ -222,7 +220,7 @@ def simple_linear_function(x):
     Parameters
     ----------
     x : array_like
-        Array of summands
+        Array of summands.
 
     Returns
     -------
@@ -231,7 +229,7 @@ def simple_linear_function(x):
 
     Notes
     -----
-    This function computes the sum of all elements of a given :math:`p`-
+    This function computes the sum of all elements of a given :math:`p` -
     dimensional array.
 
     Examples
