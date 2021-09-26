@@ -37,10 +37,10 @@ def runge(x):
 
     References
     ----------
-    .. [R1901] Runge, K (1901).
+    .. [R1901] Runge, C. (1901).
        Über empirische Funktionen und die Interpolation
        zwischen äquidistanten Ordinaten.
-       Zeitschrift für Mathematik und Physik.
+       Zeitschrift für Mathematik und Physik, 46: 224-243.
 
     Examples
     --------
