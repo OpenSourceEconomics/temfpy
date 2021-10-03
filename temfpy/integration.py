@@ -74,9 +74,8 @@ def continuous(x, u, a):
     References
     ----------
     .. [G1984] Genz, A. (1984). Testing multidimensional integration routines.
-       In Proc. of international conference on Tools, methods and languages
-       for scientific and engineering computation (pp. 81-94). Elsevier
-       North-Holland.
+       In *Proc. of international conference on tools, methods and languages
+       for scientific and engineering computation* (pp. 81-94). Elsevier North-Holland.
 
     Examples
     --------
@@ -123,9 +122,9 @@ def corner_peak(x, a):
     -----
     This function was proposed by Alan Genz in [G1984]_. It can be
     integrated analytically quickly with high precision. Evaluated at two
-    dimensions, the function has a flat surface and one sharp peak
+    dimensions, the function has a flat surface and a single sharp peak
     in one corner of the integration region. Large values
-    in the location vector :math:`a` result in a more sharp peak and a more
+    in the location vector :math:`a` result in a sharper peak and a more
     difficult integration.
 
 
@@ -136,9 +135,8 @@ def corner_peak(x, a):
     References
     ----------
     .. [G1984] Genz, A. (1984). Testing multidimensional integration routines.
-       In Proc. of international conference on Tools, methods and languages
-       for scientific and engineering computation (pp. 81-94). Elsevier
-       North-Holland.
+       In *Proc. of international conference on tools, methods and languages
+       for scientific and engineering computation* (pp. 81-94). Elsevier North-Holland.
 
     Examples
     --------
@@ -175,8 +173,8 @@ def discontinuous(x, u, a):
     x : array_like
         Input domain with dimension :math:`p` and :math:`x \in [0,1]^p`.
     u : array_like
-        Location vector with dimension :math:`1`, if :math:`p = 1` and
-        dimension :math:`2`, if :math:`p > 1` that determines in which
+        Location vector with dimension :math:`1`, if :math:`p = 1`, and with
+        dimension :math:`2`, if :math:`p > 1`, that determines in which
         area the function is equal to zero.
     a : array_like
         Weight vector with dimension :math:`p`.
@@ -191,7 +189,7 @@ def discontinuous(x, u, a):
     This function was proposed by Alan Genz in [G1984]_. It can be
     integrated analytically quickly with high precision. Evaluated at two
     dimensions, the function has one peak close to the centre of the
-    integration region and is flat at zero for values greater as specified
+    integration region and is flat at zero for greater values, as specified
     in :math:`u`. Large values
     in the location vector :math:`a` result in a sharp peak and a more
     difficult integration.
@@ -204,9 +202,8 @@ def discontinuous(x, u, a):
     References
     ----------
     .. [G1984] Genz, A. (1984). Testing multidimensional integration routines.
-       In Proc. of international conference on Tools, methods and languages
-       for scientific and engineering computation (pp. 81-94). Elsevier
-       North-Holland.
+       In *Proc. of international conference on tools, methods and languages
+       for scientific and engineering computation* (pp. 81-94). Elsevier North-Holland.
 
     Examples
     --------
@@ -277,9 +274,8 @@ def gaussian_peak(x, u, a):
     References
     ----------
     .. [G1984] Genz, A. (1984). Testing multidimensional integration routines.
-       In Proc. of international conference on Tools, methods and languages
-       for scientific and engineering computation (pp. 81-94). Elsevier
-       North-Holland.
+       In *Proc. of international conference on tools, methods and languages
+       for scientific and engineering computation* (pp. 81-94). Elsevier North-Holland.
 
     Examples
     --------
@@ -317,7 +313,7 @@ def oscillatory(x, a, b):
     a : array_like
         Weight vector with dimension :math:`p`.
     b : int
-        Scale value that increases influences the location of the oscillatory.
+        Scale value that influences the location of the oscillatory.
 
     Returns
     -------
@@ -327,7 +323,7 @@ def oscillatory(x, a, b):
     Notes
     -----
     This function was proposed by Alan Genz in [G1984]_. It can be
-    integrated analytically quickly with high precision.Large values
+    integrated analytically quickly with high precision. Large values
     in the location vector :math:`a` result in a higher frequency of
     oscillations and a more difficult integration.
 
@@ -339,9 +335,8 @@ def oscillatory(x, a, b):
     References
     ----------
     .. [G1984] Genz, A. (1984). Testing multidimensional integration routines.
-       In Proc. of international conference on Tools, methods and languages
-       for scientific and engineering computation (pp. 81-94). Elsevier
-       North-Holland.
+       In *Proc. of international conference on tools, methods and languages
+       for scientific and engineering computation* (pp. 81-94). Elsevier North-Holland.
 
     Examples
     --------
@@ -401,9 +396,8 @@ def product(x, u, a):
     References
     ----------
     .. [G1984] Genz, A. (1984). Testing multidimensional integration routines.
-       In Proc. of international conference on Tools, methods and languages
-       for scientific and engineering computation (pp. 81-94). Elsevier
-       North-Holland.
+       In *Proc. of international conference on tools, methods and languages
+       for scientific and engineering computation* (pp. 81-94). Elsevier North-Holland.
 
     Examples
     --------

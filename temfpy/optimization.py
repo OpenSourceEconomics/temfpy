@@ -19,15 +19,15 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
     Parameters
     ----------
     x : array_like
-        Input domain with dimension :math:`p`.
-        It is usually evaluated on the hypercube
-        :math:`x_i \in [-32.768, 32.768]`, for all :math:`i = 1, \dots, p`.
+        Input domain with dimension :math:`p`, which
+        is usually evaluated on the hypercube
+        :math:`x_i \in [-32.768, 32.768]` for all :math:`i = 1, \dots, p`.
     a : float, optional
         The default value is 20.
     b : float, optional
         The default value is 0.2.
     c : float, optional
-        The default value is 2π.
+        The default value is :math:`2\pi`.
 
     Returns
     -------
@@ -38,7 +38,7 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
     -----
     This function was proposed by David Ackley in [A1987]_ and used in [B1996]_
     and [M2005]_. It is characterized by an almost flat outer region and a central hole
-    or peak where modulations become more and more influential. The function has
+    or peak where modulations become increasingly influential. The function has
     its global minimum :math:`f(x) = 0` at :math:`x = \begin{pmatrix}0 & \dots & 0
     \end{pmatrix}^T`.
 
@@ -48,14 +48,13 @@ def ackley(x, a=20, b=0.2, c=2 * np.pi):
     References
     ----------
     .. [A1987] Ackley, D. H. (1987).
-       A connectionist machine for genetic hillclimbing.
-       Boston, MA: Kluwer Academic Publishers.
+       *A connectionist machine for genetic hillclimbing*. Kluwer Academic Publishers.
     .. [B1996] Back, T. (1996).
-       Evolutionary algorithms in theory and practice:
-       Evolution strategies, evolutionary programming, genetic algorithms.
-       Oxford, UK: Oxford University Press.
+       *Evolutionary algorithms in theory and practice:
+       Evolution strategies, evolutionary programming, genetic algorithms*.
+       Oxford University Press.
     .. [M2005] Molga, M., and Smutnicki, C. (2005).
-       Test functions for optimization needs.
+       *Test functions for optimization needs*.
        Retrieved June 2020, from
        http://www.zsd.ict.pwr.wroc.pl/files/docs/functions.pdf.
 
@@ -87,7 +86,7 @@ def rastrigin(x, a=10):
     x : array_like
         Input domain with dimension :math:`p`.
         It is usually evaluated on the hypercube
-        :math:`x_i\in [-5.12, 5.12]`, for all :math:`i = 1, \dots, p`.
+        :math:`x_i\in [-5.12, 5.12]` for all :math:`i = 1, \dots, p`.
     a : float, optional
         The default value is 10.
 
@@ -99,7 +98,7 @@ def rastrigin(x, a=10):
     Notes
     -----
     The function was first proposed by Leonard Rastrigin in [R1974]_.
-    It produces frequent local minima as it is highly multimodal.
+    It produces frequent local minima, as it is highly multimodal.
     However, the location of the minima are regularly distributed.
     The function has its global minimum :math:`f(x) = 0` at
     :math:`x = \begin{pmatrix}0 & \dots & 0 \end{pmatrix}^T`.
@@ -110,8 +109,8 @@ def rastrigin(x, a=10):
     References
     ----------
     .. [R1974] Rastrigin, L. A. (1974).
-       Systems of extremal control.
-       Moscow, Russia: Mir.
+       *Systems of extremal control*.
+       Moscow, Russia.
 
     Examples
     --------
@@ -148,10 +147,10 @@ def rosenbrock(x):
     Notes
     -----
     The function was first proposed by Howard H. Rosenbrock in [R1960]_ and
-    is often also referred to, due to its shape, as Rosenbrock's valley or
-    Rosenbrock's Banana function.
+    is often referred to as Rosenbrock's valley or
+    Rosenbrock's Banana function due to its shape.
     The function has its global minimum at
-    :math:`x = \begin{pmatrix}1 & \dots & 1 \end{pmatrix}^T`
+    :math:`x = \begin{pmatrix}1 & \dots & 1 \end{pmatrix}^T`.
 
     .. figure:: ../../docs/_static/images/fig-rosenbrock.png
        :align: center
@@ -159,9 +158,9 @@ def rosenbrock(x):
     References
     ----------
     .. [R1960] Rosenbrock, H. H. (1960).
-       An Automatic Method for Finding the Greatest
-       or Least Value of a Function.
-       The Computer Journal, Volume 3, Issue 3, Pages 175-184
+       An automatic method for finding the greatest
+       or least value of a function.
+       *The Computer Journal*, 3(3): 175-184.
 
     Examples
     --------
@@ -198,7 +197,7 @@ def carlberg(x, a, b):
     a : array_like
         Input vector with dimension :math:`p`.
     b : float
-        Must not be smaller than zero.
+        Cannot be smaller than zero.
         For more information see Notes.
 
     Returns
@@ -208,14 +207,14 @@ def carlberg(x, a, b):
 
     Notes
     -----
-    If the values in :math:`a` are widely distributed the function is
-    said to be ill-conditioned and it is hard to minimize in some
-    directions for Hessian free numerical methods.
-    If :math:`b=0` (see second graph below) the function is
-    convex, smooth and has its minimum at
+    If the values in :math:`a` are widely distributed, the function is
+    said to be ill-conditioned, making it hard to minimize in some
+    directions for Hessian-free numerical methods.
+    If :math:`b=0` (see second graph below), the function is
+    convex, smooth, and has its minimum at
     :math:`x = \begin{pmatrix}1 & \dots & 1 \end{pmatrix}^T`. For
     :math:`b>0` the function is no longer convex and has many local
-    minima (see first graph below), making it hard for
+    minima (see first graph below). These circumstances make it hard for
     local optimization methods to find the global minimum,
     which is still at
     :math:`x = \begin{pmatrix}1 & \dots & 1 \end{pmatrix}^T`.
@@ -228,7 +227,7 @@ def carlberg(x, a, b):
     References
     ----------
     .. [C2019] Carlberg, K. (2019).
-       Optimization in Python.
+       *Optimization in Python*.
        Fundamentals of Data Science Summer Workshops, Stanford.
 
     Examples

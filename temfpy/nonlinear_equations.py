@@ -222,8 +222,8 @@ def exponential(x, a=10, b=1, jac=False):
     b : float, optional
         The default value is 1.
     jac : bool
-          If True, an additional array containing the numerically
-          and the analytically derived jacobian are returned.
+          If True, an additional array containing the numerically derived Jacobian
+          and the analytically derived Jacobian is returned.
           The default is False.
 
     Returns
@@ -231,16 +231,16 @@ def exponential(x, a=10, b=1, jac=False):
     array_like
         Output domain
     array_like
-        Only if :math:`jac = True`.
+        Only returned if :math:`jac = True`.
         Tuple containing the analytically derived Jacobian and the
         numerically derived Jacobian.
 
     References
     ----------
-    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R Package for Solving a
-               Large System of Nonlinear Equations and for Optimizing a High-Dimensional
-               Nonlinear Objective Function. *Journal of Statistical Software*,
-               32(1):1–26, 2009.
+    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R package for solving a
+               large system of nonlinear equations and for optimizing a high-dimensional
+               nonlinear objective function. *Journal of Statistical Software*,
+               32(1): 1–26.
 
     Examples
     --------
@@ -476,8 +476,8 @@ def trig_exp(x, a=(3, 2, 5, 4, 3, 2, 8, 4, 3), jac=False):
     a : array_like, optional
         The default array is (3,2,5,4,3,2,8,4,3).
     jac : bool
-          If True, an additional array containing the numerically
-          and the analytically derived jacobian are returned.
+          If True, an additional array containing the numerically derived Jacobian
+          and the analytically derived Jacobian is returned.
           The default is False.
 
     Returns
@@ -485,16 +485,16 @@ def trig_exp(x, a=(3, 2, 5, 4, 3, 2, 8, 4, 3), jac=False):
     array_like
         Output domain
     array_like
-        Only if :math:`jac = True`.
+        Only returned if :math:`jac = True`.
         Tuple containing the analytically derived Jacobian
         and the numerically derived Jacobian.
 
     References
     ----------
-    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R Package for Solving a
-               Large System of Nonlinear Equations and for Optimizing a High-Dimensional
-               Nonlinear Objective Function. *Journal of Statistical Software*,
-               32(1):1–26, 2009.
+    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R package for solving a
+               large system of nonlinear equations and for optimizing a high-dimensional
+               nonlinear objective function. *Journal of Statistical Software*,
+               32(1): 1–26.
 
     Examples
     --------
@@ -636,26 +636,25 @@ def broyden(x, a=(3, 0.5, 2, 1), jac=False):
     a : array_like, optional
         The default array is (3, 0.5, 2, 1).
     jac : bool
-          If True, an additional array containing the numerically
-          and the analytically derived jacobian are returned.
+          If True, an additional array containing the numerically derived Jacobian
+          and the analytically derived Jacobian is returned.
           The default is False.
 
     Returns
     -------
     array_like
-        Output domain.
+        Output domain
     array_like
-        Only if :math:`jac = True`.
+        Only returned if :math:`jac = True`.
         Tuple containing the analytically derived Jacobian
         and the numerically derived Jacobian.
 
-
     References
     ----------
-    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R Package for Solving a
-               Large System of Nonlinear Equations and for Optimizing a High-Dimensional
-               Nonlinear Objective Function. *Journal of Statistical Software*,
-               32(1):1–26, 2009.
+    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R package for solving a
+               large system of nonlinear equations and for optimizing a high-dimensional
+               nonlinear objective function. *Journal of Statistical Software*,
+               32(1): 1–26.
 
     Examples
     --------
@@ -801,10 +800,10 @@ def rosenbrock_ext(x, a=(10, 1), jac=False):
     x : array_like
         Input domain with even dimension :math:`p > 1`.
     a : array_like, optional
-        The default array is (10,1)
+        The default array is (10,1).
     jac : bool
-          If True, an additional array containing the numerically
-          and the analytically derived jacobian are returned.
+          If True, an additional array containing the numerically derived Jacobian
+          and the analytically derived Jacobian is returned.
           The default is False.
 
     Returns
@@ -812,15 +811,16 @@ def rosenbrock_ext(x, a=(10, 1), jac=False):
     array_like
         Output domain
     array_like
-        Only if :math:`jac = True`.
+        Only returned if :math:`jac = True`.
         Tuple containing the analytically derived Jacobian and the
         numerically derived Jacobian.
 
     References
     ----------
-    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009).
-    BB: An R Package for Solving a Large System of Nonlinear Equations and for
-    Optimizing a High-Dimensional Nonlinear Objective Function.
+    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R package for solving a
+               large system of nonlinear equations and for optimizing a high-dimensional
+               nonlinear objective function. *Journal of Statistical Software*,
+               32(1): 1–26.
 
     Examples
     --------
@@ -974,12 +974,12 @@ def troesch(x, rho=10, a=2, jac=False):
     x : array_like
         Input domain with dimension :math:`p > 1`.
     rho : float, optional
-        The default value is 10
+        The default value is 10.
     a : float, optional
-        The default value is 2
+        The default value is 2.
     jac : bool
-          If True, an additional array containing the numerically
-          and the analytically derived jacobian are returned.
+          If True, an additional array containing the numerically derived Jacobian
+          and the analytically derived Jacobian is returned.
           The default is False.
 
     Returns
@@ -987,16 +987,16 @@ def troesch(x, rho=10, a=2, jac=False):
     array_like
         Output domain
     array_like
-        Only if :math:`jac = True`.
+        Only returned if :math:`jac = True`.
         Tuple containing the analytically derived Jacobian and the
         numerically derived Jacobian.
 
     References
     ----------
-    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R Package for Solving a
-               Large System of Nonlinear Equations and for Optimizing a High-Dimensional
-               Nonlinear Objective Function. *Journal of Statistical Software*,
-               32(1):1–26, 2009.
+    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R package for solving a
+               large system of nonlinear equations and for optimizing a high-dimensional
+               nonlinear objective function. *Journal of Statistical Software*,
+               32(1): 1–26.
 
     Examples
     --------
@@ -1044,10 +1044,10 @@ def _chandrasekhar_val(x, y, c):
 
     References
     ----------
-    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R Package for Solving a
-               Large System of Nonlinear Equations and for Optimizing a High-Dimensional
-               Nonlinear Objective Function. *Journal of Statistical Software*,
-               32(1):1–26, 2009.
+    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R package for solving a
+               large system of nonlinear equations and for optimizing a high-dimensional
+               nonlinear objective function. *Journal of Statistical Software*,
+               32(1): 1–26.
 
     Examples
     --------
@@ -1189,12 +1189,12 @@ def chandrasekhar(x, y, c, jac=False):
     x : array_like
         Input domain with dimension :math:`p`.
     y : array_like,
-        Array of constants with dimension :math:`p`
+        Array of constants with dimension :math:`p`.
     c : float
-        Constant parameter
+        Constant parameter.
     jac : bool
-          If True, an additional array containing the numerically
-          and the analytically derived jacobian are returned.
+          If True, an additional array containing the numerically derived Jacobian
+          and the analytically derived Jacobian is returned.
           The default is False.
 
     Returns
@@ -1202,17 +1202,17 @@ def chandrasekhar(x, y, c, jac=False):
     array_like
         Output domain
     array_like
-        Only if :math:`jac = True`.
+        Only returned if :math:`jac = True`.
         Tuple containing the analytically derived Jacobian and the
         numerically derived Jacobian.
-        Numerically derived Jacobian only if dimension :math:`p > 1`.
+        Numerically derived Jacobian returned only if dimension :math:`p > 1`.
 
     References
     ----------
-    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R Package for Solving a
-               Large System of Nonlinear Equations and for Optimizing a High-Dimensional
-               Nonlinear Objective Function. *Journal of Statistical Software*,
-               32(1):1–26, 2009.
+    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R package for solving a
+               large system of nonlinear equations and for optimizing a high-dimensional
+               nonlinear objective function. *Journal of Statistical Software*,
+               32(1): 1–26.
 
     Examples
     --------
