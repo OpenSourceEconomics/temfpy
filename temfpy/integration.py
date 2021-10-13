@@ -67,7 +67,7 @@ def continuous(x, u, a):
     difficult integration.
 
 
-    .. figure:: ../../docs/_static/images/fig-continuous_integrand.png
+    .. figure:: ../../docs/_static/images/fig-continuous-integrand.png
        :align: center
 
 
@@ -128,7 +128,7 @@ def corner_peak(x, a):
     difficult integration.
 
 
-    .. figure:: ../../docs/_static/images/fig-corner_peak.png
+    .. figure:: ../../docs/_static/images/fig-corner-peak.png
        :align: center
 
 
@@ -195,7 +195,7 @@ def discontinuous(x, u, a):
     difficult integration.
 
 
-    .. figure:: ../../docs/_static/images/fig-discontinuous_integrand.png
+    .. figure:: ../../docs/_static/images/fig-discontinuous-integrand.png
        :align: center
 
 
@@ -267,7 +267,7 @@ def gaussian_peak(x, u, a):
     difficult integration.
 
 
-    .. figure:: ../../docs/_static/images/fig-gaussian_peak.png
+    .. figure:: ../../docs/_static/images/fig-gaussian-peak.png
        :align: center
 
 
@@ -328,7 +328,7 @@ def oscillatory(x, a, b):
     oscillations and a more difficult integration.
 
 
-    .. figure:: ../../docs/_static/images/fig-oscillatory_integrand.png
+    .. figure:: ../../docs/_static/images/fig-oscillatory-integrand.png
        :align: center
 
 
@@ -389,7 +389,7 @@ def product(x, u, a):
     difficult integration.
 
 
-    .. figure:: ../../docs/_static/images/fig-product_integrand.png
+    .. figure:: ../../docs/_static/images/fig-product-integrand.png
        :align: center
 
 

@@ -219,9 +219,9 @@ def carlberg(x, a, b):
     which is still at
     :math:`x = \begin{pmatrix}1 & \dots & 1 \end{pmatrix}^T`.
 
-    .. figure:: ../../docs/_static/images/fig-carlberg_noise.png
+    .. figure:: ../../docs/_static/images/fig-carlberg-noise.png
        :align: center
-    .. figure:: ../../docs/_static/images/fig-carlberg_no_noise.png
+    .. figure:: ../../docs/_static/images/fig-carlberg-no-noise.png
        :align: center
 
     References
