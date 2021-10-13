@@ -34,4 +34,4 @@ ax.set_ylabel("$f(x)$")
 ax.set_title("Runge Function and Polynomial Approximations over Uniform Grid")
 ax.legend()
 
-fig.savefig("../../_static/images/fig-runge")
+fig.savefig("fig-runge")

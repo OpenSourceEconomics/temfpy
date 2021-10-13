@@ -88,4 +88,4 @@ ax.legend()
 ax.set_xlabel("Size of order")
 ax.set_ylabel("Cost")
 
-fig.savefig("../../_static/images/fig-eoq-tradeoff")
+fig.savefig("fig-eoq-tradeoff")
