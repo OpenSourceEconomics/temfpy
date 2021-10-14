@@ -1,16 +1,19 @@
-"""Figure of the Rosenbrock function in 3D.
-x1 is evaluated on [-3, 3]
-x2 is evaluated on [-3, 3]
-y is the result of applying the Rosenbrock function on each combination of x1 and x2
+"""Figure of the Integration Product Integrand function in 3D.
+
+x1 is evaluated on [0, 1]
+x2 is evaluated on [0, 1]
+y is the result of applying the Integration Product Integrand function on
+each combination of x1 and x2 and u1,u2 = 0.5
+
 """
 import matplotlib.pyplot as plt
 import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
 
-from temfpy.optimization import rosenbrock
+from temfpy.integration import product
 
-x1 = np.linspace(-3, 3, 500)
-x2 = np.linspace(-3, 3, 500)
+x1 = np.linspace(0, 1)
+x2 = np.linspace(0, 1)
 
 xvalues = []
 array = []
@@ -21,7 +24,7 @@ for i in range(0, len(x1)):
 
 yvalues = np.linspace(0, 0, len(xvalues))
 for i, j in zip(xvalues, range(0, len(xvalues))):
-    yvalues[j] = rosenbrock(i)
+    yvalues[j] = product(i, [0.5, 0.5], [1, 1])
 
 xvalues = np.array(xvalues)
 xvalues1 = xvalues[:, 0]
@@ -33,4 +36,4 @@ ax.scatter(xvalues1, xvalues2, yvalues, c=yvalues, cmap="viridis", linewidth=0.0
 ax.set_xlabel("$x_1$")
 ax.set_ylabel("$x_2$")
 ax.set_zlabel("$f(x_1, x_2)$")
-fig.savefig("fig-rosenbrock")
+fig.savefig("fig-product-integrand")

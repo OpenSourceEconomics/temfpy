@@ -1,8 +1,8 @@
-"""Figure of the Gaussian Peak Integrand function in 3D.
+"""Figure of the Ackley function in 3D.
 
 x1 is evaluated on [0, 1]
 x2 is evaluated on [0, 1]
-y is the result of applying the Gaussian Peak Integrand function on
+y is the result of applying the Continuous Integrand function on
 each combination of x1 and x2 and u1,u2 = 0.5
 
 """
@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
 
-from temfpy.integration import gaussian_peak
+from temfpy.integration import continuous
 
 x1 = np.linspace(0, 1)
 x2 = np.linspace(0, 1)
@@ -24,7 +24,7 @@ for i in range(0, len(x1)):
 
 yvalues = np.linspace(0, 0, len(xvalues))
 for i, j in zip(xvalues, range(0, len(xvalues))):
-    yvalues[j] = gaussian_peak(i, [0.5, 0.5], [1, 1])
+    yvalues[j] = continuous(i, [0.5, 0.5], [1, 1])
 
 xvalues = np.array(xvalues)
 xvalues1 = xvalues[:, 0]
@@ -36,4 +36,4 @@ ax.scatter(xvalues1, xvalues2, yvalues, c=yvalues, cmap="viridis", linewidth=0.0
 ax.set_xlabel("$x_1$")
 ax.set_ylabel("$x_2$")
 ax.set_zlabel("$f(x_1, x_2)$")
-fig.savefig("fig-gaussian_peak")
+fig.savefig("fig-continuous-integrand")

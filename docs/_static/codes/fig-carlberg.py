@@ -73,7 +73,7 @@ plot_carlberg(
     a=a,
     b=0,
     title="Without Noise",
-    save_name="fig-carlberg_no_noise",
+    save_name="fig-carlberg-no-noise",
 )
 plot_carlberg(
     x1=x1,
@@ -81,5 +81,5 @@ plot_carlberg(
     a=a,
     b=1,
     title="Noise Included",
-    save_name="fig-carlberg_noise",
+    save_name="fig-carlberg-noise",
 )
