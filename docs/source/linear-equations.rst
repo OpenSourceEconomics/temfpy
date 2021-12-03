@@ -1,7 +1,7 @@
 Linear equations
 ============================
 
-We provide a variety of linear equations. 
+We provide a variety of linear equations.
 
 |
 
