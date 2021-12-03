@@ -3,7 +3,7 @@ We provide a variety of linear equations.
 """
 import sys
 
-import numpy as np 
+import numpy as np
 
 
 def get_ill_problem_1(n):
