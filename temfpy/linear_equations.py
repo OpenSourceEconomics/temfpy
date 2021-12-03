@@ -1,8 +1,6 @@
 """Linear equations.
 We provide a variety of linear equations.
 """
-import sys
-
 import numpy as np
 
 
