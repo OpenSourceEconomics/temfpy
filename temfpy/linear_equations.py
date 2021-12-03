@@ -1,40 +1,32 @@
 """Linear equations.
 We provide a variety of linear equations.
 """
+import sys
+
 import numpy as np
 
 
-def get_ill_problem_1(n):
+def get_ill_cond_lin_eq(n):
 
-    r"""Get ill problem.
+    r"""Create ill-conditioned system of linear equations given a 1-D solution array of ones.
 
-    .. math::
-        x &\mapsto \begin{pmatrix} F_1(x) & F_2(x) & \dots & F_p(x) \end{pmatrix}^T \\
-        F_1(x) &= e^{x_1} - b \\
-        F_i(x) &= \frac{i}{a} (e^{x_i} +x_{i-1}) - b \\
-        & \quad i = 2,3, \dots, p
+    .. math:: Ax=b
 
     Parameters
     ----------
-    x : array_like
-        Input domain with dimension :math:`p`.
-    a : float, optional
-        The default value is 10.
-    b : float, optional
-        The default value is 1.
-    jac : bool
-          If True, an additional array containing the numerically derived Jacobian
-          and the analytically derived Jacobian is returned.
-          The default is False.
+
+    n :  non-negative integer
+         Dimension of linear equation.
 
     Returns
     -------
-    array_like
-        Output domain
-    array_like
-        Only returned if :math:`jac = True`.
-        Tuple containing the analytically derived Jacobian and the
-        numerically derived Jacobian.
+
+    a : array_like
+        2-D ill-conditioned array.
+    x : array_like
+        1-D solution array of ones.
+    b : array_like
+        1-D data array.
 
     References
     ----------
@@ -46,17 +38,17 @@ def get_ill_problem_1(n):
     Examples
     --------
     >>> import numpy as np
-    >>> from temfpy.nonlinear_equations import exponential
+    >>> from temfpy.linear_equations import get_ill_cond_lin_eq
     >>>
-    >>> np.random.seed(123)
-    >>> p = np.random.randint(1,20)
-    >>> x = np.zeros(p)
-    >>> np.allclose(exponential(x), np.zeros(p))
-    True
+    >>> n = 5
+    >>> a, x, b = get_ill_cond_lin_eq(n)
     """
+
+    if n <= 0:
+        sys.exit("n must be a non-negative, non-zero integer.")
 
     a = np.vander(1 + np.arange(n))
     x = np.ones(n)
     b = a @ x
 
-    return a, b, x
+    return a, x, b
