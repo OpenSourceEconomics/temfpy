@@ -5,7 +5,7 @@ p = find_packages()
 
 setup(
     name="temfpy",
-    version="1.2.0",
+    version="1.2.1",
     description=("Python package with test functions for various numerical components"),
     license="MIT",
     url="https://github.com/OpenSourceEconomics/temfpy",
