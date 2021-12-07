@@ -14,6 +14,6 @@ def get_strategies(name):
     return strategy
 
 
-@given(*get_strategies("get_ill_cond_lin_eq"))
+@given(get_strategies("get_ill_cond_lin_eq"))
 def test_get_ill_cond_lin_eq(n):
     get_ill_cond_lin_eq(n)
