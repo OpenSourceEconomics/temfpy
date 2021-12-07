@@ -7,7 +7,7 @@ from temfpy.linear_equations import get_ill_cond_lin_eq
 
 def get_strategies(name):
     if name == "get_ill_cond_lin_eq":
-        strategy = integers(1)
+        strategy = integers(1, 1000)
     else:
         raise NotImplementedError
 
