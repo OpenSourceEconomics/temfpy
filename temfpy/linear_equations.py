@@ -30,10 +30,9 @@ def get_ill_cond_lin_eq(n):
 
     References
     ----------
-    .. [V2009] Varadhan, R., and Gilbert, P. D. (2009). BB: An R package for solving a
-               large system of nonlinear equations and for optimizing a high-dimensional
-               nonlinear objective function. *Journal of Statistical Software*,
-               32(1): 1–26.
+    .. [W2021] *Vandermonde matrix*. (2021, December 1). In Wikipedia.
+                Retrieved from
+                https://en.wikipedia.org/wiki/Vandermonde_matrix.
 
     Examples
     --------
