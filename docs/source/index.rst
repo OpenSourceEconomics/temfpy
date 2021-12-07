@@ -53,6 +53,7 @@ With ``conda`` available on your path, installing and testing
 
    integration
    interpolation
+   linear-equations
    nonlinear-equations
    optimization
    uncertainty-quantification
