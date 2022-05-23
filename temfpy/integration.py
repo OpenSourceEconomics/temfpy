@@ -295,7 +295,7 @@ def gaussian_peak(x, u, a):
     _vector_interval(x, 0, 1)
     _vector_interval(u, 0, 1)
 
-    fval = np.exp(-np.sum(np.abs(x - u) ** 2 * a ** 2))
+    fval = np.exp(-np.sum(np.abs(x - u) ** 2 * a**2))
 
     return fval
 

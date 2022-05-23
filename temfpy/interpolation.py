@@ -57,7 +57,7 @@ def runge(x):
     if (x < -1).any() or (x > 1).any():
         sys.exit(f"The parameters in `{x}` must be between -1 and 1.")
 
-    rslt = 1 / (1 + 25 * x ** 2)
+    rslt = 1 / (1 + 25 * x**2)
 
     if len(x) == 1:
         rslt = float(rslt)
