@@ -425,7 +425,7 @@ def _trig_exp_jacobian(x, a=(3, 2, 5, 4, 3, 2, 8, 4, 3)):
                 (
                     x_im1 * np.exp(x_im1 - x_i)
                     + np.repeat(a[3], p - 2)
-                    + 3 * np.repeat(a[4], p - 2) * x_i ** 2
+                    + 3 * np.repeat(a[4], p - 2) * x_i**2
                     + np.sin(x_i - x_ip1) * np.cos(x_i + x_ip1)
                     + np.cos(x_i - x_ip1) * np.sin(x_i + x_ip1)
                 ),
@@ -721,7 +721,7 @@ def _rosenbrock_ext_val(x, a=(10, 1)):
 
     xl = np.concatenate((np.delete(x, 0), 0), axis=None)
     xh = np.concatenate((np.delete(x, p - 1), 0), axis=None)
-    f_odd = a[0] * (xl - xh ** 2) * np.resize((1, 0), p)
+    f_odd = a[0] * (xl - xh**2) * np.resize((1, 0), p)
     f_even = np.delete(1 - np.concatenate((0, x), axis=None), p) * np.resize((0, 1), p)
 
     rslt = f_odd + f_even
@@ -889,7 +889,7 @@ def _troesch_val(x, rho=10, a=2):
     x_ip1 = np.concatenate((np.delete(x, 0), 0), axis=None)
     x_im1 = np.concatenate((0, np.delete(x, p - 1)), axis=None)
 
-    rslt = a * x + rho * h ** 2 * np.sinh(rho * x) - x_ip1 - x_im1
+    rslt = a * x + rho * h**2 * np.sinh(rho * x) - x_ip1 - x_im1
 
     return np.array(rslt)
 
@@ -944,8 +944,8 @@ def _troesch_jacobian(x, rho=10, a=2):
 
     diag_mat = np.diag(
         np.repeat(a, p)
-        + np.repeat(rho ** 2, p)
-        * np.repeat(h ** 2, p)
+        + np.repeat(rho**2, p)
+        * np.repeat(h**2, p)
         * np.cosh(np.repeat(rho, p) * x),
     )
     off_diag_p1_mat = np.diag(np.repeat(-1, p - 1), k=1)
